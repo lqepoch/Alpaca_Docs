@@ -90,7 +90,8 @@ jobs:
         run: |
           set -euo pipefail
           git add docs
-          git diff --cached --check
+          # Mirrored third-party Markdown is kept byte-faithful; upstream may contain trailing whitespace.
+          # Do not run git diff --check against generated mirror payloads.
           if git diff --cached --quiet; then
             echo "No upstream documentation changes detected."
             exit 0
