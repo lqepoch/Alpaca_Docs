@@ -1,0 +1,3790 @@
+{
+  "document_count": 374,
+  "entries": [
+    {
+      "bytes": 81048,
+      "etag": "W/\"13c98-1JVnW1tpHvX4hNkOhGKVmMiChcM\"",
+      "last_modified": "",
+      "local_path": "llms.txt",
+      "retrieved_at": "2026-09-30T09:22:52.239991+00:00",
+      "sha256": "8ff74d87b0dcd95ee632b0a3b746ea01ba5126168d140f61b388db7a604d2f9a",
+      "source_url": "https://docs.alpaca.markets/us/llms.txt",
+      "status": "added"
+    },
+    {
+      "bytes": 964999,
+      "etag": "W/\"96a85-WZfzwXK2XZMqtjwbGCnF6j7w+LM\"",
+      "last_modified": "2026-09-29T19:53:45.071Z",
+      "local_path": "openapi/broker-api.json",
+      "retrieved_at": "2026-09-30T09:25:04.265135+00:00",
+      "sha256": "3a793cfbb637a4b4d4885efd2dfd557a21da6ddafad50931bf8ac3d674056155",
+      "source_url": "https://docs.alpaca.markets/openapi/broker-api.json",
+      "status": "added"
+    },
+    {
+      "bytes": 341030,
+      "etag": "W/\"2da82-CLDrYw5hjl7JMXArXtT45wbu7GU\"",
+      "last_modified": "2026-09-29T19:54:01.091Z",
+      "local_path": "openapi/market-data-api.json",
+      "retrieved_at": "2026-09-30T09:25:03.915289+00:00",
+      "sha256": "d44a52326118c352dbbaebf98a839ff71afbf0a23f8c031427f1854792f1cb15",
+      "source_url": "https://docs.alpaca.markets/openapi/market-data-api.json",
+      "status": "added"
+    },
+    {
+      "bytes": 374379,
+      "etag": "W/\"389cf-Afe1f94qmMX6RAPy1qJIsHA4Bl0\"",
+      "last_modified": "2026-09-29T19:54:06.821Z",
+      "local_path": "openapi/trading-api.json",
+      "retrieved_at": "2026-09-30T09:25:03.536887+00:00",
+      "sha256": "b6224b2a680612945a9a4d71b7d9341d3218f96a0f6169d2e141da4d6e7c7bd2",
+      "source_url": "https://docs.alpaca.markets/openapi/trading-api.json",
+      "status": "added"
+    },
+    {
+      "bytes": 12041,
+      "etag": "W/\"3f835bcb1f39cb7d6e84b7403899a38aed52c868:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/245-trading-for-trading-api.md",
+      "retrieved_at": "2026-09-30T09:22:52.700036+00:00",
+      "sha256": "d23fdee5239e1bee1615e35c8ad63ecefd113b48ee89f9831792065bdf541056",
+      "source_url": "https://docs.alpaca.markets/us/docs/245-trading-for-trading-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11871,
+      "etag": "W/\"0bde20b0aee2cb19d2659eefcc2dd892be93b4b2:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/245-trading.md",
+      "retrieved_at": "2026-09-30T09:22:53.009549+00:00",
+      "sha256": "ead2fa117d2fd65384d69cd711f6846fd81b44a7f72486c8a1dcaf80a54e196c",
+      "source_url": "https://docs.alpaca.markets/us/docs/245-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1004,
+      "etag": "\"ce3683aedb76dab7ddea9deb0ed09cb3295fe783:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/5f36ea05-b1b4-5fd1-91b5-ef51db361a4b.md",
+      "retrieved_at": "2026-09-30T09:22:53.334276+00:00",
+      "sha256": "da3d911b63d5fd67ec7d1b5a70ef4beb1247179dd1215efd7ae219ad3efa0c2e",
+      "source_url": "https://docs.alpaca.markets/us/docs/5f36ea05-b1b4-5fd1-91b5-ef51db361a4b.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3148,
+      "etag": "W/\"d0b31c61e06b2d386afe830c0cb608f4433d3965:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/about-alpaca.md",
+      "retrieved_at": "2026-09-30T09:22:53.746883+00:00",
+      "sha256": "3d3f3289c539a0df6d8cbfb978aa04e2daa27e4e43cd4299ece344c5600f303a",
+      "source_url": "https://docs.alpaca.markets/us/docs/about-alpaca.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1371,
+      "etag": "W/\"c85f0cc6f6596de0ba24d22ec0c0bcd16e366158:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/about-broker-api.md",
+      "retrieved_at": "2026-09-30T09:22:54.107468+00:00",
+      "sha256": "0c995eeba876071f7552a41b2f22deb50c98d9cfbbdeac2708b9419eada9c118",
+      "source_url": "https://docs.alpaca.markets/us/docs/about-broker-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3874,
+      "etag": "W/\"ca6548e48d5becb32988f1a7fd374974e36b8bf5:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/about-connect-api.md",
+      "retrieved_at": "2026-09-30T09:22:54.416543+00:00",
+      "sha256": "e60d23ab8975788a46cf9d9c06e9a5e820bffa916249b41fe334bdabfc454405",
+      "source_url": "https://docs.alpaca.markets/us/docs/about-connect-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8108,
+      "etag": "W/\"2aac455a5702c3d5c1569ee629e311b7a15dcb72-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/about-market-data-api.md",
+      "retrieved_at": "2026-09-30T09:22:54.803799+00:00",
+      "sha256": "fb06472e5f56873c9ec6a52cc805dc9affe5ceb8a0217c47a5c6aa98d4b68b3d",
+      "source_url": "https://docs.alpaca.markets/us/docs/about-market-data-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16381,
+      "etag": "W/\"99387a96b5a6caf35ff6e8e4900b15eb4de94511-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/acats-api.md",
+      "retrieved_at": "2026-09-30T09:22:55.145642+00:00",
+      "sha256": "50854ef0c262d74c85989c6f621c59d601dee905cd667d31f63ce6ccbfe04be8",
+      "source_url": "https://docs.alpaca.markets/us/docs/acats-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10054,
+      "etag": "W/\"5410f9e842ef26eb32c07cd27516b0ea27050d37:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/account-activities.md",
+      "retrieved_at": "2026-09-30T09:22:55.466629+00:00",
+      "sha256": "eb477d8b3991058bca712b0e7c14468d7fa1a30f39602d65108602b5423f2f85",
+      "source_url": "https://docs.alpaca.markets/us/docs/account-activities.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3430,
+      "etag": "W/\"4e5471b1f08863cbfc7606ffe48c89393017bfb4:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/account-opening.md",
+      "retrieved_at": "2026-09-30T09:22:55.807439+00:00",
+      "sha256": "6b385022d6bb340f423899f8ee1e1e1e6988a4c75b7e8563b40f60b1fd61278e",
+      "source_url": "https://docs.alpaca.markets/us/docs/account-opening.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10885,
+      "etag": "W/\"926fceb0aec3bb2ec88b757427c745324e91d434:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/account-plans.md",
+      "retrieved_at": "2026-09-30T09:22:56.205449+00:00",
+      "sha256": "d69313e856e1d55c7e27237730fa3314b36dc2afc0b8763e57319af4ad5adc3a",
+      "source_url": "https://docs.alpaca.markets/us/docs/account-plans.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4644,
+      "etag": "W/\"4e94966bbd806325f5f014fddf86621e3a18f9e8:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/account-status-events-for-kycaas.md",
+      "retrieved_at": "2026-09-30T09:22:56.502224+00:00",
+      "sha256": "5da424ffba227c5cc13a0d804b01b292b7c475d4f9ac31319b6062f99a451089",
+      "source_url": "https://docs.alpaca.markets/us/docs/account-status-events-for-kycaas.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5137,
+      "etag": "W/\"3ffa88e34fde0290c0fa3b53bdc91da0cd20876a:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/accounts-statuses.md",
+      "retrieved_at": "2026-09-30T09:22:56.982888+00:00",
+      "sha256": "a4f4dfbae980de163707a1d40012caf9ee6e69446cadc78f7efdf88e9a28a337",
+      "source_url": "https://docs.alpaca.markets/us/docs/accounts-statuses.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3543,
+      "etag": "W/\"7a581378e26293deb7711523b11b5c7f802538e2:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/ach-funding.md",
+      "retrieved_at": "2026-09-30T09:22:57.318297+00:00",
+      "sha256": "c0f7675fbfa96709bd447e9c6274d95b20435fd673b46013802e18f083917259",
+      "source_url": "https://docs.alpaca.markets/us/docs/ach-funding.md",
+      "status": "added"
+    },
+    {
+      "bytes": 115169,
+      "etag": "W/\"26e4e6535d8677e932d3f07998e4897c1a7f5136:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/activity-sse.md",
+      "retrieved_at": "2026-09-30T09:22:57.599978+00:00",
+      "sha256": "2f71ca9bb9b481be4891b24f3c1f6eaf5322438e0c2eefafb200fa8f70fbc00c",
+      "source_url": "https://docs.alpaca.markets/us/docs/activity-sse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1896,
+      "etag": "W/\"dd55e436f9d3c75e9b77adfdf18169ef3b2967a5:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/additional-resources.md",
+      "retrieved_at": "2026-09-30T09:22:57.921920+00:00",
+      "sha256": "4a561e17f3749f6e95187a5ed6bb3db92c90dc2d2411b14c074a064c0d82cbc0",
+      "source_url": "https://docs.alpaca.markets/us/docs/additional-resources.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4664,
+      "etag": "W/\"b762586d51ee757ffb4de72b0ed41b877a387cc9:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/alpaca-api-platform.md",
+      "retrieved_at": "2026-09-30T09:22:58.244881+00:00",
+      "sha256": "ee837df0b1d4533f163d5364af322411d5a344934e0d8f9e692454cf6bb21643",
+      "source_url": "https://docs.alpaca.markets/us/docs/alpaca-api-platform.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14741,
+      "etag": "W/\"e3608f03e772fe6038ba1eb3ceb9a312aa5542f6:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/alpaca-elite-smart-router.md",
+      "retrieved_at": "2026-09-30T09:22:58.631761+00:00",
+      "sha256": "2967ee77e9e1cc05460656091307fbf11282a004cdd31fa35e8fe7e759ea7906",
+      "source_url": "https://docs.alpaca.markets/us/docs/alpaca-elite-smart-router.md",
+      "status": "added"
+    },
+    {
+      "bytes": 15117,
+      "etag": "W/\"5da1ccccdf536550440eb5112ad5e60fc752ec2d:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/alpaca-mcp-server.md",
+      "retrieved_at": "2026-09-30T09:22:58.944660+00:00",
+      "sha256": "382bb8ab0f0686d1edfcd52a1630c1a8c98bd2dfc85aebb08c732d15cdddf5e7",
+      "source_url": "https://docs.alpaca.markets/us/docs/alpaca-mcp-server.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11250,
+      "etag": "W/\"bd49dddc3ffb9d415078134b9156126c34140f87:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/alpacas-cli.md",
+      "retrieved_at": "2026-09-30T09:22:59.490502+00:00",
+      "sha256": "dc13c7b93a7b84b1ed7c1bc8b990cdff2c2256007eca03c3fb4bf118e30248b4",
+      "source_url": "https://docs.alpaca.markets/us/docs/alpacas-cli.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4042,
+      "etag": "W/\"810513a07e1b014da0af491867a04d426b4c06e3:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/authentication.md",
+      "retrieved_at": "2026-09-30T09:22:59.708188+00:00",
+      "sha256": "9043fc418434c49a3091a196df8b052ad5deac83176420d457c0786ad7150321",
+      "source_url": "https://docs.alpaca.markets/us/docs/authentication.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16923,
+      "etag": "W/\"e862aaf81acd4c4bf18844da3c62db93d6e3ad59:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/broker-api-faq.md",
+      "retrieved_at": "2026-09-30T09:23:00.012033+00:00",
+      "sha256": "1dde9c1fb0b823074c60b067a0b1424476cd421d1c61f111cdaccb797a9fe319",
+      "source_url": "https://docs.alpaca.markets/us/docs/broker-api-faq.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4792,
+      "etag": "W/\"30f47e08440b3e8389a9d62397c2c69b9e6db0e6:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/broker-api-rate-limits.md",
+      "retrieved_at": "2026-09-30T09:23:00.408703+00:00",
+      "sha256": "b757a249b6684117849a23af06da484eae6004c07eae9357235c60f2535667f3",
+      "source_url": "https://docs.alpaca.markets/us/docs/broker-api-rate-limits.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9129,
+      "etag": "W/\"2f07679ffcb62f27a132436b7b4ff962bae0e627-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/broker-mcp-server.md",
+      "retrieved_at": "2026-09-30T09:23:00.692855+00:00",
+      "sha256": "bb44df029156fbcdbf623de9d45966b80db843788f60d032d3d66d2d5ca990de",
+      "source_url": "https://docs.alpaca.markets/us/docs/broker-mcp-server.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12513,
+      "etag": "W/\"1ea22a8130a4caa2f252ee90aa049977063fcc01:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/brokerapi-trading.md",
+      "retrieved_at": "2026-09-30T09:23:01.090589+00:00",
+      "sha256": "9b02ab0460b7481baf4162678a39ffd37113a1a4751a8232cb93b048d07b9d83",
+      "source_url": "https://docs.alpaca.markets/us/docs/brokerapi-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2947,
+      "etag": "W/\"e7b3748cb8748ec3797ba5e914ee299fed392eac:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/credential-management.md",
+      "retrieved_at": "2026-09-30T09:23:01.422089+00:00",
+      "sha256": "064464d722f14b782d53a2a0fad3921b4e910d778e5f4880d2ce515fc301ee2a",
+      "source_url": "https://docs.alpaca.markets/us/docs/credential-management.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2753,
+      "etag": "W/\"cd74e043f94ea294bbf3da0964d3e1c7c96f5146:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/crypto-fees.md",
+      "retrieved_at": "2026-09-30T09:23:01.783204+00:00",
+      "sha256": "747a5e009fc5dbc431e243ce882bdbc3de6c74af6d2e5f4d451a77d1e4202f04",
+      "source_url": "https://docs.alpaca.markets/us/docs/crypto-fees.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1049,
+      "etag": "W/\"4e721321a24bf9e37ed030e7d919cde08446a152:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/crypto-orders.md",
+      "retrieved_at": "2026-09-30T09:23:02.147328+00:00",
+      "sha256": "52d0bbd9f014051053f5ff02c410ae546f0553b167f791e37921efa5ea381675",
+      "source_url": "https://docs.alpaca.markets/us/docs/crypto-orders.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2378,
+      "etag": "W/\"d3ae277d74593773903fd013989d2316d5eee139:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/crypto-pricing-data.md",
+      "retrieved_at": "2026-09-30T09:23:02.458167+00:00",
+      "sha256": "7d5b168b01eb9dbc090e8d7359e24432dbb34fdb590b5e03cc6b8e36da487621",
+      "source_url": "https://docs.alpaca.markets/us/docs/crypto-pricing-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9704,
+      "etag": "W/\"428fa9da9259eecb1c06251c19381c7d3a5a9a2c:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/crypto-trading-1.md",
+      "retrieved_at": "2026-09-30T09:23:02.829076+00:00",
+      "sha256": "7ae11cd2f79a57562b8dacb5c66c488ffc632f220b1e036515e80bbbd8514db7",
+      "source_url": "https://docs.alpaca.markets/us/docs/crypto-trading-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8673,
+      "etag": "W/\"d16ec14a1ea34eaa7f76c4d1834049676569711f:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/crypto-trading.md",
+      "retrieved_at": "2026-09-30T09:23:03.171569+00:00",
+      "sha256": "0fbb28f3d072b78bb93275e4bcd92ad94d82644a301fa1a75fda426668de1b0c",
+      "source_url": "https://docs.alpaca.markets/us/docs/crypto-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 20649,
+      "etag": "W/\"94659b86b267438e63503540f3f4979961c3cfd8:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/crypto-wallets-api.md",
+      "retrieved_at": "2026-09-30T09:23:03.491328+00:00",
+      "sha256": "e3d08b506deb8973a50a0c5c9dc90138e6fd27295790b2df790ed0f6af1f54ad",
+      "source_url": "https://docs.alpaca.markets/us/docs/crypto-wallets-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11196,
+      "etag": "W/\"beb9da86437be055806908b90ac4c3e3461515de:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/custodial-accounts.md",
+      "retrieved_at": "2026-09-30T09:23:03.852182+00:00",
+      "sha256": "1728e4358109c8bbac483f95c6bc1e2adb3260359e0824715246ef9b333d6282",
+      "source_url": "https://docs.alpaca.markets/us/docs/custodial-accounts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4322,
+      "etag": "W/\"df8baa72facb1958c4525f9d2a00b6e943d419f6:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/daily-processes-and-reconcilations.md",
+      "retrieved_at": "2026-09-30T09:23:04.204165+00:00",
+      "sha256": "6a5284db71abfed60c9d1210c14b1be4dda81b182644a94e202824f2fcfa263e",
+      "source_url": "https://docs.alpaca.markets/us/docs/daily-processes-and-reconcilations.md",
+      "status": "added"
+    },
+    {
+      "bytes": 22686,
+      "etag": "W/\"752813c694e11dd47ee0dbd018a937ae85aed8d7:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/data-validations.md",
+      "retrieved_at": "2026-09-30T09:23:04.668333+00:00",
+      "sha256": "26ac238857294d59e6ed6c03d2d01f3491aed9aca7efc66dd28d28594e185d67",
+      "source_url": "https://docs.alpaca.markets/us/docs/data-validations.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3555,
+      "etag": "W/\"c354466d59fe94f0a3d40f2f3051e5d472db2e4f:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/domestic-usa-accounts.md",
+      "retrieved_at": "2026-09-30T09:23:04.922698+00:00",
+      "sha256": "6f008deeabb37db96b7f5774ce38c7994a137408238ed03729533ede2e372d45",
+      "source_url": "https://docs.alpaca.markets/us/docs/domestic-usa-accounts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7911,
+      "etag": "W/\"b735721a0f38da331eab90c13f71505e2cd2d621:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fdic-sweep-program.md",
+      "retrieved_at": "2026-09-30T09:23:05.311099+00:00",
+      "sha256": "71c0cd8be635b9a36738b19b1da0f987b32cbfbfb5581e02ec9f1a13bbef7898",
+      "source_url": "https://docs.alpaca.markets/us/docs/fdic-sweep-program.md",
+      "status": "added"
+    },
+    {
+      "bytes": 74544,
+      "etag": "W/\"b13afe155a26ad41b0c2355211d3361ba81f04ac:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fix-messages.md",
+      "retrieved_at": "2026-09-30T09:23:05.655014+00:00",
+      "sha256": "59012a793f3f8f80de2146001bcc2fc0716f887bff356ba771ad561fa2a66f2c",
+      "source_url": "https://docs.alpaca.markets/us/docs/fix-messages.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13295,
+      "etag": "W/\"5436b30379d0a6bb13690de24cbef73a4a2ce50d:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fixed-income-1.md",
+      "retrieved_at": "2026-09-30T09:23:05.949334+00:00",
+      "sha256": "a94279229b16277377bc856580b3ffeac1346e7788044765845981789e4e4b91",
+      "source_url": "https://docs.alpaca.markets/us/docs/fixed-income-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9808,
+      "etag": "W/\"7eefc43835f85dcbc3bbeb5ac9414a97e9b7c779:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fixed-income.md",
+      "retrieved_at": "2026-09-30T09:23:06.352793+00:00",
+      "sha256": "91210ebaa41e3f1f726b281d514b983778e7371e983194a4fa00f19904adebc1",
+      "source_url": "https://docs.alpaca.markets/us/docs/fixed-income.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14155,
+      "etag": "W/\"4374e68db926d201d4df11f998adf36d0360bc2b:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fpsl-integration-guide-for-fully-disclosed.md",
+      "retrieved_at": "2026-09-30T09:23:06.691466+00:00",
+      "sha256": "b7eb54902b6f1dc7d50d02b20cbcac57a801a4c9fba5b39da91f9298983753a8",
+      "source_url": "https://docs.alpaca.markets/us/docs/fpsl-integration-guide-for-fully-disclosed.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16455,
+      "etag": "W/\"fc448ede5c453ce09b88ff3c611f7c8cfef383e0:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fpsl-integration-guide-for-omnisub.md",
+      "retrieved_at": "2026-09-30T09:23:07.027382+00:00",
+      "sha256": "c92f9fecbdc038cf2b4212b9a1dd253331f7279eb146b2e9c964b3fec8da077d",
+      "source_url": "https://docs.alpaca.markets/us/docs/fpsl-integration-guide-for-omnisub.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4467,
+      "etag": "W/\"e540cb1c2d60b9e9d476c13557fd094f58786312:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fractional-trading.md",
+      "retrieved_at": "2026-09-30T09:23:07.352534+00:00",
+      "sha256": "218dc0b259d2684fa053dbf1a5736c36cca1abbc1df343571bb6c407df4fc3be",
+      "source_url": "https://docs.alpaca.markets/us/docs/fractional-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9660,
+      "etag": "W/\"2d18f4c39483abc3683b8dfcc0c3d64acddaff16:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/fully-paid-securities-lending.md",
+      "retrieved_at": "2026-09-30T09:23:07.780846+00:00",
+      "sha256": "ac6d66e8c814b5db1a2084784ea3b831befeb25d187e814dae071f3a4c9120ef",
+      "source_url": "https://docs.alpaca.markets/us/docs/fully-paid-securities-lending.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7303,
+      "etag": "W/\"555acca3c6f9047266797da7fe15a09f159591a2:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/funding-accounts.md",
+      "retrieved_at": "2026-09-30T09:23:08.081469+00:00",
+      "sha256": "b6a956ea074a93d7b2cd289e72139a3158a14715ad7e8fa09bedcc15c18167e3",
+      "source_url": "https://docs.alpaca.markets/us/docs/funding-accounts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7155,
+      "etag": "W/\"855ff72ac89eccf3e69aeed150000a2ec6e894e5-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/funding-via-journals.md",
+      "retrieved_at": "2026-09-30T09:23:08.441942+00:00",
+      "sha256": "8e36627562baf195aa646e6ba1b55ceffa18c793177472ceac0b04a547239f17",
+      "source_url": "https://docs.alpaca.markets/us/docs/funding-via-journals.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5198,
+      "etag": "W/\"fa0151e2311ddbd71a86b495749e6fd3cfba15e3:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/funding-wallets.md",
+      "retrieved_at": "2026-09-30T09:23:08.752083+00:00",
+      "sha256": "f73957d9c6f84b3a0c40b2bd28046856af53639637668610d32d64eeee664777",
+      "source_url": "https://docs.alpaca.markets/us/docs/funding-wallets.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9944,
+      "etag": "W/\"7aa64674e8fdb7ed6ede8306b77ba524a61fb832:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/getting-started-with-alpaca-market-data.md",
+      "retrieved_at": "2026-09-30T09:23:09.109550+00:00",
+      "sha256": "ccde972295c02b5bce84def1a78ba6f1a3d161f95ee4c2e3f47b24f0e018fc04",
+      "source_url": "https://docs.alpaca.markets/us/docs/getting-started-with-alpaca-market-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13341,
+      "etag": "W/\"f71ca85e4866d41118dd04b66864dda9f307e9f7:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/getting-started-with-broker-api.md",
+      "retrieved_at": "2026-09-30T09:23:09.467739+00:00",
+      "sha256": "0dfd3701809023d2b3a655280153ff0a684c8d7c67a71651c1e8a7c3d7a5e7b1",
+      "source_url": "https://docs.alpaca.markets/us/docs/getting-started-with-broker-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1181,
+      "etag": "W/\"b3b366e915457ba47dbfc7fe54ea0d256079a1ab:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/getting-started-with-trading-api.md",
+      "retrieved_at": "2026-09-30T09:23:09.825429+00:00",
+      "sha256": "6c76122b9a09f53ece758591b5ccd9e8be6e9516700ac69195e0e106d494a2f3",
+      "source_url": "https://docs.alpaca.markets/us/docs/getting-started-with-trading-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1625,
+      "etag": "W/\"55813cf41574a57dc4e4a77e82d37d946f363003:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/getting-started.md",
+      "retrieved_at": "2026-09-30T09:23:10.152960+00:00",
+      "sha256": "350e9f093cdddc84e7c8e36f5eebb2acc4f8997ec3fa67eeaa02ac34cd1b0c47",
+      "source_url": "https://docs.alpaca.markets/us/docs/getting-started.md",
+      "status": "added"
+    },
+    {
+      "bytes": 925,
+      "etag": "\"bb8ecf77b1f778df1f5334b1564a5671463d4782:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/historical-api.md",
+      "retrieved_at": "2026-09-30T09:23:10.503227+00:00",
+      "sha256": "6c9930d4efffc52c863ff004e8d81ca59b2a7890dc77f9374b8da142e02a7399",
+      "source_url": "https://docs.alpaca.markets/us/docs/historical-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 882,
+      "etag": "\"526d7b614a5923c5fcf60d4b9a4a8c29c7d277a9:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/historical-crypto-data-1.md",
+      "retrieved_at": "2026-09-30T09:23:10.882962+00:00",
+      "sha256": "15042aa9c641638c37136093a2fb8b268cffa79ae7dd6b1457533f1c433168c0",
+      "source_url": "https://docs.alpaca.markets/us/docs/historical-crypto-data-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1582,
+      "etag": "W/\"f926f6cf94c8ff6e1514c4da88f40ad1a6fa3e3c:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/historical-news-data.md",
+      "retrieved_at": "2026-09-30T09:23:11.210822+00:00",
+      "sha256": "9c604fcff734b24d13d8fd7f09679ee90b90cd70e9d8ad040b12e653a8121c2a",
+      "source_url": "https://docs.alpaca.markets/us/docs/historical-news-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1961,
+      "etag": "W/\"5610b97d113e26baab024519de6149bade4141c3:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/historical-option-data.md",
+      "retrieved_at": "2026-09-30T09:23:11.576970+00:00",
+      "sha256": "a43aa53bf2575a3713bdbb9f21430411b24088a60c3c36b5d4159a533223b91b",
+      "source_url": "https://docs.alpaca.markets/us/docs/historical-option-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2765,
+      "etag": "W/\"03e6ece4382bbcd7116b3c481640e314ced4a927:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/historical-stock-data-1.md",
+      "retrieved_at": "2026-09-30T09:23:11.908325+00:00",
+      "sha256": "f5c481f99797985246a69fc2938871ee2e2820b8ff106b20b1e0493d7a985fad",
+      "source_url": "https://docs.alpaca.markets/us/docs/historical-stock-data-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2979,
+      "etag": "W/\"686e544382c77a755d7e51366a8325163b275310:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/holiday-funding-processes.md",
+      "retrieved_at": "2026-09-30T09:23:12.307019+00:00",
+      "sha256": "74619ed6ee278af9742de131a311f2d3c6509276d382fb3dbf4f866e869f5476",
+      "source_url": "https://docs.alpaca.markets/us/docs/holiday-funding-processes.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8557,
+      "etag": "W/\"d4471f2d8885a9f6353fd37c345156d1108eb32e:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/index-options.md",
+      "retrieved_at": "2026-09-30T09:23:12.630859+00:00",
+      "sha256": "ae0cc7477b6a71973c5b759121c3317432ac4cea6fd0dd2ad80ada0d1f93e26e",
+      "source_url": "https://docs.alpaca.markets/us/docs/index-options.md",
+      "status": "added"
+    },
+    {
+      "bytes": 18324,
+      "etag": "W/\"45057b8c132ecb0668bcc203ba439448589f8818:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/instant-funding-1.md",
+      "retrieved_at": "2026-09-30T09:23:12.978352+00:00",
+      "sha256": "b75e2f854e0168af7bf1dfd5e60b6ce747b163891383813ff7d7a2e3007d3c6e",
+      "source_url": "https://docs.alpaca.markets/us/docs/instant-funding-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 24695,
+      "etag": "W/\"df72f6505b7fd7cb97dc4ffc59dc580e1a2da6b5:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/instant-funding.md",
+      "retrieved_at": "2026-09-30T09:23:13.294001+00:00",
+      "sha256": "b8304b07ee269c4cfc2dc93443d9eee6e1e3e800a729c42f65d65e20907107d6",
+      "source_url": "https://docs.alpaca.markets/us/docs/instant-funding.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9614,
+      "etag": "W/\"d8412b615b02152606678631cb24a195fb10de30:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/integrating-with-fully-paid-securitie-lending-fpsl-for-fully-disclosed.md",
+      "retrieved_at": "2026-09-30T09:23:13.678693+00:00",
+      "sha256": "d459de3288480d9b8cac897e6814c0a9ed72e5d10105efd69bec3280aa0adc9a",
+      "source_url": "https://docs.alpaca.markets/us/docs/integrating-with-fully-paid-securitie-lending-fpsl-for-fully-disclosed.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5543,
+      "etag": "W/\"38b9461afd3883f87061b568533465a42230a6e3:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/integration-setup-with-alpaca.md",
+      "retrieved_at": "2026-09-30T09:23:14.037272+00:00",
+      "sha256": "dbcc10943b45e9b2b98403ed4fb453a3776f56f7425b14bbe1004ab9d8b1b45a",
+      "source_url": "https://docs.alpaca.markets/us/docs/integration-setup-with-alpaca.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1125,
+      "etag": "W/\"06ef97dcb3b78437d908dbbf93354716b9421370:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/international-accounts.md",
+      "retrieved_at": "2026-09-30T09:23:14.550754+00:00",
+      "sha256": "128d21c09216d03e2d8100f833373bf0d135db5eba36ac88db00b422cecc4b6f",
+      "source_url": "https://docs.alpaca.markets/us/docs/international-accounts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3375,
+      "etag": "W/\"8b418cce0fd0b1a9a8d8fe9f6ee691ef92b8bc62:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/intraday-margin-rule-for-non-leverage-margin-accounts.md",
+      "retrieved_at": "2026-09-30T09:23:14.743027+00:00",
+      "sha256": "b36ebc738dddb2d1df7b11bdbf0c363370cef409a39e7f052b6a3addbf4a2491",
+      "source_url": "https://docs.alpaca.markets/us/docs/intraday-margin-rule-for-non-leverage-margin-accounts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 15932,
+      "etag": "W/\"2be07fde4ab83846a274a5cde8566f1348345346-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/ira-accounts-overview.md",
+      "retrieved_at": "2026-09-30T09:23:15.074654+00:00",
+      "sha256": "4bdc8dbc497a5280381aa93b6b9c2d0f6a60d11dede8aa40c3848fbb8de28ddf",
+      "source_url": "https://docs.alpaca.markets/us/docs/ira-accounts-overview.md",
+      "status": "added"
+    },
+    {
+      "bytes": 28612,
+      "etag": "W/\"880fce709a3d0ceb733f70ebfa44688255853b9e:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/local-currency-trading-lct.md",
+      "retrieved_at": "2026-09-30T09:23:15.482437+00:00",
+      "sha256": "070543607d674245e2c188c1fa35fa1e35625d3e59ee65864a113c83bb6c7be1",
+      "source_url": "https://docs.alpaca.markets/us/docs/local-currency-trading-lct.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10346,
+      "etag": "W/\"f965b47e5b334cdcc71c393f7eb456397e6de67c:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/mandatory-corporate-actions.md",
+      "retrieved_at": "2026-09-30T09:23:15.764383+00:00",
+      "sha256": "40c49ebabceb65192317107c902a9c30c7588d15aee6c1161121ddbf5c4b4e74",
+      "source_url": "https://docs.alpaca.markets/us/docs/mandatory-corporate-actions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12916,
+      "etag": "W/\"d1cff61ee11f209fb6993a28fe5b7483724187e0:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/margin-and-short-selling.md",
+      "retrieved_at": "2026-09-30T09:23:16.324703+00:00",
+      "sha256": "1a8bd0e5f12485e46881b08c2074c38d7a41af2a0bc81736fa693e2ed0be1ff7",
+      "source_url": "https://docs.alpaca.markets/us/docs/margin-and-short-selling.md",
+      "status": "added"
+    },
+    {
+      "bytes": 34729,
+      "etag": "W/\"e4c448c285cb6d153b38151e55c57adbbff584d8-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/market-data-faq.md",
+      "retrieved_at": "2026-09-30T09:23:16.647257+00:00",
+      "sha256": "b6d9225409d2211b60cfeed72e8716fc1e05f2d7593ffed6dc120a0b5ebaef13",
+      "source_url": "https://docs.alpaca.markets/us/docs/market-data-faq.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2785,
+      "etag": "W/\"852352b038e7853d4786a8723e501bd4fa6915de:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/non-trade-activities-for-option-events.md",
+      "retrieved_at": "2026-09-30T09:23:17.082403+00:00",
+      "sha256": "f64bffed5c81e0789bd6c5f3b81e9cc1e9006f65cee6378ab70503ecd7424c04",
+      "source_url": "https://docs.alpaca.markets/us/docs/non-trade-activities-for-option-events.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7484,
+      "etag": "W/\"d00e33cff799189d363deeb7375d0061b8ecfc62:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/omnisub.md",
+      "retrieved_at": "2026-09-30T09:23:17.370725+00:00",
+      "sha256": "54d92c27f3b08bc53086039aa068afd77475300bea1708c8c926e8e8a51d9938",
+      "source_url": "https://docs.alpaca.markets/us/docs/omnisub.md",
+      "status": "added"
+    },
+    {
+      "bytes": 18635,
+      "etag": "W/\"0550b4f990a5b3556accbc8648f03cc1e0dce29a:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/options-level-3-trading.md",
+      "retrieved_at": "2026-09-30T09:23:17.704561+00:00",
+      "sha256": "94a1b70774a41d2efcccb92f5a35ea72f916ab92f19575311aa784b8489739b9",
+      "source_url": "https://docs.alpaca.markets/us/docs/options-level-3-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1640,
+      "etag": "W/\"9a73e139eb4953eb1486c9bb434b9b9f4145f102:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/options-orders.md",
+      "retrieved_at": "2026-09-30T09:23:18.058750+00:00",
+      "sha256": "e619aa7667a3e67adfd200d9dfc09f283f8cb1e2e38649cf7454630a4227c0ab",
+      "source_url": "https://docs.alpaca.markets/us/docs/options-orders.md",
+      "status": "added"
+    },
+    {
+      "bytes": 37777,
+      "etag": "W/\"d5a2e806e8faf284876dc7b9d8928fff9fff9432-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/options-trading-overview.md",
+      "retrieved_at": "2026-09-30T09:23:18.388784+00:00",
+      "sha256": "96e19d749021fc60d743a9955937739f34807006ddfde66627fbf0c408f5212e",
+      "source_url": "https://docs.alpaca.markets/us/docs/options-trading-overview.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8471,
+      "etag": "W/\"acacee58062da687f2953f5ef2a0e124f60477e0-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/options-trading.md",
+      "retrieved_at": "2026-09-30T09:23:18.570907+00:00",
+      "sha256": "3dd9d19e5879aa55d9751b65e76908008e89b5c4a82fb5c51003435f159b9866",
+      "source_url": "https://docs.alpaca.markets/us/docs/options-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 65454,
+      "etag": "W/\"76ced2ba49a886632550c2ee27dbbf4fb7e1b15e-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/orders-at-alpaca.md",
+      "retrieved_at": "2026-09-30T09:23:18.959444+00:00",
+      "sha256": "e35915bdf3da6ebfc5dd76cc6ed5cbed078f27e169022f9489a31d4e8e7c890b",
+      "source_url": "https://docs.alpaca.markets/us/docs/orders-at-alpaca.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6260,
+      "etag": "W/\"e7e3aa674fb866112fbce2749f5017889a4c5983:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/paper-trading.md",
+      "retrieved_at": "2026-09-30T09:23:19.293069+00:00",
+      "sha256": "d43c9e2bdc1c4c9be8296a2a0b7b012441e6d293a44ea0d5c767d56d9709ade7",
+      "source_url": "https://docs.alpaca.markets/us/docs/paper-trading.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17665,
+      "etag": "W/\"aec38cc50dd68309564fede3c51a4282c9346e0d:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/portfolio-rebalancing.md",
+      "retrieved_at": "2026-09-30T09:23:19.603664+00:00",
+      "sha256": "b3fa0f6c89ea8ed142d1ccc1989dc4bed87ef41f5396f30e1620bf1d798cdf91",
+      "source_url": "https://docs.alpaca.markets/us/docs/portfolio-rebalancing.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5453,
+      "etag": "W/\"4338b128cfdf1e815b0c9195fba6a5753e9da087:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/position-average-entry-price-calculation.md",
+      "retrieved_at": "2026-09-30T09:23:20.055483+00:00",
+      "sha256": "31d3b5c6c081e44504d4c41e679957d511b184876ca15cacb4776564cb1d861c",
+      "source_url": "https://docs.alpaca.markets/us/docs/position-average-entry-price-calculation.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11218,
+      "etag": "W/\"2c485abf8067b63b743b240ce36e01dbb7cc7572:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/real-time-crypto-pricing-data.md",
+      "retrieved_at": "2026-09-30T09:23:20.316260+00:00",
+      "sha256": "3d8e64b575afd84a05b4c5b81d4bfdbaf818dce1ddaa744bb6dac1cbf7519926",
+      "source_url": "https://docs.alpaca.markets/us/docs/real-time-crypto-pricing-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5629,
+      "etag": "W/\"63879d5151da9e9e3b1328e603036988649448b8:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/real-time-option-data.md",
+      "retrieved_at": "2026-09-30T09:23:20.666983+00:00",
+      "sha256": "2ba02c2b5f8fa6029e362994644b1749dc5ac90802772baf2c67599084ea80ca",
+      "source_url": "https://docs.alpaca.markets/us/docs/real-time-option-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 22528,
+      "etag": "W/\"96c2cc1e9d7200ede7e22632d89bd25e6e31c11d:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/real-time-stock-pricing-data.md",
+      "retrieved_at": "2026-09-30T09:23:21.051293+00:00",
+      "sha256": "5a1857f5d0cd4652079dadd45df0a674b370ea725e8ddf2c9f1ccb4ade211f83",
+      "source_url": "https://docs.alpaca.markets/us/docs/real-time-stock-pricing-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1337,
+      "etag": "W/\"39c4bf5a3b478703d185f8abe80c0364a93c20c5:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/registering-your-app.md",
+      "retrieved_at": "2026-09-30T09:23:21.381540+00:00",
+      "sha256": "03428c90a0fd43c0c872761bf879036af864c5e1488fd39d6b7cc6cd92b882d1",
+      "source_url": "https://docs.alpaca.markets/us/docs/registering-your-app.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2054,
+      "etag": "W/\"eb10e7d69ad56c8c217d1c071ce08027df1a575f:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/regulatory-fees.md",
+      "retrieved_at": "2026-09-30T09:23:21.725746+00:00",
+      "sha256": "8dc1956f7107227cd2a7dd39e9439a16b753ba1c1864d0f0301df60297334c87",
+      "source_url": "https://docs.alpaca.markets/us/docs/regulatory-fees.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3639,
+      "etag": "W/\"09743ca0cd49d8c360b95408f2f3d718f1c3b415:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/sdks-and-tools.md",
+      "retrieved_at": "2026-09-30T09:23:22.061265+00:00",
+      "sha256": "8a3f45fa690199c804f172ee3b35f31832aee0d458d4c9ff353a388860222454",
+      "source_url": "https://docs.alpaca.markets/us/docs/sdks-and-tools.md",
+      "status": "added"
+    },
+    {
+      "bytes": 57157,
+      "etag": "W/\"080b540186cd83c73a107185f9647de6dcb33177-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/sse-events.md",
+      "retrieved_at": "2026-09-30T09:23:22.455245+00:00",
+      "sha256": "e1b62318043554bf0b2194ce6818561cb680b5d694e97a9063f38a20e1c66b47",
+      "source_url": "https://docs.alpaca.markets/us/docs/sse-events.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1435,
+      "etag": "W/\"f9ecf493728e47b77c94837de9936203996e3b56:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/statements-and-confirms.md",
+      "retrieved_at": "2026-09-30T09:23:22.792572+00:00",
+      "sha256": "80f8219935e0c3d1ed9094a1ff51e0f952f15ea09a9b5725d33d7c73b79b0833",
+      "source_url": "https://docs.alpaca.markets/us/docs/statements-and-confirms.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13084,
+      "etag": "W/\"180caf3f4468742de39a49d9fe31fcd7210c3a93-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/streaming-market-data.md",
+      "retrieved_at": "2026-09-30T09:23:23.138405+00:00",
+      "sha256": "b49a4af386b3469bafce268de65913b6c3421851b7857352ca04f9ae8a899760",
+      "source_url": "https://docs.alpaca.markets/us/docs/streaming-market-data.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5375,
+      "etag": "W/\"6a97a17232a259a5baf0db823a3b579ee6e5df40:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/streaming-real-time-news.md",
+      "retrieved_at": "2026-09-30T09:23:23.533114+00:00",
+      "sha256": "f1149f1a8bab083e236c02d8691b39c9d7cc38fcc3b241481ffa67d490aed995",
+      "source_url": "https://docs.alpaca.markets/us/docs/streaming-real-time-news.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4790,
+      "etag": "W/\"407cc948aca96721ba55b3a18fcdd6527b82b374:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/the-intraday-margin-rule-1.md",
+      "retrieved_at": "2026-09-30T09:23:23.948631+00:00",
+      "sha256": "0986cde0a5495cff59958eb7614e9c4f067ef5fea7789436a641a2749705998a",
+      "source_url": "https://docs.alpaca.markets/us/docs/the-intraday-margin-rule-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4776,
+      "etag": "W/\"0e5afbe83635f56ba9cef77daf41d7ce99a8f85b:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/the-intraday-margin-rule.md",
+      "retrieved_at": "2026-09-30T09:23:24.185117+00:00",
+      "sha256": "03e8fc0dd722bf54b7928cc6ca584bb6f9057ff0b8a8a361297f600c0092713a",
+      "source_url": "https://docs.alpaca.markets/us/docs/the-intraday-margin-rule.md",
+      "status": "added"
+    },
+    {
+      "bytes": 20561,
+      "etag": "W/\"c8c88ad312f994fe5e579695a5a8a53b2203c53a-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/tokenization-guide-for-authorized-participant.md",
+      "retrieved_at": "2026-09-30T09:23:24.525052+00:00",
+      "sha256": "e23e817d7e6e985c55b98a3ee53f4cf42ff8d4f079ed0afdf006a29ad6e36138",
+      "source_url": "https://docs.alpaca.markets/us/docs/tokenization-guide-for-authorized-participant.md",
+      "status": "added"
+    },
+    {
+      "bytes": 42004,
+      "etag": "W/\"5256a6dfda05de56aa53ccb292a253ae5e88227a-916eae358c77a5cc6dc452d505902ad1fd88a261:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/tokenization-guide-for-issuer.md",
+      "retrieved_at": "2026-09-30T09:23:25.053547+00:00",
+      "sha256": "903da6799f5be70f095ddfaaefd7641a15cacef7953ce94efc529fb2ffd45af3",
+      "source_url": "https://docs.alpaca.markets/us/docs/tokenization-guide-for-issuer.md",
+      "status": "added"
+    },
+    {
+      "bytes": 1827,
+      "etag": "W/\"7fc9b23800f109b690ede48d23287da228139a9a:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/trading-api.md",
+      "retrieved_at": "2026-09-30T09:23:25.243460+00:00",
+      "sha256": "3e519fdb7e7f7cee169d58e3622f581aaec6289614a1fd08ed33a543f2898b41",
+      "source_url": "https://docs.alpaca.markets/us/docs/trading-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9182,
+      "etag": "W/\"d8329df88ed3c14f703bcafdcb6c5c7a471c25f4:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/understanding-finras-new-intraday-margin-rule-and-the-end-of-pdt-1.md",
+      "retrieved_at": "2026-09-30T09:23:25.555231+00:00",
+      "sha256": "6a8d18652430b13e95b362bf3afced4ecb03b2cc7819b3340fd38cb7e56fa4c3",
+      "source_url": "https://docs.alpaca.markets/us/docs/understanding-finras-new-intraday-margin-rule-and-the-end-of-pdt-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9190,
+      "etag": "W/\"56f8867700c985a73299c53224c8589dd0e94c19:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/understanding-finras-new-intraday-margin-rule-and-the-end-of-pdt.md",
+      "retrieved_at": "2026-09-30T09:23:25.938731+00:00",
+      "sha256": "3152b6fb87598844aa195570d708cc91b45c29a82df00227524ad8c61ecd6145",
+      "source_url": "https://docs.alpaca.markets/us/docs/understanding-finras-new-intraday-margin-rule-and-the-end-of-pdt.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3367,
+      "etag": "W/\"31a9f4c3d065c363a6f570837554a6029509861f:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/understanding-the-new-intraday-margin-rule.md",
+      "retrieved_at": "2026-09-30T09:23:26.280101+00:00",
+      "sha256": "34e04c55e961964e990a2d38a88d31257c3a3d3c914f9bedf450be1438ec2db9",
+      "source_url": "https://docs.alpaca.markets/us/docs/understanding-the-new-intraday-margin-rule.md",
+      "status": "added"
+    },
+    {
+      "bytes": 46844,
+      "etag": "W/\"27093a26548083627dea8eeb95a87a7c5f8b1a84:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/us-ipos-initial-public-offerings-1.md",
+      "retrieved_at": "2026-09-30T09:23:26.639851+00:00",
+      "sha256": "623b41579b614512f956adbd5278111ca2d52a3c12274bd462143d60877b7255",
+      "source_url": "https://docs.alpaca.markets/us/docs/us-ipos-initial-public-offerings-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10542,
+      "etag": "W/\"45ee69717f2c3700f8043ae4d0b0a9d1be323f49:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/us-ipos-initial-public-offerings.md",
+      "retrieved_at": "2026-09-30T09:23:26.959302+00:00",
+      "sha256": "c0d4c91cc977ee6974fb7ab3c517107edaa4e04a2fa903d3396ee5a08977af98",
+      "source_url": "https://docs.alpaca.markets/us/docs/us-ipos-initial-public-offerings.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4177,
+      "etag": "W/\"657be2c9365a4279d0c9cbd9aace23d5567a61bc:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/use-cases.md",
+      "retrieved_at": "2026-09-30T09:23:27.288994+00:00",
+      "sha256": "45a03802ca23c178aaaad38862a9e8a9adec34f1cab342aec6b40201ebbc732b",
+      "source_url": "https://docs.alpaca.markets/us/docs/use-cases.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6536,
+      "etag": "W/\"c680ba5a49a689da41568abb6bff8b6cdd2be1bd:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/user-protection.md",
+      "retrieved_at": "2026-09-30T09:23:27.704483+00:00",
+      "sha256": "02a0f7b6b00a8b6f459c4e5b3f25b7fbf065011fbde2985bed860791d3a5765e",
+      "source_url": "https://docs.alpaca.markets/us/docs/user-protection.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7904,
+      "etag": "W/\"3e77278c5cb2e2f7b612885951aad8ffab51221a:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/using-oauth2-and-trading-api.md",
+      "retrieved_at": "2026-09-30T09:23:27.999437+00:00",
+      "sha256": "02b7bb387aeb1cf0765bc6c0090bf545252143f1b57fb9aaddadfe9381e3bc1f",
+      "source_url": "https://docs.alpaca.markets/us/docs/using-oauth2-and-trading-api.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13236,
+      "etag": "W/\"51ea885da5f294aa62e9665e5c16b1bed7419a0e:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/voluntary-corporate-actions.md",
+      "retrieved_at": "2026-09-30T09:23:28.378187+00:00",
+      "sha256": "550804f2cb0e7e04a31a0ae76c964eadd9489c793011e1799bf84e8f2b789452",
+      "source_url": "https://docs.alpaca.markets/us/docs/voluntary-corporate-actions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14856,
+      "etag": "W/\"4260c675ed91d28a35e403d018f5595dd33e1a8a:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/websocket-streaming.md",
+      "retrieved_at": "2026-09-30T09:23:28.711755+00:00",
+      "sha256": "1a3e43160b20e7137a98796dd9921659991e038390b1262d83decddc991da2eb",
+      "source_url": "https://docs.alpaca.markets/us/docs/websocket-streaming.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4269,
+      "etag": "W/\"bd1f2aac6f0d5a8bdba5b39b091c877333ce9777:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/working-with-account.md",
+      "retrieved_at": "2026-09-30T09:23:29.114921+00:00",
+      "sha256": "ceedd86532c528ed9199beaab66cb0f3a77342baf90afda37452201e75bdfcf1",
+      "source_url": "https://docs.alpaca.markets/us/docs/working-with-account.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4046,
+      "etag": "W/\"51ef85fb06f72f96f06ca368d8ce98622a435342:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/working-with-assets.md",
+      "retrieved_at": "2026-09-30T09:23:29.427488+00:00",
+      "sha256": "69cb2f5aa14651e7d0be8dfc70e7c1c5b36cfb61578bfa159c3580cd491ae268",
+      "source_url": "https://docs.alpaca.markets/us/docs/working-with-assets.md",
+      "status": "added"
+    },
+    {
+      "bytes": 22976,
+      "etag": "W/\"c7c0d83a731c065c6405b867315319255a595b25:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/working-with-orders.md",
+      "retrieved_at": "2026-09-30T09:23:29.774685+00:00",
+      "sha256": "d75d5018099ecf88e688fd5b7861f3f8a0d81eb2844afdbc049c0c4aefcc297f",
+      "source_url": "https://docs.alpaca.markets/us/docs/working-with-orders.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2938,
+      "etag": "W/\"46c357fb0f2bc91259e84eaaf182e677d7c61d62:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/docs/working-with-positions.md",
+      "retrieved_at": "2026-09-30T09:23:30.121182+00:00",
+      "sha256": "ad2e8a27ad673ccef9cc184273adc924ba86573b7c81dec064f2a94970ce6038",
+      "source_url": "https://docs.alpaca.markets/us/docs/working-with-positions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13219,
+      "etag": "W/\"1b7d98e6561a6dbca68ab3950aaecc19b2cd5045-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647003:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/addassettowatchlist-1.md",
+      "retrieved_at": "2026-09-30T09:23:30.633478+00:00",
+      "sha256": "18d3fc8abfb11f8734826feb1da9a713efa20a2fcae18fd25920ca9c71870cd2",
+      "source_url": "https://docs.alpaca.markets/us/reference/addassettowatchlist-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13228,
+      "etag": "W/\"d75cba0ac04b5c846367d25c1d6be3e302d2f6b3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647043:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/addassettowatchlistbyname-1.md",
+      "retrieved_at": "2026-09-30T09:23:31.026906+00:00",
+      "sha256": "4fe48edfe88a68f6c348cebd7b6bc4b9f1add8b7e8c1ed79885c660a05be4176",
+      "source_url": "https://docs.alpaca.markets/us/reference/addassettowatchlistbyname-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5306,
+      "etag": "W/\"6e7218f1a078b32a580e1fd606429ce65da6dc0b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625876:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/authorizeoauthtoken.md",
+      "retrieved_at": "2026-09-30T09:23:31.545557+00:00",
+      "sha256": "e2e571dcd673c0cea5e2729d43bd8eff00e5333137eb929a0cfc0f233ecca702",
+      "source_url": "https://docs.alpaca.markets/us/reference/authorizeoauthtoken.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4703,
+      "etag": "W/\"4cde91f53b35ff4f3794314227069ae8353f0270-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625074:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/batchcreatefundingwallets.md",
+      "retrieved_at": "2026-09-30T09:23:31.713230+00:00",
+      "sha256": "35c575a367f562c3e41f04087bf06ae94293f959d6ad99e01a0d5e0168f4e3cd",
+      "source_url": "https://docs.alpaca.markets/us/reference/batchcreatefundingwallets.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13057,
+      "etag": "W/\"c5627c24a95a295bef91992249ba31f5e7d2b93d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647058:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/calendar-2.md",
+      "retrieved_at": "2026-09-30T09:23:32.031588+00:00",
+      "sha256": "3b7f78091cb1159692d7b3bbf45d8f2915fca585f1b00081df8a3dcfe656923a",
+      "source_url": "https://docs.alpaca.markets/us/reference/calendar-2.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12966,
+      "etag": "W/\"fc8add494ea8336d3db14927ba2786c46e4ca18c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626352:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/calendar-6.md",
+      "retrieved_at": "2026-09-30T09:23:32.440769+00:00",
+      "sha256": "938d16eb5b1288d0d86fa9726e16196fac5ee433fb97bf5309bd434d04e6bbb4",
+      "source_url": "https://docs.alpaca.markets/us/reference/calendar-6.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10556,
+      "etag": "W/\"74c2f02fbd989d1885924e5b2c5139f90304426e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647067:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/clock-1.md",
+      "retrieved_at": "2026-09-30T09:23:32.724107+00:00",
+      "sha256": "fb5a62cdeefe276268809358417cae10bcb1fe5a39278c30c06667c47f6ce26d",
+      "source_url": "https://docs.alpaca.markets/us/reference/clock-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10471,
+      "etag": "W/\"461d02e6335cf4fff248ffe72c53da3888495f9b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626361:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/clock-2.md",
+      "retrieved_at": "2026-09-30T09:23:33.181003+00:00",
+      "sha256": "00215882d3a75eaa81886f661d439711e6e7a466e26d771a4f6f25c0384147a7",
+      "source_url": "https://docs.alpaca.markets/us/reference/clock-2.md",
+      "status": "added"
+    },
+    {
+      "bytes": 32225,
+      "etag": "W/\"7bd9f6631e3ddfae8b6996261bc97da5259c9156-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626164:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/closeallpositionsforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:33.438947+00:00",
+      "sha256": "9d69c5daeea45dc02b1b51da22a3ba829e1f8cf28d4516740ce62799ad3d3e06",
+      "source_url": "https://docs.alpaca.markets/us/reference/closeallpositionsforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 28054,
+      "etag": "W/\"03264a11d0ba2e110825cd91cbf0d6f6c9865d97-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626182:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/closepositionforaccountbysymbol.md",
+      "retrieved_at": "2026-09-30T09:23:33.787741+00:00",
+      "sha256": "cb23289c54c4f5f627265c10697fd75bf61462ee8d9808c1774e7827f240009f",
+      "source_url": "https://docs.alpaca.markets/us/reference/closepositionforaccountbysymbol.md",
+      "status": "added"
+    },
+    {
+      "bytes": 47620,
+      "etag": "W/\"c63dc2a0babcfef1b255ff440d6662d481a2414a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641135:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/corporateactions-1.md",
+      "retrieved_at": "2026-09-30T09:23:34.175976+00:00",
+      "sha256": "b3c31fadd5a7ae89f8c0e4bd7d575bc5180faceda69ea1f115b4c1710d835803",
+      "source_url": "https://docs.alpaca.markets/us/reference/corporateactions-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 64707,
+      "etag": "W/\"3729fb3d354798e692e313f28e0054906e3ac7fe-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625178:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createaccount.md",
+      "retrieved_at": "2026-09-30T09:23:34.501457+00:00",
+      "sha256": "bc420281207648207680e2756cc7a4e93c8f57a97c827ed9517c52473ecabf4c",
+      "source_url": "https://docs.alpaca.markets/us/reference/createaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7979,
+      "etag": "W/\"1a8125872ef423afcc2809f6f7a690e3ccae2550-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625216:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createachrelationshipforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:34.872735+00:00",
+      "sha256": "c0be3a25963ac3376953ca3268592d6d473ed15aa3587aa93465a6e604da2472",
+      "source_url": "https://docs.alpaca.markets/us/reference/createachrelationshipforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 25092,
+      "etag": "W/\"968eef3b9cf04fd37022cc81125a37b45b9503e9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625860:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createbatchjournal.md",
+      "retrieved_at": "2026-09-30T09:23:35.255753+00:00",
+      "sha256": "b7b05037540409d3fb9741f273226c4f66eccf59ab8d416d64c4b46be27d2d14",
+      "source_url": "https://docs.alpaca.markets/us/reference/createbatchjournal.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13771,
+      "etag": "W/\"8d0358b1c73cb6cfaa1edff7aaaa0f37a3d57ce3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625450:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createcryptotransferforaccount-1.md",
+      "retrieved_at": "2026-09-30T09:23:35.596555+00:00",
+      "sha256": "944ca6f83fd1a10c25f459b78339e5969be485a7bbe475a72a7b3bf531b18137",
+      "source_url": "https://docs.alpaca.markets/us/reference/createcryptotransferforaccount-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13682,
+      "etag": "W/\"b091d5f7d0c2554bace18b01a53c71b03fdef5e8-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646919:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createcryptotransferforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:35.830093+00:00",
+      "sha256": "9685233411fde1ddbc20602e71718522d65321965358553e0100c299ae4b311c",
+      "source_url": "https://docs.alpaca.markets/us/reference/createcryptotransferforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3843,
+      "etag": "W/\"c9d68d3b7f139c8c5368831ac4927e69628d9c51-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711624986:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createfundingwallet.md",
+      "retrieved_at": "2026-09-30T09:23:36.297517+00:00",
+      "sha256": "72953e2cbea291ba4f296254b9c4869cfee4b5606cb8f70dcc6b718fb0f20108",
+      "source_url": "https://docs.alpaca.markets/us/reference/createfundingwallet.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8710,
+      "etag": "W/\"0cc53498b0f2956e6cc90e24d95e543f507c5502-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625035:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createfundingwalletrecipientbank.md",
+      "retrieved_at": "2026-09-30T09:23:36.684595+00:00",
+      "sha256": "e5dcdf1a91b0127f8f343be34a004839e7c61eac03114d5d396d93eae3e4366f",
+      "source_url": "https://docs.alpaca.markets/us/reference/createfundingwalletrecipientbank.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8837,
+      "etag": "W/\"3b0b4e230203ff73d9d0c7ae48fa914860461ae6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625065:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createfundingwalletwithdrawal.md",
+      "retrieved_at": "2026-09-30T09:23:36.977925+00:00",
+      "sha256": "bfeae1849753f15c22528519fc616acb21eefaf4093b57c012cc119ad0330920",
+      "source_url": "https://docs.alpaca.markets/us/reference/createfundingwalletwithdrawal.md",
+      "status": "added"
+    },
+    {
+      "bytes": 21606,
+      "etag": "W/\"0ca5a430e30d6435c671c581e3a018d7a6669e89-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625835:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createjournal.md",
+      "retrieved_at": "2026-09-30T09:23:37.297406+00:00",
+      "sha256": "b362bbacddfb439eea3819f4c423de41e995638793f38140897c8a3364a798f1",
+      "source_url": "https://docs.alpaca.markets/us/reference/createjournal.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13972,
+      "etag": "W/\"40830b5826623a4e42b37f1a570cb537f78b97c6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646603:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createlocates.md",
+      "retrieved_at": "2026-09-30T09:23:37.611254+00:00",
+      "sha256": "bfb5f8e96e0256c6a7b321fe1fae18d77bc8cec42b63d9dfb7702733d673cc91",
+      "source_url": "https://docs.alpaca.markets/us/reference/createlocates.md",
+      "status": "added"
+    },
+    {
+      "bytes": 51702,
+      "etag": "W/\"af3b08d25120a256a7a03f810c736dd17b703aec-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626112:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createorderforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:38.006384+00:00",
+      "sha256": "52cdd599748077bb388c1cbd0d5e1d7583dba9b8bb9b763ef8e59b08c5a3b0ea",
+      "source_url": "https://docs.alpaca.markets/us/reference/createorderforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9228,
+      "etag": "W/\"091fa7456a86ca312c7346a1b5a66e8582a4bdd6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625333:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createrecipientbank.md",
+      "retrieved_at": "2026-09-30T09:23:38.399752+00:00",
+      "sha256": "ec7282bd3df49d588083020df859ae6ca770cf7b0b93bd1516351f837fd4e6d7",
+      "source_url": "https://docs.alpaca.markets/us/reference/createrecipientbank.md",
+      "status": "added"
+    },
+    {
+      "bytes": 18085,
+      "etag": "W/\"8e4d9ffdb618950724df5ab2f26319ebcc7b6fa8-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625417:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createtransferforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:38.727556+00:00",
+      "sha256": "625279f45f393264aeae2123a0a48625fe9db254ee009185d95d9657fc333da2",
+      "source_url": "https://docs.alpaca.markets/us/reference/createtransferforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11412,
+      "etag": "W/\"1c37b9b054d555bb622abd32bd653d8dc1c55c46-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626224:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createwatchlistforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:39.031555+00:00",
+      "sha256": "366e39f431fbdaa78ccf9082a5d20652157a9b9c6eac4c3740f6b76fb370bee6",
+      "source_url": "https://docs.alpaca.markets/us/reference/createwatchlistforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17568,
+      "etag": "W/\"83a6dee8263c792c07736c71758320ba4dccda1c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625474:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createwhitelistedaddress-1.md",
+      "retrieved_at": "2026-09-30T09:23:39.388441+00:00",
+      "sha256": "c882548eca045f327388359dcadac5fdccdf32cf4d20c59ae933d41dcad4d5cf",
+      "source_url": "https://docs.alpaca.markets/us/reference/createwhitelistedaddress-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17442,
+      "etag": "W/\"4abf3804991d9642862ea01a15da2c0580caeef2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646949:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/createwhitelistedaddress.md",
+      "retrieved_at": "2026-09-30T09:23:39.777189+00:00",
+      "sha256": "832b182860d9a1d1132b6c8f8b4722690aed2e19e7ea975f600019ae5fb05940",
+      "source_url": "https://docs.alpaca.markets/us/reference/createwhitelistedaddress.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14591,
+      "etag": "W/\"307361e5c1c9aa1f485806649b520ebf4132dd79-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641068:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptobars-1.md",
+      "retrieved_at": "2026-09-30T09:23:40.056179+00:00",
+      "sha256": "a15babbf63f5aa09367ea52d8f6de02947da7e59c3f7cd64b2408a00e085208d",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptobars-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9460,
+      "etag": "W/\"11bf64e90e5cc64023c3355ea38f37863ab4b5fa-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641076:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptolatestbars-1.md",
+      "retrieved_at": "2026-09-30T09:23:40.376875+00:00",
+      "sha256": "760f3d9c97584ab76ea190b8b718a0e0a800062a7bc283022d06c5418a981743",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptolatestbars-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10023,
+      "etag": "W/\"66c211d1b82175dab0a59736779587f05bcd72d3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641085:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptolatestorderbooks-1.md",
+      "retrieved_at": "2026-09-30T09:23:40.756318+00:00",
+      "sha256": "e5151234bfb1fea0bf5807ae6f0d6c931191af69841c3f28dd8b0ba45a90183f",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptolatestorderbooks-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9076,
+      "etag": "W/\"5fcafcf3d370ec660204b579096d8ee0b26f0a72-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641093:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptolatestquotes-1.md",
+      "retrieved_at": "2026-09-30T09:23:41.146649+00:00",
+      "sha256": "fbec48f2935d3531fc5f3de8171f4d464c25dea733ff493e3aa95a0c0b25e328",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptolatestquotes-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9009,
+      "etag": "W/\"c26f88326d248307dbd368b1f243fb5ea409f20c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641102:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptolatesttrades-1.md",
+      "retrieved_at": "2026-09-30T09:23:41.612819+00:00",
+      "sha256": "85e6c57844630b8a4141523f04b2208e02fcdd970a150263872ca77f7920e053",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptolatesttrades-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13756,
+      "etag": "W/\"293fdefb23e239e1f56864e9036b063e033a5725-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641111:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptoquotes-1.md",
+      "retrieved_at": "2026-09-30T09:23:41.900515+00:00",
+      "sha256": "446bcb2716e9436280b77e7ccc694a05607b73cf67c54705d35fbd3c2c0bdb8c",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptoquotes-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13909,
+      "etag": "W/\"2e583c556c04e831f43ee63a7e0be4146cf866f3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641118:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptosnapshots-1.md",
+      "retrieved_at": "2026-09-30T09:23:42.226370+00:00",
+      "sha256": "33de229940a30a242d24b8f4a99eaff4fb9262aacc3d2b5b4f5fb20c56524e17",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptosnapshots-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13813,
+      "etag": "W/\"492abf83b126b2dd0a27afb1e4224b7756ea398c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641126:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/cryptotrades-1.md",
+      "retrieved_at": "2026-09-30T09:23:42.491092+00:00",
+      "sha256": "e005e3768b3710eba8553b7b2c9c2c9824164c5e92328ce9500d5950f3957f4c",
+      "source_url": "https://docs.alpaca.markets/us/reference/cryptotrades-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2634,
+      "etag": "W/\"f87db8cddec187d24649d70e650d2ffb137fc4ce-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626265:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/delete-delete-v1-trading-accounts-account_id-watchlists-watchlist_id-symbol.md",
+      "retrieved_at": "2026-09-30T09:23:42.887821+00:00",
+      "sha256": "333f8bb3e162a3f397cc608e7d9bd83221c4e1701a373f4d2b4d76aad10ab8c2",
+      "source_url": "https://docs.alpaca.markets/us/reference/delete-delete-v1-trading-accounts-account_id-watchlists-watchlist_id-symbol.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2812,
+      "etag": "W/\"4023d1decfb1b6ef2bc5f8ba3b79ef4c9defefd8-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625717:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/delete-v1-instant-funding-single.md",
+      "retrieved_at": "2026-09-30T09:23:43.265674+00:00",
+      "sha256": "3f5941b93db74c211ee458e8095b585a928f59b0fe13a02479dd19f7034f9429",
+      "source_url": "https://docs.alpaca.markets/us/reference/delete-v1-instant-funding-single.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2531,
+      "etag": "W/\"c763eee81d9350078a8c7019b0aa06a8ae5e6a28-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625933:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/delete-v1-rebalancing-portfolios-portfolio_id.md",
+      "retrieved_at": "2026-09-30T09:23:43.609507+00:00",
+      "sha256": "cdb41790f1a877209b078f0ea205a6276689ba747d78404819f7cb80ef85c1ba",
+      "source_url": "https://docs.alpaca.markets/us/reference/delete-v1-rebalancing-portfolios-portfolio_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2366,
+      "etag": "W/\"4423c9a5a1611896ac4dbcccf5007194f72c7c1b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625975:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/delete-v1-rebalancing-runs-run_id.md",
+      "retrieved_at": "2026-09-30T09:23:43.945303+00:00",
+      "sha256": "687dbb053c4285ccd8e1671cafe90430f89cdb59e6bb622fd36fee5e6df2479f",
+      "source_url": "https://docs.alpaca.markets/us/reference/delete-v1-rebalancing-runs-run_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2105,
+      "etag": "W/\"c731bb7f0912312072cd49c036176563af04ecf5-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626011:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/delete-v1-rebalancing-subscriptions-subscription_id.md",
+      "retrieved_at": "2026-09-30T09:23:44.358240+00:00",
+      "sha256": "011d753134b9631e24943d98ccc5bdd16d9afa35fe342160c3afab8411708a50",
+      "source_url": "https://docs.alpaca.markets/us/reference/delete-v1-rebalancing-subscriptions-subscription_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2692,
+      "etag": "W/\"06446c90f668a9a0131659c1d15a76890bd85805-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625224:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteachrelationshipfromaccount.md",
+      "retrieved_at": "2026-09-30T09:23:44.666218+00:00",
+      "sha256": "291a5f27d6b4544293f7a1517202ef91ef3191063f55eb11ecf6d5e13efe0502",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteachrelationshipfromaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 26760,
+      "etag": "W/\"43dc07aa8c0ac10be9fd9612e0231f1580b95ff4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646811:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteallopenpositions-1.md",
+      "retrieved_at": "2026-09-30T09:23:44.927849+00:00",
+      "sha256": "b7a99ac36cca4fd6603046a4f401bc691f5c78b16512a8ee0aa8366292d9a9da",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteallopenpositions-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3302,
+      "etag": "W/\"acc4eeea7397b5421811258d18b05f6b7545bd0e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646756:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteallorders-1.md",
+      "retrieved_at": "2026-09-30T09:23:45.321606+00:00",
+      "sha256": "c5b6c3c6197bb2d80f13269a1f2cf920c0d19c795a87244361ac8f887d3faea4",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteallorders-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 29361,
+      "etag": "W/\"674f7e90e08e303ed1e6ffd8eb6112b5a3adb960-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626093:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteallordersforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:45.692867+00:00",
+      "sha256": "4215dd0c818dbc6ce09c385c7a5b5053c5f7df03baf16e65d54f08924099e027",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteallordersforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2664,
+      "etag": "W/\"2ff15426f0ab6806d07321e7db1a6be21d466401-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625003:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletefundingwalletrecipientbank.md",
+      "retrieved_at": "2026-09-30T09:23:46.071378+00:00",
+      "sha256": "759d4b49b9acb058dd93619197918af8f1cc75ee1e62ba4b5d071afdc2bd5ddb",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletefundingwalletrecipientbank.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2552,
+      "etag": "W/\"f3e0b97e58098813f67543aafecc3c953e610f7f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625843:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletejournalbyid.md",
+      "retrieved_at": "2026-09-30T09:23:46.409217+00:00",
+      "sha256": "537f27797977b99a75e1c91322bd93756e7f5f8c874caa848083208e5f8503be",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletejournalbyid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 24874,
+      "etag": "W/\"247ba975839fcec7370d9231fad6e76142c105b1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646827:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteopenposition-1.md",
+      "retrieved_at": "2026-09-30T09:23:46.689025+00:00",
+      "sha256": "840cae50cca380d4e7330801519079664ecedac26ed88d1bff4028e1c71acf5e",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteopenposition-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2426,
+      "etag": "W/\"ce2810d5c8300834c810539716eb688bdad9f60a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646780:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteorderbyorderid-1.md",
+      "retrieved_at": "2026-09-30T09:23:47.069551+00:00",
+      "sha256": "6ce37ece4ac2fa5a39bb5acf54a9a1b2518b675645b1665b6e9189eb3e4f79ba",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteorderbyorderid-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3873,
+      "etag": "W/\"7e053bd66117267e5294989e13e23bb7330b03fd-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626121:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleteorderforaccount.md",
+      "retrieved_at": "2026-09-30T09:23:47.534835+00:00",
+      "sha256": "07c502739d9a9bc0e6468bd71ae9e43f96aeddb03ff11eb60bd6261d07a28f3c",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleteorderforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2632,
+      "etag": "W/\"57537448ea9b3b42fcaf96cdeb75ec3e3a99da32-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625341:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deleterecipientbank.md",
+      "retrieved_at": "2026-09-30T09:23:47.913344+00:00",
+      "sha256": "8114bc306dc9c85e2b19de722136d091d06bee10bcc8aa63c71b6bf22f609812",
+      "source_url": "https://docs.alpaca.markets/us/reference/deleterecipientbank.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2475,
+      "etag": "W/\"689bf601d0cde762d5682241e38a7f0964989d4f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625426:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletetransfer.md",
+      "retrieved_at": "2026-09-30T09:23:48.119570+00:00",
+      "sha256": "972a01cf86647e3bbd9fc13ace6fa3e014bcee2cacde5c9cb49a5315a45a912a",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletetransfer.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2219,
+      "etag": "W/\"3dcb7a3a10a893a648f72f082a1a07878aa777b7-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646987:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletewatchlistbyid-1.md",
+      "retrieved_at": "2026-09-30T09:23:48.462429+00:00",
+      "sha256": "be899687dbc95632d99ae32ddfc6a658f054f4120cde0c55b2d61bf057a66b64",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletewatchlistbyid-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2131,
+      "etag": "W/\"963e3b0fd6735e1e6452258a2dca922e7bd3b570-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647028:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletewatchlistbyname-1.md",
+      "retrieved_at": "2026-09-30T09:23:49.188326+00:00",
+      "sha256": "69bf067c008852d22f8a02253677a5e7920d7991fe460fffb7e033ca39be393b",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletewatchlistbyname-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2328,
+      "etag": "W/\"7adbd0bc479cb85ddfa6f0071cc84ab013dca32a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626232:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletewatchlistfromaccountbyid.md",
+      "retrieved_at": "2026-09-30T09:23:49.201417+00:00",
+      "sha256": "20dfc46c644c35ecb34d1cc5672a58a992d290b057355516d1040bdec3e54dcd",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletewatchlistfromaccountbyid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2677,
+      "etag": "W/\"ad2999aace88366a5bdd09b20ea175233154020b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625482:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletewhitelistedaddress-1.md",
+      "retrieved_at": "2026-09-30T09:23:49.531007+00:00",
+      "sha256": "0e3dcb6c7c7c6e12acf18d398d3ab20dc6d503d8270d954e6053f97d6f54cda0",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletewhitelistedaddress-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2352,
+      "etag": "W/\"dd6699c5d3951e3f7958063c366a150df0e69cdf-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646956:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/deletewhitelistedaddress.md",
+      "retrieved_at": "2026-09-30T09:23:49.875483+00:00",
+      "sha256": "2f12ab95f1b9b1c2dbe92923d1239657a2814de1dbb8bc445570d41992520b79",
+      "source_url": "https://docs.alpaca.markets/us/reference/deletewhitelistedaddress.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3668,
+      "etag": "W/\"de9b34861a61c1762398713e23a62e31c9dbfbca-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625084:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/demodepositfunding.md",
+      "retrieved_at": "2026-09-30T09:23:50.310824+00:00",
+      "sha256": "bb647ee7b4c4c0af983c43ed66d189864b27e0acbf8ddaa5fd66e200be1a715b",
+      "source_url": "https://docs.alpaca.markets/us/reference/demodepositfunding.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3752,
+      "etag": "W/\"d0a5c10161d4a9e129487f2de70f78b7e4b10d0f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625268:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/downloaddocfromaccount.md",
+      "retrieved_at": "2026-09-30T09:23:50.615664+00:00",
+      "sha256": "bc6980f735308af579cdcb4c9dc20fd7ef684324b587adfcdb4e5d097154e370",
+      "source_url": "https://docs.alpaca.markets/us/reference/downloaddocfromaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8721,
+      "etag": "W/\"d8f2ff9a2d9470bf174408a11ba3bfd9c70c3ba0-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640932:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/fixedincomelatestprices.md",
+      "retrieved_at": "2026-09-30T09:23:50.896644+00:00",
+      "sha256": "993e62e54cb8b6b468685c8e0ab38e65fd7b3284cd3c6561b12dc9cf13d9c48d",
+      "source_url": "https://docs.alpaca.markets/us/reference/fixedincomelatestprices.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11473,
+      "etag": "W/\"7baf8f05fb489f1fb31b12956797ab4e2d3b4f18-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640940:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/fixedincomelatestquotes.md",
+      "retrieved_at": "2026-09-30T09:23:51.283207+00:00",
+      "sha256": "3a6c1be215ad8dad62552c4776a2d814baf9157f445b6f72debe4086813b46a4",
+      "source_url": "https://docs.alpaca.markets/us/reference/fixedincomelatestquotes.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3603,
+      "etag": "W/\"7a437d1bf0c825f7cea9fb05bbfa2b8bf7a51b13-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625561:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-asset-entry-requirements.md",
+      "retrieved_at": "2026-09-30T09:23:51.651573+00:00",
+      "sha256": "8e6b0c0543a99d5f48e998d613fabb1a050b2f4bec44419faf363380a24865ff",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-asset-entry-requirements.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2640,
+      "etag": "W/\"37288e16252440f57188ce60220c74a574567b70-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625619:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-get-v1-corporate_actions-announcements-id.md",
+      "retrieved_at": "2026-09-30T09:23:51.996513+00:00",
+      "sha256": "fb6de9e61db51928b83b255f8dd0eb967dac91ef52c3a42c34306241bd4b448e",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-get-v1-corporate_actions-announcements-id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11823,
+      "etag": "W/\"82c761260d4dddbe7c96a47977b7f86119f39818-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625909:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-option-contract-symbol_or_id-1.md",
+      "retrieved_at": "2026-09-30T09:23:52.355281+00:00",
+      "sha256": "f2214445ce3b12d7e7c371eddd8dea7215b1e093e604eac003d040fdb4379cba",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-option-contract-symbol_or_id-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12199,
+      "etag": "W/\"8e5a5839e0b9abcc162f113e881d83dee084d87c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646748:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-option-contract-symbol_or_id.md",
+      "retrieved_at": "2026-09-30T09:23:52.743609+00:00",
+      "sha256": "529330c84ff301908435d9a0f30e0e7c1d9e40cd666ea2863fe44f75b7589609",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-option-contract-symbol_or_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16602,
+      "etag": "W/\"11c585fcece2e4a885c4f3e48d31dddae97b5a0d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625900:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-options-contracts-1.md",
+      "retrieved_at": "2026-09-30T09:23:53.092905+00:00",
+      "sha256": "de12a72032bc00a70d0063844df1d6a1670e39a31ac8e2514baf217e5402f4ca",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-options-contracts-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17507,
+      "etag": "W/\"c6cdabf7a1d7550fb642d91b302d6a6076df2784-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646740:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-options-contracts.md",
+      "retrieved_at": "2026-09-30T09:23:53.337649+00:00",
+      "sha256": "b0fadfb35f2ec2aa4d493e432ffa9430e29c355054826e8cb34ff1181becd0d0",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-options-contracts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6271,
+      "etag": "W/\"465c120db2c0517113d576830c0016791c3c2de6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626084:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-account-trading-limits.md",
+      "retrieved_at": "2026-09-30T09:23:53.869915+00:00",
+      "sha256": "f8d7890f36a47b2166fd572594c79d62e7d902a9b11522e554bcf212f502cd87",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-account-trading-limits.md",
+      "status": "added"
+    },
+    {
+      "bytes": 19049,
+      "etag": "W/\"8a9a9270b0e875c42e65672893258544eb7f93b2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625242:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-accounts-account_id-cip.md",
+      "retrieved_at": "2026-09-30T09:23:54.123842+00:00",
+      "sha256": "ad8ff5dd8975eb54703a1c674beedeafa2f1a3cae3e2eb871981f59f7f1ab354",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-accounts-account_id-cip.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4413,
+      "etag": "W/\"d803a0de232b066704f3f961800abf420fff9e73-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625286:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-accounts-account_id-documents-w8ben-document_id-download.md",
+      "retrieved_at": "2026-09-30T09:23:54.427829+00:00",
+      "sha256": "5a424eeb78cd9bd30deb471b8ab15c555350f2a8e0ef7b5c5d74f75dee5616a6",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-accounts-account_id-documents-w8ben-document_id-download.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3843,
+      "etag": "W/\"43659df2b693a2a56b429b1466f79f6cbc42c9bd-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625305:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-accounts-account_id-onfido-sdk-tokens.md",
+      "retrieved_at": "2026-09-30T09:23:54.811944+00:00",
+      "sha256": "1291c657f7ff650892c0ed63cd2fbc54ddefe1d5397d922af9a5d97ff825f0d4",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-accounts-account_id-onfido-sdk-tokens.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4988,
+      "etag": "W/\"28e841efbe5fa5a5a35b301b84e28ec9247653e7-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625533:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-accounts-positions.md",
+      "retrieved_at": "2026-09-30T09:23:55.157368+00:00",
+      "sha256": "594a74195be86cf0288bb7fbe4c1aab5759cb56cb8ed1ee80d9bf0bcc8c2d071",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-accounts-positions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10696,
+      "etag": "W/\"bdc00f4803326f9a8d754a8c616c7f8a964b1e26-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625654:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-events-nta.md",
+      "retrieved_at": "2026-09-30T09:23:55.456562+00:00",
+      "sha256": "890f1971940e54380a873269dd7aaa7477611dac37d0d211c8b043757873a4cc",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-events-nta.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7374,
+      "etag": "W/\"d518bf3f3695377a88a4e967fecc8dc0b5a96ca2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625670:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-fpsl-analytics-account-loans.md",
+      "retrieved_at": "2026-09-30T09:23:55.898604+00:00",
+      "sha256": "8816471ad2a5d745c718eddfeb80d7141326526ba054e2bbc25e00cfe0380665",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-fpsl-analytics-account-loans.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8991,
+      "etag": "W/\"dd854f663b62d5f16a0e9e57fc2c8a651ff1ecae-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626040:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-get-eod-cash-interest-report.md",
+      "retrieved_at": "2026-09-30T09:23:56.195644+00:00",
+      "sha256": "d56b8c2adad47888bd51b433c14d11e8c9020858c60a8108f23e6dee161c199b",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-get-eod-cash-interest-report.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3794,
+      "etag": "W/\"b9f0ef446ea874d3681004133b7e183a76908a9d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625743:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-account-limits.md",
+      "retrieved_at": "2026-09-30T09:23:56.504519+00:00",
+      "sha256": "dc66afea326e76e6a4eda73ee54cb752117c763c87c214cd8c7acc86757f22a0",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-account-limits.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3468,
+      "etag": "W/\"d56966c58dd31788be9e464afc815b48e4333449-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625735:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-correspondent-limits.md",
+      "retrieved_at": "2026-09-30T09:23:56.964928+00:00",
+      "sha256": "ff27051aa676640ecfe1aee070f2ce623fbb8e87df5e11ac249185537c9370a1",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-correspondent-limits.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9337,
+      "etag": "W/\"f37d249ed7b4563ab76c28ebc3c9ca93c010b6e1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625697:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-list.md",
+      "retrieved_at": "2026-09-30T09:23:57.277556+00:00",
+      "sha256": "6989a99fa17aa2d714b9445c586f644e18233c744350e732e60ab9228849076f",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-list.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8095,
+      "etag": "W/\"66a2c0de0e88192971d0ded34a7254bf5816c006-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625752:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-reports.md",
+      "retrieved_at": "2026-09-30T09:23:57.595332+00:00",
+      "sha256": "5c789b79f1d0ec08631b91a5337957fd73b6020e588a2f8e8234afdb7dddb083",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-reports.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5672,
+      "etag": "W/\"3642342c35d8ac693e0644fb6d040bd547997fa9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625778:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-settlements-single.md",
+      "retrieved_at": "2026-09-30T09:23:57.905645+00:00",
+      "sha256": "7964592a23c9f1c4f065327e82341d6a96ac94db37a16c193e61eac4df8b1288",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-settlements-single.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6031,
+      "etag": "W/\"7256ef3c52bfacc8d4fd81754744a60bc25912b9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625761:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-settlements.md",
+      "retrieved_at": "2026-09-30T09:23:58.315828+00:00",
+      "sha256": "8dffb7180154b34c2e346fc8bd1dfa286dc819280836867b4b9f437db816409a",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-settlements.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6658,
+      "etag": "W/\"7ed60a6e26da66b397c844d28b61e5ce29c05c6e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625725:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-instant-funding-single.md",
+      "retrieved_at": "2026-09-30T09:23:58.643101+00:00",
+      "sha256": "d316570447e6dc3e835e2adb56d712de695c612c2b6be211ebfadbad69b018fc",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-instant-funding-single.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5652,
+      "etag": "W/\"983574b10eae3ac2bca39c681f733a08051b044c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625818:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-jit-settlements-single.md",
+      "retrieved_at": "2026-09-30T09:23:58.985272+00:00",
+      "sha256": "427be9f098848e5ec8e93a7cf4821cdfe6ba3d444d0fadf66746229f8c768d09",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-jit-settlements-single.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6015,
+      "etag": "W/\"0495890266ae137faa172a57eebbe40c63043be2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625801:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-jit-settlements.md",
+      "retrieved_at": "2026-09-30T09:23:59.341350+00:00",
+      "sha256": "0214d7d167204c8467b9b7ad4266dd6555cc8b960ef6baacb7a0873cd8ca0b00",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-jit-settlements.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14359,
+      "etag": "W/\"0c12073a08d52edd3c75164916abf8cdebccfde3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625852:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-journals-journal_id.md",
+      "retrieved_at": "2026-09-30T09:23:59.675968+00:00",
+      "sha256": "de62be9ee480f8f3b8cb2e8e1bef85b3eef068f05732a87f7d0c5bdb9a2934f2",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-journals-journal_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6562,
+      "etag": "W/\"36efdbaa9fff79610fc18e86963d9b136cecf08c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625595:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-list-apr-tiers.md",
+      "retrieved_at": "2026-09-30T09:24:00.037743+00:00",
+      "sha256": "e8782a91f603acd9fc34249a6a75e538c8c9ee689285d8620451f95cd7becae7",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-list-apr-tiers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9718,
+      "etag": "W/\"94d6919cdb7502c315380e7f05597d9c1c981949-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625679:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-list-fpsl-loans.md",
+      "retrieved_at": "2026-09-30T09:24:00.389301+00:00",
+      "sha256": "da35a4033a2edf46f8e97d940b32cb5c420a9561b6b0002d0bef9b9467f20f38",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-list-fpsl-loans.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5007,
+      "etag": "W/\"a8e3bd3000acf3a2285132936fe313bc355d415d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625688:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-list-fpsl-tiers.md",
+      "retrieved_at": "2026-09-30T09:24:00.780358+00:00",
+      "sha256": "cd2d6c4f9e7f479ac3fc1bcd7af5eb684c919f29aa5b8f63b829d1e2bcb69d6d",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-list-fpsl-tiers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4662,
+      "etag": "W/\"d64d2e9e6138a924f9653776ea379ffb570515b1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625941:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-rebalancing-portfolios-portfolio_id.md",
+      "retrieved_at": "2026-09-30T09:24:01.146550+00:00",
+      "sha256": "e2a3123d11d344a697764080fbdf83a26f99c004938bef04a414459f7b637459",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-rebalancing-portfolios-portfolio_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5944,
+      "etag": "W/\"2ca589afaebb12daa0ab2aefb897e1c6a9b0b010-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625917:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-rebalancing-portfolios.md",
+      "retrieved_at": "2026-09-30T09:24:01.453723+00:00",
+      "sha256": "77296cd5b31977a8f0fdc2fe7bd025d7e80b3fd38f787717d39839b8c46c3da6",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-rebalancing-portfolios.md",
+      "status": "added"
+    },
+    {
+      "bytes": 33834,
+      "etag": "W/\"9866cc830c3195f33ac28348212ed7f2100828e0-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625984:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-rebalancing-runs-run_id.md",
+      "retrieved_at": "2026-09-30T09:24:01.849896+00:00",
+      "sha256": "211ea349d195fe8824d3c70002fa5390087cc9f123a09add19dfd3dd90a704e8",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-rebalancing-runs-run_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 36087,
+      "etag": "W/\"784a630b923b4206b209d123958250cde01f1328-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625959:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-rebalancing-runs.md",
+      "retrieved_at": "2026-09-30T09:24:02.159766+00:00",
+      "sha256": "9bdf22995038552919ccdbdd00bf954a8c6e3ced4283b691ef4f9eb4ff9ed505",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-rebalancing-runs.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3076,
+      "etag": "W/\"e3a6d91220896b8659feae9d0d927e05e622417f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626020:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-rebalancing-subscriptions-subscription_id.md",
+      "retrieved_at": "2026-09-30T09:24:02.513536+00:00",
+      "sha256": "93de54cb612fab0143a07bfcc987ddec50ee6b928d3204eb732e9e746fb63522",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-rebalancing-subscriptions-subscription_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4532,
+      "etag": "W/\"9ec222f65506edb934c0f496679e08ddd90c474a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625993:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-rebalancing-subscriptions.md",
+      "retrieved_at": "2026-09-30T09:24:03.000777+00:00",
+      "sha256": "94158d17ae350661da3ccf2d6cd4c837fdd97cf649079c091c91297cbc9f3ab2",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-rebalancing-subscriptions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6911,
+      "etag": "W/\"6ac21636f5e2e8ae5a546d369545ffc67bbb9ce1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626031:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-reporting-eod-aggregate_positions.md",
+      "retrieved_at": "2026-09-30T09:24:03.240288+00:00",
+      "sha256": "d3af540820d36bd75ccd370c5d1f03a26c813c28800926ac858518f4658e8bc9",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-reporting-eod-aggregate_positions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13887,
+      "etag": "W/\"73c02e620a456bd031246d37ad56ffca3056ac38-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626049:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-reporting-eod-positions.md",
+      "retrieved_at": "2026-09-30T09:24:03.539080+00:00",
+      "sha256": "e89bf010b7e7d2c09191a094817647d2152339fe9d4a9955606c9ccc23170423",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-reporting-eod-positions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 20309,
+      "etag": "W/\"8f7dc277745a552047c1214814db8aa0135138d3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626075:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-trading-accounts-account_id-account-portfolio-history.md",
+      "retrieved_at": "2026-09-30T09:24:03.860754+00:00",
+      "sha256": "2da5d6b4927dfb92632b1b0040020d321c3b0de088073bc79e06775bdcd4dbbd",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-trading-accounts-account_id-account-portfolio-history.md",
+      "status": "added"
+    },
+    {
+      "bytes": 29386,
+      "etag": "W/\"aeacdcd57147935281e74d0161c2cff53bd20df1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626147:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-trading-accounts-account_id-orders-estimation.md",
+      "retrieved_at": "2026-09-30T09:24:04.261853+00:00",
+      "sha256": "1c2e131496b24f8d986676ed85ffd1c4fffb2dcc6bf7de2b1cade1138a840588",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-trading-accounts-account_id-orders-estimation.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6028,
+      "etag": "W/\"a30bbc52ad4ca9a298098d6d5fc6c3140618a4f3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626275:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-transfers-jit-ledger_id-balances.md",
+      "retrieved_at": "2026-09-30T09:24:04.568973+00:00",
+      "sha256": "c82c10bffeeb99cc1d321c5b9f439ebb25ebb6cae404a99f6c9663778c303923",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-transfers-jit-ledger_id-balances.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2984,
+      "etag": "W/\"54ff166c2a02f6b07f41ad3d34778cf972f5c8ef-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626283:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-transfers-jit-ledgers.md",
+      "retrieved_at": "2026-09-30T09:24:04.981673+00:00",
+      "sha256": "043aa0fd7b0b534acd1438e55a15289b933fea01796e85f842a74ed75922555f",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-transfers-jit-ledgers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6954,
+      "etag": "W/\"4684d1f0e1666c98895d84723a1d474101bf65ae-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626291:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-transfers-jit-limits.md",
+      "retrieved_at": "2026-09-30T09:24:05.317913+00:00",
+      "sha256": "8de087c4b38c0cdeb0de641de1d6cfe2353cc4c3cfc5a2a9b32ab652056bc73b",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-transfers-jit-limits.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7471,
+      "etag": "W/\"91eea925ade84f52718c754d2c4f3b2073217219-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626299:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1-transfers-jit-reports.md",
+      "retrieved_at": "2026-09-30T09:24:05.641128+00:00",
+      "sha256": "58852a24af43f1cb4e9a4b554885deb3a1bc7d1e1f2954a1fb32385fa1f15003",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1-transfers-jit-reports.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2763,
+      "etag": "W/\"8ac60595c012af35540896487864cc55cbfbf513-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625156:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v1beta1-logos-symbol.md",
+      "retrieved_at": "2026-09-30T09:24:05.992717+00:00",
+      "sha256": "52ab8965349e407d94c04afd78b3e7d9f7075e515d5bdfb52b4557ab16f4c48e",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v1beta1-logos-symbol.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12739,
+      "etag": "W/\"772723445a1866fc3a6ab7346ce214692a96303b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646690:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v2-assets-1.md",
+      "retrieved_at": "2026-09-30T09:24:06.302176+00:00",
+      "sha256": "dfe07088682cdc45fba497909e3c39c3befcf13c811d3a7a036432550230772b",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v2-assets-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11057,
+      "etag": "W/\"1a77e64b2628889e387334889ef4c518e970b3f1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646698:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v2-assets-symbol_or_asset_id.md",
+      "retrieved_at": "2026-09-30T09:24:06.753404+00:00",
+      "sha256": "a379eba034acae0aee1ba85158c830264698019670324fdca30e7b8ea28694a4",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v2-assets-symbol_or_asset_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8789,
+      "etag": "W/\"1f75da8a52c90bbdd43f1289550198899c89b9ec-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646723:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v2-corporate_actions-announcements-1.md",
+      "retrieved_at": "2026-09-30T09:24:07.003259+00:00",
+      "sha256": "9776ceac35031346c35e95b77815442a6a847ac80bcae431a821369ab7c87fbe",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v2-corporate_actions-announcements-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5273,
+      "etag": "W/\"a2b776da3508958f0fbe4d189264507142c10512-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646731:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/get-v2-corporate_actions-announcements-id-1.md",
+      "retrieved_at": "2026-09-30T09:24:07.617125+00:00",
+      "sha256": "57aa5a5dc9c38e2f6ef618bc569bc4060d26d3ad3cf02d93fae02eb2624c95a5",
+      "source_url": "https://docs.alpaca.markets/us/reference/get-v2-corporate_actions-announcements-id-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12380,
+      "etag": "W/\"41f91bb83659e6352b57b31dcd799a784c253754-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625123:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getacatstransfer.md",
+      "retrieved_at": "2026-09-30T09:24:07.757386+00:00",
+      "sha256": "c60e84484023c764360a1df5e40a9508f61f3e1aa372491d1f93250d0ad771e1",
+      "source_url": "https://docs.alpaca.markets/us/reference/getacatstransfer.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13602,
+      "etag": "W/\"1d3dc18cd1ce0f32c8826be2438eaf45d29d1305-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646637:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccount-1.md",
+      "retrieved_at": "2026-09-30T09:24:08.076795+00:00",
+      "sha256": "688d499a240393ab0e9e1a824e2a258bbf34b1ae28b9c98cdbaa4faddcf8d9b1",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccount-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 53750,
+      "etag": "W/\"8c0c0d89d91421679d2e77be5501ce601a5c3234-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625187:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccount.md",
+      "retrieved_at": "2026-09-30T09:24:08.526165+00:00",
+      "sha256": "49ee7fca7635d2d3d3fe4d56ecfafa8f3993f276d1e8f5131f80b12a52968df5",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4687,
+      "etag": "W/\"70913083ccca82349636a89dfd1322193bcfbfc9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625207:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountachrelationships.md",
+      "retrieved_at": "2026-09-30T09:24:08.860581+00:00",
+      "sha256": "4b7f5f9bec9e2479adf38901fe8a94131177a5f2d0de9b212dafde8e487168c1",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountachrelationships.md",
+      "status": "added"
+    },
+    {
+      "bytes": 21004,
+      "etag": "W/\"ba76fc4202bd3013668ba31f16f2523bea301cbb-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646645:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountactivities-2.md",
+      "retrieved_at": "2026-09-30T09:24:09.181138+00:00",
+      "sha256": "3d01ba784740e2f4d058ac1479b87ecce57172598a68335cfdef365f332122bf",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountactivities-2.md",
+      "status": "added"
+    },
+    {
+      "bytes": 19642,
+      "etag": "W/\"d9f8e1fe219194e74dd66d4262e51b244cb0d96e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625498:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountactivities.md",
+      "retrieved_at": "2026-09-30T09:24:09.536024+00:00",
+      "sha256": "6c3ff7fdcae097a8a8f3de7f4fd9da6445e7030851637251b1ce91369e4b862e",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountactivities.md",
+      "status": "added"
+    },
+    {
+      "bytes": 19916,
+      "etag": "W/\"9f0d1558007f286ba1645885fefef7655add9d61-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646653:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountactivitiesbyactivitytype-1.md",
+      "retrieved_at": "2026-09-30T09:24:09.784181+00:00",
+      "sha256": "dc985ba98f33abf5d2adaf9230c58cd8be20f5a25b80440e5aaf3e6614de014f",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountactivitiesbyactivitytype-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 20269,
+      "etag": "W/\"c1643495fc630f9cbc508062a2601d110adec8da-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625507:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountactivitiesbytype.md",
+      "retrieved_at": "2026-09-30T09:24:10.276653+00:00",
+      "sha256": "2daeaf80a3a56cf8fd3e326d314342135d9ef1439ad6f9b52e9a7bfe9eb1bef8",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountactivitiesbytype.md",
+      "status": "added"
+    },
+    {
+      "bytes": 72511,
+      "etag": "W/\"a5c9b597f90bbe0c8f35637f73fe633511b303c3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626325:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountactivityevent.md",
+      "retrieved_at": "2026-09-30T09:24:10.549287+00:00",
+      "sha256": "b6281dc847086b7e43789c5a808077ad473d2fb07d8eae626b2c48771ecb731b",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountactivityevent.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4240,
+      "etag": "W/\"8803650bb26123e4a6f2f69b24f57d2696832fa5-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646661:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountconfig-1.md",
+      "retrieved_at": "2026-09-30T09:24:10.844291+00:00",
+      "sha256": "1e85c0fc3b0ac127dc3f420aa17bf9388be0c819d55a7ee01e83a142f29b26f4",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountconfig-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 22245,
+      "etag": "W/\"d9212e2c1d2e479fb159fa99748134a236f53a02-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646679:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getaccountportfoliohistory-1.md",
+      "retrieved_at": "2026-09-30T09:24:11.498550+00:00",
+      "sha256": "2052e1d8b133dd10bef507fde6d9bdcf8359c83012a01d16920328fff2cce331",
+      "source_url": "https://docs.alpaca.markets/us/reference/getaccountportfoliohistory-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 56031,
+      "etag": "W/\"96c767f22b8b2df5c0d624be8ffa667bd082125c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625168:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getallaccounts.md",
+      "retrieved_at": "2026-09-30T09:24:11.645224+00:00",
+      "sha256": "43661b5eadead2de7b1da53a8331a768cc071a5427ef7fc373af1babad5408b6",
+      "source_url": "https://docs.alpaca.markets/us/reference/getallaccounts.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16219,
+      "etag": "W/\"71ec3971cc3059388ab23f127ab72979e5cd0977-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625826:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getalljournals.md",
+      "retrieved_at": "2026-09-30T09:24:12.062637+00:00",
+      "sha256": "b41bfe4fcf465760aa0e50e690ea282c80625236dbc1bb02cb6963f5854b59eb",
+      "source_url": "https://docs.alpaca.markets/us/reference/getalljournals.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12757,
+      "etag": "W/\"f5365e7daa97846df84749a19a1c64b4470f4629-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646819:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getallopenpositions.md",
+      "retrieved_at": "2026-09-30T09:24:12.254484+00:00",
+      "sha256": "a8b676c7e97855ada7578d35c5eee58e3e110b29f05e3ab20acc5bc9d08bbf49",
+      "source_url": "https://docs.alpaca.markets/us/reference/getallopenpositions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 37939,
+      "etag": "W/\"33e9c61ff42800f7780ae8bce85c3940c720edf2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646764:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getallorders-1.md",
+      "retrieved_at": "2026-09-30T09:24:12.715443+00:00",
+      "sha256": "81f1052dfe6dcd835d1e10462c4785357806eb3efb385974834f44c1cdf93c99",
+      "source_url": "https://docs.alpaca.markets/us/reference/getallorders-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 31984,
+      "etag": "W/\"733c65cf765d3fb5696a8c0a0a59a19c6cef8fd0-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626103:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getallordersforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:13.023492+00:00",
+      "sha256": "0a82be9cc6d8ae8836bd2fb3e311ffc301ac17212894fdb1c65e28911384113e",
+      "source_url": "https://docs.alpaca.markets/us/reference/getallordersforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3626,
+      "etag": "W/\"e96359f90d826a3debc8335c70546b0375674521-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626216:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getallwatchlistsforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:13.684488+00:00",
+      "sha256": "85247f6fee86140803a10e0bfb82f7091394a153729e03761da3d91d477c0ec8",
+      "source_url": "https://docs.alpaca.markets/us/reference/getallwatchlistsforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9094,
+      "etag": "W/\"33ed7693295eb8291bcd9c4874a4482f6cb05fd0-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625552:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getassetbysymbolorid.md",
+      "retrieved_at": "2026-09-30T09:24:13.724018+00:00",
+      "sha256": "46d57b238b57989a52fabaeaef617df1be273e5528eb51962b82fb417bb51004",
+      "source_url": "https://docs.alpaca.markets/us/reference/getassetbysymbolorid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11703,
+      "etag": "W/\"da5b4c16090b072197be225a349c9bd3f975f71e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625542:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getassets.md",
+      "retrieved_at": "2026-09-30T09:24:14.080309+00:00",
+      "sha256": "fd1ef157524932dd44d55d54a6eab4a8e8a2518a7539eefeb02eaf1ba3805415",
+      "source_url": "https://docs.alpaca.markets/us/reference/getassets.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14006,
+      "etag": "W/\"716dddc41217b92abf9238ebf77fa9eb6c1f0873-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625611:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getcorporateannouncements.md",
+      "retrieved_at": "2026-09-30T09:24:14.476072+00:00",
+      "sha256": "fff118056f18cb66dc6dce2c9cf71020f6115928af725fefd85b3ab650961615",
+      "source_url": "https://docs.alpaca.markets/us/reference/getcorporateannouncements.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5098,
+      "etag": "W/\"52ac72e6f479914fa668bbb190a3285cfda394c2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625458:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getcryptofundingtransfer-1.md",
+      "retrieved_at": "2026-09-30T09:24:14.743087+00:00",
+      "sha256": "bfb6e0441ec877897f5fa3494d5391a99d2705f058fabef97cbd3b4409252110",
+      "source_url": "https://docs.alpaca.markets/us/reference/getcryptofundingtransfer-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4673,
+      "etag": "W/\"5b90e5a73b69deedd7e549f8be8093e58860e4f6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646927:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getcryptofundingtransfer.md",
+      "retrieved_at": "2026-09-30T09:24:15.025232+00:00",
+      "sha256": "e24b7b86534d0cfd9ee5d36013c7efac034187c9bbdedc3dfeed43c92d70e803",
+      "source_url": "https://docs.alpaca.markets/us/reference/getcryptofundingtransfer.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4213,
+      "etag": "W/\"9eaceb71066ec586b59605c4e38bd5a9d505613b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626307:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getcryptotransferestimate-1.md",
+      "retrieved_at": "2026-09-30T09:24:15.465906+00:00",
+      "sha256": "3924f6144661e685469c9f1e03832ab5818a9478342af2c5e473e535ae9f0c62",
+      "source_url": "https://docs.alpaca.markets/us/reference/getcryptotransferestimate-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4148,
+      "etag": "W/\"36878d2dd926a95f5322fb2447893ca19a5ec645-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646905:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getcryptotransferestimate.md",
+      "retrieved_at": "2026-09-30T09:24:16.307590+00:00",
+      "sha256": "8633f0dcdc3b712cadcca279cf8590f54d1eecd27e7ebc03afb8c4801365b52f",
+      "source_url": "https://docs.alpaca.markets/us/reference/getcryptotransferestimate.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5908,
+      "etag": "W/\"ffe5f650a3f96206117c32cd665be83a5d576d6c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625259:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getdocsforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:16.192601+00:00",
+      "sha256": "5fd0f225ddf6777e65e416ecbdcb381489af275a964dfe123055e80f07f5aa13",
+      "source_url": "https://docs.alpaca.markets/us/reference/getdocsforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3921,
+      "etag": "W/\"94f9ed7c88decbbb938736ab27070c87657e7f0e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711624977:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getfundingwallet.md",
+      "retrieved_at": "2026-09-30T09:24:16.557143+00:00",
+      "sha256": "8e0570b3522a87ca6e68c3c9d9150a9ba3fae46bf94f9b268acff5bef0f54a75",
+      "source_url": "https://docs.alpaca.markets/us/reference/getfundingwallet.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2930,
+      "etag": "W/\"ddb065701b98ec77704ef3d7fa498d7da3b0bc6c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625024:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getfundingwalletrecipientbank.md",
+      "retrieved_at": "2026-09-30T09:24:16.845247+00:00",
+      "sha256": "300b385aef8a836979bd11ea56246966eba2ce857e6791b28deabc327ae63dce",
+      "source_url": "https://docs.alpaca.markets/us/reference/getfundingwalletrecipientbank.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8808,
+      "etag": "W/\"881bc45e9fa243dcea1e6c9463f38f44f163882c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625055:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getfundingwallettransferbyid.md",
+      "retrieved_at": "2026-09-30T09:24:17.156328+00:00",
+      "sha256": "5d9ba8f8f32dc849bbf00521b87ece62f33a47948a19bdc283be35cc0381294a",
+      "source_url": "https://docs.alpaca.markets/us/reference/getfundingwallettransferbyid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8613,
+      "etag": "W/\"468ce2fef03e5cbf8cba76a1096b0c7dea3cabaa-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625045:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getfundingwallettransfers.md",
+      "retrieved_at": "2026-09-30T09:24:17.625219+00:00",
+      "sha256": "166a6b64fa3dbbb0d8a08cdc72bc05a1d6361bfc311c01a5b7f887cc3b764ea3",
+      "source_url": "https://docs.alpaca.markets/us/reference/getfundingwallettransfers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9690,
+      "etag": "W/\"e8a0e5809230e4a9cbfd70a85eb962cb6e55b0ee-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625793:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getipooffering.md",
+      "retrieved_at": "2026-09-30T09:24:17.919319+00:00",
+      "sha256": "77c9ff19e585d08f85032e305ce81a3c31ae4de51ab3b70a9eb38d90b2ecaeca",
+      "source_url": "https://docs.alpaca.markets/us/reference/getipooffering.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9624,
+      "etag": "W/\"e47027287fafa171a6db8154ed414ee3e2e40b32-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646611:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getlocate.md",
+      "retrieved_at": "2026-09-30T09:24:18.187091+00:00",
+      "sha256": "ce113082ba3b6f8df1e26c5daddaaf498fb2d881732bd0ac9e4b5b9011010e73",
+      "source_url": "https://docs.alpaca.markets/us/reference/getlocate.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6220,
+      "etag": "W/\"b859fc07bcb473f531fc30c76a81f2953069192d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625884:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getoauthclient.md",
+      "retrieved_at": "2026-09-30T09:24:18.610991+00:00",
+      "sha256": "c4b0a258a7e6c9e4a3fd2ec45cdd82cd8249263b274ac29f40b641cad4e3fd4c",
+      "source_url": "https://docs.alpaca.markets/us/reference/getoauthclient.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12368,
+      "etag": "W/\"b8197fbb381e24fe3e8af5d24b3c6c8854b84719-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646834:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getopenposition-1.md",
+      "retrieved_at": "2026-09-30T09:24:18.942225+00:00",
+      "sha256": "b6fea6cfa01840dce56adfd77b989d309759b9b102fcac6bb1ae1bf06859bfab",
+      "source_url": "https://docs.alpaca.markets/us/reference/getopenposition-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 24124,
+      "etag": "W/\"ce91459f06cdabfdbdf8b010b622a3bf6d328c2e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646804:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getorderbyclientorderid.md",
+      "retrieved_at": "2026-09-30T09:24:19.289341+00:00",
+      "sha256": "3ae921fedfb67f4a5ce26b265838510d419c8cc385fc47703104b982eb4e52ef",
+      "source_url": "https://docs.alpaca.markets/us/reference/getorderbyclientorderid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 28415,
+      "etag": "W/\"6643740d51efaf70b32a35733824bedbceddd0a4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626155:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getorderbyclientorderidforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:19.675517+00:00",
+      "sha256": "902ee2bd383e96dfd685a25b4a7bc0882ec98ac6ab642727cc71b83683c82d63",
+      "source_url": "https://docs.alpaca.markets/us/reference/getorderbyclientorderidforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 34368,
+      "etag": "W/\"d3382aa362cbfea13d8c95023c4e446c5f50781e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646788:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getorderbyorderid-1.md",
+      "retrieved_at": "2026-09-30T09:24:19.962762+00:00",
+      "sha256": "2bfb98a10f7fd4ff0486a92b74ab146a6233f2fabc3d8e1a0a369dc824574588",
+      "source_url": "https://docs.alpaca.markets/us/reference/getorderbyorderid-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 28296,
+      "etag": "W/\"c4eebe6a1c5375b0c226fac506f432c8ef07c26a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626131:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getorderforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:20.331082+00:00",
+      "sha256": "c8525ca4e110f6f3bfe0705df08123c4899c72cc5eb54537cab61edc1549189e",
+      "source_url": "https://docs.alpaca.markets/us/reference/getorderforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10644,
+      "etag": "W/\"fce3ea387b99844fd0558e385862c6f2cc8c1728-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626173:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getpositionsforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:20.737627+00:00",
+      "sha256": "576e02c4b852e80e75a0a5b202529703ff8c57a791c894e00b32aed040681d40",
+      "source_url": "https://docs.alpaca.markets/us/reference/getpositionsforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11071,
+      "etag": "W/\"11109f43b0ee80c1bcafb01caf6d22c39ff47dfa-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626191:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getpositionsforaccountbysymbol.md",
+      "retrieved_at": "2026-09-30T09:24:21.041694+00:00",
+      "sha256": "c4f1fbb3415e2e0ce27e0758908bcb94c6e773611b76b4dbce3e2036f4b6230e",
+      "source_url": "https://docs.alpaca.markets/us/reference/getpositionsforaccountbysymbol.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7594,
+      "etag": "W/\"14b6fc00501e75760c1bec71a6dbd157459d8af2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625324:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getrecipientbanks.md",
+      "retrieved_at": "2026-09-30T09:24:21.402403+00:00",
+      "sha256": "87b8a08639a9c19c44f91d55d4163e871d588b2835a36b625dfa387bc1bd8390",
+      "source_url": "https://docs.alpaca.markets/us/reference/getrecipientbanks.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11655,
+      "etag": "W/\"6c14ea460ddaf0692a66a57b151cf3d30af23476-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646881:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequest.md",
+      "retrieved_at": "2026-09-30T09:24:21.735223+00:00",
+      "sha256": "548692da66c7a8b9d72aab0d744b4d9cbfc8d07861a4e1aaea0635ad1b174c66",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequest.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12043,
+      "etag": "W/\"272fa323afd1b751808387431045dd8c2bb10f21-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646889:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequestbyclientrequestid.md",
+      "retrieved_at": "2026-09-30T09:24:22.095246+00:00",
+      "sha256": "b5e612d86abdd9a8ada73d58d645f77c4df419b0e2149cfe2228f90fd8c368e2",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequestbyclientrequestid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11707,
+      "etag": "W/\"e055664a892aa7446e3517586301a39a9e88da2c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625391:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequestbyclientrequestidbroker.md",
+      "retrieved_at": "2026-09-30T09:24:22.443908+00:00",
+      "sha256": "ba37d16944861e3c961bc6aa66f7a90d21d83fef23146eb0d688e5a9a01fb084",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequestbyclientrequestidbroker.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11307,
+      "etag": "W/\"0d3d93ce2bbd2927ba295e2a94edb77856c50cc4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625383:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequestbyidbroker.md",
+      "retrieved_at": "2026-09-30T09:24:22.821882+00:00",
+      "sha256": "9007497d98fa69d3f7387ed4dcb52af6a851f69f507030fb4e8cb75884f5f250",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequestbyidbroker.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11320,
+      "etag": "W/\"4bb38d067079d17680daf78c80e1e19e4bc4a813-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625400:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequestbyissuerrequestidbroker.md",
+      "retrieved_at": "2026-09-30T09:24:23.170437+00:00",
+      "sha256": "99cd6eb165f33ee2539f4b887d84394d2487273c4602e3805703be8f0cfba715",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequestbyissuerrequestidbroker.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12157,
+      "etag": "W/\"3a85c81341b4170e3246a27acf73d7a1f12e851d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646872:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequests.md",
+      "retrieved_at": "2026-09-30T09:24:23.475703+00:00",
+      "sha256": "95a2f665163e63756be3352396694d65b48a615c8d5a4b22d5e711bf20dc3178",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequests.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11855,
+      "etag": "W/\"203f56cb46249e2291fc5d7e2180bf52aad59d24-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625375:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettokenizationrequestsbroker.md",
+      "retrieved_at": "2026-09-30T09:24:23.848062+00:00",
+      "sha256": "4278f7c24c9db5424b6a5b15bf22e53d174a9456838bb3cb98705a3521419f02",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettokenizationrequestsbroker.md",
+      "status": "added"
+    },
+    {
+      "bytes": 25571,
+      "etag": "W/\"3889a1d5c6799855f465e423cc0c17046822512d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626058:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettradingaccount.md",
+      "retrieved_at": "2026-09-30T09:24:24.246081+00:00",
+      "sha256": "3da5ffae7dcf041ab2c8bf98ebc0626f74c8ccdb4dac422b96c4d5b4f55ca066",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettradingaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12915,
+      "etag": "W/\"694ee3aa9dd64d2850288c04bc39a7d74a951864-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625409:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/gettransfersforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:24.571480+00:00",
+      "sha256": "a3f150067ba22d943a014e2097101db6ee253b8f4f6e67b5f788d837e60fbc55",
+      "source_url": "https://docs.alpaca.markets/us/reference/gettransfersforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12513,
+      "etag": "W/\"2f3ed8bb7d2f67dec5360d945caaf4d7d7d4787c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646995:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getwatchlistbyid-1.md",
+      "retrieved_at": "2026-09-30T09:24:24.854423+00:00",
+      "sha256": "85bafdaa7e7a60d5fd2ecd510353e0e07bdcd13cfe1afc644c4d9529b310e72b",
+      "source_url": "https://docs.alpaca.markets/us/reference/getwatchlistbyid-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12888,
+      "etag": "W/\"51fd6cf14da33171c488f99a081a04c49837fee7-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647035:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getwatchlistbyname-1.md",
+      "retrieved_at": "2026-09-30T09:24:25.285702+00:00",
+      "sha256": "e2a236866ed5924eaf590dd481802f55cf62840afbd95061e456166f2ce6fbec",
+      "source_url": "https://docs.alpaca.markets/us/reference/getwatchlistbyname-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10687,
+      "etag": "W/\"c148892040d86970f9ca35a6771441783af1981f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626241:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getwatchlistforaccountbyid.md",
+      "retrieved_at": "2026-09-30T09:24:25.640596+00:00",
+      "sha256": "080fd3711901688b040a45e69fe4f78cfbfb7c44a872a92a30207d6636ed5f10",
+      "source_url": "https://docs.alpaca.markets/us/reference/getwatchlistforaccountbyid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4198,
+      "etag": "W/\"1402833b42278538fe6ec90c80a571d15a40447a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646971:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/getwatchlists-1.md",
+      "retrieved_at": "2026-09-30T09:24:25.901471+00:00",
+      "sha256": "2e743057671cb63e97122c981c883634c6736727ec42394730e909d428ea0a70",
+      "source_url": "https://docs.alpaca.markets/us/reference/getwatchlists-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5374,
+      "etag": "W/\"e6854b87cd9ca907505b7eb55ca1193f39c4d221-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625892:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/issueoauthtoken.md",
+      "retrieved_at": "2026-09-30T09:24:26.417474+00:00",
+      "sha256": "950e902af09b339729dd62fa0401647ed9dc646b717ca9473806c0fc49403375",
+      "source_url": "https://docs.alpaca.markets/us/reference/issueoauthtoken.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6702,
+      "etag": "W/\"950353c15a0c8cde911bb5251f1e4193a0f0fb66-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790696682591:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/issuetokens.md",
+      "retrieved_at": "2026-09-30T09:24:26.644671+00:00",
+      "sha256": "2c2919a9ebe0ae7d19174299d1962f16e8b5461ea03a9f8c6951af24ae9c82d7",
+      "source_url": "https://docs.alpaca.markets/us/reference/issuetokens.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8242,
+      "etag": "W/\"ab7cd0d6fbbc12f674884bbc5ef51be446929299-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640948:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/latestrates-1.md",
+      "retrieved_at": "2026-09-30T09:24:26.969140+00:00",
+      "sha256": "c547000b3d88ddcc081a5c94d533fc2dff724e143e74a5d4ed7107e1a768025b",
+      "source_url": "https://docs.alpaca.markets/us/reference/latestrates-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7893,
+      "etag": "W/\"9c6cd6ed9b6bc03f957addc12ec3050e42099ff1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625586:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/legacycalendar-1.md",
+      "retrieved_at": "2026-09-30T09:24:27.645818+00:00",
+      "sha256": "8abbda7463e540a7cae112b04af27a7654e4b798757279382915d67dca87eb00",
+      "source_url": "https://docs.alpaca.markets/us/reference/legacycalendar-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7984,
+      "etag": "W/\"05d816b84704095f92bd5de858f60f4ec9769961-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646706:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/legacycalendar.md",
+      "retrieved_at": "2026-09-30T09:24:27.965183+00:00",
+      "sha256": "fc9fe37703016491637013657f902cf437eb38c616b7415d6683541c9412a422",
+      "source_url": "https://docs.alpaca.markets/us/reference/legacycalendar.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5095,
+      "etag": "W/\"3e4facc105dbe15967d7d32634d978d2ce350288-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625603:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/legacyclock-1.md",
+      "retrieved_at": "2026-09-30T09:24:28.049356+00:00",
+      "sha256": "27b5f7867be55a670348c9bb25570fca4b5caa2fbf616990289d50fc8b36fac4",
+      "source_url": "https://docs.alpaca.markets/us/reference/legacyclock-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5180,
+      "etag": "W/\"5b96e29d36ea03598db380b4012c8676cd5a761a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646715:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/legacyclock.md",
+      "retrieved_at": "2026-09-30T09:24:28.452277+00:00",
+      "sha256": "cc1e3fc26eb72ddd47d9734cb7c7decc8509954db4a0d5e94246b4a14ffdcbc0",
+      "source_url": "https://docs.alpaca.markets/us/reference/legacyclock.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8544,
+      "etag": "W/\"dbd309858d0805fd5b5ba272366c6a30df52fed3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625132:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listacatsassets.md",
+      "retrieved_at": "2026-09-30T09:24:28.804964+00:00",
+      "sha256": "efc496cbda6db1e6c300e7a2bdf2366cc8f2a73bb208cfbc233a807a278aa172",
+      "source_url": "https://docs.alpaca.markets/us/reference/listacatsassets.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5418,
+      "etag": "W/\"6717c0b170df3ec0ffba31c1a2caf68a689f7887-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625142:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listacatscontrabrokers.md",
+      "retrieved_at": "2026-09-30T09:24:29.095891+00:00",
+      "sha256": "121a286f199c9e6f6af4ab663e2033a3dc8119e68c6a7f3890b624794b4460b1",
+      "source_url": "https://docs.alpaca.markets/us/reference/listacatscontrabrokers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 19368,
+      "etag": "W/\"68a487ffea19f1505a86fd880e32247acf1f4882-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625093:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listacatstransfers.md",
+      "retrieved_at": "2026-09-30T09:24:29.458999+00:00",
+      "sha256": "64a47d089c60632e3fc8951408877b994ee1664ad604b8eccb173579f69c2ed2",
+      "source_url": "https://docs.alpaca.markets/us/reference/listacatstransfers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 15977,
+      "etag": "W/\"4309e95359f5f962f9de3f4daa49fd928f6f4041-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625103:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listacatstransfersbyaccount.md",
+      "retrieved_at": "2026-09-30T09:24:29.880507+00:00",
+      "sha256": "f848e48f7e38f616fbeaf1a9e261dc4d98eef9b1259a20c8b4de51e757ca2ead",
+      "source_url": "https://docs.alpaca.markets/us/reference/listacatstransfersbyaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5445,
+      "etag": "W/\"f47016ea3fdb03ac3d9e7f24ab140f7d0eb8e1c6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625442:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listcryptofundingtransfers-1.md",
+      "retrieved_at": "2026-09-30T09:24:30.167831+00:00",
+      "sha256": "bc1c68bacf7791c90903d0ee5a3610b8da544ba2529c01d78067fbf63cbd798a",
+      "source_url": "https://docs.alpaca.markets/us/reference/listcryptofundingtransfers-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4417,
+      "etag": "W/\"b80f7e6cf68ff4d53022579e94e423c3a3b01df9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646912:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listcryptofundingtransfers.md",
+      "retrieved_at": "2026-09-30T09:24:30.491094+00:00",
+      "sha256": "8d64292fbe77475093b7fdbcf7619b1b7ed897dfa3d0b3fabfbb7a58d7c71101",
+      "source_url": "https://docs.alpaca.markets/us/reference/listcryptofundingtransfers.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5166,
+      "etag": "W/\"4f88e9dc9a89062748d380c903a32b4ae843dcdf-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625434:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listcryptofundingwallets-1.md",
+      "retrieved_at": "2026-09-30T09:24:30.907001+00:00",
+      "sha256": "58d1a9581fb086ead185252efaff14f8f16746cb73338137d7014adfda804a24",
+      "source_url": "https://docs.alpaca.markets/us/reference/listcryptofundingwallets-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4613,
+      "etag": "W/\"6b9de59106494847a3191435acf0ebad952a2d7b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646897:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listcryptofundingwallets.md",
+      "retrieved_at": "2026-09-30T09:24:31.128709+00:00",
+      "sha256": "31dda5603a115b2035e0630d2fc62a800ea48b532b24623dcb9febafcf368e04",
+      "source_url": "https://docs.alpaca.markets/us/reference/listcryptofundingwallets.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5616,
+      "etag": "W/\"64e20b91abb3700bdec82e7c2ca691a85830de0d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711624994:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listfundingdetails.md",
+      "retrieved_at": "2026-09-30T09:24:31.592617+00:00",
+      "sha256": "8171c743855df1089a95c87add14dea6a110116f92483b2b1af65b2d638205b3",
+      "source_url": "https://docs.alpaca.markets/us/reference/listfundingdetails.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11499,
+      "etag": "W/\"7bc31d326d9e2facc6e72eeee0c850482f8eac84-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625786:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listipoofferings.md",
+      "retrieved_at": "2026-09-30T09:24:31.895071+00:00",
+      "sha256": "f3e730024a6875af1d2ab564e7bad142c38e95796a7b062d8215048c689f33c2",
+      "source_url": "https://docs.alpaca.markets/us/reference/listipoofferings.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3161,
+      "etag": "W/\"1307aa867e1af384cb4d67be6a7a94476a6f7f63-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625516:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listiraexcesscontributions.md",
+      "retrieved_at": "2026-09-30T09:24:32.322672+00:00",
+      "sha256": "ebf545e43e0c85c4a06f316c79f9aeb22f9cae6ed0a1529cc8e2994029487fe7",
+      "source_url": "https://docs.alpaca.markets/us/reference/listiraexcesscontributions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9327,
+      "etag": "W/\"e836244668a1875326960251910d2f4f7b8dca6b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646619:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listlocatequotes.md",
+      "retrieved_at": "2026-09-30T09:24:32.612822+00:00",
+      "sha256": "72424497ca3cbd14060d45c52cd26cd3f4f6ef1e572dc84314cbc8e0d08e4a35",
+      "source_url": "https://docs.alpaca.markets/us/reference/listlocatequotes.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12850,
+      "etag": "W/\"dd0d17ca8506d37ccce243c4923e0ac901d6ae6c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646593:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listlocates.md",
+      "retrieved_at": "2026-09-30T09:24:32.904693+00:00",
+      "sha256": "d33e22a4db6114589d9ef70e68be86b8f0941b95bc7232a41ac8afefe71ac13a",
+      "source_url": "https://docs.alpaca.markets/us/reference/listlocates.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8375,
+      "etag": "W/\"e859f8fe885b175044709ee468edc2fbb8385446-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625466:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listwhitelistedaddress-1.md",
+      "retrieved_at": "2026-09-30T09:24:33.365790+00:00",
+      "sha256": "fefbd296ad108fc80ce6fe574e04a96d2250a40d17d347a7bce167620db9b63e",
+      "source_url": "https://docs.alpaca.markets/us/reference/listwhitelistedaddress-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7483,
+      "etag": "W/\"8a732a3d06626706df0af00175234bd3ec45b40d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646942:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/listwhitelistedaddress.md",
+      "retrieved_at": "2026-09-30T09:24:33.627290+00:00",
+      "sha256": "76418c222e20a5aa98bcae02b32bad038f2b9c16d28a97739de51848ae338f20",
+      "source_url": "https://docs.alpaca.markets/us/reference/listwhitelistedaddress.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6150,
+      "etag": "W/\"a5432ea46f4d4f220ca28552ca5d4b749835946f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640968:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/logos-5.md",
+      "retrieved_at": "2026-09-30T09:24:33.977265+00:00",
+      "sha256": "763f0fdf34f4ef2f905b14dcf2cb7462b336129f2591de6d6be88d9fe8ce1765",
+      "source_url": "https://docs.alpaca.markets/us/reference/logos-5.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8066,
+      "etag": "W/\"30f3764642fcfb3790ceea1574c03358c47da314-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641060:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/mostactives-1.md",
+      "retrieved_at": "2026-09-30T09:24:34.337436+00:00",
+      "sha256": "f2630d174404f09eb191aeeddfc1a35587b80f06be02b9d02de5513d8849edea",
+      "source_url": "https://docs.alpaca.markets/us/reference/mostactives-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10721,
+      "etag": "W/\"cf1ca358129c8ba256794e05e17dd9b1db41cb27-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641052:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/movers-1.md",
+      "retrieved_at": "2026-09-30T09:24:34.659442+00:00",
+      "sha256": "e8baafe5c4f4c765f69694c90b0288f2d39c4ebfc93eef8329643388ce67bdf3",
+      "source_url": "https://docs.alpaca.markets/us/reference/movers-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14633,
+      "etag": "W/\"ea02fb957cb31fd0d584b7f8018e16901edb38dc-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640977:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/news-3.md",
+      "retrieved_at": "2026-09-30T09:24:35.021231+00:00",
+      "sha256": "c3dbb4c3e5e366da7b671257c91e42702f9acf3a2df0a02d7a1275d8b1393169",
+      "source_url": "https://docs.alpaca.markets/us/reference/news-3.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14792,
+      "etag": "W/\"a6dee4909c734886d08a63ed332f10ea3594e741-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640985:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionbars.md",
+      "retrieved_at": "2026-09-30T09:24:35.452849+00:00",
+      "sha256": "91ba9fbc7ca154339b1bf1c6ab15362430e331ed896cb6c34f6f53cd7ae097c5",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionbars.md",
+      "status": "added"
+    },
+    {
+      "bytes": 18438,
+      "etag": "W/\"80d8107f1dbac5184f8b3a5eddf57418c42325a4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641027:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionchain.md",
+      "retrieved_at": "2026-09-30T09:24:35.681967+00:00",
+      "sha256": "5b3970620afedda61e9e4c7395699aeb00be9534be8a21c5c2f9c5c85a6d2c5e",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionchain.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6325,
+      "etag": "W/\"41818290161b3d0abac4c826c81814d97ea0df10-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626199:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optiondonotexercise-1.md",
+      "retrieved_at": "2026-09-30T09:24:36.184118+00:00",
+      "sha256": "5c2a375fae26771259dc7228a53e75d84385af753be28aa1130df73ffc35cc82",
+      "source_url": "https://docs.alpaca.markets/us/reference/optiondonotexercise-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4712,
+      "etag": "W/\"c4af668f316ae4c5688ad056543183d5e0b406b2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646842:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optiondonotexercise.md",
+      "retrieved_at": "2026-09-30T09:24:36.430478+00:00",
+      "sha256": "66f84ec734d50fb7eb41a9e17fb7e0aafccbc65455d7b4ffcf9d9563a2e79793",
+      "source_url": "https://docs.alpaca.markets/us/reference/optiondonotexercise.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6841,
+      "etag": "W/\"3fef2ff97ee81067557e94e160e9407695d4cba5-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626207:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionexercise-1.md",
+      "retrieved_at": "2026-09-30T09:24:36.847672+00:00",
+      "sha256": "3fc17ba381502bf5db33e491a0152498002cabb1ff0c1eb425788d3651ab477e",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionexercise-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5180,
+      "etag": "W/\"6f72c67f6336afe9cd0ef0bc4b20363207ee5e8f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646850:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionexercise.md",
+      "retrieved_at": "2026-09-30T09:24:37.132373+00:00",
+      "sha256": "c8d7f033377df7df3e7c15d91425d90c940a57edb6d1a051d855841bf13c7616",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionexercise.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9723,
+      "etag": "W/\"8c387d64d20d866a865e454470b9c7d7db2d7917-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641010:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionlatestquotes.md",
+      "retrieved_at": "2026-09-30T09:24:37.444216+00:00",
+      "sha256": "140046c772f6665e5a066c365ea3fd02d72b81ad41fbfea32ed65282c313e96d",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionlatestquotes.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8648,
+      "etag": "W/\"850901cc34375da738fb9f8f2573ce33d5d52743-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641043:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionlatesttrades.md",
+      "retrieved_at": "2026-09-30T09:24:37.810775+00:00",
+      "sha256": "b40b70f3f13153f5287ec7ba07e3f5b2a5813695c6bd1a8b589199ff0b35cb38",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionlatesttrades.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6182,
+      "etag": "W/\"ad010e64713d11e124997ea7e5d5b5756877bde5-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640993:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionmetaconditions.md",
+      "retrieved_at": "2026-09-30T09:24:38.175900+00:00",
+      "sha256": "e820ba876ac80479c5000b1c368bac24933f8d8c0807a42a9aa0543ca37dd080",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionmetaconditions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5804,
+      "etag": "W/\"b5ba924dc043601f72c74e88ce2bcac320d408bf-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641000:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionmetaexchanges.md",
+      "retrieved_at": "2026-09-30T09:24:38.519513+00:00",
+      "sha256": "540e2b13e4c34890e3f89790b6eafdaad910e8b46cfa2f4f51284a5ac933799d",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionmetaexchanges.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16287,
+      "etag": "W/\"b050d0e2a7fa199121bcaf6114b386de91b767bd-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641019:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optionsnapshots.md",
+      "retrieved_at": "2026-09-30T09:24:38.884458+00:00",
+      "sha256": "b32b89056e71e58d7927260fa016e2889ffce48f98c8442bc4b4847052965f42",
+      "source_url": "https://docs.alpaca.markets/us/reference/optionsnapshots.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13587,
+      "etag": "W/\"bbe47c1e897e7329fd92f65d73ee83f3d1ef3ce2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641035:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/optiontrades.md",
+      "retrieved_at": "2026-09-30T09:24:39.322895+00:00",
+      "sha256": "48a5dcca1ae35fecc13262842d7da4c616e2e6d9482082b4459bd24e37e60e45",
+      "source_url": "https://docs.alpaca.markets/us/reference/optiontrades.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4700,
+      "etag": "W/\"26ff500a6a1b5fa6f9e975fa1809ff9069eb0447-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626066:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/patch-patch-v1-trading-accounts-account_id-account-configurations.md",
+      "retrieved_at": "2026-09-30T09:24:39.633433+00:00",
+      "sha256": "43a5ac33e6e6b80a30a54e3d9f6ca306bc928445aa7ca2cbcdc11c400274c846",
+      "source_url": "https://docs.alpaca.markets/us/reference/patch-patch-v1-trading-accounts-account_id-account-configurations.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3979,
+      "etag": "W/\"4baa3a2b22be534c492a855b7c429dbf308b2043-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625294:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/patch-v1-accounts-account_id-onfido-sdk.md",
+      "retrieved_at": "2026-09-30T09:24:40.037237+00:00",
+      "sha256": "6832c5e734fd66463cc5f1fe452bd15e20211b72f5dff096b5f3d45db74e9138",
+      "source_url": "https://docs.alpaca.markets/us/reference/patch-v1-accounts-account_id-onfido-sdk.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9760,
+      "etag": "W/\"b895d087ee6030b4b09cdac4f42d16968a7c3226-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625951:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/patch-v1-rebalancing-portfolios-portfolio_id.md",
+      "retrieved_at": "2026-09-30T09:24:40.334098+00:00",
+      "sha256": "a8522b99c7a62e6d3bae15959e961a52668694ef670ecb02bfac3414f104543e",
+      "source_url": "https://docs.alpaca.markets/us/reference/patch-v1-rebalancing-portfolios-portfolio_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 61546,
+      "etag": "W/\"9c0e19b276cadaf4d46c6a21d342355ec65401a4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625198:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/patchaccount.md",
+      "retrieved_at": "2026-09-30T09:24:40.671340+00:00",
+      "sha256": "9509b298fc899638be86a40da22bc065bc1b410fffd9c82edfbd8c6a5ee7f1b0",
+      "source_url": "https://docs.alpaca.markets/us/reference/patchaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 4496,
+      "etag": "W/\"5a842a26e6386828ee8fd7332683d36e9df0d5d9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646670:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/patchaccountconfig-1.md",
+      "retrieved_at": "2026-09-30T09:24:40.982443+00:00",
+      "sha256": "32fc217c28c70f912e49c0bb968bef23b1636f7bffa36c017041284747a42ed5",
+      "source_url": "https://docs.alpaca.markets/us/reference/patchaccountconfig-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 37220,
+      "etag": "W/\"82b279bff984f76414f8ea8b47a8e29424bb895f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646796:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/patchorderbyorderid-1.md",
+      "retrieved_at": "2026-09-30T09:24:41.364642+00:00",
+      "sha256": "d3afa4fdbd7b7b2dc05cf48788f9be7d20c71d768983da4831ee78ef10fc8226",
+      "source_url": "https://docs.alpaca.markets/us/reference/patchorderbyorderid-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 2659,
+      "etag": "W/\"eb6c59e1e91a144dd93a4720d6657635a3bcd13a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625233:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-accounts-account_id-actions-close.md",
+      "retrieved_at": "2026-09-30T09:24:41.727826+00:00",
+      "sha256": "f4aa0ec20bbd3eba2896897c2a890b2b354d0f34c3abf5c9ac37f3d67b355ae8",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-accounts-account_id-actions-close.md",
+      "status": "added"
+    },
+    {
+      "bytes": 19687,
+      "etag": "W/\"a6bbd10d977a68a831c1e13ec3a8c2d4a02fb1b3-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625251:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-accounts-account_id-cip.md",
+      "retrieved_at": "2026-09-30T09:24:42.051849+00:00",
+      "sha256": "176359e6415f05f2eeb3eec47c2f07ae1301de6cb0b6a895f32d9557d00e7bf4",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-accounts-account_id-cip.md",
+      "status": "added"
+    },
+    {
+      "bytes": 8948,
+      "etag": "W/\"91b25ff17fdea7acc954c5d35b8f8173608a9584-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625769:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-instant-funding-settlements.md",
+      "retrieved_at": "2026-09-30T09:24:42.384106+00:00",
+      "sha256": "5b5cb5c3b962411f8e91bc745335fbe470c30bb292910a58963e6d7f0d69bdb7",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-instant-funding-settlements.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11029,
+      "etag": "W/\"6997bfadbc052d053321e85737c89afc7eca48eb-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625707:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-instant-funding.md",
+      "retrieved_at": "2026-09-30T09:24:42.962609+00:00",
+      "sha256": "36176591483659267485a4ea051da147860565bdbaaae45d519af32ed4df0b53",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-instant-funding.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9340,
+      "etag": "W/\"71536fdf53cf122f8a00b8aa8775669f11f724ee-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625809:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-jit-settlements.md",
+      "retrieved_at": "2026-09-30T09:24:43.169225+00:00",
+      "sha256": "6e20ccc38b9b3c7cf16a769aea1c3e568c5c36aac70433f4ecd8d6413fe75377",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-jit-settlements.md",
+      "status": "added"
+    },
+    {
+      "bytes": 14111,
+      "etag": "W/\"ad81a9b8d40d39abe620d6854375592a18cb16cb-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625868:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-journals-reverse_batch.md",
+      "retrieved_at": "2026-09-30T09:24:43.432878+00:00",
+      "sha256": "ecbce2fea619fac6fd9da538e076e48e9e58ef8422bdd1d4518e14633864753c",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-journals-reverse_batch.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9523,
+      "etag": "W/\"22332cdced53ed8369bc43ecbdd278a43cc54ed9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625925:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-rebalancing-portfolios.md",
+      "retrieved_at": "2026-09-30T09:24:43.836547+00:00",
+      "sha256": "5fa3deca7857ce2148cbfe17d76a2457b57a9d411aa74c4a866ae315f046fbcf",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-rebalancing-portfolios.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7062,
+      "etag": "W/\"ea053f3871bbfb7a7aa88320a97de6a4f589e50f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625967:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-rebalancing-runs.md",
+      "retrieved_at": "2026-09-30T09:24:44.182759+00:00",
+      "sha256": "413df48c8f3228d49c4b2a47d498b25a425b4cc676df6d92bfba0872c2c51f8d",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-rebalancing-runs.md",
+      "status": "added"
+    },
+    {
+      "bytes": 3573,
+      "etag": "W/\"473f5ebd74064f62b8003038b97779b9709c1ff7-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626001:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-rebalancing-subscriptions.md",
+      "retrieved_at": "2026-09-30T09:24:44.514582+00:00",
+      "sha256": "ebe7784a8a7aa16be5997c770c52f74d942d5f4bdd865e60493c7c76b9b60266",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-rebalancing-subscriptions.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11449,
+      "etag": "W/\"cdac23c94f38ca01760012dbdb7ebc1f07d63c3b-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626250:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/post-v1-trading-accounts-account_id-watchlists-watchlist_id.md",
+      "retrieved_at": "2026-09-30T09:24:44.840008+00:00",
+      "sha256": "74cf3857858e081f787973dfc2f0fc04290bb4f990870f9777b7d42c156b4139",
+      "source_url": "https://docs.alpaca.markets/us/reference/post-v1-trading-accounts-account_id-watchlists-watchlist_id.md",
+      "status": "added"
+    },
+    {
+      "bytes": 44903,
+      "etag": "W/\"1a3a42e59de6f6f46b2ffdb838168c998456e502-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646772:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/postorder.md",
+      "retrieved_at": "2026-09-30T09:24:45.129541+00:00",
+      "sha256": "d98812d28fd814cc3dd128357ce465fb849e9ad236184bd1ab41eda63bca7a64",
+      "source_url": "https://docs.alpaca.markets/us/reference/postorder.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12396,
+      "etag": "W/\"b7e62d965f4a8e4c6a208095d7af27130e818d86-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625350:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/posttokenizationcallbackmint.md",
+      "retrieved_at": "2026-09-30T09:24:45.548965+00:00",
+      "sha256": "7aadab6dfbe4bd2d6670f37a03de4e5ca990bfb155f4dff2aaa806cbd49c68b5",
+      "source_url": "https://docs.alpaca.markets/us/reference/posttokenizationcallbackmint.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10415,
+      "etag": "W/\"680cbcf90753c81c0570dfda24091ff5acc41ae8-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646858:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/posttokenizationmint.md",
+      "retrieved_at": "2026-09-30T09:24:45.871256+00:00",
+      "sha256": "37ebd5d55c094303891db6916fb93659d3c4e72d1e77dcd8b4079a3d772bad23",
+      "source_url": "https://docs.alpaca.markets/us/reference/posttokenizationmint.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10782,
+      "etag": "W/\"3f5df23f32e2b43ea2277a6932f9a2b39d538cad-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625367:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/posttokenizationmintbroker.md",
+      "retrieved_at": "2026-09-30T09:24:46.253900+00:00",
+      "sha256": "14bcfbf118f739a71f0a9bc1eac141804d89877d425bac1f143ca4717361ae3b",
+      "source_url": "https://docs.alpaca.markets/us/reference/posttokenizationmintbroker.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13680,
+      "etag": "W/\"82d58c512df7e79f0f3eb20edd3a092955490464-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625359:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/posttokenizationredeem.md",
+      "retrieved_at": "2026-09-30T09:24:46.635237+00:00",
+      "sha256": "9a1b99520fa83fcc0bfb69071a5c152d32213d5b1a2d3a06feec1d98f96b5f58",
+      "source_url": "https://docs.alpaca.markets/us/reference/posttokenizationredeem.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13300,
+      "etag": "W/\"7597d26774ffa81face36c4ad7d557067a430bb1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646978:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/postwatchlist-1.md",
+      "retrieved_at": "2026-09-30T09:24:46.913083+00:00",
+      "sha256": "083aa5d897230602ded36a9e41ddacf80aad4ef79bd74f6cc5458c25e3715b7e",
+      "source_url": "https://docs.alpaca.markets/us/reference/postwatchlist-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5498,
+      "etag": "W/\"7e6f78da857cc33db3e41c288f16fed35f2d7354-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625628:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/querycountryinfos.md",
+      "retrieved_at": "2026-09-30T09:24:47.281647+00:00",
+      "sha256": "cc37229e7b58c79477148ef8706df612982c7390296a952f17d53a7c4f045fb5",
+      "source_url": "https://docs.alpaca.markets/us/reference/querycountryinfos.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13780,
+      "etag": "W/\"47644e9f573f38a0f0e650af6f20fb6476c4848d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640960:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/rates-1.md",
+      "retrieved_at": "2026-09-30T09:24:47.628163+00:00",
+      "sha256": "75bbb08eef5276cca0ca58bb9fea2ab48eb9947507ab2d455e020a1c2f4d9148",
+      "source_url": "https://docs.alpaca.markets/us/reference/rates-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 12808,
+      "etag": "W/\"bb5e5c69161139c9c6be34da10aa4ebb3646cb49-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647019:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/removeassetfromwatchlist-1.md",
+      "retrieved_at": "2026-09-30T09:24:47.987902+00:00",
+      "sha256": "efc2f6b62d1652e0cbb40ff326d9528c063790c7bdbd3042c09327ef4f3255df",
+      "source_url": "https://docs.alpaca.markets/us/reference/removeassetfromwatchlist-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 41349,
+      "etag": "W/\"cbe3b4790b0027867c62eca5586b63add89ac25d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626139:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/replaceorderforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:48.327106+00:00",
+      "sha256": "177ec162119888c9782c2e06ec30220ce1bf977689cef497f90c1b8670f847cc",
+      "source_url": "https://docs.alpaca.markets/us/reference/replaceorderforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11828,
+      "etag": "W/\"9dae3dbe440aea0dbbc3cf5b3a4063ca51c35a4d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626258:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/replacewatchlistforaccountbyid.md",
+      "retrieved_at": "2026-09-30T09:24:48.690677+00:00",
+      "sha256": "5269e982f7ccaadb044f3af3cdc1984343de801bb2c6568feb66c6aa5f148a25",
+      "source_url": "https://docs.alpaca.markets/us/reference/replacewatchlistforaccountbyid.md",
+      "status": "added"
+    },
+    {
+      "bytes": 19558,
+      "etag": "W/\"9a2a6559c0a011049db9f20e311c152c09e4e5e0-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625113:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/requestacatstransfer.md",
+      "retrieved_at": "2026-09-30T09:24:49.113426+00:00",
+      "sha256": "5c761c275bd159084bc805735e6cf289e39a292ebed6d29532003668a136f59b",
+      "source_url": "https://docs.alpaca.markets/us/reference/requestacatstransfer.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9944,
+      "etag": "W/\"337b2fd3448b3a46dfe585e7e2a48fb010a66e43-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625525:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/requestlistoptionsapprovals.md",
+      "retrieved_at": "2026-09-30T09:24:49.403138+00:00",
+      "sha256": "04031f37173cf528db1a400d13ff8a8a5ab86a65cd0e6d7e3dc9756fccae012c",
+      "source_url": "https://docs.alpaca.markets/us/reference/requestlistoptionsapprovals.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7785,
+      "etag": "W/\"911be4d792a24ffd5279e84f1bd1fa9209791305-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625315:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/requestoptionsforaccount.md",
+      "retrieved_at": "2026-09-30T09:24:49.742490+00:00",
+      "sha256": "a54fdc7b3177f411234d2a4ea698433b78aeba21bd4be4cbd61707542d6a54a9",
+      "source_url": "https://docs.alpaca.markets/us/reference/requestoptionsforaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7423,
+      "etag": "W/\"79c636264c3b0d038ac374014b2f29a07c58cd34-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646935:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/searchvasps-1.md",
+      "retrieved_at": "2026-09-30T09:24:50.092954+00:00",
+      "sha256": "5c0db6b092b167e91086a3b9b1540539fa7739ebb4d70800468ac1342685d8a8",
+      "source_url": "https://docs.alpaca.markets/us/reference/searchvasps-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 7332,
+      "etag": "W/\"01af5a03a7f43b31ab05700e89946ec7be0503ea-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626316:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/searchvasps.md",
+      "retrieved_at": "2026-09-30T09:24:50.458406+00:00",
+      "sha256": "f4c872e1a81d315fcba8bba9e6f1ee586ccd6a35e54c09c12a589f379b859d71",
+      "source_url": "https://docs.alpaca.markets/us/reference/searchvasps.md",
+      "status": "added"
+    },
+    {
+      "bytes": 21702,
+      "etag": "W/\"792b4267b8679dddf0dd5f18cbc753e06bd774c8-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641209:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockauctions-1.md",
+      "retrieved_at": "2026-09-30T09:24:50.773486+00:00",
+      "sha256": "8a6e8687094bbcb554805ede303a28743638e23b607bca311b2068d1691f56d2",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockauctions-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16391,
+      "etag": "W/\"b46318ed49cbed09964d7ce971099b14d1977a20-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641143:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockauctionsingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:51.087961+00:00",
+      "sha256": "c7be978d16000e89e6dc5bf7167166a3c65bb2607aa707667e96748f85aee777",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockauctionsingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17585,
+      "etag": "W/\"3bde057a0939c5c2e03475306e65da2ea0dd9bde-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641217:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockbars.md",
+      "retrieved_at": "2026-09-30T09:24:51.497409+00:00",
+      "sha256": "ce83070b28337c8e9cdaf7d734ff4fd91d23e0bc6b1979548e63de9fdfe7f722",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockbars.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16740,
+      "etag": "W/\"89fba471d00ee7380316433059fdd735de12bb53-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641151:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockbarsingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:51.835627+00:00",
+      "sha256": "18630a590df093ac1d85d6e176499f5f913e1e2bec3e1c56bdb123bb8902b0fe",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockbarsingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10270,
+      "etag": "W/\"e525f5b12ca64d64dd4907d3df318d15ffffa21d-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641225:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocklatestbars-1.md",
+      "retrieved_at": "2026-09-30T09:24:52.177712+00:00",
+      "sha256": "ae3e15be798aac87caf84617ca785680e5d75bf7439119b324cb8317c986bd25",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocklatestbars-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9868,
+      "etag": "W/\"169a767e95dc3f2d3419f74cc5e8b5b7a5f2bdf9-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641159:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocklatestbarsingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:52.607700+00:00",
+      "sha256": "9eb91fa565eeebfc64a2150dad011630fc03d345400e0871095e6865b6cbe1c4",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocklatestbarsingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11415,
+      "etag": "W/\"804db06034d94fb446df2402287a1419b1bc15c4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641256:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocklatestquotes-1.md",
+      "retrieved_at": "2026-09-30T09:24:52.870410+00:00",
+      "sha256": "2e064b05794d70263e0d86d3abce6c4d7737945e7808b79b912cd00b9ac121d4",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocklatestquotes-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10913,
+      "etag": "W/\"162006ffe840790d6462e925d95cfd69f41ea74f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641176:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocklatestquotesingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:53.272471+00:00",
+      "sha256": "3b2c291e1812c95677cb9934c70c25b7a150c2f61996893177b38e0fe4fe7c61",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocklatestquotesingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11263,
+      "etag": "W/\"1d5da32fdb786b4c3064819cf5dfba9f1d0d0ec4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641279:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocklatesttrades-1.md",
+      "retrieved_at": "2026-09-30T09:24:53.670118+00:00",
+      "sha256": "b3020aeafaa20e5b74b63500ca598a49164b17578e4d2e46f7224c8c71399bcc",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocklatesttrades-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11208,
+      "etag": "W/\"d2f9b649aff86302c49aa7307dc4a9a8102654a4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641200:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocklatesttradesingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:53.969914+00:00",
+      "sha256": "97ae8dc8cb8986ef7247502356b4c7c06e771554352ee8163dfb5d3a89b13a93",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocklatesttradesingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6464,
+      "etag": "W/\"f9a9c1a07eda102dddbe1b37c024f25ac34aced1-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641232:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockmetaconditions-1.md",
+      "retrieved_at": "2026-09-30T09:24:54.250069+00:00",
+      "sha256": "45108001ad39ce8188f1416e913c1dfe759cc655dbd34bc1af87147638a203a3",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockmetaconditions-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 5780,
+      "etag": "W/\"7d3030ce80192aef983aecad5d8e584c12fd41e2-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641240:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockmetaexchanges-1.md",
+      "retrieved_at": "2026-09-30T09:24:54.615836+00:00",
+      "sha256": "e1912b8a9f105039940e68167ec9e0d5b17b3c1b93a3799c1407449da1507739",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockmetaexchanges-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17723,
+      "etag": "W/\"6d028a51110119c53f72c6e447e00dc57667cbd4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641248:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockquotes-1.md",
+      "retrieved_at": "2026-09-30T09:24:54.953736+00:00",
+      "sha256": "d408356bc3fc73d19fbab43a01501f05d1e888da60e21a03460cd3d2d7696cd9",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockquotes-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16822,
+      "etag": "W/\"cd66b20c364ef0e5a9aa49974ff89cb7d69d33c6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641167:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stockquotesingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:55.381073+00:00",
+      "sha256": "82feb537497fb2f1518dd921987831780239e6e798ae225b15ccaaacb697a9a8",
+      "source_url": "https://docs.alpaca.markets/us/reference/stockquotesingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 18966,
+      "etag": "W/\"b710c875ae882a3386243f6acebe59f8515f9871-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641264:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocksnapshots-1.md",
+      "retrieved_at": "2026-09-30T09:24:55.780905+00:00",
+      "sha256": "8d17528e41b4a54e2ead9f43d8fc7b2901016541c02442376de653d9a1ca7969",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocksnapshots-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16886,
+      "etag": "W/\"cf4ba15b3906530610c2d8dcc7ae2ccac392c404-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641183:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocksnapshotsingle.md",
+      "retrieved_at": "2026-09-30T09:24:56.117482+00:00",
+      "sha256": "c7449fa9ea80224f78db461f4793020ea478e409c9e2ae4d79c2502fd6f83a4a",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocksnapshotsingle.md",
+      "status": "added"
+    },
+    {
+      "bytes": 17450,
+      "etag": "W/\"cdb92e45b252fd9b8c2946953dbcb82a94d50840-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641271:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocktrades-1.md",
+      "retrieved_at": "2026-09-30T09:24:56.403716+00:00",
+      "sha256": "492986a54cd1a0c12a9f7e88d2b0b15c396b605f30fbb96b3f516f7e8b48113a",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocktrades-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16500,
+      "etag": "W/\"65b708da44e9b5ff3cf2ed3513879010c9a6e3e4-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711641192:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/stocktradesingle-1.md",
+      "retrieved_at": "2026-09-30T09:24:56.725127+00:00",
+      "sha256": "da815f9a3bd4eb315e78d66676cbf7a558d332cc1d85b4fc3ef489ebe3f97f68",
+      "source_url": "https://docs.alpaca.markets/us/reference/stocktradesingle-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 24366,
+      "etag": "W/\"3f630ccbdc776b0b01182711656f91a11583e700-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625636:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetoaccountstatussse.md",
+      "retrieved_at": "2026-09-30T09:24:57.270847+00:00",
+      "sha256": "861fa76ef705f2932af5f5166809fc7750c894c67c3e645824b78ca9e9625f10",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetoaccountstatussse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 75573,
+      "etag": "W/\"d09f324569d29a236b3068e9d57aa846f73edf75-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626334:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetoactivitiessse-1.md",
+      "retrieved_at": "2026-09-30T09:24:57.543084+00:00",
+      "sha256": "6488fe24bc8ff5c26aadddf910f7c5d025e3be75f575f97012b7ce89ab73342f",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetoactivitiessse-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 75699,
+      "etag": "W/\"f00f3252d908452f5bdc014bf8765e422c2b4a60-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646629:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetoactivitiessse.md",
+      "retrieved_at": "2026-09-30T09:24:57.800242+00:00",
+      "sha256": "d303125cd959dd367ee6a78095d430fa1167eb0b930df9eeec6bb253b89a874f",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetoactivitiessse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 16077,
+      "etag": "W/\"98e4558cd6337319f41984066bcbd41ac8d0c1ed-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626369:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetoadminactionsse.md",
+      "retrieved_at": "2026-09-30T09:24:58.296833+00:00",
+      "sha256": "a7d4b68c423d7dae58190fc3a59383572adfdf61f11a1f1efbecba08dc7f1add",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetoadminactionsse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 96409,
+      "etag": "W/\"fdea3729f187e65d1674a671dd885d19ed9bad38-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711640923:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetocorporateactionseventssse.md",
+      "retrieved_at": "2026-09-30T09:24:58.468356+00:00",
+      "sha256": "123a2f137025c09e8e616b38dc22725dc1edcb370f31251b604258a4cc6ab3c2",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetocorporateactionseventssse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 9405,
+      "etag": "W/\"fd69d8fada9b77552632b5cfe5152e3af701c26a-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626377:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetofundingstatussse.md",
+      "retrieved_at": "2026-09-30T09:24:58.984248+00:00",
+      "sha256": "3608d66bd33161039ee1835356312975a8d19ad42ceb074b0142c19346cccb0b",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetofundingstatussse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 18332,
+      "etag": "W/\"1bc0f61d6297f8a9212d88b0caff80df05c5ed6c-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626386:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetoipoeventssse.md",
+      "retrieved_at": "2026-09-30T09:24:59.220844+00:00",
+      "sha256": "e096ae739e9a337cb9f752855a66bbee42da4c9e91c469bd263953084640fd29",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetoipoeventssse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11641,
+      "etag": "W/\"69aa1285e7e2500e513a86ed422aa9071ba5947e-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625645:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetojournalstatussse.md",
+      "retrieved_at": "2026-09-30T09:24:59.581026+00:00",
+      "sha256": "d2b38365813889229f6c1e09d116d6a60083590ba704413c61e178fa792c12a6",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetojournalstatussse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11661,
+      "etag": "W/\"7b9e8d358d3704b12c49e53f81cf06b6f88413d6-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626394:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetojournalstatusv2sse.md",
+      "retrieved_at": "2026-09-30T09:24:59.967452+00:00",
+      "sha256": "13940243b80205ad056a5b9a741f25bc9fdcabc378692d4942f19b50ade20ef2",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetojournalstatusv2sse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 6900,
+      "etag": "W/\"3298f3b8a6a6400a8c9d730e4e3e7f43f8ff7466-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626402:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetosystemeventv2sse.md",
+      "retrieved_at": "2026-09-30T09:25:00.244697+00:00",
+      "sha256": "900157309f238be8a6c26db86f026ad5a353c80184483d5f8c4bae01f6d2e20b",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetosystemeventv2sse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 56833,
+      "etag": "W/\"b7b712239e59a49e55f8ed8e5e80569e5fb77308-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711626411:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetotradev2sse.md",
+      "retrieved_at": "2026-09-30T09:25:00.702948+00:00",
+      "sha256": "44da49ec711224ef7920d06bd1300e3bd2523ac87b51d75db0b9d2d440c804ab",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetotradev2sse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11392,
+      "etag": "W/\"73596d4e499639fbecbee639cdd72bbfa7173b0f-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625662:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/subscribetotransferstatussse.md",
+      "retrieved_at": "2026-09-30T09:25:01.038520+00:00",
+      "sha256": "5f6f54a3f44384b391091548aa74ab118f1a3513d947106c2d855cc1c52ac997",
+      "source_url": "https://docs.alpaca.markets/us/reference/subscribetotransferstatussse.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13664,
+      "etag": "W/\"c2b6524afa46c29af83dd26f7c1c903a9b9fd707-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647011:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/updatewatchlistbyid-1.md",
+      "retrieved_at": "2026-09-30T09:25:01.328288+00:00",
+      "sha256": "261916c0c50d4ca027e1c3f5aaf2617dec32261c341c60f798c441d29269384b",
+      "source_url": "https://docs.alpaca.markets/us/reference/updatewatchlistbyid-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 13657,
+      "etag": "W/\"0e49cbfb0043c9b0e8c49625080bc3fe25932545-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711647051:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/updatewatchlistbyname-1.md",
+      "retrieved_at": "2026-09-30T09:25:01.649370+00:00",
+      "sha256": "e0d521824e20fff824a73a65ef61fda5cc7b2fa9e942ba346f9cd538d4c3698a",
+      "source_url": "https://docs.alpaca.markets/us/reference/updatewatchlistbyname-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 15160,
+      "etag": "W/\"bed5d17c6573b45f3cb59b7c067e89014cf34525-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711646963:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/updatewhitelistedaddresstravelruleinfo-1.md",
+      "retrieved_at": "2026-09-30T09:25:01.983274+00:00",
+      "sha256": "74cadc6b8ff1d280651c66a14090828de95851047e1843ef67ecc406349388b5",
+      "source_url": "https://docs.alpaca.markets/us/reference/updatewhitelistedaddresstravelruleinfo-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 15431,
+      "etag": "W/\"d55ab25da1bbf288c3bd8ecab26658287feae678-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625490:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/updatewhitelistedaddresstravelruleinfo.md",
+      "retrieved_at": "2026-09-30T09:25:02.408286+00:00",
+      "sha256": "e7dc1f1318079bddae16caa3609ae80fa80d91a232fe1e6275f20831109d6f76",
+      "source_url": "https://docs.alpaca.markets/us/reference/updatewhitelistedaddresstravelruleinfo.md",
+      "status": "added"
+    },
+    {
+      "bytes": 11420,
+      "etag": "W/\"998d2834a9f6d6aaa3bc4f715c8cd6530a75be79-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625278:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/uploaddoctoaccount.md",
+      "retrieved_at": "2026-09-30T09:25:02.738463+00:00",
+      "sha256": "80b25ede543e45501579dd9e3f7cf31fb5a0224c03eee7832a157e2e952960e3",
+      "source_url": "https://docs.alpaca.markets/us/reference/uploaddoctoaccount.md",
+      "status": "added"
+    },
+    {
+      "bytes": 21513,
+      "etag": "W/\"7afffe6668ca8b987873b48c8b13e91aa31f2a56-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625569:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/uscorporates-1.md",
+      "retrieved_at": "2026-09-30T09:25:03.062305+00:00",
+      "sha256": "0bb7a8bc49fc5c1f73c26924dfb605eae9f869d521a23d384327b2e2939a9cfe",
+      "source_url": "https://docs.alpaca.markets/us/reference/uscorporates-1.md",
+      "status": "added"
+    },
+    {
+      "bytes": 10657,
+      "etag": "W/\"432a6c093dd69e1dcf34eb33fda7ddd53f219251-dba55cacea6b4fa2bdbea7c597a8f666b443a0cb-r1-o1790711625577:expanded|0cadb8ec\"",
+      "last_modified": "",
+      "local_path": "pages/reference/ustreasuries-1.md",
+      "retrieved_at": "2026-09-30T09:25:03.392955+00:00",
+      "sha256": "64c490e38e3a237e5ab53eab04f6846ab715cc61e76515c6d850eb87417be593",
+      "source_url": "https://docs.alpaca.markets/us/reference/ustreasuries-1.md",
+      "status": "added"
+    }
+  ],
+  "failures": [],
+  "generated_at": "2026-09-30T09:25:04.266463+00:00",
+  "schema_version": 1,
+  "scope": "all-us",
+  "source_index": "https://docs.alpaca.markets/us/llms.txt"
+}
