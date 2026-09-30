@@ -1,0 +1,101 @@
+name: Sync Alpaca official docs
+
+on:
+  schedule:
+    # Every Sunday at 08:17 China Standard Time / Singapore Time (00:17 UTC).
+    - cron: "17 0 * * 0"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/sync-alpaca-docs.yml"
+      - "scripts/**"
+      - "tests/**"
+      - "Makefile"
+      - ".gitattributes"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alpaca-official-docs-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync, verify, and publish
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.13"
+
+      - name: Run offline regression tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Sync all Alpaca US Markdown docs and OpenAPI specs
+        run: >-
+          python scripts/sync_alpaca_docs.py sync
+          --output docs
+          --scope all-us
+          --workers 3
+          --min-interval 0.35
+
+      - name: Verify generated mirror
+        run: python scripts/sync_alpaca_docs.py verify --output docs
+
+      - name: Reject unexpected working-tree changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          unexpected="$(git status --porcelain=v1 --untracked-files=all | awk '{print $2}' | grep -Ev '^docs/' || true)"
+          if [[ -n "$unexpected" ]]; then
+            echo "Unexpected paths changed:" >&2
+            echo "$unexpected" >&2
+            exit 1
+          fi
+
+      - name: Write run summary
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from collections import Counter
+          from pathlib import Path
+          manifest = json.loads(Path('docs/manifest.json').read_text(encoding='utf-8'))
+          statuses = Counter(entry.get('status', 'unknown') for entry in manifest['entries'])
+          with Path(os.environ['GITHUB_STEP_SUMMARY']).open('a', encoding='utf-8') as handle:
+              handle.write('## Alpaca documentation mirror\n\n')
+              handle.write(f"- Generated at: {manifest['generated_at']}\n")
+              handle.write(f"- Indexed Markdown pages: {manifest['document_count']}\n")
+              handle.write(f"- Manifest entries: {len(manifest['entries'])}\n")
+              handle.write(f"- Status counts: {dict(sorted(statuses.items()))}\n")
+              handle.write('- OpenAPI: Trading, Market Data, Broker\n')
+          PY
+
+      - name: Commit verified documentation changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add docs
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No upstream documentation changes detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "docs: sync Alpaca official documentation"
+          git push origin HEAD:main
