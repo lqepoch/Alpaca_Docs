@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: alpaca-official-docs-sync
@@ -85,8 +86,10 @@ jobs:
               handle.write('- OpenAPI: Trading, Market Data, Broker\n')
           PY
 
-      - name: Commit verified documentation changes
+      - name: Publish verified documentation update PR
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git add docs
@@ -96,7 +99,20 @@ jobs:
             echo "No upstream documentation changes detected."
             exit 0
           fi
+
+          branch="automation/alpaca-docs-sync"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
           git commit -m "docs: sync Alpaca official documentation"
-          git push origin HEAD:main
+          git push --force origin "HEAD:refs/heads/$branch"
+
+          pr_number="$(
+            gh pr list               --repo "$GITHUB_REPOSITORY"               --base main               --head "$branch"               --state open               --json number               --jq '.[0].number // empty'
+          )"
+
+          if [[ -z "$pr_number" ]]; then
+            gh pr create               --repo "$GITHUB_REPOSITORY"               --base main               --head "$branch"               --title "docs: sync Alpaca official documentation"               --body "Automated weekly mirror update. The workflow fetched only public docs.alpaca.markets resources, verified all managed-file hashes and page mappings, and preserved upstream Markdown bytes."               --reviewer "LQ-Epoch"
+          else
+            echo "Updated existing PR #$pr_number"
+          fi
