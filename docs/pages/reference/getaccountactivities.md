@@ -201,22 +201,6 @@ Notes:
         "title": "NonTradeActivity",
         "type": "object"
       },
-      "OrderSide": {
-        "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
-        "enum": [
-          "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
-        ],
-        "example": "buy",
-        "type": "string"
-      },
       "OrderStatus": {
         "enum": [
           "new",
@@ -275,7 +259,7 @@ Notes:
             "type": "string"
           },
           "side": {
-            "$ref": "#/components/schemas/OrderSide"
+            "$ref": "#/components/schemas/TradeActivitySide"
           },
           "symbol": {
             "description": "Valid only for trading activity types. Null for non-trading activities.",
@@ -300,6 +284,17 @@ Notes:
         },
         "title": "TradeActivity",
         "type": "object"
+      },
+      "TradeActivitySide": {
+        "description": "Side of the fill on a trade activity. Includes `sell_short` when the fill short-sells. Distinct from `OrderSide`, which is only `buy` / `sell` for order requests and responses.",
+        "enum": [
+          "buy",
+          "sell",
+          "sell_short"
+        ],
+        "example": "buy",
+        "title": "TradeActivitySide",
+        "type": "string"
       }
     },
     "securitySchemes": {

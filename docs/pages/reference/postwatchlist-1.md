@@ -206,10 +206,7 @@ Create a new watchlist with initial set of assets.
               "TSLA"
             ],
             "items": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": "string"
             },
             "type": "array"
           }

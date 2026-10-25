@@ -118,7 +118,8 @@ A successful response contains an array of JNLC journal objects. If any account 
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "price": {
             "description": "The journaled security price, or null when not applicable.",
@@ -126,7 +127,8 @@ A successful response contains an array of JNLC journal objects. If any account 
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "qty": {
             "description": "The journaled security quantity, or null when not applicable.",
@@ -134,7 +136,8 @@ A successful response contains an array of JNLC journal objects. If any account 
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "settle_date": {
             "description": "The settlement date, or null until one is assigned.",
@@ -142,7 +145,8 @@ A successful response contains an array of JNLC journal objects. If any account 
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "status": {
             "$ref": "#/components/schemas/JournalStatus"
@@ -152,7 +156,8 @@ A successful response contains an array of JNLC journal objects. If any account 
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "system_date": {
             "description": "The booking-system date, or null until one is assigned.",
@@ -160,7 +165,8 @@ A successful response contains an array of JNLC journal objects. If any account 
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "to_account": {
             "description": "The account ID that received the journal.",

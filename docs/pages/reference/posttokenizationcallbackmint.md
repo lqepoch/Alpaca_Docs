@@ -67,16 +67,6 @@ This endpoint is used by the issuer to confirm the minting of tokenized assets p
             "description": "Customer's client identifier on the issuer's platform. Exactly one of `client_external_account_id` or `client_account_id` must be provided, matching the identifier used on the original mint request. The deprecated `client_id` field is still accepted as an alias for `client_external_account_id` during the deprecation window.",
             "type": "string"
           },
-          "client_id": {
-            "deprecated": true,
-            "description": "Customer's client identifier on the issuer's platform. Use `client_external_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_external_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
-          },
           "network": {
             "$ref": "#/components/schemas/TokenizationNetwork"
           },
@@ -123,16 +113,6 @@ This endpoint is used by the issuer to confirm the minting of tokenized assets p
       },
       "TokenizationRequest": {
         "properties": {
-          "account": {
-            "deprecated": true,
-            "description": "Alpaca account ID associated with this tokenization request. Use `client_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
-          },
           "client_account_id": {
             "description": "Alpaca account UUID of the Authorized Participant associated with this tokenization request",
             "format": "uuid",
@@ -159,16 +139,6 @@ This endpoint is used by the issuer to confirm the minting of tokenized assets p
           },
           "issuer": {
             "$ref": "#/components/schemas/TokenizationIssuer"
-          },
-          "issuer_account": {
-            "deprecated": true,
-            "description": "Issuer's account ID associated with this tokenization request. Use `client_external_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_external_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
           },
           "issuer_request_id": {
             "description": "Unique identifier of the tokenization request set by the issuer",

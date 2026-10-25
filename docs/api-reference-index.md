@@ -5,7 +5,7 @@
 每个官方 URL 都独立保存在与其 URL 路径对应的 `pages/reference/*.md` 文件中。
 完整 OpenAPI 契约位于 `openapi/`，页面正文和嵌入的接口说明位于 `pages/reference/`。
 
-- Reference 页面数：266
+- Reference 页面数：264
 - 快速全文查询：`rg -n -i '关键词' docs/pages docs/openapi`
 
 | API Reference | 本地文件 | 官方来源 |
@@ -23,9 +23,9 @@
 | Corporate actions | [`pages/reference/corporateactions-1.md`](pages/reference/corporateactions-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/corporateactions-1.md) |
 | Create an Account | [`pages/reference/createaccount.md`](pages/reference/createaccount.md) | [官方页面](https://docs.alpaca.markets/us/reference/createaccount.md) |
 | Create an ACH Relationship | [`pages/reference/createachrelationshipforaccount.md`](pages/reference/createachrelationshipforaccount.md) | [官方页面](https://docs.alpaca.markets/us/reference/createachrelationshipforaccount.md) |
+| Create a Signed Agreement | [`pages/reference/createagreement.md`](pages/reference/createagreement.md) | [官方页面](https://docs.alpaca.markets/us/reference/createagreement.md) |
 | Create a Batch Journal Transaction (One-to-Many) | [`pages/reference/createbatchjournal.md`](pages/reference/createbatchjournal.md) | [官方页面](https://docs.alpaca.markets/us/reference/createbatchjournal.md) |
 | Request a New Withdrawal | [`pages/reference/createcryptotransferforaccount-1.md`](pages/reference/createcryptotransferforaccount-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/createcryptotransferforaccount-1.md) |
-| Request a New Withdrawal | [`pages/reference/createcryptotransferforaccount.md`](pages/reference/createcryptotransferforaccount.md) | [官方页面](https://docs.alpaca.markets/us/reference/createcryptotransferforaccount.md) |
 | Creates a funding wallet | [`pages/reference/createfundingwallet.md`](pages/reference/createfundingwallet.md) | [官方页面](https://docs.alpaca.markets/us/reference/createfundingwallet.md) |
 | Create a recipient bank | [`pages/reference/createfundingwalletrecipientbank.md`](pages/reference/createfundingwalletrecipientbank.md) | [官方页面](https://docs.alpaca.markets/us/reference/createfundingwalletrecipientbank.md) |
 | Create a withdrawal | [`pages/reference/createfundingwalletwithdrawal.md`](pages/reference/createfundingwalletwithdrawal.md) | [官方页面](https://docs.alpaca.markets/us/reference/createfundingwalletwithdrawal.md) |
@@ -171,7 +171,6 @@
 | Get All Watchlists | [`pages/reference/getwatchlists-1.md`](pages/reference/getwatchlists-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/getwatchlists-1.md) |
 | Issue an OAuth token | [`pages/reference/issueoauthtoken.md`](pages/reference/issueoauthtoken.md) | [官方页面](https://docs.alpaca.markets/us/reference/issueoauthtoken.md) |
 | Issue tokens | [`pages/reference/issuetokens.md`](pages/reference/issuetokens.md) | [官方页面](https://docs.alpaca.markets/us/reference/issuetokens.md) |
-| Latest rates for currency pairs | [`pages/reference/latestrates-1.md`](pages/reference/latestrates-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/latestrates-1.md) |
 | Get US Market Calendar | [`pages/reference/legacycalendar-1.md`](pages/reference/legacycalendar-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/legacycalendar-1.md) |
 | Get US Market Calendar | [`pages/reference/legacycalendar.md`](pages/reference/legacycalendar.md) | [官方页面](https://docs.alpaca.markets/us/reference/legacycalendar.md) |
 | Get US Market Clock | [`pages/reference/legacyclock-1.md`](pages/reference/legacyclock-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/legacyclock-1.md) |
@@ -230,7 +229,6 @@
 | Redeem a Tokenized Asset | [`pages/reference/posttokenizationredeem.md`](pages/reference/posttokenizationredeem.md) | [官方页面](https://docs.alpaca.markets/us/reference/posttokenizationredeem.md) |
 | Create Watchlist | [`pages/reference/postwatchlist-1.md`](pages/reference/postwatchlist-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/postwatchlist-1.md) |
 | Retrieve countries information | [`pages/reference/querycountryinfos.md`](pages/reference/querycountryinfos.md) | [官方页面](https://docs.alpaca.markets/us/reference/querycountryinfos.md) |
-| Historical rates for currency pairs | [`pages/reference/rates-1.md`](pages/reference/rates-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/rates-1.md) |
 | Delete Symbol from Watchlist | [`pages/reference/removeassetfromwatchlist-1.md`](pages/reference/removeassetfromwatchlist-1.md) | [官方页面](https://docs.alpaca.markets/us/reference/removeassetfromwatchlist-1.md) |
 | Replace an Order | [`pages/reference/replaceorderforaccount.md`](pages/reference/replaceorderforaccount.md) | [官方页面](https://docs.alpaca.markets/us/reference/replaceorderforaccount.md) |
 | Update a Watchlist | [`pages/reference/replacewatchlistforaccountbyid.md`](pages/reference/replacewatchlistforaccountbyid.md) | [官方页面](https://docs.alpaca.markets/us/reference/replacewatchlistforaccountbyid.md) |

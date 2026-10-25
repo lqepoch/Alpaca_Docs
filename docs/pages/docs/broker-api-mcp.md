@@ -1,13 +1,13 @@
 ---
-updatedAt: 2026-07-16T09:00:40.000Z
+updatedAt: 2026-10-06T17:14:31.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
 ---
 
-# Broker MCP Server
+# Broker API MCP
 
-Operate, inspect, and reason over the Alpaca Broker API with AI agents — no local setup, no repo cloning, no partner-run infrastructure.
+Operate, inspect, and reason over the Alpaca Broker API with AI agents; no local setup, no repo cloning, no partner-run infrastructure.
 
 <br />
 

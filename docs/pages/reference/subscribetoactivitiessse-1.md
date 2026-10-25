@@ -187,12 +187,12 @@ An error message is sent as a comment when the server closes the connection on a
             "type": "string"
           },
           "swap_fee_bps": {
-            "description": "Currency conversion fee rate base-point in case of local currency activity",
+            "description": "Currency conversion fee in basis points charged to the customer on a trade activity. Sent when the order has a fee, including zero. Omitted on other activities.",
             "format": "decimal",
             "type": "string"
           },
           "swap_rate": {
-            "description": "Conversion rate for local currency activities",
+            "description": "Exchange rate from the execution on a trade activity. Sent when the execution has a rate, including zero. Omitted on other activities.",
             "format": "decimal",
             "type": "string"
           }
@@ -340,6 +340,9 @@ An error message is sent as a comment when the server closes the connection on a
           },
           {
             "$ref": "#/components/schemas/OCTActivityV2"
+          },
+          {
+            "$ref": "#/components/schemas/FXTRDActivityV2"
           }
         ],
         "type": "object"
@@ -391,6 +394,10 @@ An error message is sent as a comment when the server closes the connection on a
           },
           "order_status": {
             "description": "Identifies the current status of the order",
+            "type": "string"
+          },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
             "type": "string"
           },
           "side": {
@@ -1415,15 +1422,27 @@ An error message is sent as a comment when the server closes the connection on a
           },
           {
             "properties": {
-              "parent_id": {
-                "description": "The parent transaction's ID",
+              "execution_id": {
+                "description": "Execution ID. Present only for activity subtype FOT, and only when the fee has one.",
                 "format": "uuid",
+                "type": "string"
+              },
+              "order_id": {
+                "description": "Order ID. Present only for activity subtype FOT, and only when the fee has one.",
+                "format": "uuid",
+                "type": "string"
+              },
+              "parent_id": {
+                "description": "The parent transaction's ID. Present for fees with a one-to-one relationship to a parent trade (e.g. COM). Omitted for volume-based or bulk fees charged across multiple trades for a period (e.g. REG, TAF, CAT, ORF, NRV, NRC, BSWP) and for LOC fees that are not linked to a parent transaction.",
+                "format": "uuid",
+                "type": "string"
+              },
+              "swap_rate": {
+                "description": "Exchange rate on the fee. Sent when the fee has a non-zero rate.",
+                "format": "decimal",
                 "type": "string"
               }
             },
-            "required": [
-              "parent_id"
-            ],
             "type": "object"
           }
         ],
@@ -1459,6 +1478,30 @@ An error message is sent as a comment when the server closes the connection on a
           }
         ],
         "description": "Free-of-payment (FOP) transfers",
+        "type": "object"
+      },
+      "FXTRDActivityV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonNTAActivityV2"
+          },
+          {
+            "properties": {
+              "order_id": {
+                "description": "Order ID of the conversion, when the activity has one.",
+                "format": "uuid",
+                "type": "string"
+              },
+              "swap_rate": {
+                "description": "Exchange rate of the conversion. Sent when the activity has a non-zero rate.",
+                "format": "decimal",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "description": "Currency conversion.",
         "type": "object"
       },
       "FixedIncomeInterestActivityV2": {

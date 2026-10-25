@@ -20,6 +20,11 @@ Creates a withdrawal
           "desired_currency": {
             "type": "string"
           },
+          "fee_inclusive": {
+            "default": false,
+            "description": "When true, fees are deducted from `usd_amount` instead of being added on top, so the total amount debited from the account equals `usd_amount` exactly (the beneficiary receives `usd_amount` minus fees). This lets the account be drained to zero: pass the account's full available cash as `usd_amount`. The request is rejected if `usd_amount` is less than or equal to the fees. Defaults to false (fees added on top of `usd_amount`).\n",
+            "type": "boolean"
+          },
           "payment_type": {
             "$ref": "#/components/schemas/FundingDetailPaymentType"
           },
@@ -104,11 +109,11 @@ Creates a withdrawal
           },
           "original_amount": {
             "deprecated": true,
-            "description": "Deprecated. Prefer `total_amount` for the actual amount debited from the account. The amount you should expect to receive, calculated as requested amount - fees.",
+            "description": "**Deprecation notice:**\nUse `total_amount` for the actual amount debited from the account.\n\nSince: 2026-09-22\nSunset: 2026-12-21\n\n---\n\nThe amount you should expect to receive, calculated as requested amount - fees.",
             "format": "decimal",
             "type": "string",
             "x-deprecation": {
-              "reason": "Use total_amount for the actual amount debited from the account.",
+              "reason": "Use `total_amount` for the actual amount debited from the account.",
               "since": "2026-09-22",
               "sunset": "2026-12-21"
             }

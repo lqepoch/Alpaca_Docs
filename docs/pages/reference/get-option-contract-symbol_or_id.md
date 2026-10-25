@@ -187,7 +187,7 @@ Get an option contract by symbol or contract ID. The symbol or id should be pass
             "type": "string"
           },
           "amount": {
-            "description": "The deliverable amount. For cash deliverables, this is the cash amount.\nFor standard contract, this is always 100.\nThis field can be null in case the deliverable settlement is delayed and the amount is yet to be determined.\n",
+            "description": "The deliverable amount. For cash deliverables, this is the cash amount.\nFor standard contract, this is always 100.\nWhen deliverable settlement is delayed and the amount is not yet determined, this value is \"0\" and delayed_settlement is true.\n",
             "example": "100",
             "type": "string"
           },

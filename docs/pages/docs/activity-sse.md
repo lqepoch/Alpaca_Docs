@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-09-16T08:56:10.000Z
+updatedAt: 2026-09-23T13:15:33.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -116,7 +116,12 @@ For example, a `TRD` (trade fill) activity's `details` includes `order_id`, `sid
 
 The full details schema per activity type is defined in the API reference and samples are available in the last section below.
 
-For fee activities (`FEE`), `details` may include a `parent_id` field linking the fee to the specific transaction that caused it. This applies to fees with a one-to-one relationship to a parent trade (e.g., `COM`, `OCOM`). Volume-based fees charged across multiple trades for a period (e.g., `REG`, `TAF`, `CAT`, `ORF`, `NRV`, `NRC`, `BSWP`) do not include `parent_id`.
+`details.parent_id` links an activity to a related transaction (`ref_id`). It is present on:
+
+* `FEE` subtypes with a one-to-one parent trade (e.g. `COM`, `OCOM`). Volume-based fees (`REG`, `TAF`, `CAT`, `ORF`, `NRV`, `NRC`, `BSWP`) do not include it.
+* Trade-accrued `INT` / `FI`, when a parent trade `ref_id` is available. Those events also include `details.order_id`.
+
+For `INT` / `FI`, `details.interest_type` is `coupon` or `accrued`. Coupon has `rate`. Accrued on call has `price` and `accrued_interest_rate`. Trade accrued has `order_id`.
 
 ***
 
@@ -202,26 +207,26 @@ For fee activities (`FEE`), `details` may include a `parent_id` field linking th
 
 ### Fees & Interest
 
-| `activity_type` | `activity_subtype` | Description                                                                                  |
-| :-------------- | :----------------- | :------------------------------------------------------------------------------------------- |
-| `FEE`           | `REG`              | Regulatory (SEC) fee                                                                         |
-| `FEE`           | `TAF`              | Trading Activity Fee                                                                         |
-| `FEE`           | `ORF`              | Options Regulatory Fee                                                                       |
-| `FEE`           | `OCC`              | Options Clearing Corporation fee                                                             |
-| `FEE`           | `NRV`              | Non-retail venue fee                                                                         |
-| `FEE`           | `NRC`              | Non-retail commission fee                                                                    |
-| `FEE`           | `LCT`              | Local currency trading fee                                                                   |
-| `FEE`           | `COM`              | Commission                                                                                   |
-| `FEE`           | `CAT`              | Consolidated Audit Trail fee                                                                 |
-| `FEE`           | `ADR`              | ADR fee                                                                                      |
-| `FEE`           | `OCOM`             | Options commission (exercise/liquidation)                                                    |
-| `FEE`           | `BSWP`             | Banking sweep fee                                                                            |
-| `INT`           | `MGN`              | Margin interest                                                                              |
-| `INT`           | `CDT`              | Credit interest                                                                              |
-| `INT`           | `SWP`              | Sweep interest                                                                               |
-| `INT`           | `QII`              | Qualified interest income                                                                    |
-| `INT`           | `FPSL`             | Fully Paid Securities Lending interest income                                                |
-| `INT`           | `FI`               | Coupon payment on a fixed-income security or<br />Accrued interest on a full or partial call |
+| `activity_type` | `activity_subtype` | Description                                         |
+| :-------------- | :----------------- | :-------------------------------------------------- |
+| `FEE`           | `REG`              | Regulatory (SEC) fee                                |
+| `FEE`           | `TAF`              | Trading Activity Fee                                |
+| `FEE`           | `ORF`              | Options Regulatory Fee                              |
+| `FEE`           | `OCC`              | Options Clearing Corporation fee                    |
+| `FEE`           | `NRV`              | Non-retail venue fee                                |
+| `FEE`           | `NRC`              | Non-retail commission fee                           |
+| `FEE`           | `LCT`              | Local currency trading fee                          |
+| `FEE`           | `COM`              | Commission                                          |
+| `FEE`           | `CAT`              | Consolidated Audit Trail fee                        |
+| `FEE`           | `ADR`              | ADR fee                                             |
+| `FEE`           | `OCOM`             | Options commission (exercise/liquidation)           |
+| `FEE`           | `BSWP`             | Banking sweep fee                                   |
+| `INT`           | `MGN`              | Margin interest                                     |
+| `INT`           | `CDT`              | Credit interest                                     |
+| `INT`           | `SWP`              | Sweep interest                                      |
+| `INT`           | `QII`              | Qualified interest income                           |
+| `INT`           | `FPSL`             | Fully Paid Securities Lending interest income       |
+| `INT`           | `FI`               | Fixed income coupon, call accrued, or trade accrued |
 
 ### Withholding
 
@@ -720,9 +725,8 @@ Representative samples for each activity type. All identifiers have been replace
 }
 ```
 ```json INT (FI)
-// Regular coupon 
-// - has rate
-// - does not have accrued_interest_rate or price
+// Coupon
+// interest_type: coupon. Has rate.
 {
   "account_id": "<ACCID>",
   "event_id": "<EVTID>",
@@ -738,6 +742,7 @@ Representative samples for each activity type. All identifiers have been replace
   "executed_at": "2026-07-27T16:00:00Z",
   "settle_date": "2026-07-27",
   "details": {
+    "interest_type": "coupon",
     "ca_id": "<CAID>",
     "group_id": "<GRPID>",
     "entitled_qty": "205000",
@@ -752,9 +757,8 @@ Representative samples for each activity type. All identifiers have been replace
   }
 }
 
-// Accrued intereston for a full or partial call  
-// - no rate 
-// - instead has price + accrued_interest_rate
+// Accrued interest on call
+// interest_type: accrued. Has price and accrued_interest_rate.
 {
   "account_id": "<ACCID>",
   "event_id": "<EVTID>",
@@ -770,6 +774,7 @@ Representative samples for each activity type. All identifiers have been replace
   "executed_at": "2026-07-08T16:00:00Z",
   "settle_date": "2026-07-09",
   "details": {
+    "interest_type": "accrued",
     "ca_id": "<CAID>",
     "group_id": "<GRPID>",
     "entitled_qty": "10000",
@@ -782,6 +787,30 @@ Representative samples for each activity type. All identifiers have been replace
     "payment_date": "2026-07-09",
     "position_date": "2026-07-08",
     "system_date": "2026-07-09"
+  }
+}
+
+// Trade accrued
+// interest_type: accrued. Has order_id. parent_id when a parent trade ref_id is available.
+{
+  "account_id": "<ACCID>",
+  "event_id": "<EVTID>",
+  "ref_id": "<REFID>",
+  "activity_type": "INT",
+  "activity_subtype": "FI",
+  "qty": "10",
+  "price": "99.50",
+  "currency": "USD",
+  "net_amount": "12.34",
+  "status": "executed",
+  "at": "2026-09-03T16:04:08.514798Z",
+  "executed_at": "2026-09-03T16:04:00Z",
+  "settle_date": "2026-09-03",
+  "details": {
+    "interest_type": "accrued",
+    "order_id": "<ORID>",
+    "parent_id": "<PTID>",
+    "system_date": "2026-09-03"
   }
 }
 ```

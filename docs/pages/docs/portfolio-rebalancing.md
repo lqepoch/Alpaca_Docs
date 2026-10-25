@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-07-07T14:19:54.000Z
+updatedAt: 2026-10-06T19:50:03.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -7,17 +7,19 @@ agentTools:
 
 # Portfolio Rebalancing
 
-[Rebalancing API](/reference/get-v1-rebalancing-portfolios) offers investment advisors a way to easily create investment portfolios that are automatically updated to the specified cash, stock symbol percentage weights, rebalance conditions, and triggers selected. Please see below for some definitions before we jump into an overview of the rebalancing flow:
+[Rebalancing API](../reference/get-v1-rebalancing-portfolios) offers investment advisors a way to easily create investment portfolios that are automatically updated to the specified cash, stock symbol percentage weights, rebalance conditions, and triggers selected. Please see below for some definitions before we jump into an overview of the rebalancing flow:
 
 * Portfolios: An allocation containing securities and/or cash with specific weights and conditions to be met
 * Subscriptions: Accounts can be subscribed to a created portfolio and follow rebalancing events to ensure the account is kept in sync with the target portfolio
 * Runs: A run is a set of orders that will be sent for execution to achieve a goal (liquidating a specified amount to set it aside for withdrawal or doing a full rebalance to the target allocation)
 
-> 📘 Rebalancing API Resource
->
-> * [Postman Collection](https://www.postman.com/alpacamarkets/workspace/alpaca-public-workspace/folder/19455863-8fea51d0-40bf-4680-9da2-b0de1a7c8b18?ctx=documentation)
-> * [How to Get Started with Rebalancing API](https://alpaca.markets/learn/how-to-get-started-with-rebalancing-api/)
-> * [Rebalancing API Reference](/reference/get-v1-rebalancing-portfolios)
+<Callout icon="📘" theme="info">
+  ### Rebalancing API Resource
+
+  * [Postman Collection](https://www.postman.com/alpacamarkets/alpaca-us)
+  * [How to Get Started with Rebalancing API](https://alpaca.markets/learn/how-to-get-started-with-rebalancing-api/)
+  * [Rebalancing API Reference](../reference/get-v1-rebalancing-portfolios)
+</Callout>
 
 # Types of Rebalancing
 
@@ -28,7 +30,7 @@ Rebalancing API offers two types of rebalancing conditions:
 
 # Create a Portfolio
 
-To create a portfolio, use the [Create Portfolio](/reference/post-v1-rebalancing-portfolios) `POST` endpoint.
+To create a portfolio, use the [Create Portfolio](../reference/post-v1-rebalancing-portfolios) `POST` endpoint.
 
 See below see example payload to create a portfolio with a mix of cash and securities:
 
@@ -131,7 +133,7 @@ To subscribe an account to the newly created portfolio and its rebalancing condi
 
 # Check Rebalancing Events
 
-Once an account is subscribed to a portfolio, we need to wait for the first rebalancing event to happen. We can check completed rebalancing events for all accounts by using the [List All Runs endpoint](/reference/get-v1-rebalancing-runs).
+Once an account is subscribed to a portfolio, we need to wait for the first rebalancing event to happen. We can check completed rebalancing events for all accounts by using the [List All Runs endpoint](../reference/get-v1-rebalancing-runs).
 
 ```curl
 curl --location --request GET '{{HOST}}/v1/beta/rebalancing/runs?status=COMPLETED_SUCCESS' \
@@ -256,15 +258,19 @@ See example payload of a successful run:
 
 ```
 
-> 📘 Note
->
-> Cash inflows to the account (deposits, cash journals, etc.) will trigger buy trades to reduce drift.
+<Callout icon="📘" theme="info">
+  ### Note
+
+  Cash inflows to the account (deposits, cash journals, etc.) will trigger buy trades to reduce drift.
+</Callout>
 
 # Manually Trigger Rebalancing Event (Run)
 
-Rebalancing API will automatically configure systems to watch for portfolio rebalancing conditions and execute necessary orders. To execute a rebalancing run manually, please see [Create Run endpoint](/reference/post-v1-rebalancing-runs).
+Rebalancing API will automatically configure systems to watch for portfolio rebalancing conditions and execute necessary orders. To execute a rebalancing run manually, please see [Create Run endpoint](../reference/post-v1-rebalancing-runs).
 
-> 🚧 Manually executing a run is currently only allowed for accounts without an active subscription.
+<Callout icon="🚧" theme="warn">
+  ### Manually executing a run is currently only allowed for accounts without an active subscription.
+</Callout>
 
 # Portfolio Rebalance Evaluation
 
@@ -286,13 +292,13 @@ Portfolios are evaluated for potential rebalancing based on specific conditions,
 
 The system checks for the following conditions sequentially. The first condition met may trigger a rebalance (or place the portfolio in a state requiring rebalance):
 
-1. **`in_cooldown`**: Checks if the portfolio is currently within a defined cooldown period following a previous rebalance. If true, evaluation may stop here for this cycle.
-2. **`calendar`**: Checks for scheduled rebalancing based on predefined intervals:
+1. `in_cooldown`: Checks if the portfolio is currently within a defined cooldown period following a previous rebalance. If true, evaluation may stop here for this cycle.
+2. `calendar`: Checks for scheduled rebalancing based on predefined intervals:
    * Annually
    * Quarterly
    * Monthly
    * Weekly
-3. **`drift_band`**: Checks if portfolio asset allocations have deviated beyond configured thresholds:
+3. `drift_band`: Checks if portfolio asset allocations have deviated beyond configured thresholds:
    * `absolute`: Deviation measured in absolute percentage points (e.g., if target is 10%, drift triggers if allocation goes below 8% or above 12% for a 2% absolute threshold).
    * `relative`: Deviation measured relative to the target allocation percentage (e.g., if target is 10%, drift triggers if allocation goes below 9% or above 11% for a 10% relative threshold).
 
@@ -313,11 +319,9 @@ Portfolios are evaluated daily for one of two mutually exclusive processing runs
 
 For a rebalancing run to occur, there must be a minimum of $1 per asset in the portfolio.
 
-Example 1 - A portfolio that is 50% AAPL, 25% TSLA, 25% GOOGL\
-If all other rebalancing conditions and cooldown days are met, a rebalancing run would only occur with at least $1 per asset in the portfolio deposited. Anything less would not trigger a rebalance.
+Example 1 - A portfolio that is 50% AAPL, 25% TSLA, 25% GOOGL<br />If all other rebalancing conditions and cooldown days are met, a rebalancing run would only occur with at least $1 per asset in the portfolio deposited. Anything less would not trigger a rebalance.
 
-Example 2 - A portfolio that is 50% AAPL, 25% TSLA, 25% CASH\
-If all other rebalancing conditions and cooldown days are met, a rebalancing run would only occur with at least $1 per asset in the portfolio deposited. Anything less would not trigger a rebalance.
+Example 2 - A portfolio that is 50% AAPL, 25% TSLA, 25% CASH<br />If all other rebalancing conditions and cooldown days are met, a rebalancing run would only occur with at least $1 per asset in the portfolio deposited. Anything less would not trigger a rebalance.
 
 For an invest\_cash run to occur, a minimum of $10 must be deposited. For invest\_cash runs, it is possible to change the $10 USD threshold and to disable this processing run type; please reach out to a member of the Alpaca team to do this.
 
