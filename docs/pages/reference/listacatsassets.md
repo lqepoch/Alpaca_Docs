@@ -58,7 +58,7 @@ Assets are only available for partial transfers and for transfers where the deli
           },
           "isin": {
             "deprecated": true,
-            "description": "ISIN for the asset. DEPRECATED -- will be removed in a future version; use `symbol` or `cusip` instead. Temporarily returned with all assets for backward compatibility.",
+            "description": "**Deprecation notice:**\nUse `symbol` or `cusip` instead. Returned with all assets only for backward compatibility while consumers migrate.\n\nSince: 2026-08-04\nSunset: 2027-02-04\n\n---\n\nISIN for the asset.",
             "type": "string",
             "x-deprecation": {
               "reason": "Use `symbol` or `cusip` instead. Returned with all assets only for backward compatibility while consumers migrate.",
@@ -267,6 +267,7 @@ Assets are only available for partial transfers and for transfers where the deli
   ],
   "tags": [
     {
+      "description": "Endpoints for initiating and tracking ACATS transfers. Use the ACATS endpoints to create transfers and query their current state, and the [Admin Action Events Stream](#operation/subscribeToAdminActionSSE) under the **Events** group to receive real-time status updates (`acats_status_admin_event`) as a transfer moves through its lifecycle.\n",
       "name": "ACATS"
     }
   ],

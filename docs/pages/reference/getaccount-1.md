@@ -57,7 +57,10 @@ Returns your account details.
           },
           "account_number": {
             "description": "Account number.",
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "accrued_fees": {
             "description": "The fees collected.",

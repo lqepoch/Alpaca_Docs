@@ -15,6 +15,127 @@ Places a new order for the given account. An order request may be rejected if th
 {
   "components": {
     "examples": {
+      "BracketOrderResponse": {
+        "description": "A `bracket` order returned with its legs. The entry order and both legs share one `group_id`, and `group_role` identifies each order.",
+        "value": {
+          "asset_class": "us_equity",
+          "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+          "canceled_at": null,
+          "client_order_id": "5c2e8f1a-9d4b-4a7e-8c3f-6b1d0e9a2f47",
+          "created_at": "2026-09-28T14:30:12.418372Z",
+          "expired_at": null,
+          "extended_hours": false,
+          "failed_at": null,
+          "filled_at": null,
+          "filled_avg_price": null,
+          "filled_qty": "0",
+          "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+          "group_role": "entry",
+          "hwm": null,
+          "id": "b7d0e2c1-6a4f-4d3b-9e8a-2c5f1a7b9d30",
+          "legs": [
+            {
+              "asset_class": "us_equity",
+              "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+              "canceled_at": null,
+              "client_order_id": "2d7e9b41-5f3a-4c8e-a1b6-9e0d3c7f2a58",
+              "created_at": "2026-09-28T14:30:12.418372Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+              "group_role": "take_profit",
+              "hwm": null,
+              "id": "c4a9f3e8-1b2d-4e6f-8a7c-5d3e2f1b0a96",
+              "legs": null,
+              "limit_price": "170",
+              "notional": null,
+              "order_class": "bracket",
+              "order_type": "limit",
+              "position_intent": "sell_to_close",
+              "qty": "10",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "sell",
+              "source": null,
+              "status": "held",
+              "stop_price": null,
+              "submitted_at": "2026-09-28T14:30:12.402119Z",
+              "subtag": null,
+              "symbol": "AAPL",
+              "time_in_force": "gtc",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "limit",
+              "updated_at": "2026-09-28T14:30:12.418372Z"
+            },
+            {
+              "asset_class": "us_equity",
+              "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+              "canceled_at": null,
+              "client_order_id": "8a4c1f6e-3b9d-4e2a-b7c5-1f0e9d8a6b34",
+              "created_at": "2026-09-28T14:30:12.418372Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+              "group_role": "stop_loss",
+              "hwm": null,
+              "id": "e2f8b1a6-7c3d-4a5e-9b8f-0d1c6a4e3b72",
+              "legs": null,
+              "limit_price": null,
+              "notional": null,
+              "order_class": "bracket",
+              "order_type": "stop",
+              "position_intent": "sell_to_close",
+              "qty": "10",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "sell",
+              "source": null,
+              "status": "held",
+              "stop_price": "140",
+              "submitted_at": "2026-09-28T14:30:12.402119Z",
+              "subtag": null,
+              "symbol": "AAPL",
+              "time_in_force": "gtc",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "stop",
+              "updated_at": "2026-09-28T14:30:12.418372Z"
+            }
+          ],
+          "limit_price": "150",
+          "notional": null,
+          "order_class": "bracket",
+          "order_type": "limit",
+          "position_intent": "buy_to_open",
+          "qty": "10",
+          "replaced_at": null,
+          "replaced_by": null,
+          "replaces": null,
+          "side": "buy",
+          "source": null,
+          "status": "accepted",
+          "stop_price": null,
+          "submitted_at": "2026-09-28T14:30:12.402119Z",
+          "subtag": null,
+          "symbol": "AAPL",
+          "time_in_force": "gtc",
+          "trail_percent": null,
+          "trail_price": null,
+          "type": "limit",
+          "updated_at": "2026-09-28T14:30:12.418372Z"
+        }
+      },
       "CryptoOrderResponse": {
         "value": {
           "asset_class": "crypto",
@@ -590,6 +711,15 @@ Places a new order for the given account. An order request may be rejected if th
             "minLength": 1,
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "type": [
@@ -693,10 +823,7 @@ Places a new order for the given account. An order request may be rejected if th
           },
           "submitted_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "symbol": {
             "description": "Asset symbol, required for all order classes except for `mleg`",
@@ -725,10 +852,7 @@ Places a new order for the given account. An order request may be rejected if th
           },
           "updated_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "required": [
@@ -751,6 +875,17 @@ Places a new order for the given account. An order request may be rejected if th
         ],
         "example": "bracket",
         "title": "OrderClass",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -816,6 +951,15 @@ Places a new order for the given account. An order request may be rejected if th
             "description": "Filled quantity",
             "minLength": 1,
             "type": "string"
+          },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
           },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
@@ -913,10 +1057,7 @@ Places a new order for the given account. An order request may be rejected if th
           },
           "submitted_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "symbol": {
             "description": "Asset symbol",
@@ -945,10 +1086,7 @@ Places a new order for the given account. An order request may be rejected if th
           },
           "updated_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "required": [
@@ -1154,6 +1292,9 @@ Places a new order for the given account. An order request may be rejected if th
             "content": {
               "application/json": {
                 "examples": {
+                  "Bracket": {
+                    "$ref": "#/components/examples/BracketOrderResponse"
+                  },
                   "Crypto": {
                     "$ref": "#/components/examples/CryptoOrderResponse"
                   },

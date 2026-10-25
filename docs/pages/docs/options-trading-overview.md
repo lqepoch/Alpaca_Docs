@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-09-16T18:01:13.000Z
+updatedAt: 2026-10-07T19:02:34.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -31,7 +31,7 @@ agentTools:
 
 ## Enabling Options Trading on a new Account
 
-Per FINRA Rule 2360, each customer account has to be approved for options before the first options trade is made. Once options trading is enabled on a correspondent you can start requesting accounts to be approved for options trading. For existing accounts there will be a few new data points that need to be [patched](https://docs.alpaca.markets/v1.1/reference/patchaccount-1) on the account along with a new options agreement that the customer will need to sign. Below are the new fields that will need to be provided specifically for options.
+Per FINRA Rule 2360, each customer account has to be approved for options before the first options trade is made. Once options trading is enabled on a correspondent you can start requesting accounts to be approved for options trading. For existing accounts there will be a few new data points that need to be [patched](../reference/patchaccount) on the account along with a new options agreement that the customer will need to sign. Below are the new fields that will need to be provided specifically for options.
 
 * Annual Income
 * Net Worth
@@ -44,7 +44,7 @@ Per FINRA Rule 2360, each customer account has to be approved for options before
 * Marital Status
 * Number of Dependents
 
-Below is an example of a request for opening a new account with options enabled. More details on creating an account can be found [here](https://docs.alpaca.markets/v1.1/reference/createaccount-1)**.**
+Below is an example of a request for opening a new account with options enabled. More details on creating an account can be found [here](../reference/createaccount)**.**
 
 ```json JSON
 {
@@ -162,7 +162,7 @@ Below is an example of a request for opening a new account with options enabled.
 
 ## Enabling Options Trading on an existing Account
 
-Below are sample requests and responses for enabling options trading on an existing account, using the approval [endpoint](https://docs.alpaca.markets/reference/requestoptionsforaccount).
+Below are sample requests and responses for enabling options trading on an existing account, using the approval [endpoint](../reference/requestoptionsforaccount).
 
 Example: Account with level 1 requirements requesting for level 1 options trading approval
 
@@ -213,7 +213,7 @@ Example:  Account with level 1 requirements requesting for level 2 options tradi
 
 ### Approval fixtures
 
-Options Approval API supports approval fixtures in the Sandbox environment. You can pass the desired approval level and approval status to test all different scenario of options approval flow (approved, lower\_level\_approved, rejected) to the same approval [endpoint](https://docs.alpaca.markets/reference/requestoptionsforaccount).
+Options Approval API supports approval fixtures in the Sandbox environment. You can pass the desired approval level and approval status to test all different scenario of options approval flow (approved, lower\_level\_approved, rejected) to the same approval [endpoint](../reference/requestoptionsforaccount).
 
 Example use cases:
 
@@ -253,7 +253,7 @@ Example use cases:
 
 ## Downgrading/disabling Options
 
-Once an account is approved for options trading the customer has the ability to downgrade the options level or disable it altogether. This is done by setting the max\_options\_trading\_level via the trading account configuration [endpoint.](https://docs.alpaca.markets/v1.1/reference/patch-patch-v1-trading-accounts-account_id-account-configurations-1)
+Once an account is approved for options trading the customer has the ability to downgrade the options level or disable it altogether. This is done by setting the max\_options\_trading\_level via the trading account configuration [endpoint.](../reference/patch-patch-v1-trading-accounts-account_id-account-configurations)
 
 Once the max options trading level is set the options trading level on the trading account endpoint will get upgraded to the value set by the user. Note the options trading level will always be the same or lower than the options approved level. Below is an example of a user being approved for level 2 but downgrading to level 1.
 
@@ -270,7 +270,7 @@ Once the max options trading level is set the options trading level on the tradi
 
 ## Trading Overview
 
-When placing orders via the [orders api](https://docs.alpaca.markets/v1.1/reference/createorderforaccount-1) for options below is what is supported and what is not supported
+When placing orders via the [orders api](../reference/createorderforaccount) for options below is what is supported and what is not supported
 
 ### Supported
 
@@ -384,7 +384,7 @@ If a user tries to trade a strategy above their level this will result in an err
 
 ## Asset Master
 
-Similar to the asset master for securities and crypto there is an options contract [endpoint](https://docs.alpaca.markets/v1.1/reference/get-options-contracts-1) which will return all the options contract for an underlying symbol. Below is a sample
+Similar to the asset master for securities and crypto there is an options contract [endpoint](../reference/get-options-contracts-1) which will return all the options contract for an underlying symbol. Below is a sample
 
 ```json
 {
@@ -460,7 +460,7 @@ Similar to the asset master for securities and crypto there is an options contra
 
 ## Buying Power Checks
 
-With options we introduce a new field on the[ trading account endpoint](https://docs.alpaca.markets/v1.1/reference/gettradingaccount-1) called options\_buying\_power which is evaluated when trying to open new options positions.
+With options we introduce a new field on the[ trading account endpoint](../reference/gettradingaccount) called options\_buying\_power which is evaluated when trying to open new options positions.
 
 For both **buying a call** or **buying a put** sufficient buying power is necessary to pay for the premium of the contract otherwise an error will occur as shown below.
 
@@ -528,7 +528,7 @@ Option positions will show up like any other position in the positions endpoint.
 
 ## Exercising
 
-As the buyer of an option (call or put), the holder has the right, but not the obligation, to buy or sell the option's underlying security at a specified price on or before a specified date in the future. If the holder decides to act on those rights they are choosing to exercise. An option can be exercised via the exercise [endpoint](https://docs.alpaca.markets/v1.1/reference/optionexercise-1) and instructions for DNE (do not exercise) instructions can be supplied via [Do not exercise](https://docs.alpaca.markets/reference/optiondonotexercise-1) endpoint. Note exercise requests will be processed instantly and requests sent outside of market hours will be rejected. When exercising there will be 2 new activities per exercise which are:
+As the buyer of an option (call or put), the holder has the right, but not the obligation, to buy or sell the option's underlying security at a specified price on or before a specified date in the future. If the holder decides to act on those rights they are choosing to exercise. An option can be exercised via the exercise [endpoint](../reference/optionexercise-1) and instructions for DNE (do not exercise) instructions can be supplied via [Do not exercise](../reference/optiondonotexercise-1) endpoint. Note exercise requests will be processed instantly and requests sent outside of market hours will be rejected. When exercising there will be 2 new activities per exercise which are:
 
 * **OPEXC** - removes the options position as a result of exercising
 * **OPTRD** - trading activity that is paired with the exercising
@@ -713,14 +713,14 @@ Unlike stocks, option contracts have an expiration date. If the user does not cl
 
 Alpaca provides access to options market data (at a cost) in the same user-friendly format it does for stocks and crypto. Additionally, we can refer partners to external data vendors with whom Alpaca has a close relationship if necessary.
 
-| Endpoint                                                                       | Noteste                                              |
-| :----------------------------------------------------------------------------- | :--------------------------------------------------- |
-| [Latest Quotes](https://docs.alpaca.markets/v1.1/reference/optionlatestquotes) | Latest quotes. Supports multiple symbols             |
-| [Latest Trades](https://docs.alpaca.markets/v1.1/reference/optionlatesttrades) | Latest trades. Supports multiple symbols             |
-| [Historical Trades](https://docs.alpaca.markets/v1.1/reference/optiontrades)   | Historical trades. Supports multiple symbols         |
-| [Snapshots](https://docs.alpaca.markets/v1.1/reference/optionsnapshots)        | Combine quotes and trades for multiple symbols       |
-| [Option chain](https://docs.alpaca.markets/reference/optionchain)              | Query option chain by the underlying (stock) symbols |
-| [Historical bars](https://docs.alpaca.markets/v1.1/reference/optionbars)       | Historical bars.Supports multiple symbol             |
+| Endpoint                                         | Noteste                                              |
+| :----------------------------------------------- | :--------------------------------------------------- |
+| [Latest Quotes](../reference/optionlatestquotes) | Latest quotes. Supports multiple symbols             |
+| [Latest Trades](../reference/optionlatesttrades) | Latest trades. Supports multiple symbols             |
+| [Historical Trades](../reference/optiontrades)   | Historical trades. Supports multiple symbols         |
+| [Snapshots](../reference/optionsnapshots)        | Combine quotes and trades for multiple symbols       |
+| [Option chain](../reference/optionchain)         | Query option chain by the underlying (stock) symbols |
+| [Historical bars](../reference/optionbars)       | Historical bars.Supports multiple symbol             |
 
 # Error Responses
 
@@ -737,12 +737,12 @@ Options order operations (**submit**, **cancel**, **replace**, **exercise**, and
   The `message` strings can change without notice. The numeric `code` and HTTP status are the stable contract. Placeholders in curly braces (`{symbol}`, `{required}`, `{available}`, `{status}`) are substituted at runtime.
 </Callout>
 
-The tables below are **options-specific**. Generic order errors (buying power, market closed, malformed JSON, rate-limit, etc.) documented under [Working with /orders](https://docs.alpaca.markets/us/docs/working-with-orders) also apply to options.
+The tables below are **options-specific**. Generic order errors (buying power, market closed, malformed JSON, rate-limit, etc.) documented under [Working with /orders](./working-with-orders) also apply to options.
 
 <details>
 <summary><b>Submit: single-leg</b></summary>
 
-Returned by [Create an Order for an Account](https://docs.alpaca.markets/us/reference/createorderforaccount) when the payload's `symbol` is an option contract.
+Returned by [Create an Order for an Account](../reference/createorderforaccount) when the payload's `symbol` is an option contract.
 
 | HTTP | Code       | Message                                                                                                                                         |
 | :--: | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -779,13 +779,16 @@ Returned by [Create an Order for an Account](https://docs.alpaca.markets/us/refe
 |  422 | `42210000` | `qty must be integer for options trading`                                                                                                       |
 |  422 | `42210000` | `swap_fee_bps is not allowed for options trading`                                                                                               |
 |  422 | `42210000` | `underlying asset "{symbol}" not found`                                                                                                         |
+|  422 | `42210000` | `put sell limit price {limit} exceeds strike price {strike price}`                                                                              |
+
+<br />
 
 </details>
 
 <details>
 <summary><b>Submit: multi-leg (MLeg)</b></summary>
 
-Returned by [`POST /v2/orders`](https://docs.alpaca.markets/us/reference/postorder) when the payload contains an `order_class: "mleg"` and one or more option `legs`. See also [Options Level 3 Trading](https://docs.alpaca.markets/us/docs/options-level-3-trading).
+Returned by [`POST /v2/orders`](../reference/createorderforaccount) when the payload contains an `order_class: "mleg"` and one or more option `legs`. See also [Options Level 3 Trading](./options-level-3-trading).
 
 | HTTP | Code       | Message                                                                              |
 | :--: | ---------- | ------------------------------------------------------------------------------------ |
@@ -834,7 +837,7 @@ Returned by [`PATCH /v2/orders/{order_id}`](https://docs.alpaca.markets/us/refer
 <details>
 <summary><b>Exercise</b></summary>
 
-Returned by the options exercise endpoint. See [Options Trading Overview → Exercising](https://docs.alpaca.markets/us/docs/options-trading-overview#exercising).
+Returned by the options exercise endpoint. See [Options Trading Overview → Exercising](./options-trading-overview#exercising).
 
 | HTTP | Code       | Message                                                                                                                                                            |
 | :--: | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -862,7 +865,7 @@ Returned by the options exercise endpoint. See [Options Trading Overview → Exe
 <details>
 <summary><b>Do Not Exercise (DNE)</b></summary>
 
-Returned by the do-not-exercise endpoint. See [Options Trading Overview → Exercising](https://docs.alpaca.markets/us/docs/options-trading-overview#exercising).
+Returned by the do-not-exercise endpoint. See [Options Trading Overview → Exercising](./options-trading-overview#exercising).
 
 | HTTP | Code       | Message                                                                       |
 | :--: | ---------- | ----------------------------------------------------------------------------- |

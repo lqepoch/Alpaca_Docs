@@ -375,6 +375,15 @@ Retrieves a list of orders for the account, filtered by the supplied query param
             "minLength": 1,
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "type": [
@@ -478,10 +487,7 @@ Retrieves a list of orders for the account, filtered by the supplied query param
           },
           "submitted_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "symbol": {
             "description": "Asset symbol, required for all order classes except for `mleg`",
@@ -510,10 +516,7 @@ Retrieves a list of orders for the account, filtered by the supplied query param
           },
           "updated_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "required": [
@@ -536,6 +539,17 @@ Retrieves a list of orders for the account, filtered by the supplied query param
         ],
         "example": "bracket",
         "title": "OrderClass",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -601,6 +615,15 @@ Retrieves a list of orders for the account, filtered by the supplied query param
             "description": "Filled quantity",
             "minLength": 1,
             "type": "string"
+          },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
           },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
@@ -698,10 +721,7 @@ Retrieves a list of orders for the account, filtered by the supplied query param
           },
           "submitted_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "symbol": {
             "description": "Asset symbol",
@@ -730,10 +750,7 @@ Retrieves a list of orders for the account, filtered by the supplied query param
           },
           "updated_at": {
             "format": "date-time",
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           }
         },
         "required": [

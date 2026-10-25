@@ -419,6 +419,7 @@ If you require the streaming capabilities we recommend not using the generated c
           },
           {
             "deprecated": true,
+            "description": "**Deprecation notice:**\nUse since_ulid instead.\n\nSince: 2023-08-01\nSunset: 2027-02-15",
             "in": "query",
             "name": "since_id",
             "schema": {
@@ -432,6 +433,7 @@ If you require the streaming capabilities we recommend not using the generated c
           },
           {
             "deprecated": true,
+            "description": "**Deprecation notice:**\nUse until_ulid instead.\n\nSince: 2023-08-01\nSunset: 2027-02-15",
             "in": "query",
             "name": "until_id",
             "schema": {

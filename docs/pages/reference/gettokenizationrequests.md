@@ -66,17 +66,6 @@ An Authorized Participant can use this endpoint to list the tokenization request
       },
       "TokenizationRequest": {
         "properties": {
-          "account": {
-            "deprecated": true,
-            "description": "Alpaca account ID associated with this tokenization request. Use `client_account_id` instead.",
-            "example": "06b9d76e-1733-460c-844e-48d1ae0f10c3",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
-          },
           "client_account_id": {
             "description": "Alpaca account UUID of the Authorized Participant associated with this tokenization request",
             "example": "06b9d76e-1733-460c-844e-48d1ae0f10c3",
@@ -108,17 +97,6 @@ An Authorized Participant can use this endpoint to list the tokenization request
           },
           "issuer": {
             "$ref": "#/components/schemas/TokenizationIssuer"
-          },
-          "issuer_account": {
-            "deprecated": true,
-            "description": "Issuer's account ID associated with this tokenization request. Use `client_external_account_id` instead.",
-            "example": "AP-EXT-001",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_external_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
           },
           "issuer_request_id": {
             "description": "Unique identifier of the tokenization request set by the issuer",

@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-09-01T22:20:11.000Z
+updatedAt: 2026-09-30T23:26:41.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -78,6 +78,12 @@ A DTC number is the unique 4 digit number assigned to each clearing broker by DT
 ### What is Alpaca’s DTC number?
 
 Alpaca’s DTC number is 3021.
+
+<br />
+
+### Can I use the ACATS API for transfers between two Alpaca-cleared brokers?
+
+No. If the contra broker is Alpaca (DTC number 3021), the request will be rejected. Alpaca-to-Alpaca account transfers are handled through a separate internal process. Please contact support to initiate these transfers.
 
 <br />
 

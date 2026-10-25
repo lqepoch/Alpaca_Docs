@@ -221,6 +221,7 @@ Behavior:
           },
           {
             "deprecated": true,
+            "description": "**Deprecation notice:**\nUse since_ulid instead.\n\nSince: 2023-08-01\nSunset: 2027-02-15",
             "in": "query",
             "name": "since_id",
             "schema": {
@@ -234,6 +235,7 @@ Behavior:
           },
           {
             "deprecated": true,
+            "description": "**Deprecation notice:**\nUse until_ulid instead.\n\nSince: 2023-08-01\nSunset: 2027-02-15",
             "in": "query",
             "name": "until_id",
             "schema": {
@@ -281,7 +283,7 @@ Behavior:
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "text/event-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/NonTradeActivityEvent"
                 }

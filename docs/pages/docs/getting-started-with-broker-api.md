@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:20:14.000Z
+updatedAt: 2026-10-06T19:44:10.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,7 +15,7 @@ You can either follow the steps below to test specific calls within the broker d
 
 # Postman Collection
 
-To get started with the Broker API Postman Collection you can either access the [Alpaca Workspace on Postman](https://www.postman.com/alpacamarkets/workspace/alpaca-public-workspace/overview) to fork the collection or import the file below directly to your own workspace.
+To get started with the Broker API Postman Collection you can either access the [Alpaca Workspace on Postman](https://www.postman.com/alpacamarkets/workspace/alpaca-us/overview) to fork the collection or import the file below directly to your own workspace.
 
 ## Fork Broker API Collection on Postman
 
@@ -23,7 +23,7 @@ Refer to this [tutorial](https://alpaca.markets/learn/try-our-postman-workspace-
 
 ## Import Broker API Collection
 
-1. Download the [Broker API API Collection](https://www.postman.com/alpacamarkets/workspace/alpaca-public-workspace/collection/19455863-d72a0729-972d-486f-8aa9-2b5aede8d615?ctx=documentation)
+1. Download the [Broker API API Collection](https://www.postman.com/alpacamarkets/workspace/alpaca-us/collection/19455863-d72a0729-972d-486f-8aa9-2b5aede8d615?ctx=documentation)
 2. Import the file into Postman (File -> Import..)
 3. Create a Postman environment with the following variables. Be sure to select the environment in the upper right hand corner like pictured below.
 
@@ -71,7 +71,7 @@ The response would contain an array of assets, with the first one being Agilent 
 
 ## 1. Create an Account
 
-One of the first things you would need to do using Broker API is to create an account for your end user. Depending on the type of setup you have with Alpaca ([Fully-Disclosed](/docs/use-cases#fully-disclosed), [Omnibus](docs/use-cases#omnibus) or [RIA](/docs/use-cases#registered-investment-advisor-ria)) the requirements might differ.
+One of the first things you would need to do using Broker API is to create an account for your end user. Depending on the type of setup you have with Alpaca ([Fully-Disclosed](./use-cases#fully-disclosed), [Omnibus](./use-cases#omnibus) or [RIA](./use-cases#registered-investment-advisor-ria)) the requirements might differ.
 
 Below is a sample request to create an account for a Fully-Disclosed setup:
 

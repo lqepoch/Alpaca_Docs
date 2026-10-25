@@ -229,10 +229,7 @@ Update the name and/or content of watchlist
           "symbols": {
             "description": "List of asset symbols to include in the watchlist. The existing assets will be replaced with the new list.",
             "items": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": "string"
             },
             "type": "array"
           }

@@ -78,16 +78,6 @@ Retrieve a single tokenization request by the Authorized Participant's `client_r
       },
       "TokenizationRequest": {
         "properties": {
-          "account": {
-            "deprecated": true,
-            "description": "Alpaca account ID associated with this tokenization request. Use `client_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
-          },
           "client_account_id": {
             "description": "Alpaca account UUID of the Authorized Participant associated with this tokenization request",
             "format": "uuid",
@@ -114,16 +104,6 @@ Retrieve a single tokenization request by the Authorized Participant's `client_r
           },
           "issuer": {
             "$ref": "#/components/schemas/TokenizationIssuer"
-          },
-          "issuer_account": {
-            "deprecated": true,
-            "description": "Issuer's account ID associated with this tokenization request. Use `client_external_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_external_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
           },
           "issuer_request_id": {
             "description": "Unique identifier of the tokenization request set by the issuer",

@@ -93,6 +93,56 @@ These are events that may rarely be sent due to unexpected circumstances on the 
 {
   "components": {
     "examples": {
+      "TradeUpdateEventV2BracketLegNew": {
+        "description": "A `new` event for the take-profit leg of a bracket order, sent when the leg is routed after the entry order fills. `legs` is null on stream events, so `group_id` and `group_role` identify the order's group and role.",
+        "value": [
+          {
+            "account_id": "529248ad-c4cc-4a50-bea4-6bfd2953f83a",
+            "at": "2026-09-28T14:41:05.287316Z",
+            "event": "new",
+            "event_id": "01K66Z3M4X8Q2R7T9V1W3Y5A6B",
+            "order": {
+              "asset_class": "us_equity",
+              "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+              "cancel_requested_at": null,
+              "canceled_at": null,
+              "client_order_id": "2d7e9b41-5f3a-4c8e-a1b6-9e0d3c7f2a58",
+              "created_at": "2026-09-28T14:30:12.418372Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+              "group_role": "take_profit",
+              "hwm": null,
+              "id": "c4a9f3e8-1b2d-4e6f-8a7c-5d3e2f1b0a96",
+              "legs": null,
+              "limit_price": "170",
+              "notional": null,
+              "order_class": "bracket",
+              "order_type": "limit",
+              "position_intent": "sell_to_close",
+              "qty": "10",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "sell",
+              "status": "new",
+              "stop_price": null,
+              "submitted_at": "2026-09-28T14:30:12.402119Z",
+              "symbol": "AAPL",
+              "time_in_force": "gtc",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "limit",
+              "updated_at": "2026-09-28T14:41:05.263904Z"
+            },
+            "timestamp": "2026-09-28T14:41:05.263904Z"
+          }
+        ]
+      },
       "TradeUpdateEventV2MultilegOptionsFill": {
         "value": {
           "account_id": "529248ad-c4cc-4a50-bea4-6bfd2953f83a",
@@ -415,6 +465,15 @@ These are events that may rarely be sent due to unexpected circumstances on the 
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -503,6 +562,10 @@ These are events that may rarely be sent due to unexpected circumstances on the 
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -589,6 +652,17 @@ These are events that may rarely be sent due to unexpected circumstances on the 
           ""
         ],
         "example": "",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -685,6 +759,15 @@ These are events that may rarely be sent due to unexpected circumstances on the 
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -775,6 +858,10 @@ These are events that may rarely be sent due to unexpected circumstances on the 
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -854,14 +941,7 @@ These are events that may rarely be sent due to unexpected circumstances on the 
         "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
         "enum": [
           "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
+          "sell"
         ],
         "example": "buy",
         "type": "string"
@@ -1139,6 +1219,9 @@ These are events that may rarely be sent due to unexpected circumstances on the 
             "content": {
               "text/event-stream": {
                 "examples": {
+                  "Bracket-leg-new": {
+                    "$ref": "#/components/examples/TradeUpdateEventV2BracketLegNew"
+                  },
                   "MultilegOptions-fill": {
                     "$ref": "#/components/examples/TradeUpdateEventV2MultilegOptionsFill"
                   },
