@@ -48,12 +48,22 @@ All the cash values returned to two digits. All percentage values are rounded to
 ```json
 {
   "components": {
+    "headers": {
+      "DeprecatedParams": {
+        "description": "Present when the request includes one or more deprecated query parameters or deprecated\nparameter values. Lists every deprecated item the client sent, encoded as an RFC 9651\nStructured Field List of sf-strings:\n\n- Whole-parameter deprecation: the bare parameter name (`\"deprecatedParam\"`).\n- Value-level deprecation: `<param>=<value>`, with `<value>` in its canonical form (`\"sort=legacy\"`).\n\nOmitted when the request carries no deprecated parameters.\n",
+        "example": "\"deprecatedParam\", \"sort=legacy\"",
+        "schema": {
+          "example": "\"deprecatedParam\", \"sort=legacy\"",
+          "type": "string"
+        }
+      }
+    },
     "schemas": {
       "PortfolioHistory": {
         "description": "Timeseries data for equity and profit loss information of the account.",
         "properties": {
           "base_value": {
-            "description": "basis in dollar of the profit loss calculation",
+            "description": "Basis in dollar of the profit loss calculation.",
             "type": [
               "number",
               "null"
@@ -72,11 +82,11 @@ All the cash values returned to two digits. All percentage values are rounded to
               },
               "type": "array"
             },
-            "description": "accumulated value in dollar amount as of the end of each time window",
+            "description": "Accumulated value in dollar amount as of the end of each time window.",
             "type": "object"
           },
           "equity": {
-            "description": "equity value of the account in dollar amount as of the end of each time window",
+            "description": "Equity value of the account in dollar amount as of the end of each time window.",
             "items": {
               "type": [
                 "number",
@@ -86,7 +96,7 @@ All the cash values returned to two digits. All percentage values are rounded to
             "type": "array"
           },
           "profit_loss": {
-            "description": "profit/loss in dollar from the base value",
+            "description": "Profit/loss in dollar from the base value.",
             "items": {
               "type": [
                 "number",
@@ -96,7 +106,7 @@ All the cash values returned to two digits. All percentage values are rounded to
             "type": "array"
           },
           "profit_loss_pct": {
-            "description": "profit/loss in percentage from the base value",
+            "description": "Profit/loss in percentage from the base value.",
             "example": [
               0.001,
               0.002
@@ -110,13 +120,12 @@ All the cash values returned to two digits. All percentage values are rounded to
             "type": "array"
           },
           "timeframe": {
-            "description": "time window size of each data element",
-            "example": "15Min",
-            "type": "string"
+            "$ref": "#/components/schemas/PortfolioHistoryTimeframe"
           },
           "timestamp": {
             "description": "Time of each data element, left-labeled (the beginning of time window).\n\nThe values returned are in [UNIX epoch format](https://en.wikipedia.org/wiki/Unix_time).\n",
             "items": {
+              "format": "int64",
               "type": "integer"
             },
             "type": "array"
@@ -132,6 +141,34 @@ All the cash values returned to two digits. All percentage values are rounded to
         ],
         "title": "PortfolioHistory",
         "type": "object"
+      },
+      "PortfolioHistoryError": {
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "Portfolio History Error",
+        "type": "object"
+      },
+      "PortfolioHistoryTimeframe": {
+        "description": "An interval, duration, or window of time.",
+        "enum": [
+          "1D",
+          "1H",
+          "15Min",
+          "5Min",
+          "1Min"
+        ],
+        "example": "15Min",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -168,10 +205,16 @@ All the cash values returned to two digits. All percentage values are rounded to
         "operationId": "getAccountPortfolioHistory",
         "parameters": [
           {
-            "description": "The duration of the data in `number` + `unit` format, such as 1D, where `unit` can be D for day, W for week, M for month and A for year. Defaults to 1M.\n\nOnly two of `start`, `end` and `period` can be specified at the same time.\n\nFor intraday timeframes (\\<1D) only 30 days or less can be queried, for 1D resolutions there is no such limit, data is available since the\ncreation of the account.\n",
+            "description": "The total duration of history being requested defined as `number` + `unit`.\nValid units are: `D`, `W`, `M`, and `A` (annum).\n\nThe following restrictions apply:\n- MUST NOT be included if both `start` and `end` are provided.\n- Default value is `1M` when `start` or `end` is omitted.\n",
             "in": "query",
             "name": "period",
             "schema": {
+              "examples": [
+                "7D",
+                "4W",
+                "1M",
+                "1A"
+              ],
               "type": "string"
             }
           },
@@ -180,11 +223,11 @@ All the cash values returned to two digits. All percentage values are rounded to
             "in": "query",
             "name": "timeframe",
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/PortfolioHistoryTimeframe"
             }
           },
           {
-            "description": "For intraday resolutions (<1D) this specifies which timestamps to return data points for:\n\nAllowed values are:\n- **market_hours**\n\n  Only timestamps for the core equity trading hours are returned (usually 9:30am to 4:00pm, trading days only)\n\n- **extended_hours**\n\n  Returns timestamps for the whole session including extended hours (usually 4:00am to 8:00pm, trading days only)\n\n- **continuous**\n\n  Returns price data points 24/7 (for off-session times too). To calculate the equity values we are using the following prices:\n\n  Between 4:00am and 10:00pm on trading days the valuation will be calculated based on the last trade (extended hours and normal hours respectively).\n\n  After 10:00pm, until the next session open the equities will be valued at their official closing price on the primary exchange.\n",
+            "description": "For intraday resolutions (<1D) this specifies which timestamps to return data points for:\n\nAllowed values are:\n- **market_hours**\n\n  Only timestamps for the core equity trading hours are returned (usually 9:30am to 4:00pm, trading days only).\n\n- **extended_hours**\n\n  Returns timestamps for the whole session including extended hours (usually 4:00am to 8:00pm, trading days only).\n\n- **continuous**\n\n  Returns price data points 24/7 (for off-session times too). To calculate the equity values we are using the following prices:\n\n  Between 4:00am and 10:00pm on trading days the valuation will be calculated based on the last trade (extended hours and normal hours respectively).\n\n  After 10:00pm, until the next session open the equities will be valued at their official closing price on the primary exchange.\n",
             "in": "query",
             "name": "intraday_reporting",
             "schema": {
@@ -198,12 +241,35 @@ All the cash values returned to two digits. All percentage values are rounded to
             }
           },
           {
-            "description": "The timestamp the data is returned starting from in RFC3339 format (including timezone specification). Defaults to `end` minus `period`\n\nIf provided, the `start` value is always normalized to the `America/New_York` timezone and adjusted to the nearest `timeframe` interval, e.g. seconds are always truncated and the time is rounded backwards to the nearest interval of `1Min`, `5Min`, `15Min`, or `1H`.\n\nIf `timeframe=1D` and `start` is not a valid trading date, find the next available trading date. For example, if `start` occurs on Saturday or Sunday after converting to the America/New_York timezone, `start` is adjusted to the first weekday that is not a market holiday (e.g. Monday).\n\nIf `timeframe` is less than `1D` and `intraday_reporting` is not `continuous`, `start` always reflects the beginning of a market session. If `start` is between midnight and the end (inclusive) of an active trading day, `start` is set to the beginning of the session on the specified day. Otherwise, if `start` occurs outside of the market session, the next available market date is used.\n\nFor example, when `intraday_reporting=market_hours` and `start=2023-10-19T23:59:59-04:00`, the provided `start` date occurs outside of the regular market session. The effective `start` timestamp is adjusted to the beginning of the next session: `2023-10-20T09:30:00-04:00`\n\n`start` may be combined with one of `end` or `period`.\n\nProviding all of `start`, `end`, and `period` is invalid.\n",
+            "description": "The first timestamp of the timeseries.\n\nDefaults to `end - period`.\n\nWhen `timeframe=1D`, if `start` occurs any time on a trading day (including outside of market hours), `start` is set to the closing time of the current trading day. Otherwise, `start` is rolled forward to the closing time of the next available trading day.\n\nWhen `timeframe != 1D`, one of the following rules is applied.\n- When `intraday_reporting=continuous`, `start` is rolled back to the nearest `timeframe` interval.\n- When both `start` and `end` are omitted, `start` is rolled back to the first market/session open that is encountered.\n- When `intraday_reporting != continuous` and `start` is a trading day:\n  - roll forward to the first market/session open if `start` is outside of market/session hours, or\n  - roll back to the nearest `timeframe` interval if `start` occurs during trading hours.\n- Roll forward to the next market/session open if `start` does not fall on a trading day.\n\n`start` may be combined with `end` or `period`, but cannot be combined with both.\n",
+            "examples": {
+              "iso8601_date": {
+                "description": "Parsed as midnight UTC.",
+                "summary": "ISO 8601 date",
+                "value": "2021-03-16"
+              },
+              "iso8601_datetime_offset": {
+                "summary": "ISO 8601 datetime (offset)",
+                "value": "2021-03-16T14:38:01-04:00"
+              },
+              "iso8601_datetime_utc": {
+                "summary": "ISO 8601 datetime (UTC)",
+                "value": "2021-03-16T18:38:01Z"
+              },
+              "unix": {
+                "description": "Seconds since the epoch.",
+                "summary": "Unix timestamp",
+                "value": "1615919881"
+              }
+            },
             "in": "query",
             "name": "start",
             "schema": {
-              "example": "2021-03-16T18:38:01Z",
-              "format": "date-time",
+              "examples": [
+                "2021-03-16T18:38:01Z",
+                "2021-03-16T18:38:01-04:00",
+                "2021-03-16"
+              ],
               "type": "string"
             }
           },
@@ -221,12 +287,35 @@ All the cash values returned to two digits. All percentage values are rounded to
             }
           },
           {
-            "description": "The timestamp the data is returned up to in RFC3339 format (including timezone specification). Defaults to the current time.\n\nIf provided, the `end` value is always normalized to the `America/New_York` timezone and adjusted to the nearest `timeframe` interval, e.g. seconds are always truncated and the time is rounded backwards to the nearest interval of `1Min`, `5Min`, `15Min`, or `1H`.\n\nWhen `intraday_reporting` is either `market_hours` or `extended_hours`, the `end` value is adjusted to not occur after session close on the specified day. For example if the `intraday_reporting` is `extended_hours`, and the timestamp specified is `2023-10-19T21:33:00-04:00`, `end` is adjusted to `2023-10-19T20:00:00-04:00`.\n\n`end` may be combined with `start` or `period`.\n\nProviding all of `start`, `end`, and `period` is invalid.\n",
+            "description": "The last timestamp of the timeseries.\n\nDefaults to `start + period` when `start` is provided.\n\nWhen `start` and `end` are omitted, or if `end` is AFTER the request time, `end` defaults to\n- The most recent session open timestamp if `intraday_reporting=extended_hours`\n- The most recent market open timestamp if `intraday_reporting=market_hours`\n- The current timestamp if `intraday_reporting=continuous`\n\n`end` may be combined with `start` or `period`, but cannot be combined with both.\n",
+            "examples": {
+              "iso8601_date": {
+                "description": "Parsed as midnight UTC.",
+                "summary": "ISO 8601 date",
+                "value": "2021-03-16"
+              },
+              "iso8601_datetime_offset": {
+                "summary": "ISO 8601 datetime (offset)",
+                "value": "2021-03-16T14:38:01-04:00"
+              },
+              "iso8601_datetime_utc": {
+                "summary": "ISO 8601 datetime (UTC)",
+                "value": "2021-03-16T18:38:01Z"
+              },
+              "unix": {
+                "description": "Seconds since the epoch.",
+                "summary": "Unix timestamp",
+                "value": "1615919881"
+              }
+            },
             "in": "query",
             "name": "end",
             "schema": {
-              "example": "2021-03-16T18:38:01Z",
-              "format": "date-time",
+              "examples": [
+                "2021-03-16T18:38:01Z",
+                "2021-03-16T18:38:01-04:00",
+                "2021-03-16"
+              ],
               "type": "string"
             }
           },
@@ -512,7 +601,151 @@ All the cash values returned to two digits. All percentage values are rounded to
                 }
               }
             },
-            "description": "Successful response"
+            "description": "Successful response.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 400,
+                  "message": "invalid timeframe provided: 1Min. Valid timeframe for days > 30 is 1D: bad request"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "The request parameters are invalid.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 403,
+                  "message": "token does not match account type"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "Forbidden because the token's account type does not match the deployment.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 404,
+                  "message": "account not found"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "Account not found, or invalid or missing credentials.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 40010001,
+                  "message": "query: \"timeframe\": invalid value: \"2Min\""
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "The request parameters are invalid.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 429,
+                  "message": "rate limit exceeded"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "Rate limit exceeded.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              },
+              "Retry-After": {
+                "description": "Number of seconds to wait before retrying the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 500,
+                  "message": "internal server error"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "Unexpected server failure.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
+          },
+          "504": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "code": 504,
+                  "message": "gateway timeout"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioHistoryError"
+                }
+              }
+            },
+            "description": "Gateway timeout.",
+            "headers": {
+              "Deprecated-Params": {
+                "$ref": "#/components/headers/DeprecatedParams"
+              }
+            }
           }
         },
         "summary": "Get Account Portfolio History",

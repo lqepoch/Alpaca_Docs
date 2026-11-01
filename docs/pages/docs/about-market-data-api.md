@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-07-16T15:53:31.000Z
+updatedAt: 2026-10-06T19:46:14.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,7 +15,7 @@ The Market Data API offers seamless access to market data through both HTTP and 
 
 To simplify the integration process, we provide user-friendly SDKs in [Python](https://github.com/alpacahq/alpaca-py), [Go](https://github.com/alpacahq/alpaca-trade-api-go), [NodeJS](https://github.com/alpacahq/alpaca-trade-api-js), and [C#](https://github.com/alpacahq/alpaca-trade-api-csharp). These SDKs offer comprehensive functionalities, making it easier for developers to work with the Market Data APIs & Web Sockets.
 
-To experiment with the APIs, developers can try them with [Postman](https://www.postman.com/): either through the [public workspace on Postman](https://www.postman.com/alpacamarkets) or directly from our [GitHub repository](https://github.com/alpacahq/alpaca-postman).
+To experiment with the APIs, developers can try them with [Postman](https://www.postman.com/) and our preconfigured [workspace](https://www.postman.com/alpacamarkets).
 
 By leveraging Alpaca Market Data API and its associated SDKs, developers can seamlessly incorporate historical and real-time market data into their applications, enabling them to build powerful and data-driven financial products.
 
@@ -27,8 +27,6 @@ Alpaca offers two distinct subscription models depending on how you access our p
 * **Broker API:** For broker partners building their own trading platforms on top of Alpaca's infrastructure
 
 <Callout icon="ℹ️" theme="info">
-  ###
-
   Which one applies to me?
 
   If you signed up for an Alpaca account to trade or build a personal trading app, you're using the Trading API. If you're a business integrating Alpaca as your backend brokerage provider, you're using the Broker API.
@@ -84,8 +82,6 @@ Note: Standard subscription plans will only be active when integration starts. P
 For partners on the Standard and StandardPlus3000 plans, an additional subscription fee of $1,000 / month enables access to the same equities plan for options. For StandardPlus5000 and StandardPlus10000 plans, options are included.
 
 <Callout icon="📘" theme="info">
-  ###
-
   We offer custom pricing and tailored solutions for Broker API partners seeking to leverage our comprehensive market data. Our goal is to meet the specific needs and requirements of our valued partners, ensuring they have access to the data and tools necessary to enhance their services and provide exceptional value to their customers. If none of the subscription plans listed above are believed to be suitable, kindly reach out to our [sales team](https://alpaca.markets/contact).
 </Callout>
 
@@ -102,7 +98,7 @@ You should authenticate by passing the key / secret pair in the HTTP request hea
 
 ### Broker API
 
-Broker API uses the [Client Credentials](https://docs.alpaca.markets/docs/authentication#client-credentials) authentication flow. You must first exchange your credentials for a short-lived access token, then use that token to authenticate API requests.
+Broker API uses the [Client Credentials](./authentication#client-credentials) authentication flow. You must first exchange your credentials for a short-lived access token, then use that token to authenticate API requests.
 
 * Step 1: Request an access token
 
@@ -122,9 +118,7 @@ curl -X GET "https://data.alpaca.markets/v2/..." \
 ```
 
 <Callout icon="🚧" theme="warn">
-  ###
-
   Note: Access tokens are valid for 15 minutes. Do not request a new token for each API call.
 </Callout>
 
-For the WebSocket stream authentication, kindly refer to the [WebSocket Stream documentation](https://docs.alpaca.markets/docs/streaming-market-data#authentication).
+For the WebSocket stream authentication, kindly refer to the [WebSocket Stream documentation](./streaming-market-data#authentication).

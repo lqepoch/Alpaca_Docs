@@ -204,7 +204,7 @@ Append an asset for the symbol to the end of watchlist asset list
         "type": "object"
       },
       "Exchange": {
-        "description": "Represents the current exchanges Alpaca supports. List is currently:\n\n- AMEX\n- ARCA\n- BATS\n- NYSE\n- NASDAQ\n- NYSEARCA\n- OTC\n- CRYPTO",
+        "description": "Represents the current exchanges Alpaca supports. List is currently:\n\nUS equities:\n- AMEX\n- ARCA\n- BATS\n- NYSE\n- NASDAQ\n- NYSEARCA\n- OTC\n- TXSE\n\nCrypto:\n- CRYPTO\n- ERSX\n- CRXL\n\nCrypto perpetuals:\n- ASCX\n\nIndex symbols:\n- INDEX\n\nINDEX is the artificial exchange for index symbols such as SPX.",
         "enum": [
           "AMEX",
           "ARCA",
@@ -213,7 +213,12 @@ Append an asset for the symbol to the end of watchlist asset list
           "NASDAQ",
           "NYSEARCA",
           "OTC",
-          "CRYPTO"
+          "CRYPTO",
+          "TXSE",
+          "ERSX",
+          "CRXL",
+          "ASCX",
+          "INDEX"
         ],
         "example": "NYSE",
         "title": "Exchange",

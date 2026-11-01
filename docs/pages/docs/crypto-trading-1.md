@@ -73,7 +73,7 @@ To determine whether the account is all set to start trading crypto, use the `cr
 
 We have over 20 coins available to trade via our APIs. We constantly evaluate the list and aim to to grow the number of supported currencies.
 
-Tradable cryptocurrencies can be identified through the [Assets API](/reference/getassets) where the asset entity has `class = crypto` and `tradable = true`.
+Tradable cryptocurrencies can be identified through the [Assets API](https://docs.alpaca.markets/us/reference/getassets) where the asset entity has `class = crypto` and `tradable = true`.
 
 ```json
 {

@@ -49,10 +49,10 @@ a different request returns `422 Unprocessable Entity`.
         "examples": [
           {
             "amount": "51",
-            "description": "test text /fixtures/status=rejected/fixtures/",
+            "description": "Move cash to a customer account",
             "entry_type": "JNLC",
-            "from_account": "c94bu7rn-4483-4199-840f-6c5fe0b7ca24",
-            "to_account": "fn68sbrk-6f2a-433c-8c33-17b66b8941fa"
+            "from_account": "7c891489-574f-4f9a-82f0-4082a07f4736",
+            "to_account": "2d47a229-0c25-40a2-8cc7-b2c8821ff93a"
           }
         ],
         "properties": {
@@ -61,6 +61,7 @@ a different request returns `422 Unprocessable Entity`.
             "type": "string"
           },
           "currency": {
+            "description": "The currency of the journal. Defaults to the system currency (for example, USD in the US or EUR in the EU) when omitted. Correspondents with local currency trading enabled must send this field, and the value must be the system currency or one of the correspondent's enabled currencies",
             "type": "string"
           },
           "description": {
@@ -330,7 +331,8 @@ a different request returns `422 Unprocessable Entity`.
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "price": {
             "description": "The journaled security price, or null when not applicable.",
@@ -338,7 +340,8 @@ a different request returns `422 Unprocessable Entity`.
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "qty": {
             "description": "The journaled security quantity, or null when not applicable.",
@@ -346,7 +349,8 @@ a different request returns `422 Unprocessable Entity`.
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "settle_date": {
             "description": "The settlement date, or null until one is assigned.",
@@ -354,7 +358,8 @@ a different request returns `422 Unprocessable Entity`.
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "status": {
             "$ref": "#/components/schemas/JournalStatus"
@@ -364,7 +369,8 @@ a different request returns `422 Unprocessable Entity`.
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "system_date": {
             "description": "The booking-system date, or null until one is assigned.",
@@ -372,7 +378,8 @@ a different request returns `422 Unprocessable Entity`.
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "to_account": {
             "description": "The account ID that received the journal.",

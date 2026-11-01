@@ -181,6 +181,7 @@ This information is provided based on the latest ACATS Participant Master File, 
   ],
   "tags": [
     {
+      "description": "Endpoints for initiating and tracking ACATS transfers. Use the ACATS endpoints to create transfers and query their current state, and the [Admin Action Events Stream](#operation/subscribeToAdminActionSSE) under the **Events** group to receive real-time status updates (`acats_status_admin_event`) as a transfer moves through its lifecycle.\n",
       "name": "ACATS"
     }
   ],

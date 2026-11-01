@@ -192,7 +192,7 @@ The assets API serves as the master list of assets available for trade and data 
         "type": "object"
       },
       "Exchange": {
-        "description": "Represents the current exchanges Alpaca supports. List is currently:\n\n- AMEX\n- ARCA\n- BATS\n- NYSE\n- NASDAQ\n- NYSEARCA\n- OTC\n- CRYPTO",
+        "description": "Represents the current exchanges Alpaca supports. List is currently:\n\nUS equities:\n- AMEX\n- ARCA\n- BATS\n- NYSE\n- NASDAQ\n- NYSEARCA\n- OTC\n- TXSE\n\nCrypto:\n- CRYPTO\n- ERSX\n- CRXL\n\nCrypto perpetuals:\n- ASCX\n\nIndex symbols:\n- INDEX\n\nINDEX is the artificial exchange for index symbols such as SPX.",
         "enum": [
           "AMEX",
           "ARCA",
@@ -201,7 +201,12 @@ The assets API serves as the master list of assets available for trade and data 
           "NASDAQ",
           "NYSEARCA",
           "OTC",
-          "CRYPTO"
+          "CRYPTO",
+          "TXSE",
+          "ERSX",
+          "CRXL",
+          "ASCX",
+          "INDEX"
         ],
         "example": "NYSE",
         "title": "Exchange",
@@ -258,7 +263,7 @@ The assets API serves as the master list of assets available for trade and data 
             }
           },
           {
-            "description": "Optional AMEX, ARCA, BATS, NYSE, NASDAQ, NYSEARCA, OTC or CRYPTO",
+            "description": "Optional comma-separated exchanges to filter `us_equity` and `us_index` assets by: AMEX, ARCA, BATS, NYSE, NASDAQ, NYSEARCA, OTC, TXSE, or INDEX. `INDEX` requires `asset_class=us_index`.\nCrypto and crypto perpetual assets are not filtered by exchange; set `asset_class` to exclude them.",
             "in": "query",
             "name": "exchange",
             "schema": {

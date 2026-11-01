@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-10-15T10:59:56.000Z
+updatedAt: 2026-09-28T13:36:03.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,7 +15,7 @@ Leveraging this allows you to generate Plaid Processor Tokens on behalf of your 
 
 You can utilize your Plaid account and activate the Alpaca integration within the Plaid dashboard.
 
-The integration requires <Anchor label="Plaid API Keys" target="_blank" href="https://plaid.com/docs/auth/partnerships/alpaca/">Plaid API Keys</Anchor>
+The integration requires <Anchor target="_blank" href="https://plaid.com/docs/auth/partnerships/alpaca/">Plaid API Keys</Anchor>
 
 ### Obtaining a Plaid Processor Token
 
@@ -58,12 +58,12 @@ For a valid request, the API will return a JSON response similar to:
 
 ### Processor Token Flow
 
-<Image border={false} src="https://files.readme.io/c06c778-image.png" />
+![Processor Token Flowchart, described below](https://files.readme.io/c06c778-image.png)
 
 1. End-user links bank account using Plaid.
 2. Plaid returns a public token to you.
 3. You will submit a public token to Plaid in exchange for an access token.
-4. You will submit access token to Plaid's /processor/token/create endpoint and receive Processor Token (specific to Alpaca).
+4. You will submit access token to Plaid's `/processor/token/create` endpoint and receive Processor Token (specific to Alpaca).
 5. You will make a call to the processor endpoint to pass Alpaca the processor token, to initiate the payment. To pass the processor token use the ACH relationships endpoint (Link).
 
 #### Sample Request
@@ -95,6 +95,10 @@ POST `/v1/accounts/{account_id}/ach_relationships`
 
 \*Can include Auth, Identity, Balance info - if the broker API wants to initiate a transfer, we use the transfer endpoint.
 
+### Name matching
+
+Alpaca requires first-party ACH relationships. When you create an ACH relationship with a Plaid processor token, Alpaca compares the bank owner name returned by Plaid with the owner name on the brokerage account. If the names do not match, the relationship status is set to `REJECTED` and deposits or withdrawals cannot be initiated for that bank link.
+
 ### ACH Status Flow
 
-<Image border={false} src="https://files.readme.io/51382cd-image.png" />
+![A flowchart of the ACH Status Flow](https://files.readme.io/51382cd-image.png)

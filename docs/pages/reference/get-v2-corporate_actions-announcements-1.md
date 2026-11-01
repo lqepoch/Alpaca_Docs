@@ -195,10 +195,17 @@ This endpoint is deprecated, please use [the new corporate actions endpoint](htt
             }
           },
           {
-            "description": "declaration_date, ex_date, record_date, or payable_date",
+            "description": "Which announcement date `since` and `until` apply to. When omitted, the range applies to payable_date.\n\n- **declaration_date**: The date of the preliminary announcement details or the date that any subsequent term updates took place.\n- **ex_date**: The date on which any security purchasing activity will not result in a corporate action entitlement. Any selling activity that takes place on or after this date will result in a corporate action entitlement.\n- **record_date**: The date the company checks its records to determine who is shareholder in order to allocate entitlements.\n- **payable_date**: The date that the stock and cash positions will update according to the account positions as of the record date.",
             "in": "query",
             "name": "date_type",
             "schema": {
+              "default": "payable_date",
+              "enum": [
+                "declaration_date",
+                "ex_date",
+                "record_date",
+                "payable_date"
+              ],
               "type": "string"
             }
           }
