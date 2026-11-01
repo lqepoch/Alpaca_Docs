@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-07-30T05:01:09.000Z
+updatedAt: 2026-10-29T03:34:23.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -9,7 +9,7 @@ agentTools:
 
 This document describes the implementation of the FIX 4.2 protocol used by Alpaca to enable order entry via FIX.
 
-Version 1.2.0
+Version 1.2.1
 
 ## Supported Message Types
 
@@ -166,45 +166,45 @@ May be sent by either client or server, to terminate the session. The other part
 
 Sent by the client to submit a new single order.
 
-| Tag | Field             | Mandatory | Description                                                                                                                                                                                                                                                                                                |
-| :-- | :---------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 35  | MsgType           | Y         | D - For New Order - Single                                                                                                                                                                                                                                                                                 |
-| 1   | Account           | Y         | Account number                                                                                                                                                                                                                                                                                             |
-| 11  | ClOrdID           | Y         | Unique identifier of the order assigned by the client (must be no longer than 48 characters)                                                                                                                                                                                                               |
-| 12  | Commission        | N         | Commission to collect from the account holder                                                                                                                                                                                                                                                              |
-| 13  | CommType          | N         | 1 - per share<br />2 - percentage, 5% should be represented as .05<br />3 - absolute                                                                                                                                                                                                                       |
-| 18  | ExecInst          | N         | 1 - Not held<br />5 - Held                                                                                                                                                                                                                                                                                 |
-| 21  | HandlInst         | Y         | 1 - Automated execution with no broker intervention, only accepted value                                                                                                                                                                                                                                   |
-| 38  | OrderQty          | N         | Number of shares to trade, required if CashOrderQty (152) is not set                                                                                                                                                                                                                                       |
-| 40  | OrdType           | Y         | 1 - Market<br />2 - Limit<br />3 - Stop<br />4 - Stop limit<br />5 - Market on close<br />B - Limit on close                                                                                                                                                                                               |
-| 44  | Price             | N         | Required for Limit `40=2` and Stop Limit `40=4` orders                                                                                                                                                                                                                                                     |
-| 54  | Side              | Y         | 1 - Buy<br />2 - Sell                                                                                                                                                                                                                                                                                      |
-| 55  | Symbol            | Y         | Ticker symbol                                                                                                                                                                                                                                                                                              |
-| 59  | TimeInForce       | Y         | 0 - Day (day)<br />1 - Good Till Cancel (gtc)<br />2 - At the Opening (opg)<br />3 - Immediate or Cancel (ioc)<br />4 - Fill or Kill (fok)<br />7 - At the Close (cls)                                                                                                                                     |
-| 168 | EffectiveTime     | N         | UTC timestamp at which the order becomes eligible for execution. If omitted, the order is effective immediately. A future EffectiveTime does not guarantee immediate routing or execution; applicable trading-session rules and all other order validations continue to apply. Precision supported: Second |
-| 60  | TransactTime      | Y         | UTC timestamp of order creation by client                                                                                                                                                                                                                                                                  |
-| 77  | OpenClose         | N         | Indicates whether the resulting position from the trade would be an opening or closing position.<br />O - Open<br />C - Close                                                                                                                                                                              |
-| 99  | StopPx            | N         | Required for Stop `40=3` and Stop Limit `40=4` orders                                                                                                                                                                                                                                                      |
-| 109 | ClientID          | N         | Sub-account tag for omnibus accounts                                                                                                                                                                                                                                                                       |
-| 152 | CashOrderQty      | N         | Notional value to trade, required if OrderQty (38) is not set                                                                                                                                                                                                                                              |
-| 336 | TradingSessionID  | N         | 8 - Extended Hours<br />Required for extended hours orders only                                                                                                                                                                                                                                            |
-| 167 | SecurityType      | N         | CS - Common Stock (default when absent)<br />OPT - Option<br />Required to be `OPT` to submit a single-leg option order                                                                                                                                                                                    |
-| 200 | MaturityMonthYear | N         | Expiration month and year in `YYYYMM` format.<br />Required when `167=OPT`                                                                                                                                                                                                                                 |
-| 201 | PutOrCall         | N         | 0 - Put<br />1 - Call<br />Required when `167=OPT`                                                                                                                                                                                                                                                         |
-| 202 | StrikePrice       | N         | Strike price of the option contract (up to 3 decimal places).<br />Required when `167=OPT`                                                                                                                                                                                                                 |
-| 205 | MaturityDay       | N         | Expiration day of month (1-31).<br />Required when `167=OPT`                                                                                                                                                                                                                                               |
+| Tag | Field             | Mandatory | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :-- | :---------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 35  | MsgType           | Y         | D - For New Order - Single                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 1   | Account           | Y         | Account number                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 11  | ClOrdID           | Y         | Unique identifier of the order assigned by the client (must be no longer than 48 characters)                                                                                                                                                                                                                                                                                                                                                                                     |
+| 12  | Commission        | N         | Commission to collect from the account holder                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 13  | CommType          | N         | 1 - per share<br />2 - percentage, 5% should be represented as .05<br />3 - absolute                                                                                                                                                                                                                                                                                                                                                                                             |
+| 18  | ExecInst          | N         | 1 - Not held<br />5 - Held                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 21  | HandlInst         | Y         | 1 - Automated execution with no broker intervention, only accepted value                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 38  | OrderQty          | N         | Number of shares to trade, required if CashOrderQty (152) is not set                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 40  | OrdType           | Y         | 1 - Market<br />2 - Limit<br />3 - Stop<br />4 - Stop limit<br />5 - Market on close<br />B - Limit on close                                                                                                                                                                                                                                                                                                                                                                     |
+| 44  | Price             | N         | Required for Limit `40=2` and Stop Limit `40=4` orders                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 54  | Side              | Y         | 1 - Buy<br />2 - Sell                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 55  | Symbol            | Y         | Ticker symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 59  | TimeInForce       | Y         | 0 - Day (day)<br />1 - Good Till Cancel (gtc)<br />2 - At the Opening (opg)<br />3 - Immediate or Cancel (ioc)<br />4 - Fill or Kill (fok)<br />7 - At the Close (cls)                                                                                                                                                                                                                                                                                                           |
+| 168 | EffectiveTime     | N         | UTC timestamp at which the order becomes eligible for execution. If omitted, the order is effective immediately. A future EffectiveTime does not guarantee immediate routing or execution; applicable trading-session rules and all other order validations continue to apply. Supported only for US equity `OrdType(40) = 2 (limit) and 4 (stop limit)` orders with `TimeInForce (59) = 0 (Day)` and `TradingSessionID (336) = 8 (Extended Hours)`. Precision supported: Second |
+| 60  | TransactTime      | Y         | UTC timestamp of order creation by client                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 77  | OpenClose         | N         | Indicates whether the resulting position from the trade would be an opening or closing position.<br />O - Open<br />C - Close                                                                                                                                                                                                                                                                                                                                                    |
+| 99  | StopPx            | N         | Required for Stop `40=3` and Stop Limit `40=4` orders                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 109 | ClientID          | N         | Sub-account tag for omnibus accounts                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 152 | CashOrderQty      | N         | Notional value to trade, required if OrderQty (38) is not set                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 336 | TradingSessionID  | N         | 8 - Extended Hours<br />Required for extended hours orders only                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 167 | SecurityType      | N         | CS - Common Stock (default when absent)<br />OPT - Option<br />Required to be `OPT` to submit a single-leg option order                                                                                                                                                                                                                                                                                                                                                          |
+| 200 | MaturityMonthYear | N         | Expiration month and year in `YYYYMM` format.<br />Required when `167=OPT`                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 201 | PutOrCall         | N         | 0 - Put<br />1 - Call<br />Required when `167=OPT`                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| 202 | StrikePrice       | N         | Strike price of the option contract (up to 3 decimal places).<br />Required when `167=OPT`                                                                                                                                                                                                                                                                                                                                                                                       |
+| 205 | MaturityDay       | N         | Expiration day of month (1-31).<br />Required when `167=OPT`                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 **Notes on effective-time orders**
 
 * Please contact to your Alpaca technical representative to enable this feature.
-* EffectiveTime supports day limit/stop\_limit orders including extended\_hours
+* `EffectiveTime (168)` is supported only for US equity limit and stop limit orders with `TimeInForce (59) = 0 (Day)` and `TradingSessionID (336) = 8 (Extended Hours)`.
 * The order cannot be filled before EffectiveTime.
 * stop\_limit orders are not evaluated for stop triggering before EffectiveTime.
 * The order may be canceled before EffectiveTime.
 * If EffectiveTime falls outside a trading session for which the order is eligible, the order is held until the next eligible session.
 * Reaching EffectiveTime does not guarantee execution. Price, liquidity, trading-session eligibility, and other validation still apply.
 * EffectiveTime must be expressed in UTC using FIX UTCTimestamp format. Precision supported: Second
-* An order may have OrderStatus(39) = New and ExecType (150) = New before its EffectiveTime. In this case, New means that Alpaca has accepted the order; it does not mean the order is currently eligible for execution.
+* An order may have `OrderStatus(39) = New` and `ExecType (150) = New` before its EffectiveTime. In this case, New means that Alpaca has accepted the order; it does not mean the order is currently eligible for execution.
 
 **Notes on single-leg option orders**
 
@@ -236,7 +236,7 @@ Sent by the client to submit a new single order.
 |8=FIX.4.2|9=185|1=TEST_ACCOUNT|11=c5bfc5f6-163d-450e-bb4a-fb25188cde8e|34=12|35=D|38=2|40=2|44=2.15|49=SENDER|52=20240910-14:45:58.303|54=1|55=META|56=ALPACA|59=0|60=20240910-14:45:58.303|77=O|167=OPT|200=202501|201=1|202=100|205=17|10=011|
 ```
 ```text EffectiveTime order
-|8=FIX.4.2|9=149|1=TEST_ACCOUNT|11=c5bfc5f6-163d-450e-bb4a-fb25188cde8e|34=12|35=D|38=10|40=2|44=350.78|49=SENDER|52=20230613-14:45:58.303|54=1|55=SPY|56=ALPACA|59=0|168=20260727-00:00:00.000|10=005|
+|8=FIX.4.2|9=211|35=D|34=12|49=SENDER|52=20260726-23:59:00.000|56=ALPACA|1=TEST_ACCOUNT|11=c5bfc5f6-163d-450e-bb4a-fb25188cde8e|21=1|38=10|40=2|44=350.78|54=1|55=SPY|59=0|60=20260726-23:59:00.000|168=20260727-00:00:00.000|336=8|10=078|
 ```
 
 ## Execution Report (8)
@@ -415,7 +415,7 @@ Sent by the server if the Order Cancel Request (F) or Order Cancel/Replace Reque
 
 Sent by the client to submit a new multi-leg order such as an option spread, straddle, strangle, or covered call. Although the FIX session operates on `BeginString=FIX.4.2`, the `NewOrderMultileg` message (`35=AB`) and its `NoLegs` repeating group follow the FIX 4.4 specification.
 
-Each leg may be either an option contract or an equity (for strategies that combine equity with options such as covered calls). The order is submitted as a single multileg request, and acknowledgements are returned at both the leg level and (optionally) the parent level — see [Execution Report (8)](#execution-report-8) for details.
+Each leg may be either an option contract or an equity (for strategies that combine equity with options such as covered calls). The order is submitted as a single multileg request, and acknowledgements are returned at both the leg level and (optionally) the parent level, see [Execution Report (8)](#execution-report-8) for details.
 
 | Tag  | Field             | Mandatory | Description                                                                                                                                                                               |
 | :--- | :---------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -491,165 +491,16 @@ The replacement message must re-supply the complete `NoLegs` repeating group. Re
 
 ## Version History
 
-<Table align={[null,"left",null]}>
-  <thead>
-    <tr>
-      <th>
-        Version
-      </th>
-
-      <th>
-        Date<br />(DD/MM/YYYY)
-      </th>
-
-      <th>
-        Change
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        0.1.0
-      </td>
-
-      <td>
-        08/05/2024
-      </td>
-
-      <td>
-        Document Creation
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        0.1.1
-      </td>
-
-      <td>
-        24/05/2024
-      </td>
-
-      <td>
-        Changed FIX version to FIX.4.2<br />Removed ApplVerID (1128) from Message Header<br />Added ClOrdID (11) and OrigClOrdID (41) as required in Order Cancel Request (F) and Order Cancel/Replace Request (G)<br />Removed OrderID (37) from Order Cancel Request (F) and Order Cancel/Replace Request (G)<br />Added OrderQty (38) to Order Cancel/Replace Request (G)<br />Updated FIX examples
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        0.1.2
-      </td>
-
-      <td>
-        12/06/2024
-      </td>
-
-      <td>
-        Removed Account (1) and RawData (96) from Logon (A) message<br />Added RefTagID (371), RefMsgType (372) and SessionRejectReason (373) to Reject (3) message<br />Added HandlInst (21), TransactTime (60) and OpenClose (77) to New Order - Single (D)<br />Added 1 (per share) as an accepted value for CommType (13) in New Order - Single (D)<br />Updated AvgPx (6) to mandatory in Execution Report (8)<br />Added Commission (12), ExecRefID (19), ExecTransType (20), LastMkt (30), OrderQty (38) and CashOrderQty (152) to Execution Report (8)<br />Removed OrdRejReason (103) from Execution Report (8)<br />Updated possible values for ExecType (150) in Execution Report (8)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.0.0
-      </td>
-
-      <td>
-        13/06/2024
-      </td>
-
-      <td>
-        Added Side (54), Symbol (55) and TransactTime (60) to Order Cancel Request (F)<br />Added OrderID (37) to Order Cancel Reject (9)<br />Added HandlInst (21), OrdType (40), Side (54), Symbol (55) and TransactTime (60) to Order Cancel/Replace Request (G)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.0.1
-      </td>
-
-      <td>
-        04/09/2024
-      </td>
-
-      <td>
-        Added Market on close (5) and Limit on close (B) as values for OrdType (40) on New Order - Single (D)<br />Added At the Close (7) as a value for TimeInForce (59) on New Order - Single (D)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.0.2
-      </td>
-
-      <td>
-        08/10/2024
-      </td>
-
-      <td>
-        Added Restated (D) as value for ExecType (150) on Execution Report (8)<br />Added ExecRestatementReason (378) to Execution Report (8)<br />Added Status (3) as value for ExecTransType (20) on Execution Report (8)<br />Added TransactTime (60) to Order Cancel Reject (9)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.0.3
-      </td>
-
-      <td>
-        14/01/2025
-      </td>
-
-      <td>
-        Added Good Till Crossing (5) as a value for TimeInForce (59) on New Order - Single (D)<br />Added ClientID (109) to New Order - Single (D)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.0.4
-      </td>
-
-      <td>
-        03/04/2025
-      </td>
-
-      <td>
-        Removed Good Till Crossing (5) as a valid value for TimeInForce (59) on New Order - Single (D)<br />Added TradingSessionID (336) to New Order - Single (D)
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.1.0
-      </td>
-
-      <td>
-        11/05/2026
-      </td>
-
-      <td>
-        Added Options L3 support:<br />Added SecurityType (167), MaturityMonthYear (200), PutOrCall (201), StrikePrice (202) and MaturityDay (205) to New Order - Single (D) for single-leg option orders<br />Added SecurityType (167), MaturityMonthYear (200), PutOrCall (201), StrikePrice (202), MaturityDay (205), OpenClose (77), MultiLegReportingType (442), LegRefID (654) and NoLegs (555) to Execution Report (8)<br />Added SecurityType (167) to Order Cancel Request (F) to support cancellation of multileg and option orders<br />Added New Order - Multileg (AB) message with the NoLegs (555) repeating group (LegSymbol 600, LegCFICode 608, LegMaturityDate 611, LegStrikePrice 612, LegRatioQty 623, LegSide 624, LegRefID 654, LegPositionEffect 564)<br />Added Multileg Order Cancel/Replace Request (AC) message
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        1.2.0
-      </td>
-
-      <td>
-        30/07/2026
-      </td>
-
-      <td>
-        Added EffectiveTime (168) to New Order - Single (D)
-        Added EffectiveTime (168) to Execution Report (8)
-      </td>
-    </tr>
-  </tbody>
-</Table>
-
-<br />
+| Version | Date<br />(DD/MM/YYYY) | Change                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------- | :--------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0.1.0   | 08/05/2024             | Document Creation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 0.1.1   | 24/05/2024             | Changed FIX version to FIX.4.2<br />Removed ApplVerID (1128) from Message Header<br />Added ClOrdID (11) and OrigClOrdID (41) as required in Order Cancel Request (F) and Order Cancel/Replace Request (G)<br />Removed OrderID (37) from Order Cancel Request (F) and Order Cancel/Replace Request (G)<br />Added OrderQty (38) to Order Cancel/Replace Request (G)<br />Updated FIX examples                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| 0.1.2   | 12/06/2024             | Removed Account (1) and RawData (96) from Logon (A) message<br />Added RefTagID (371), RefMsgType (372) and SessionRejectReason (373) to Reject (3) message<br />Added HandlInst (21), TransactTime (60) and OpenClose (77) to New Order - Single (D)<br />Added 1 (per share) as an accepted value for CommType (13) in New Order - Single (D)<br />Updated AvgPx (6) to mandatory in Execution Report (8)<br />Added Commission (12), ExecRefID (19), ExecTransType (20), LastMkt (30), OrderQty (38) and CashOrderQty (152) to Execution Report (8)<br />Removed OrdRejReason (103) from Execution Report (8)<br />Updated possible values for ExecType (150) in Execution Report (8)                                                                                                                                           |
+| 1.0.0   | 13/06/2024             | Added Side (54), Symbol (55) and TransactTime (60) to Order Cancel Request (F)<br />Added OrderID (37) to Order Cancel Reject (9)<br />Added HandlInst (21), OrdType (40), Side (54), Symbol (55) and TransactTime (60) to Order Cancel/Replace Request (G)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 1.0.1   | 04/09/2024             | Added Market on close (5) and Limit on close (B) as values for OrdType (40) on New Order - Single (D)<br />Added At the Close (7) as a value for TimeInForce (59) on New Order - Single (D)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 1.0.2   | 08/10/2024             | Added Restated (D) as value for ExecType (150) on Execution Report (8)<br />Added ExecRestatementReason (378) to Execution Report (8)<br />Added Status (3) as value for ExecTransType (20) on Execution Report (8)<br />Added TransactTime (60) to Order Cancel Reject (9)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 1.0.3   | 14/01/2025             | Added Good Till Crossing (5) as a value for TimeInForce (59) on New Order - Single (D)<br />Added ClientID (109) to New Order - Single (D)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 1.0.4   | 03/04/2025             | Removed Good Till Crossing (5) as a valid value for TimeInForce (59) on New Order - Single (D)<br />Added TradingSessionID (336) to New Order - Single (D)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 1.1.0   | 11/05/2026             | Added Options L3 support:<br />Added SecurityType (167), MaturityMonthYear (200), PutOrCall (201), StrikePrice (202) and MaturityDay (205) to New Order - Single (D) for single-leg option orders<br />Added SecurityType (167), MaturityMonthYear (200), PutOrCall (201), StrikePrice (202), MaturityDay (205), OpenClose (77), MultiLegReportingType (442), LegRefID (654) and NoLegs (555) to Execution Report (8)<br />Added SecurityType (167) to Order Cancel Request (F) to support cancellation of multileg and option orders<br />Added New Order - Multileg (AB) message with the NoLegs (555) repeating group (LegSymbol 600, LegCFICode 608, LegMaturityDate 611, LegStrikePrice 612, LegRatioQty 623, LegSide 624, LegRefID 654, LegPositionEffect 564)<br />Added Multileg Order Cancel/Replace Request (AC) message |
+| 1.2.0   | 30/07/2026             | Added EffectiveTime (168) to New Order - Single (D)<br />Added EffectiveTime (168) to Execution Report (8)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 1.2.1   | 29/10/2026             | Updated EffectiveTime (168) on New Order - Single (D)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-09-16T08:56:10.000Z
+updatedAt: 2026-10-30T09:07:28.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -103,8 +103,8 @@ Every event follows a **two-layer structure**: common fields at the top level, p
 | `price`            | decimal string      | No       | Price of the security involved.                                                                                                                                                                                                                                                                                              |
 | `net_amount`       | decimal string      | No       | Net cash impact (positive = credit, negative = debit).                                                                                                                                                                                                                                                                       |
 | `currency`         | string              | Yes      | ISO currency code (e.g., `USD`).                                                                                                                                                                                                                                                                                             |
-| `swap_rate`        | decimal string      | No       | FX conversion rate for local currency activities.                                                                                                                                                                                                                                                                            |
-| `swap_fee_bps`     | decimal string      | No       | FX conversion fee in basis points.                                                                                                                                                                                                                                                                                           |
+| `swap_rate`        | decimal string      | No       | Exchange rate on a trade. Sent when present, including zero.                                                                                                                                                                                                                                                                 |
+| `swap_fee_bps`     | decimal string      | No       | Conversion fee in basis points on a trade. Sent when present, including zero.                                                                                                                                                                                                                                                |
 | `previous_id`      | UUID                | No       | Present when this activity corrects or cancels a prior activity. Contains the prior activity's `ref_id`.                                                                                                                                                                                                                     |
 | `details`          | object              | Yes      | Activity-type-specific fields. Structure varies by `activity_type` and `activity_subtype`.                                                                                                                                                                                                                                   |
 
@@ -112,11 +112,16 @@ Every event follows a **two-layer structure**: common fields at the top level, p
 
 The `details` object contains fields specific to the activity type. This design avoids excessive nulls and provides rich, type-specific data.
 
-For example, a `TRD` (trade fill) activity's `details` includes `order_id`, `side`, `symbol`, `cum_qty`, `leaves_qty`, `order_status`, and `execution_type`. A `DIV` / `CDIV` (cash dividend) activity's `details` includes `ca_id`, `symbol`, `rate`, `entitled_qty`, `cash_payout`, and corporate action dates.
+For example, a `TRD` (trade fill) activity's `details` includes `order_id`, `side`, `symbol`, `cum_qty`, `leaves_qty`, `order_status`, `execution_type`, and `settlement_currency` when present. A `DIV` / `CDIV` (cash dividend) activity's `details` includes `ca_id`, `symbol`, `rate`, `entitled_qty`, `cash_payout` and corporate action dates.
 
 The full details schema per activity type is defined in the API reference and samples are available in the last section below.
 
-For fee activities (`FEE`), `details` may include a `parent_id` field linking the fee to the specific transaction that caused it. This applies to fees with a one-to-one relationship to a parent trade (e.g., `COM`, `OCOM`). Volume-based fees charged across multiple trades for a period (e.g., `REG`, `TAF`, `CAT`, `ORF`, `NRV`, `NRC`, `BSWP`) do not include `parent_id`.
+`details.parent_id` links an activity to a related transaction (`ref_id`). It is present on:
+
+* `FEE` subtypes with a one-to-one parent trade (e.g. `COM`, `OCOM`, `FOT`). A FOT fee can also include `swap_rate`, `order_id`, and `execution_id`. Volume-based fees (`REG`, `TAF`, `CAT`, `ORF`, `NRV`, `NRC`, `BSWP`) do not include it.
+* Trade-accrued `INT` / `FI`, when a parent trade `ref_id` is available. Those events also include `details.order_id`.
+
+For `INT` / `FI`, `details.interest_type` is `coupon` or `accrued`. Coupon has `rate`. Accrued on call has `price` and `accrued_interest_rate`. Trade accrued has `order_id`.
 
 ***
 
@@ -124,9 +129,9 @@ For fee activities (`FEE`), `details` may include a `parent_id` field linking th
 
 ### Trade Activities
 
-| `activity_type` | `activity_subtype` | Description                                                                                                                                                                                                                 |
-| --------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TRD`           | —                  | Trade fill (equity or options). `details.execution_type` is one of: `fill`, `trade_correct`, `trade_bust`. Multi-leg orders produce one `TRD` event per leg, each with a distinct `ref_id` but the same `details.order_id`. |
+| `activity_type` | `activity_subtype` | Description                                                                                                                                                                                                                                                                                             |
+| --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TRD`           | —                  | Trade fill (equity or options). `details.execution_type` is one of: `fill`, `trade_correct`, `trade_bust`. Multi-leg orders produce one `TRD` event per leg, each with a distinct `ref_id` but the same `details.order_id`. May include `swap_rate`, `swap_fee_bps`, and `details.settlement_currency`. |
 
 ### Corporate Actions (Equity)
 
@@ -200,28 +205,35 @@ For fee activities (`FEE`), `details` may include a `parent_id` field linking th
 | `CSD`           | —                  | Cash disbursement (credit / cash inbound)                                                                                                              |
 | `MEM`           | —                  | Instant funding memo-post                                                                                                                              |
 
+### Currency Conversion
+
+| `activity_type` | `activity_subtype` | Description          |
+| :-------------- | :----------------- | :------------------- |
+| `FXTRD`         | —                  | Currency conversion. |
+
 ### Fees & Interest
 
-| `activity_type` | `activity_subtype` | Description                                                                                  |
-| :-------------- | :----------------- | :------------------------------------------------------------------------------------------- |
-| `FEE`           | `REG`              | Regulatory (SEC) fee                                                                         |
-| `FEE`           | `TAF`              | Trading Activity Fee                                                                         |
-| `FEE`           | `ORF`              | Options Regulatory Fee                                                                       |
-| `FEE`           | `OCC`              | Options Clearing Corporation fee                                                             |
-| `FEE`           | `NRV`              | Non-retail venue fee                                                                         |
-| `FEE`           | `NRC`              | Non-retail commission fee                                                                    |
-| `FEE`           | `LCT`              | Local currency trading fee                                                                   |
-| `FEE`           | `COM`              | Commission                                                                                   |
-| `FEE`           | `CAT`              | Consolidated Audit Trail fee                                                                 |
-| `FEE`           | `ADR`              | ADR fee                                                                                      |
-| `FEE`           | `OCOM`             | Options commission (exercise/liquidation)                                                    |
-| `FEE`           | `BSWP`             | Banking sweep fee                                                                            |
-| `INT`           | `MGN`              | Margin interest                                                                              |
-| `INT`           | `CDT`              | Credit interest                                                                              |
-| `INT`           | `SWP`              | Sweep interest                                                                               |
-| `INT`           | `QII`              | Qualified interest income                                                                    |
-| `INT`           | `FPSL`             | Fully Paid Securities Lending interest income                                                |
-| `INT`           | `FI`               | Coupon payment on a fixed-income security or<br />Accrued interest on a full or partial call |
+| `activity_type` | `activity_subtype` | Description                                         |
+| :-------------- | :----------------- | :-------------------------------------------------- |
+| `FEE`           | `REG`              | Regulatory (SEC) fee                                |
+| `FEE`           | `TAF`              | Trading Activity Fee                                |
+| `FEE`           | `ORF`              | Options Regulatory Fee                              |
+| `FEE`           | `OCC`              | Options Clearing Corporation fee                    |
+| `FEE`           | `NRV`              | Non-retail venue fee                                |
+| `FEE`           | `NRC`              | Non-retail commission fee                           |
+| `FEE`           | `LCT`              | Local currency trading fee                          |
+| `FEE`           | `COM`              | Commission                                          |
+| `FEE`           | `CAT`              | Consolidated Audit Trail fee                        |
+| `FEE`           | `ADR`              | ADR fee                                             |
+| `FEE`           | `OCOM`             | Options commission (exercise/liquidation)           |
+| `FEE`           | `BSWP`             | Banking sweep fee                                   |
+| `FEE`           | `FOT`              | FX on trade conversion fee.                         |
+| `INT`           | `MGN`              | Margin interest                                     |
+| `INT`           | `CDT`              | Credit interest                                     |
+| `INT`           | `SWP`              | Sweep interest                                      |
+| `INT`           | `QII`              | Qualified interest income                           |
+| `INT`           | `FPSL`             | Fully Paid Securities Lending interest income       |
+| `INT`           | `FI`               | Fixed income coupon, call accrued, or trade accrued |
 
 ### Withholding
 
@@ -323,28 +335,30 @@ For state machine replication of positions, cash, and transaction history, the A
 
 ### Field Mapping: Trade Events SSE → Activity SSE
 
-| Trade Event Field                   | Activity SSE Field        | Notes                                                                                                                                                                                                                    |
-| ----------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `account_id`                        | `account_id`              | Unchanged.                                                                                                                                                                                                               |
-| `at`                                | `at`                      | Unchanged. This field, in both endpoints, encodes the  business event timestamp — when the activity occurred in the source system. If you previously used `at` as a proxy for execution time, use `executed_at` instead. |
-| `event_id` (integer, v1)            | —                         | Removed. Use ULID-based `event_id` instead.                                                                                                                                                                              |
-| `event_ulid` (v1) / `event_id` (v2) | `event_id`                | Now always a ULID.                                                                                                                                                                                                       |
-| `event` (e.g., `fill`, `new`)       | `details.execution_type`  | Only `fill`, `trade_correct`, `trade_bust` are emitted. Non-fill lifecycle events are not activities.                                                                                                                    |
-| `timestamp`                         | `executed_at`             | Renamed. The legacy `timestamp` field (which had varying semantics per event type) is replaced by `executed_at`.                                                                                                         |
-| `order.id`                          | `details.order_id`        | Order object is no longer embedded; key fields promoted to `details`.                                                                                                                                                    |
-| `order.client_order_id`             | `details.client_order_id` | —                                                                                                                                                                                                                        |
-| `order.symbol`                      | `details.symbol`          | —                                                                                                                                                                                                                        |
-| `order.asset_id`                    | `details.asset_id`        | —                                                                                                                                                                                                                        |
-| `order.side`                        | `details.side`            | —                                                                                                                                                                                                                        |
-| `order.status`                      | `details.order_status`    | —                                                                                                                                                                                                                        |
-| `order.filled_qty`                  | `details.cum_qty`         | Renamed. Cumulative filled quantity on the order.                                                                                                                                                                        |
-| `order.commission`                  | `details.commission`      | —                                                                                                                                                                                                                        |
-| `order.*` (other fields)            | —                         | Remaining order fields (limit\_price, stop\_price, time\_in\_force, etc.) are not included.                                                                                                                              |
-| `price`                             | `price`                   | Moved to common envelope.                                                                                                                                                                                                |
-| `qty`                               | `qty`                     | Moved to common envelope.                                                                                                                                                                                                |
-| `position_qty`                      | —                         | Removed. Compute from cumulative fills on your side.                                                                                                                                                                     |
-| `execution_id`                      | `ref_id`                  | Renamed. Same value (execution UUID).                                                                                                                                                                                    |
-| `previous_execution_id`             | `previous_id`             | Renamed. Present on `trade_correct` and `trade_bust` events.                                                                                                                                                             |
+| Trade Event Field                   | Activity SSE Field            | Notes                                                                                                                                                                                                                    |
+| ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `account_id`                        | `account_id`                  | Unchanged.                                                                                                                                                                                                               |
+| `at`                                | `at`                          | Unchanged. This field, in both endpoints, encodes the  business event timestamp — when the activity occurred in the source system. If you previously used `at` as a proxy for execution time, use `executed_at` instead. |
+| `event_id` (integer, v1)            | —                             | Removed. Use ULID-based `event_id` instead.                                                                                                                                                                              |
+| `event_ulid` (v1) / `event_id` (v2) | `event_id`                    | Now always a ULID.                                                                                                                                                                                                       |
+| `event` (e.g., `fill`, `new`)       | `details.execution_type`      | Only `fill`, `trade_correct`, `trade_bust` are emitted. Non-fill lifecycle events are not activities.                                                                                                                    |
+| `timestamp`                         | `executed_at`                 | Renamed. The legacy `timestamp` field (which had varying semantics per event type) is replaced by `executed_at`.                                                                                                         |
+| `order.id`                          | `details.order_id`            | Order object is no longer embedded; key fields promoted to `details`.                                                                                                                                                    |
+| `order.client_order_id`             | `details.client_order_id`     | —                                                                                                                                                                                                                        |
+| `order.symbol`                      | `details.symbol`              | —                                                                                                                                                                                                                        |
+| `order.asset_id`                    | `details.asset_id`            | —                                                                                                                                                                                                                        |
+| `order.side`                        | `details.side`                | —                                                                                                                                                                                                                        |
+| `order.status`                      | `details.order_status`        | —                                                                                                                                                                                                                        |
+| `order.filled_qty`                  | `details.cum_qty`             | Renamed. Cumulative filled quantity on the order.                                                                                                                                                                        |
+| `order.commission`                  | `details.commission`          | —                                                                                                                                                                                                                        |
+| `swap_rate`                         | `swap_rate`                   | Sent when present, including zero.                                                                                                                                                                                       |
+| `order.settlement_currency`         | `details.settlement_currency` | Sent when present.                                                                                                                                                                                                       |
+| `order.*` (other fields)            | —                             | Remaining order fields (limit\_price, stop\_price, time\_in\_force, etc.) are not included.                                                                                                                              |
+| `price`                             | `price`                       | Moved to common envelope.                                                                                                                                                                                                |
+| `qty`                               | `qty`                         | Moved to common envelope.                                                                                                                                                                                                |
+| `position_qty`                      | —                             | Removed. Compute from cumulative fills on your side.                                                                                                                                                                     |
+| `execution_id`                      | `ref_id`                      | Renamed. Same value (execution UUID).                                                                                                                                                                                    |
+| `previous_execution_id`             | `previous_id`                 | Renamed. Present on `trade_correct` and `trade_bust` events.                                                                                                                                                             |
 
 ### Field Mapping: Legacy NTA Events SSE → Activity SSE
 
@@ -369,8 +383,8 @@ For state machine replication of positions, cash, and transaction history, the A
 | `per_share_amount`     | `details.rate`        | Renamed and moved. Represents the per-share rate (e.g., dividend rate).                                                                                                                                                                             |
 | `group_id`             | `details.group_id`    | Moved into `details`. Groups related activities (e.g., both legs of a split).                                                                                                                                                                       |
 | `corporate_action_id`  | `details.ca_id`       | Renamed and moved into `details`.                                                                                                                                                                                                                   |
-| `swap_rate`            | `swap_rate`           | Unchanged. Remains at the top level.                                                                                                                                                                                                                |
-| `execution_id`         | —                     | Was present on some legacy NTA fee events. In the new schema, use `details.parent_id` for fee-to-parent-transaction linkage.                                                                                                                        |
+| `swap_rate`            | `swap_rate`           | On a fee or FXTRD, this is `details.swap_rate`.                                                                                                                                                                                                     |
+| `execution_id`         | —                     | Was present on some legacy NTA fee events. Use `details.parent_id` to link a fee to its parent. A `FOT` fee can also include `details.execution_id` and `details.order_id`.                                                                         |
 
 ### Field Mapping: Legacy Activities REST → Activity SSE
 
@@ -490,6 +504,34 @@ Representative samples for each activity type. All identifiers have been replace
   }
 }
 ```
+```json TRD (exchange rate)
+{
+  "account_id": "<ACCID>",
+  "event_id": "<EVTID>",
+  "ref_id": "<REFID>",
+  "activity_type": "TRD",
+  "qty": "1",
+  "price": "150",
+  "swap_rate": "0.86",
+  "swap_fee_bps": "25",
+  "currency": "EUR",
+  "net_amount": "-129.00",
+  "status": "executed",
+  "at": "2026-01-02T14:43:59Z",
+  "executed_at": "2026-01-02T14:43:59Z",
+  "settle_date": "2026-01-05",
+  "details": {
+    "order_id": "<ORID>",
+    "side": "buy",
+    "symbol": "AAPL",
+    "order_status": "filled",
+    "execution_type": "fill",
+    "cum_qty": "1",
+    "leaves_qty": "0",
+    "settlement_currency": "USD"
+  }
+}
+```
 ```json CSD
 {
   "account_id": "<ACCID>",
@@ -569,6 +611,27 @@ Representative samples for each activity type. All identifiers have been replace
   }
 }
 ```
+```json FXTRD
+{
+  "account_id": "<ACCID>",
+  "event_id": "<EVTID>",
+  "ref_id": "<REFID>",
+  "activity_type": "FXTRD",
+  "qty": "10",
+  "price": "1.15",
+  "currency": "USD",
+  "net_amount": "-11.50",
+  "status": "executed",
+  "at": "2026-01-02T14:43:59Z",
+  "executed_at": "2026-01-02T14:43:59Z",
+  "settle_date": "2026-01-05",
+  "details": {
+    "system_date": "2026-01-02",
+    "order_id": "<ORID>",
+    "swap_rate": "0.86"
+  }
+}
+```
 ```json FEE
 # there are some fees, that do not have one single transaction from which they are derived, but they are derived on a volume/bulk/duration of transactions. For them, there is no `parent_id` relationship. Such fees sub-types include: REG, TAF, CAT, ADR, ORF, BSWP, NRV, NRC, ADR, OCOM, LOC
 
@@ -631,6 +694,28 @@ Representative samples for each activity type. All identifiers have been replace
   "details": {
     "parent_id": "<PTID>",
     "system_date": "2026-01-15"
+  }
+}
+```
+```json FEE (FOT)
+{
+  "account_id": "<ACCID>",
+  "event_id": "<EVTID>",
+  "ref_id": "<REFID>",
+  "activity_type": "FEE",
+  "activity_subtype": "FOT",
+  "currency": "USD",
+  "net_amount": "-0.15",
+  "status": "executed",
+  "at": "2026-01-02T14:43:59Z",
+  "executed_at": "2026-01-02T14:43:59Z",
+  "settle_date": "2026-01-05",
+  "details": {
+    "system_date": "2026-01-02",
+    "parent_id": "<PTID>",
+    "order_id": "<ORID>",
+    "execution_id": "<EXID>",
+    "swap_rate": "0.86"
   }
 }
 ```
@@ -720,9 +805,8 @@ Representative samples for each activity type. All identifiers have been replace
 }
 ```
 ```json INT (FI)
-// Regular coupon 
-// - has rate
-// - does not have accrued_interest_rate or price
+// Coupon
+// interest_type: coupon. Has rate.
 {
   "account_id": "<ACCID>",
   "event_id": "<EVTID>",
@@ -738,6 +822,7 @@ Representative samples for each activity type. All identifiers have been replace
   "executed_at": "2026-07-27T16:00:00Z",
   "settle_date": "2026-07-27",
   "details": {
+    "interest_type": "coupon",
     "ca_id": "<CAID>",
     "group_id": "<GRPID>",
     "entitled_qty": "205000",
@@ -752,9 +837,8 @@ Representative samples for each activity type. All identifiers have been replace
   }
 }
 
-// Accrued intereston for a full or partial call  
-// - no rate 
-// - instead has price + accrued_interest_rate
+// Accrued interest on call
+// interest_type: accrued. Has price and accrued_interest_rate.
 {
   "account_id": "<ACCID>",
   "event_id": "<EVTID>",
@@ -770,6 +854,7 @@ Representative samples for each activity type. All identifiers have been replace
   "executed_at": "2026-07-08T16:00:00Z",
   "settle_date": "2026-07-09",
   "details": {
+    "interest_type": "accrued",
     "ca_id": "<CAID>",
     "group_id": "<GRPID>",
     "entitled_qty": "10000",
@@ -782,6 +867,30 @@ Representative samples for each activity type. All identifiers have been replace
     "payment_date": "2026-07-09",
     "position_date": "2026-07-08",
     "system_date": "2026-07-09"
+  }
+}
+
+// Trade accrued
+// interest_type: accrued. Has order_id. parent_id when a parent trade ref_id is available.
+{
+  "account_id": "<ACCID>",
+  "event_id": "<EVTID>",
+  "ref_id": "<REFID>",
+  "activity_type": "INT",
+  "activity_subtype": "FI",
+  "qty": "10",
+  "price": "99.50",
+  "currency": "USD",
+  "net_amount": "12.34",
+  "status": "executed",
+  "at": "2026-09-03T16:04:08.514798Z",
+  "executed_at": "2026-09-03T16:04:00Z",
+  "settle_date": "2026-09-03",
+  "details": {
+    "interest_type": "accrued",
+    "order_id": "<ORID>",
+    "parent_id": "<PTID>",
+    "system_date": "2026-09-03"
   }
 }
 ```

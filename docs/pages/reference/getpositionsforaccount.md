@@ -32,7 +32,9 @@ List open positions for an account
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"

@@ -156,7 +156,7 @@ In order to submit a stop limit order, you will need to specify both the limit a
 
 ## Opening and Closing Auction Orders
 
-Market on open and limit on open orders are only eligible to execute in the opening auction. Market on close and limit on close orders are only eligible to execute in the closing auction. Please see the [Time in Force](/docs/orders-at-alpaca#time-in-force) section for more details.
+Market on open and limit on open orders are only eligible to execute in the opening auction. Market on close and limit on close orders are only eligible to execute in the closing auction. Please see the [Time in Force](https://docs.alpaca.markets/us/docs/orders-at-alpaca#time-in-force) section for more details.
 
 ## Bracket Orders
 

@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-05-25T18:53:55.000Z
+updatedAt: 2026-10-16T19:45:57.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -95,14 +95,8 @@ Pagination is handled using the `page_token` and `page_size` parameters.
 | `CSD`           | Cash deposit(+)                                                                             |
 | `CSW`           | Cash withdrawal(-)                                                                          |
 | `DIV`           | Dividends                                                                                   |
-| `DIVCGL`        | Dividend (capital gain long term)                                                           |
-| `DIVCGS`        | Dividend (capital gain short term)                                                          |
 | `DIVFEE`        | Dividend fee                                                                                |
-| `DIVFT`         | Dividend adjusted (Foreign Tax Withheld)                                                    |
 | `DIVNRA`        | Dividend adjusted (NRA Withheld)                                                            |
-| `DIVROC`        | Dividend return of capital                                                                  |
-| `DIVTW`         | Dividend adjusted (Tefra Withheld)                                                          |
-| `DIVTXEX`       | Dividend (tax exempt)                                                                       |
 | `FEE`           | Fee denominated in USD                                                                      |
 | `FOPT`          | Free of Payment Transfer                                                                    |
 | `INT`           | Interest (credit/margin)                                                                    |

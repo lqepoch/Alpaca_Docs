@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-11-14T05:48:34.000Z
+updatedAt: 2026-10-28T15:00:31.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -106,9 +106,9 @@ Multiple data points may arrive in each message received from the server. These 
 | `T`       | string | message type, always “q”                                                                                |
 | `S`       | string | symbol                                                                                                  |
 | `bp`      | number | bid price                                                                                               |
-| `bs`      | number | bid size                                                                                                |
+| `bs`      | number | bid size of the base asset (left side of the pair), with no lot multiplier                              |
 | `ap`      | number | ask price                                                                                               |
-| `as`      | number | ask size                                                                                                |
+| `as`      | number | ask size of the base asset (left side of the pair), with no lot multiplier                              |
 | `t`       | string | [RFC-3339](https://datatracker.ietf.org/doc/html/rfc3339) formatted timestamp with nanosecond precision |
 
 ### Example

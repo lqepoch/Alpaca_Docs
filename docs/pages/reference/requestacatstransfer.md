@@ -152,7 +152,14 @@ This endpoint allows you to create new incoming ACATS requests. We currently sup
         "type": "object"
       },
       "AcatsInitiateTransferDetails": {
-        "description": "Transfer details. The two transfer types are mutually exclusive in what they accept:\n- `FULL`: do not include the `cash` or `securities` objects (the entire account will be transferred). Including either is rejected with HTTP 400.\n- `PARTIAL`: specify which assets to transfer using the `cash` and/or `securities` objects. At least one of the two must be present and non-empty, otherwise the request is rejected with HTTP 400.\n",
+        "description": "Transfer details. The two transfer types are mutually exclusive in what they accept:\n- `FULL`: do not include a non-empty `cash` or `securities.equities` array (the entire account will be transferred). Including either non-empty is rejected with HTTP 400.\n- `PARTIAL`: specify which assets to transfer using the `cash` and/or `securities` objects. At least one of the two must be present and non-empty, otherwise the request is rejected with HTTP 400.\n",
+        "discriminator": {
+          "mapping": {
+            "FULL": "#/components/schemas/FullTransfer",
+            "PARTIAL": "#/components/schemas/PartialTransfer"
+          },
+          "propertyName": "type"
+        },
         "example": {
           "cash": [
             {
@@ -177,79 +184,15 @@ This endpoint allows you to create new incoming ACATS requests. We currently sup
         },
         "oneOf": [
           {
-            "description": "Transfers the entire account. Must not carry `cash` or `securities`.",
-            "not": {
-              "anyOf": [
-                {
-                  "required": [
-                    "cash"
-                  ]
-                },
-                {
-                  "required": [
-                    "securities"
-                  ]
-                }
-              ]
-            },
-            "properties": {
-              "type": {
-                "enum": [
-                  "FULL"
-                ],
-                "type": "string"
-              }
-            },
-            "title": "Full transfer"
+            "$ref": "#/components/schemas/FullTransfer"
           },
           {
-            "anyOf": [
-              {
-                "properties": {
-                  "cash": {
-                    "minItems": 1,
-                    "type": "array"
-                  }
-                },
-                "required": [
-                  "cash"
-                ]
-              },
-              {
-                "properties": {
-                  "securities": {
-                    "properties": {
-                      "equities": {
-                        "minItems": 1,
-                        "type": "array"
-                      }
-                    },
-                    "required": [
-                      "equities"
-                    ],
-                    "type": "object"
-                  }
-                },
-                "required": [
-                  "securities"
-                ]
-              }
-            ],
-            "description": "Transfers selected assets. Must carry a non-empty `cash` array, a non-empty `securities.equities` array, or both.",
-            "properties": {
-              "type": {
-                "enum": [
-                  "PARTIAL"
-                ],
-                "type": "string"
-              }
-            },
-            "title": "Partial transfer"
+            "$ref": "#/components/schemas/PartialTransfer"
           }
         ],
         "properties": {
           "cash": {
-            "description": "Cash amounts to transfer. Only used for PARTIAL transfers. Must not be included for FULL transfers.",
+            "description": "Cash amounts to transfer. Only used for PARTIAL transfers. Must be omitted or empty for FULL transfers.",
             "items": {
               "$ref": "#/components/schemas/AcatsCashBalance"
             },
@@ -258,12 +201,10 @@ This endpoint allows you to create new incoming ACATS requests. We currently sup
           "securities": {
             "allOf": [
               {
-                "description": "Securities to transfer. Only used for PARTIAL transfers. Must not be included for FULL transfers."
-              },
-              {
                 "$ref": "#/components/schemas/AcatsSecurities"
               }
-            ]
+            ],
+            "description": "Securities to transfer. Only used for PARTIAL transfers. Must be omitted or empty for FULL transfers."
           },
           "type": {
             "$ref": "#/components/schemas/AcatsInitiateTransferType"
@@ -377,6 +318,125 @@ This endpoint allows you to create new incoming ACATS requests. We currently sup
             "type": "array"
           }
         },
+        "type": "object"
+      },
+      "FullTransfer": {
+        "allOf": [
+          {
+            "properties": {
+              "type": {
+                "enum": [
+                  "FULL"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "type": "object"
+          },
+          {
+            "not": {
+              "properties": {
+                "cash": {
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "cash"
+              ],
+              "type": "object"
+            },
+            "type": "object"
+          },
+          {
+            "not": {
+              "properties": {
+                "securities": {
+                  "properties": {
+                    "equities": {
+                      "minItems": 1,
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "equities"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "securities"
+              ],
+              "type": "object"
+            },
+            "type": "object"
+          }
+        ],
+        "description": "Transfers the entire account. `cash` and `securities.equities`, if sent, must be empty.",
+        "title": "Full transfer"
+      },
+      "PartialTransfer": {
+        "description": "Transfers selected assets. Must carry a non-empty `cash` array, a non-empty `securities.equities` array, or both.",
+        "if": {
+          "not": {
+            "properties": {
+              "cash": {
+                "minItems": 1,
+                "type": "array"
+              }
+            },
+            "required": [
+              "cash"
+            ],
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "properties": {
+          "cash": {
+            "description": "Cash amounts to transfer.",
+            "items": {
+              "$ref": "#/components/schemas/AcatsCashBalance"
+            },
+            "type": "array"
+          },
+          "securities": {
+            "$ref": "#/components/schemas/AcatsSecurities"
+          },
+          "type": {
+            "enum": [
+              "PARTIAL"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "then": {
+          "properties": {
+            "securities": {
+              "properties": {
+                "equities": {
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "equities"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "securities"
+          ],
+          "type": "object"
+        },
+        "title": "Partial transfer",
         "type": "object"
       }
     },
@@ -517,6 +577,7 @@ This endpoint allows you to create new incoming ACATS requests. We currently sup
   ],
   "tags": [
     {
+      "description": "Endpoints for initiating and tracking ACATS transfers. Use the ACATS endpoints to create transfers and query their current state, and the [Admin Action Events Stream](#operation/subscribeToAdminActionSSE) under the **Events** group to receive real-time status updates (`acats_status_admin_event`) as a transfer moves through its lifecycle.\n",
       "name": "ACATS"
     }
   ],

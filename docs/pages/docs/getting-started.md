@@ -15,7 +15,7 @@ Alpaca offers simple, modern API-first solutions to enable anyone, either indivi
 
 Whether you are launching an app to access the US equities market or deploy algorithmic trading-strategies with stocks and crypto, Alpaca has an API for you.
 
-* Build trading apps and brokerage services for your end users. Tailored for businesses such as trading apps, challenger banks, etc. - **Start [here](/docs/getting-started-with-broker-api)**
+* Build trading apps and brokerage services for your end users. Tailored for businesses such as trading apps, challenger banks, etc. - **Start [here](https://docs.alpaca.markets/us/docs/getting-started-with-broker-api)**
 * Stock trading for individuals and business accounts. Built for retail, algorithmic and proprietary traders. - **Start [here](https://docs.alpaca.markets/docs/getting-started-with-trading-api)**
 * Access real-time market pricing data and up to 6+ years worth of historical data for stocks and crypto. - **Start [here](https://docs.alpaca.markets/docs/getting-started-with-alpaca-market-data)**
 * Develop applications on Alpaca’s platform using OAuth2. Let any user with an Alpaca brokerage account connect to your app. - **Start [here](https://docs.alpaca.markets/docs/about-connect-api)**

@@ -151,7 +151,9 @@ Returns the watchlist object
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
@@ -180,7 +182,7 @@ Returns the watchlist object
         "type": "object"
       },
       "Exchange": {
-        "description": "Represents the exchange where an asset is traded.\n\nFor Stocks:\n- AMEX\n- ARCA\n- BATS\n- NYSE\n- NASDAQ\n- NYSEARCA\n- OTC\n\nFor Crypto:\n- CRYPTO",
+        "description": "Represents the exchange where an asset is traded.\n\nFor Stocks:\n- AMEX\n- ARCA\n- BATS\n- NYSE\n- NASDAQ\n- NYSEARCA\n- OTC\n- TXSE\n\nFor Crypto:\n- CRYPTO\n- ERSX\n- CRXL\n\nFor crypto perpetuals:\n- ASCX\n\nIndex symbols:\n- INDEX\n\nINDEX is the artificial exchange for index symbols such as SPX.",
         "enum": [
           "AMEX",
           "ARCA",
@@ -188,7 +190,13 @@ Returns the watchlist object
           "NYSE",
           "NASDAQ",
           "NYSEARCA",
-          "OTC"
+          "OTC",
+          "TXSE",
+          "CRYPTO",
+          "ERSX",
+          "CRXL",
+          "ASCX",
+          "INDEX"
         ],
         "example": "NASDAQ",
         "title": "Exchange",

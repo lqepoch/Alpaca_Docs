@@ -1,13 +1,13 @@
 ---
-updatedAt: 2026-09-09T13:55:59.000Z
+updatedAt: 2026-10-06T17:16:34.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
 ---
 
-# Trading MCP Server
+# Trading API MCP
 
-Turn your words into action with Alpaca’s MCP Server
+Turn your words into action with Trading API's MCP Server
 
 ## What You Can Do
 

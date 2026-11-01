@@ -93,6 +93,45 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
         "title": "ActivityEventV2",
         "type": "object"
       },
+      "ActivityEventV2Asset": {
+        "description": "Instrument for `qty`. For options, the contract. Omitted when `qty` is missing or zero, when no identifier is known, and on activities recorded before this field was introduced.",
+        "examples": [
+          {
+            "cusip": "037833100",
+            "id": "790f3f26-4e7c-4f46-93f4-0425a28873da",
+            "symbol": "AAPL"
+          },
+          {
+            "id": "5b4ec3b4-6a1f-4a47-9b8e-2f6c1d0a9e31",
+            "isin": "HK0000069689",
+            "symbol": "1299:XHKG"
+          }
+        ],
+        "properties": {
+          "cusip": {
+            "description": "CUSIP. Only present for US assets when permitted by licensing.",
+            "example": "037833100",
+            "type": "string"
+          },
+          "id": {
+            "description": "Asset ID. For options, the contract ID. Only present when `activity_type` is `TRD`.",
+            "example": "790f3f26-4e7c-4f46-93f4-0425a28873da",
+            "format": "uuid",
+            "type": "string"
+          },
+          "isin": {
+            "description": "ISIN. Only present when `activity_type` is `TRD`, and when permitted by licensing.",
+            "example": "US0378331005",
+            "type": "string"
+          },
+          "symbol": {
+            "description": "Symbol. For options, the contract symbol.",
+            "example": "AAPL",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "ActivityEventV2CommonFields": {
         "description": "Represents the common fields for all Activity V2 Events",
         "properties": {
@@ -108,6 +147,9 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
           "activity_type": {
             "description": "The type of the activity, which can be trade or any of the non trade activities",
             "type": "string"
+          },
+          "asset": {
+            "$ref": "#/components/schemas/ActivityEventV2Asset"
           },
           "at": {
             "description": "Timestamp of event",
@@ -166,12 +208,12 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
             "type": "string"
           },
           "swap_fee_bps": {
-            "description": "Currency conversion fee rate base-point in case of local currency activity",
+            "description": "Currency conversion fee in basis points charged to the customer on a trade activity. Sent when the order has a fee, including zero. Omitted on other activities.",
             "format": "decimal",
             "type": "string"
           },
           "swap_rate": {
-            "description": "Conversion rate for local currency activities",
+            "description": "Exchange rate from the execution on a trade activity. Sent when the execution has a rate, including zero. Omitted on other activities.",
             "format": "decimal",
             "type": "string"
           }
@@ -319,6 +361,9 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
           },
           {
             "$ref": "#/components/schemas/OCTActivityV2"
+          },
+          {
+            "$ref": "#/components/schemas/FXTRDActivityV2"
           }
         ],
         "type": "object"
@@ -370,6 +415,10 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
           },
           "order_status": {
             "description": "Identifies the current status of the order",
+            "type": "string"
+          },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
             "type": "string"
           },
           "side": {
@@ -1394,15 +1443,27 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
           },
           {
             "properties": {
-              "parent_id": {
-                "description": "The parent transaction's ID",
+              "execution_id": {
+                "description": "Execution ID. Present only for activity subtype FOT, and only when the fee has one.",
                 "format": "uuid",
+                "type": "string"
+              },
+              "order_id": {
+                "description": "Order ID. Present only for activity subtype FOT, and only when the fee has one.",
+                "format": "uuid",
+                "type": "string"
+              },
+              "parent_id": {
+                "description": "The parent transaction's ID. Present for fees with a one-to-one relationship to a parent trade (e.g. COM). Omitted for volume-based or bulk fees charged across multiple trades for a period (e.g. REG, TAF, CAT, ORF, NRV, NRC, BSWP) and for LOC fees that are not linked to a parent transaction.",
+                "format": "uuid",
+                "type": "string"
+              },
+              "swap_rate": {
+                "description": "Exchange rate on the fee. Sent when the fee has a non-zero rate.",
+                "format": "decimal",
                 "type": "string"
               }
             },
-            "required": [
-              "parent_id"
-            ],
             "type": "object"
           }
         ],
@@ -1438,6 +1499,30 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
           }
         ],
         "description": "Free-of-payment (FOP) transfers",
+        "type": "object"
+      },
+      "FXTRDActivityV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonNTAActivityV2"
+          },
+          {
+            "properties": {
+              "order_id": {
+                "description": "Order ID of the conversion, when the activity has one.",
+                "format": "uuid",
+                "type": "string"
+              },
+              "swap_rate": {
+                "description": "Exchange rate of the conversion. Sent when the activity has a non-zero rate.",
+                "format": "decimal",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "description": "Currency conversion.",
         "type": "object"
       },
       "FixedIncomeInterestActivityV2": {
@@ -1563,6 +1648,11 @@ This is the single-event counterpart to the `subscribeToActivitiesSSE` streaming
           },
           {
             "properties": {
+              "issuer": {
+                "description": "Issuer of the tokenized asset, on tokenization mint and redeem journals (`activity_subtype` `ITNJ`). Same value as `issuer` on the related tokenization request. Omitted for other journals and for journals booked before this field was added.",
+                "example": "xstocks",
+                "type": "string"
+              },
               "symbol": {
                 "description": "The symbol of the security involved with the activity",
                 "type": "string"
