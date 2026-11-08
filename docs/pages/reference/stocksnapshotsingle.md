@@ -280,6 +280,9 @@ The snapshot endpoint provides the latest trade, latest quote, minute bar, daily
       "stock_snapshots_resp_single": {
         "allOf": [
           {
+            "$ref": "#/components/schemas/stock_snapshot"
+          },
+          {
             "properties": {
               "currency": {
                 "type": "string"
@@ -289,9 +292,6 @@ The snapshot endpoint provides the latest trade, latest quote, minute bar, daily
               }
             },
             "type": "object"
-          },
-          {
-            "$ref": "#/components/schemas/stock_snapshot"
           }
         ]
       },

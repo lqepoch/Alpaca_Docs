@@ -47,7 +47,7 @@ The option chain endpoint provides the latest trade, latest quote, and greeks fo
           "$ref": "#/components/schemas/option_feed"
         }
       },
-      "option_limit": {
+      "option_snapshot_limit": {
         "description": "Number of maximum snapshots to return in a response.\nThe limit applies to the total number of data points, not the number per symbol!\nUse `next_page_token` to fetch the next set of responses.\n",
         "in": "query",
         "name": "limit",
@@ -445,7 +445,7 @@ The option chain endpoint provides the latest trade, latest quote, and greeks fo
             "$ref": "#/components/parameters/option_feed"
           },
           {
-            "$ref": "#/components/parameters/option_limit"
+            "$ref": "#/components/parameters/option_snapshot_limit"
           },
           {
             "$ref": "#/components/parameters/option_updated_since"

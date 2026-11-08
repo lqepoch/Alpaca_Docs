@@ -149,22 +149,18 @@ List all incoming and outgoing transfers where the account was one of the partie
           "page_token_next": {
             "allOf": [
               {
-                "description": "Page token for the next page of transfers. Pass it back in the `page_token` query parameter to fetch that page. Not returned when the caller is on the last page."
-              },
-              {
                 "$ref": "#/components/schemas/AcatsPageToken"
               }
-            ]
+            ],
+            "description": "Page token for the next page of transfers. Pass it back in the `page_token` query parameter to fetch that page. Not returned when the caller is on the last page."
           },
           "page_token_previous": {
             "allOf": [
               {
-                "description": "Page token for the previous page of transfers. Pass it back in the `page_token` query parameter to fetch that page. Not returned when the caller is on the first page."
-              },
-              {
                 "$ref": "#/components/schemas/AcatsPageToken"
               }
-            ]
+            ],
+            "description": "Page token for the previous page of transfers. Pass it back in the `page_token` query parameter to fetch that page. Not returned when the caller is on the first page."
           },
           "pending_transfers": {
             "description": "The count of ACATS transfers pending review",
@@ -485,6 +481,7 @@ List all incoming and outgoing transfers where the account was one of the partie
   ],
   "tags": [
     {
+      "description": "Endpoints for initiating and tracking ACATS transfers. Use the ACATS endpoints to create transfers and query their current state, and the [Admin Action Events Stream](#operation/subscribeToAdminActionSSE) under the **Events** group to receive real-time status updates (`acats_status_admin_event`) as a transfer moves through its lifecycle.\n",
       "name": "ACATS"
     }
   ],

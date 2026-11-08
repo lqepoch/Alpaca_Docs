@@ -79,31 +79,52 @@ Notes:
         "title": "Activity"
       },
       "ActivitySubType": {
-        "description": "Represents a more specific classification to the `activity_type`.\nThis field is optional and may not always be populated, depending on the activity type and the available data.\nEach `activity_type` has a set of valid `activity_sub_type` values.\n\nFull mapping of `activity_type` to `activity_sub_type`:\n\n- **CGD**: Capital Gains Distribution activity sub-types:\n  - **LTCG**: Long-Term Capital Gain\n  - **STCG**: Short-Term Capital Gain\n\n- **DIV**: Dividend activity sub-types:\n  - **CDIV**: Cash Dividend\n  - **ROC**: Return of Capital\n  - **SDIV**: Stock Dividend\n  - **SPD**: Substitute Payment In Lieu Of Dividend\n\n- **FEE**: Fee-related activity sub-types:\n  - **REG**: Regulatory Fee\n  - **TAF**: Trading Activity Fee\n  - **LCT**: Local Currency Trading Fee\n  - **ORF**: Options Regulatory Fee\n  - **OCC**: Options Clearing Corporation Fee\n  - **NRC**: Non-Retail Commission Fee\n  - **NRV**: Non-Retail Venue Fee\n  - **COM**: Commission\n  - **CAT**: Consolidated Audit Trail Fee\n\n- **INT**: Interest-related activity sub-types:\n  - **MGN**: Margin Interest\n  - **CDT**: Credit Interest\n  - **SWP**: Sweep Interest\n  - **QII**: Qualified Interest\n  - **FI**: Fixed Income Interest (coupon or accrued)\n\n- **MA**: Merger and Acquisition activity sub-types:\n  - **CMA**: Cash Merger\n  - **SMA**: Stock Merger\n  - **SCMA**: Stock & Cash Merger\n\n- **NC**: Name Change activity sub types\n  - **SNC**: Symbol Name Change\n  - **CNC**: CUSIP Name Change\n  - **SCNC**: Symbol & CUSIP Name Change\n\n- **OPCA**: Option Corporate Action activity sub-types:\n  - **DIV.CDIV**: Cash Dividend\n  - **DIV.ROC**: Return of Capital\n  - **DIV.SDIV**: Stock Dividend\n  - **MA.CMA**: Cash Merger\n  - **MA.SMA**: Stock Merger\n  - **MA.SCMA**: Stock & Cash Merger\n  - **NC.CNC**: CUSIP Name Change\n  - **NC.SNC**: Symbol Name Change\n  - **NC.SCNC**: Symbol & CUSIP Name Change\n  - **SPIN**: Spin-off\n  - **SPLIT.FSPLIT**: Forward Stock Split\n  - **SPLIT.RSPLIT**: Reverse Stock Split\n  - **SPLIT.USPLIT**: Unit Split\n\n- **REO**: Reorganization activity sub-types:\n  - **REOS**: Stock only (1 or more stock legs)\n  - **REOC**: Cash only (one cash leg)\n  - **REOSC**: Stock and cash\n\n- **REORG**: Activity sub-types:\n  - **WRM**: Worthless Removal\n\n- **SPLIT**: Stock Split activity sub-types:\n  - **FSPLIT**: Forward Stock Split\n  - **RSPLIT**: Reverse Stock Split\n  - **USPLIT**: Unit Split\n\n- **VOF**: Voluntary Offering activity sub-types:\n  - **VTND**: Tender Offer\n  - **VWRT**: Warrant Exercise\n  - **VRGT**: Rights Offer\n  - **VEXH**: Exchange Offer\n\n- **WH**: Withholding activity sub-types:\n  - **SWH**: State Withholding\n  - **FWH**: Federal Withholding\n  - **SLWH**: Sales Withholding",
+        "description": "Represents a more specific classification to the `activity_type`.\nThis field is optional and may not always be populated, depending on the activity type and the available data.\nEach `activity_type` has a set of valid `activity_sub_type` values.\n\nThis field is a free-form string rather than a closed enum: sub-type codes\noriginate from several upstream clearing, corporate-action, and international-fee\nsystems, and new codes can appear without a corresponding API change. The mapping\nbelow documents the sub-types known at the time of writing; it is not guaranteed\nto be exhaustive.\n\nFull mapping of `activity_type` to `activity_sub_type`:\n\n- **CGD**: Capital Gains Distribution activity sub-types:\n  - **LTCG**: Long-Term Capital Gain\n  - **STCG**: Short-Term Capital Gain\n\n- **DIV**: Dividend activity sub-types:\n  - **CDIV**: Cash Dividend\n  - **ROC**: Return of Capital\n  - **SDIV**: Stock Dividend\n  - **SPD**: Substitute Payment In Lieu Of Dividend\n\n- **FEE**: Fee-related activity sub-types:\n  - **REG**: Regulatory Fee\n  - **TAF**: Trading Activity Fee\n  - **LCT**: Local Currency Trading Fee\n  - **ORF**: Options Regulatory Fee\n  - **OCC**: Options Clearing Corporation Fee\n  - **NRC**: Non-Retail Commission Fee\n  - **NRV**: Non-Retail Venue Fee\n  - **COM**: Commission\n  - **CAT**: Consolidated Audit Trail Fee\n  - **ICF**: Index Contract Fee\n  - **EPI**: Exchange Proprietary Fee\n\n- **INT**: Interest-related activity sub-types:\n  - **MGN**: Margin Interest\n  - **CDT**: Credit Interest\n  - **SWP**: Sweep Interest\n  - **QII**: Qualified Interest\n  - **FI**: Fixed Income Interest (coupon or accrued)\n\n- **MA**: Merger and Acquisition activity sub-types:\n  - **CMA**: Cash Merger\n  - **SMA**: Stock Merger\n  - **SCMA**: Stock & Cash Merger\n\n- **NC**: Name Change activity sub types\n  - **SNC**: Symbol Name Change\n  - **CNC**: CUSIP Name Change\n  - **SCNC**: Symbol & CUSIP Name Change\n\n- **OPCA**: Option Corporate Action activity sub-types:\n  - **DIV.CDIV**: Cash Dividend\n  - **DIV.ROC**: Return of Capital\n  - **DIV.SDIV**: Stock Dividend\n  - **MA.CMA**: Cash Merger\n  - **MA.SMA**: Stock Merger\n  - **MA.SCMA**: Stock & Cash Merger\n  - **NC.CNC**: CUSIP Name Change\n  - **NC.SNC**: Symbol Name Change\n  - **NC.SCNC**: Symbol & CUSIP Name Change\n  - **SPIN**: Spin-off\n  - **SPLIT.FSPLIT**: Forward Stock Split\n  - **SPLIT.RSPLIT**: Reverse Stock Split\n  - **SPLIT.USPLIT**: Unit Split\n\n- **REO**: Reorganization activity sub-types:\n  - **REOS**: Stock only (1 or more stock legs)\n  - **REOC**: Cash only (one cash leg)\n  - **REOSC**: Stock and cash\n\n- **REORG**: Activity sub-types:\n  - **WRM**: Worthless Removal\n\n- **SPLIT**: Stock Split activity sub-types:\n  - **FSPLIT**: Forward Stock Split\n  - **RSPLIT**: Reverse Stock Split\n  - **USPLIT**: Unit Split\n\n- **VOF**: Voluntary Offering activity sub-types:\n  - **VTND**: Tender Offer\n  - **VWRT**: Warrant Exercise\n  - **VRGT**: Rights Offer\n  - **VEXH**: Exchange Offer\n\n- **WH**: Withholding activity sub-types:\n  - **SWH**: State Withholding\n  - **FWH**: Federal Withholding\n  - **SLWH**: Sales Withholding",
         "title": "ActivitySubType",
         "type": "string"
       },
       "ActivityType": {
-        "description": "Represents the various kinds of activity.\n\nTradeActivity's will always have the type `FILL`\n\n- **FILL**\n  Order Fills (Partial/Full)\n- **ACATC**\n  ACATS IN/OUT (Cash)\n- **ACATS**\n  ACATS IN/OUT (Securities)\n- **CGD**\n  Capital Gains Distribution\n- **CIL**\n  Cash in Lieu of Stock\n- **CSD**\n  Cash Disbursement (+)\n- **CSW**\n  Cash Withdrawable\n- **DIV**\n  Dividend\n- **DIVCGL**\n  Dividend (Capital Gains Long Term)\n- **DIVCGS**\n  Dividend (Capital Gains Short Term)\n- **DIVNRA**\n  Dividend Adjusted (NRA Withheld)\n- **DIVROC**\n  Dividend Return of Capital\n- **DIVTXEX**\n  Dividend (Tax Exempt)\n- **FEE**\n  REG and TAF Fees\n- **INT**\n  Interest (Credit/Margin)\n- **JNLC**\n  Journal Entry (Cash)\n- **JNLS**\n  Journal Entry (Stock)\n- **OPASN**\n   Option Assignment\n- **OPCA**\n  Option Corporate Action\n- **OPCSH**\n   Option cash deliverable for non-standard contracts\n- **OPEXC**\n  Option Exercise\n- **OPEXP**\n  Option Expiration\n- **OPTRD**\n  Option Trade\n- **MA**\n  Merger/Acquisition\n- **PTC**\n  Pass Thru Change\n- **REO**\n  Reorganization\n- **REORG**\n  Worthless removal CA\n- **SPIN**\n  Stock Spinoff\n- **SPLIT**\n  Stock Split\n- **FOPT**\n  Free of Payment Transfers\n- **OCT**\n  On Chain Transactions (blockchain deposits/withdrawals)",
+        "description": "Entry type returned on an activity. The listing returns the stored entry type.\nIt omits `ECJL`, crypto-deposit `JNLC`, and `SWP`.\n\n`TRANS` and `MISC` are filter aliases. They are not returned as `activity_type`.\nThis is the known set. A new clearing code can appear without an API change.\n\nTrade activities always have the type `FILL`.\n\n- **FILL**\n  Order Fills (Partial/Full)\n- **ACATC**\n  ACATS IN/OUT (Cash)\n- **ACATS**\n  ACATS IN/OUT (Securities)\n- **ALLOC**\n  Allocation\n- **CFEE**\n  Crypto fee\n- **CGD**\n  Capital Gains Distribution\n- **CIL**\n  Cash in Lieu of Stock\n- **CORR**\n  Correction\n- **CSD**\n  Cash deposit (+), including returned withdrawals\n- **CSR**\n  Cash receipt (-)\n- **CSW**\n  Cash withdrawal (-), including returned deposits\n- **DIV**\n  Dividend\n- **DIVCGL**\n  Dividend (Capital Gains Long Term)\n- **DIVCGS**\n  Dividend (Capital Gains Short Term)\n- **DIVFEE**\n  Dividend fee\n- **DIVFT**\n  Dividend adjusted (Foreign Tax Withheld)\n- **DIVNRA**\n  Dividend Adjusted (NRA Withheld)\n- **DIVROC**\n  Dividend Return of Capital\n- **DIVTW**\n  Dividend adjusted (Tefra Withheld)\n- **DIVTXEX**\n  Dividend (Tax Exempt)\n- **DIVWH**\n  Dividend withholding\n- **DTCS**\n  DTC security settlement\n- **DVF**\n  DVP flip\n- **ECEXP**\n  Event contract expiration\n- **EXTRD**\n  External trade\n- **FEE**\n  Fee denominated in USD. See `activity_sub_type` for the specific fee.\n- **FIMAT**\n  Fixed income maturity\n- **FXCNV**\n  FX conversion\n- **FXTRD**\n  FX trade\n- **INT**\n  Interest (Credit/Margin)\n- **INTNRA**\n  Interest adjusted (NRA Withheld)\n- **INTTW**\n  Interest adjusted (Tefra Withheld)\n- **INVPNL**\n  Inventory profit and loss\n- **JNL**\n  Journal entry\n- **JNLC**\n  Journal Entry (Cash)\n- **JNLS**\n  Journal Entry (Stock)\n- **MA**\n  Merger/Acquisition\n- **MEM**\n  Memopost\n- **NC**\n  Name change\n- **OPASN**\n   Option Assignment\n- **OPCA**\n  Option Corporate Action\n- **OPCSH**\n   Option cash deliverable for non-standard contracts\n- **OPEXC**\n  Option Exercise\n- **OPEXP**\n  Option Expiration\n- **OPTRD**\n  Option Trade\n- **PTC**\n  Pass Thru Change\n- **PTR**\n  Pass Thru Rebate\n- **REO**\n  Reorganization\n- **REORG**\n  Worthless removal CA\n- **SC**\n  Symbol change\n- **SEG**\n  Segregation\n- **SPIN**\n  Stock Spinoff\n- **SPLIT**\n  Stock Split\n- **SSO**\n  Former stock spin-off code. Current spin-offs use `SPIN`.\n- **SSP**\n  Former stock split code. Current splits use `SPLIT`.\n- **SUB**\n  Subscription\n- **VOF**\n  Voluntary Offering (tender, warrant, rights, or exchange offers)\n- **WH**\n  Withholding\n- **FOPT**\n  Free of Payment Transfers\n- **OCT**\n  On Chain Transactions (blockchain deposits/withdrawals)",
         "enum": [
           "FILL",
           "ACATC",
           "ACATS",
+          "ALLOC",
+          "CFEE",
           "CGD",
           "CIL",
+          "CORR",
           "CSD",
+          "CSR",
           "CSW",
           "DIV",
           "DIVCGL",
           "DIVCGS",
+          "DIVFEE",
+          "DIVFT",
           "DIVNRA",
           "DIVROC",
+          "DIVTW",
           "DIVTXEX",
+          "DIVWH",
+          "DTCS",
+          "DVF",
+          "ECEXP",
+          "EXTRD",
           "FEE",
+          "FIMAT",
+          "FXCNV",
+          "FXTRD",
           "INT",
+          "INTNRA",
+          "INTTW",
+          "INVPNL",
+          "JNL",
           "JNLC",
           "JNLS",
           "MA",
+          "MEM",
+          "NC",
           "OPASN",
           "OPCA",
           "OPCSH",
@@ -111,14 +132,88 @@ Notes:
           "OPEXP",
           "OPTRD",
           "PTC",
+          "PTR",
           "REO",
           "REORG",
+          "SC",
+          "SEG",
           "SPIN",
           "SPLIT",
+          "SSO",
+          "SSP",
+          "SUB",
+          "VOF",
+          "WH",
           "FOPT",
           "OCT"
         ],
         "title": "ActivityType",
+        "type": "string"
+      },
+      "ActivityTypeFilter": {
+        "description": "Activity type used to filter results. These are the values the backend accepts.\n\n`TRANS` and `MISC` are aliases. A response uses the expanded entry type, not the alias.\n\n`SWP` is accepted and then omitted from public results.\n\n- **TRANS**\n  Cash transactions (`CSD`, `CSR`, and `CSW`). Filter value only; not returned as an activity type.\n- **MISC**\n  A fixed group of less common activity types, such as `ACATC`, `INT`, and `JNLC`. `FEE`, `CFEE`, `DIV`, `SPLIT`, `SPIN`, `OPCA`, `VOF`, `WH`, `OCT`, and a few others are not included, so filter by those types directly. Filter value only; not returned as an activity type.",
+        "enum": [
+          "ACATC",
+          "ACATS",
+          "ALLOC",
+          "CFEE",
+          "CGD",
+          "CIL",
+          "CSD",
+          "CSR",
+          "CSW",
+          "DIV",
+          "DIVCGL",
+          "DIVCGS",
+          "DIVFEE",
+          "DIVFT",
+          "DIVNRA",
+          "DIVROC",
+          "DIVTW",
+          "DIVTXEX",
+          "DIVWH",
+          "DVF",
+          "ECEXP",
+          "EXTRD",
+          "FEE",
+          "FIMAT",
+          "FXCNV",
+          "FXTRD",
+          "INT",
+          "INTNRA",
+          "INTTW",
+          "INVPNL",
+          "JNL",
+          "JNLC",
+          "JNLS",
+          "MA",
+          "MEM",
+          "NC",
+          "OCT",
+          "OPASN",
+          "OPCA",
+          "OPCSH",
+          "OPEXC",
+          "OPEXP",
+          "OPTRD",
+          "PTC",
+          "PTR",
+          "REO",
+          "REORG",
+          "SC",
+          "SPIN",
+          "SPLIT",
+          "SUB",
+          "SWP",
+          "TRD",
+          "VOF",
+          "WH",
+          "FOPT",
+          "FILL",
+          "MISC",
+          "TRANS"
+        ],
+        "title": "ActivityTypeFilter",
         "type": "string"
       },
       "NonTradeActivity": {
@@ -201,22 +296,6 @@ Notes:
         "title": "NonTradeActivity",
         "type": "object"
       },
-      "OrderSide": {
-        "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
-        "enum": [
-          "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
-        ],
-        "example": "buy",
-        "type": "string"
-      },
       "OrderStatus": {
         "enum": [
           "new",
@@ -275,7 +354,7 @@ Notes:
             "type": "string"
           },
           "side": {
-            "$ref": "#/components/schemas/OrderSide"
+            "$ref": "#/components/schemas/TradeActivitySide"
           },
           "symbol": {
             "description": "Valid only for trading activity types. Null for non-trading activities.",
@@ -300,6 +379,17 @@ Notes:
         },
         "title": "TradeActivity",
         "type": "object"
+      },
+      "TradeActivitySide": {
+        "description": "Side of the fill on a trade activity. Includes `sell_short` when the fill short-sells. Distinct from `OrderSide`, which is only `buy` / `sell` for order requests and responses.",
+        "enum": [
+          "buy",
+          "sell",
+          "sell_short"
+        ],
+        "example": "buy",
+        "title": "TradeActivitySide",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -343,7 +433,7 @@ Notes:
             "name": "activity_types",
             "schema": {
               "items": {
-                "$ref": "#/components/schemas/ActivityType"
+                "$ref": "#/components/schemas/ActivityTypeFilter"
               },
               "type": "array"
             },

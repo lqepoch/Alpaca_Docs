@@ -9,6 +9,8 @@ agentTools:
 
 Retrieves a JIT report for the requested report type and system date. By default, the report is returned inline. For large reports, use response_type=download_url to receive a temporary signed download URL.
 
+Generated SDKs return the JSON response. To retrieve a report through an SDK, set response_type=download_url and download the file from `url`.
+
 
 # OpenAPI definition
 
@@ -16,42 +18,17 @@ Retrieves a JIT report for the requested report type and system date. By default
 {
   "components": {
     "schemas": {
-      "JITReport": {
-        "description": "JIT Securities reports are made available through the API and can be accessed within the hour after 11:30 PM EST on the trade date (T+0). The reports communicate transaction-level details as well as overall settlement amounts, transfer direction, and payment timing.",
-        "properties": {
-          "detail": {
-            "description": "Contains all activities that impact cash throughout the trading session including executed trades, trading fees, and corporate actions that involve cash allocations.\n\ncontent-type = application/csv",
-            "type": "string"
-          },
-          "net_payment": {
-            "description": "Highlights the net amount due to Alpaca by settlement or to the partner on the date of settlement in a formalized invoice format.\n\ncontent-type = application/pdf",
-            "type": "string"
-          },
-          "net_payment_final": {
-            "description": "Includes additional information to account for T+0 and T+1 settling activity to clarify settlement journaling reconciliation. This report is generated after trading session close on T+1.\n\ncontent-type = application/pdf",
-            "type": "string"
-          },
-          "net_summary": {
-            "description": "Consists of three columns and a single row, which lists the net money movement to or from Alpaca for T0, T1, and T2.\n\ncontent-type = application/csv",
-            "type": "string"
-          },
-          "obligation": {
-            "description": "Lists of all open obligations towards the partner that are to be settled.\n\ncontent-type = application/csv",
-            "type": "string"
-          }
-        },
-        "title": "JITReport",
-        "type": "object"
-      },
       "JITReportDownloadURL": {
         "properties": {
           "expires_at": {
             "description": "Timestamp when the signed URL expires.",
+            "example": "2026-04-14T23:55:00Z",
             "format": "date-time",
             "type": "string"
           },
           "filename": {
             "description": "Name of the generated report file.",
+            "example": "ALPC-2026-04-14-common_stock-detail.csv",
             "type": "string"
           },
           "url": {
@@ -66,6 +43,48 @@ Retrieves a JIT report for the requested report type and system date. By default
           "expires_at"
         ],
         "type": "object"
+      },
+      "JITReportType": {
+        "description": "Report file to retrieve. Availability depends on the correspondent's JIT configuration. The `_v2` suffix identifies a file format, not JIT generation v2.",
+        "enum": [
+          "detail",
+          "detail_v2",
+          "net_summary",
+          "net_summary_v2",
+          "net_payment",
+          "net_payment_final",
+          "gross_summary",
+          "gross_summary_v2",
+          "gross_payment",
+          "gross_payment_final",
+          "obligation",
+          "obligation_v2",
+          "settlement",
+          "balance",
+          "summary",
+          "payment"
+        ],
+        "example": "gross_summary_v2",
+        "title": "JITReportType",
+        "type": "string",
+        "x-enumDescriptions": {
+          "balance": "CSV snapshot of settled and unsettled cash by account and currency for the report date.",
+          "detail": "CSV transaction details with explicit settlement dates and legacy T+N category labels.",
+          "detail_v2": "CSV transaction details with settlement dates, execution timestamps, and entry subtypes.",
+          "gross_payment": "Gross payment invoice in PDF using the legacy T+N presentation.",
+          "gross_payment_final": "Final gross payment invoice in PDF using the legacy T+N presentation.",
+          "gross_summary": "CSV gross totals by currency in T+0/T+1/T+2 buckets.",
+          "gross_summary_v2": "CSV gross totals by explicit settlement date and currency, with no T+N columns.",
+          "net_payment": "Net payment invoice in PDF using the legacy T+N presentation.",
+          "net_payment_final": "Final net payment invoice in PDF using the legacy T+N presentation.",
+          "net_summary": "CSV signed totals by currency in T+0/T+1/T+2 buckets. Crypto uses T+0 only.",
+          "net_summary_v2": "CSV signed totals by explicit settlement date and currency, with no T+N columns.",
+          "obligation": "CSV individual settlement Obligations, including earlier Obligations that remain open.",
+          "obligation_v2": "CSV Obligations grouped by account, settlement date, currency, and direction across report dates.",
+          "payment": "Legacy alias for gross_payment.",
+          "settlement": "CSV open settlement records with explicit settlement dates and external references.",
+          "summary": "Legacy alias for gross_summary."
+        }
       }
     },
     "securitySchemes": {
@@ -90,7 +109,7 @@ Retrieves a JIT report for the requested report type and system date. By default
   "paths": {
     "/v1/transfers/jit/reports": {
       "get": {
-        "description": "Retrieves a JIT report for the requested report type and system date. By default, the report is returned inline. For large reports, use response_type=download_url to receive a temporary signed download URL.\n",
+        "description": "Retrieves a JIT report for the requested report type and system date. By default, the report is returned inline. For large reports, use response_type=download_url to receive a temporary signed download URL.\n\nGenerated SDKs return the JSON response. To retrieve a report through an SDK, set response_type=download_url and download the file from `url`.\n",
         "operationId": "get-v1-transfers-jit-reports",
         "parameters": [
           {
@@ -99,21 +118,12 @@ Retrieves a JIT report for the requested report type and system date. By default
             "name": "report_type",
             "required": true,
             "schema": {
-              "enum": [
-                "detail",
-                "net_summary",
-                "net_payment",
-                "net_payment_final",
-                "gross_summary",
-                "gross_payment",
-                "gross_payment_final",
-                "obligation"
-              ],
-              "type": "string"
+              "$ref": "#/components/schemas/JITReportType"
             }
           },
           {
             "description": "Date of file generation.",
+            "example": "2026-10-14",
             "in": "query",
             "name": "system_date",
             "required": true,
@@ -159,31 +169,41 @@ Retrieves a JIT report for the requested report type and system date. By default
                     "summary": "Download URL response",
                     "value": {
                       "expires_at": "2026-04-14T23:55:00Z",
-                      "filename": "jit_detail_2026-04-14.csv",
+                      "filename": "ALPC-2026-04-14-common_stock-detail.csv",
                       "url": "<signed_s3_url>"
-                    }
-                  },
-                  "inline": {
-                    "description": "Returned when response_type is inline or omitted.",
-                    "summary": "Inline report response",
-                    "value": {
-                      "detail": "<report_content>"
                     }
                   }
                 },
                 "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/JITReport"
-                    },
-                    {
-                      "$ref": "#/components/schemas/JITReportDownloadURL"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/JITReportDownloadURL"
+                }
+              },
+              "application/pdf": {
+                "schema": {
+                  "description": "PDF payment report file, returned as an attachment.",
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "description": "CSV report file, returned as an attachment.",
+                  "format": "binary",
+                  "type": "string"
                 }
               }
             },
-            "description": "OK"
+            "description": "The report file when response_type is inline or omitted, or a temporary download link when response_type is download_url.",
+            "headers": {
+              "Content-Disposition": {
+                "description": "Present when the report file is returned inline. Names the file with the same value that download_url returns in `filename`.",
+                "example": "attachment;filename=ALPC-2026-04-14-common_stock-detail.csv",
+                "schema": {
+                  "example": "attachment;filename=ALPC-2026-04-14-common_stock-detail.csv",
+                  "type": "string"
+                }
+              }
+            }
           }
         },
         "summary": "Retrieve JIT Reports",

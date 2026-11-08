@@ -48,8 +48,8 @@ List all available APR tiers. These tiers may be assigned to an account, and wil
             "type": "string"
           },
           "is_default": {
-            "description": "True if this is the default APR tier. Only one APR tier can be default per currency.\n",
-            "example": true,
+            "description": "Whether this is the default APR tier for its currency. Each currency has at most one default tier. When true, an account that signs the required Alpaca Customer Agreement revision without providing cash_interest may be automatically enrolled in this tier. Do not rely on a default tier for enrollment; always set apr_tier_name explicitly via Create Account or Update Account.\n",
+            "example": false,
             "type": "boolean"
           },
           "name": {
@@ -92,9 +92,11 @@ List all available APR tiers. These tiers may be assigned to an account, and wil
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },

@@ -84,9 +84,13 @@ If you require the streaming capabilities we recommend not using the generated c
             "type": "string"
           },
           "entity_type": {
-            "description": "Valid values are BankRelationship, WireBank, Transfer and FundingWallet.",
-            "format": "uuid",
-            "minLength": 1,
+            "description": "Type of funding entity that `entity_id` identifies.",
+            "enum": [
+              "BankRelationship",
+              "WireBank",
+              "Transfer",
+              "FundingWallet"
+            ],
             "type": "string"
           },
           "event_id": {

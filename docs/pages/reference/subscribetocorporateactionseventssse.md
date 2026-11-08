@@ -2334,10 +2334,6 @@ Each event carries an `event_type` discriminator that selects the shape of the `
           {
             "description": "Sandbox",
             "url": "https://stream.data.sandbox.alpaca.markets"
-          },
-          {
-            "description": "Staging",
-            "url": "https://stream.data.staging-v2.tradetalk.us"
           }
         ],
         "summary": "Subscribe to Corporate Actions Events (SSE)",

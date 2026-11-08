@@ -89,7 +89,7 @@ To further limit the size of the response, the entities query parameter can be u
           },
           "ptp_no_exception_entry": {
             "description": "If set to true then Alpaca will accept orders for PTP symbols with no exception. Default is false.",
-            "type": "string"
+            "type": "boolean"
           },
           "suspend_trade": {
             "description": "If true, new orders are blocked.",
@@ -105,6 +105,23 @@ To further limit the size of the response, the entities query parameter can be u
           }
         },
         "title": "AccountConfigurations",
+        "type": "object"
+      },
+      "AccountDRIPResponse": {
+        "description": "This feature is available in sandbox for beta partners only.\n\nThe account's dividend reinvestment (DRIP) setting.\nThis field is returned only when DRIP was turned on for the account at least once.\n",
+        "example": {
+          "equities_dividend_reinvestments": true
+        },
+        "properties": {
+          "equities_dividend_reinvestments": {
+            "description": "If true, Alpaca reinvests eligible cash dividends on US equities in the same security.",
+            "example": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "equities_dividend_reinvestments"
+        ],
         "type": "object"
       },
       "AccountExtended": {
@@ -253,6 +270,9 @@ To further limit the size of the response, the entities query parameter can be u
               "$ref": "#/components/schemas/OwnerDocument"
             },
             "type": "array"
+          },
+          "drip": {
+            "$ref": "#/components/schemas/AccountDRIPResponse"
           },
           "enabled_assets": {
             "items": {
@@ -479,12 +499,12 @@ To further limit the size of the response, the entities query parameter can be u
         "type": "string"
       },
       "Beneficiary": {
-        "description": "Beneficiary of an account",
+        "description": "Beneficiary of an IRA account. The same shape is used on account create, account update, and account responses.\n",
         "example": {
           "date_of_birth": "1970-01-01",
           "family_name": "Doe",
           "given_name": "Jane",
-          "middle_name": "P",
+          "middle_name": null,
           "relationship": "spouse",
           "share_pct": "100",
           "tax_id": "xxx-xx-xxxx",
@@ -493,45 +513,73 @@ To further limit the size of the response, the entities query parameter can be u
         },
         "properties": {
           "date_of_birth": {
+            "description": "Date of birth in YYYY-MM-DD format. It cannot be in the future.",
             "example": "1970-01-01",
+            "format": "date",
             "type": "string"
           },
           "family_name": {
+            "description": "Beneficiary family name.",
             "example": "Doe",
+            "minLength": 1,
             "type": "string"
           },
           "given_name": {
+            "description": "Beneficiary given name.",
             "example": "Jane",
+            "minLength": 1,
             "type": "string"
           },
           "middle_name": {
+            "description": "Beneficiary middle name. Omit this field or send null when the beneficiary has no middle name. An empty string is rejected. Account responses always include the field and use null when it is unset.\n",
             "example": "P",
-            "type": "string"
+            "minLength": 1,
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "relationship": {
+            "description": "Relationship of the beneficiary to the account holder.",
+            "enum": [
+              "spouse",
+              "other"
+            ],
             "example": "spouse",
             "type": "string"
           },
           "share_pct": {
+            "description": "Share of the account allocated to this beneficiary, as a decimal string. The value must be greater than 0 and at most 100, with at most two decimal places.\n",
             "example": "100",
+            "format": "decimal",
             "type": "string"
           },
           "tax_id": {
+            "description": "Beneficiary tax identifier. Create and update requests require a USA SSN. Account responses always return the masked value `xxx-xx-xxxx`.\n",
             "example": "xxx-xx-xxxx",
+            "minLength": 1,
             "type": "string"
           },
           "tax_id_type": {
+            "description": "Tax identifier type.",
+            "enum": [
+              "USA_SSN"
+            ],
             "example": "USA_SSN",
             "type": "string"
           },
           "type": {
+            "description": "Whether this beneficiary is primary or contingent. An account with beneficiaries needs at least one primary beneficiary. The `share_pct` values of all primary beneficiaries must add up to 100, and the `share_pct` values of all contingent beneficiaries, if any, must also add up to 100.\n",
+            "enum": [
+              "primary",
+              "contingent"
+            ],
             "example": "primary",
             "type": "string"
           }
         },
         "required": [
           "given_name",
-          "middle_name",
           "family_name",
           "date_of_birth",
           "tax_id",

@@ -93,10 +93,10 @@ The historical stock trades API provides trade data for a stock symbol between t
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }

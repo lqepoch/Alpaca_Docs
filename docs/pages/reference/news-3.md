@@ -161,13 +161,11 @@ Returns the latest news articles across stocks and crypto. By default, returns t
         "description": "Model representing a news article.",
         "properties": {
           "author": {
-            "description": "Original author of news article.",
-            "minLength": 1,
+            "description": "Original author of news article (may be empty).",
             "type": "string"
           },
           "content": {
-            "description": "Content of the news article (might contain HTML).",
-            "minLength": 1,
+            "description": "Content of the news article (might contain HTML, may be empty).",
             "type": "string"
           },
           "created_at": {
@@ -194,13 +192,12 @@ Returns the latest news articles across stocks and crypto. By default, returns t
             "uniqueItems": true
           },
           "source": {
-            "description": "Source where the news originated from (e.g. Benzinga).",
+            "description": "Source from which the news originated.",
             "minLength": 1,
             "type": "string"
           },
           "summary": {
-            "description": "Summary text for the article (may be first sentence of content).",
-            "minLength": 1,
+            "description": "Summary text for the article (may be first sentence of content or may be empty).",
             "type": "string"
           },
           "symbols": {
@@ -390,22 +387,51 @@ Returns the latest news articles across stocks and crypto. By default, returns t
                     "value": {
                       "news": [
                         {
-                          "author": "Charles Gross",
-                          "content": "<p>This headline-only article is meant to show you why a stock is moving, the most difficult aspect of stock trading....</p>",
-                          "created_at": "2021-12-31T11:08:42Z",
-                          "headline": "Apple Leader in Phone Sales in China for Second Straight Month in November With 23.6% Share, According to Market Research Data",
-                          "id": 24843171,
+                          "author": "",
+                          "content": "Following the release of SpaceX's third-quarter 2026 financial results, several analysts have updated their outlook on the company. UBS maintained a Buy rating while raising its price target to $230 from $210. Additionally, Wells Fargo maintained an Overweight rating and increased its price target to $274 from $214. These adjustments reflect analyst reactions to the company's reported revenue growth and strategic focus on artificial intelligence.",
+                          "created_at": "2026-10-21T15:02:10Z",
+                          "headline": "Analysts Adjust Price Targets for SpaceX Following Q3 Results",
+                          "id": 100536145,
                           "images": [],
-                          "source": "benzinga",
-                          "summary": "This headline-only article is meant to show you why a stock is moving, the most difficult aspect of stock trading",
+                          "source": "fiscal.ai",
+                          "summary": "Financial institutions including UBS and Wells Fargo have updated their price targets for SpaceX following the company's third-quarter earnings report.",
                           "symbols": [
-                            "AAPL"
+                            "SPCX"
                           ],
-                          "updated_at": "2021-12-31T11:08:43Z",
-                          "url": "https://www.benzinga.com/news/21/12/24843171/apple-leader-in-phone-sales-in-china-for-second-straight-month-in-november-with-23-6-share-according"
+                          "updated_at": "2026-10-21T15:02:10Z",
+                          "url": "https://www.moomoo.com/stock/SPCX-US/news?chain_id=Name1K9-3FXPhg.1lcj000&global_content=%7B%22promote_id%22%3A13764,%22sub_promote_id%22%3A64,%22f%22%3A%22www.moomoo.com%2Fcommunity%2Fprofile%2F105275796%2Fpost%2Fall%22%7D"
+                        },
+                        {
+                          "author": "Badar Shaikh",
+                          "content": "<p>It was yet another eventful week for <strong>Tesla Inc</strong> (NASDAQ:TSLA) and CEO <strong>Elon Musk</strong> amid the Roadster's high-flying debut, questions about a possible SpaceX merger and more.</p>",
+                          "created_at": "2026-10-18T12:51:02Z",
+                          "headline": "This Week in TSLA: Roadster's Flying Debut, Cybercab Speeding in School Zones, SpaceX Merger and More",
+                          "id": 62429279,
+                          "images": [
+                            {
+                              "size": "large",
+                              "url": "https://cdn.benzinga.com/files/images/story/2026/10/18/Kaunas--Lithuania-2022---April-14-Tesla-.jpg?width=2048&height=1536"
+                            },
+                            {
+                              "size": "small",
+                              "url": "https://cdn.benzinga.com/files/images/story/2026/10/18/Kaunas--Lithuania-2022---April-14-Tesla-.jpg?width=1024&height=768"
+                            },
+                            {
+                              "size": "thumb",
+                              "url": "https://cdn.benzinga.com/files/images/story/2026/10/18/Kaunas--Lithuania-2022---April-14-Tesla-.jpg?width=250&height=187"
+                            }
+                          ],
+                          "source": "benzinga",
+                          "summary": "This week, Tesla unveiled its flying Roadster, faced Cybercab questions and merger speculation with SpaceX.",
+                          "symbols": [
+                            "SPCX",
+                            "TSLA"
+                          ],
+                          "updated_at": "2026-10-18T12:51:02Z",
+                          "url": "https://www.benzinga.com/markets/tech/26/10/62429279/this-week-in-tsla-roadsters-flying-debut-cybercab-speeding-in-school-zones-spacex-merger-and-more"
                         }
                       ],
-                      "next_page_token": "MTY0MDk0ODkyMzAwMDAwMDAwMHwyNDg0MzE3MQ=="
+                      "next_page_token": "MTc5MjMyNzg2MjAwMDAwMDAwMHw2MjQyOTI3OQ=="
                     }
                   }
                 },

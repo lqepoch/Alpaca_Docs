@@ -47,7 +47,7 @@ The snapshots endpoint provides the latest trade, latest quote and greeks for ea
           "$ref": "#/components/schemas/option_feed"
         }
       },
-      "option_limit": {
+      "option_snapshot_limit": {
         "description": "Number of maximum snapshots to return in a response.\nThe limit applies to the total number of data points, not the number per symbol!\nUse `next_page_token` to fetch the next set of responses.\n",
         "in": "query",
         "name": "limit",
@@ -448,7 +448,7 @@ The snapshots endpoint provides the latest trade, latest quote and greeks for ea
             "$ref": "#/components/parameters/option_updated_since"
           },
           {
-            "$ref": "#/components/parameters/option_limit"
+            "$ref": "#/components/parameters/option_snapshot_limit"
           },
           {
             "$ref": "#/components/parameters/page_token"

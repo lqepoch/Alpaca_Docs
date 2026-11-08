@@ -54,14 +54,14 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "items": {
               "properties": {
                 "amount": {
-                  "description": "Journal amount in USD",
+                  "description": "Journal amount in the entry's `currency`",
                   "type": [
                     "string",
                     "null"
                   ]
                 },
                 "currency": {
-                  "description": "Currency code in ISO format",
+                  "description": "The currency of the journal. Defaults to the system currency (for example, USD in the US or EUR in the EU) when omitted. Correspondents with local currency trading enabled must send this field, and the value must be the system currency or one of the correspondent's enabled currencies. All entries in a batch should use the same currency.",
                   "type": [
                     "string",
                     "null"
@@ -294,9 +294,11 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -446,7 +448,8 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "price": {
             "description": "The journaled security price, or null when not applicable.",
@@ -454,7 +457,8 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "qty": {
             "description": "The journaled security quantity, or null when not applicable.",
@@ -462,7 +466,8 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "settle_date": {
             "description": "The settlement date, or null until one is assigned.",
@@ -470,7 +475,8 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "status": {
             "$ref": "#/components/schemas/JournalStatus"
@@ -480,7 +486,8 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "system_date": {
             "description": "The booking-system date, or null until one is assigned.",
@@ -488,7 +495,8 @@ without risking duplicate batches. Use a client-generated unique value (e.g. UUI
             "type": [
               "string",
               "null"
-            ]
+            ],
+            "x-nullable": true
           },
           "to_account": {
             "description": "The account ID that received the journal.",

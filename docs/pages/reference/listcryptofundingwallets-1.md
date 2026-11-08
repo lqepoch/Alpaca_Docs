@@ -46,9 +46,11 @@ Lists wallets for the account given in the path parameter. If an asset is specif
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -138,16 +140,21 @@ Lists wallets for the account given in the path parameter. If an asset is specif
           }
         },
         {
-          "description": "Deprecated. Use chain instead. Optional network identifier which is used to request wallets for a specific network when asset is a multi-chain crypto asset. When both 'chain' and 'network' are specified, 'chain' will take precedence and 'network' will be ignored. If 'chain' and 'network' are not specified, the default 'network' (ethereum) will be used.",
+          "deprecated": true,
+          "description": "**Deprecation notice:**\nUse `chain` instead.\n\nSince: 2026-11-02\nSunset: 2027-02-02\n\n---\n\nDeprecated. Use chain instead. Optional network identifier which is used to request wallets for a specific network when asset is a multi-chain crypto asset. When both 'chain' and 'network' are specified, 'chain' will take precedence and 'network' will be ignored. If 'chain' and 'network' are not specified, the default 'network' (ethereum) will be used.",
           "in": "query",
           "name": "network",
           "schema": {
-            "deprecated": true,
             "enum": [
               "ethereum",
               "solana"
             ],
             "type": "string"
+          },
+          "x-deprecation": {
+            "reason": "Use `chain` instead.",
+            "since": "2026-11-02",
+            "sunset": "2027-02-02"
           }
         }
       ]

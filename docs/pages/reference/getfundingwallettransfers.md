@@ -23,9 +23,11 @@ Returns all funding wallet transfers (deposits and withdrawals) associated with 
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -89,11 +91,11 @@ Returns all funding wallet transfers (deposits and withdrawals) associated with 
           },
           "original_amount": {
             "deprecated": true,
-            "description": "Deprecated. Prefer `total_amount` for the actual amount debited from the account. The amount you should expect to receive, calculated as requested amount - fees.",
+            "description": "**Deprecation notice:**\nUse `total_amount` for the actual amount debited from the account.\n\nSince: 2026-09-22\nSunset: 2026-12-21\n\n---\n\nThe amount you should expect to receive, calculated as requested amount - fees.",
             "format": "decimal",
             "type": "string",
             "x-deprecation": {
-              "reason": "Use total_amount for the actual amount debited from the account.",
+              "reason": "Use `total_amount` for the actual amount debited from the account.",
               "since": "2026-09-22",
               "sunset": "2026-12-21"
             }

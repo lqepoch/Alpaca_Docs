@@ -94,10 +94,10 @@ The historical auctions endpoint provides auction prices for the given stock sym
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }

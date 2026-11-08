@@ -14,14 +14,74 @@ Lists subscriptions
 ```json
 {
   "components": {
+    "examples": {
+      "rebalancing_insufficient_permission": {
+        "description": "Use credentials with the required permission and try again.",
+        "summary": "These credentials are not allowed to call this endpoint, or rebalancing is not enabled for the correspondent",
+        "value": {
+          "code": 40310000,
+          "message": "insufficient permission"
+        }
+      },
+      "rebalancing_internal_server_error": {
+        "description": "If it keeps happening, contact support.",
+        "summary": "Something went wrong on our side",
+        "value": {
+          "code": 50010000,
+          "message": "internal server error occurred"
+        }
+      },
+      "rebalancing_invalid_query_parameter": {
+        "description": "The message names the parameter. Correct it and try again. Message template: invalid {name}",
+        "summary": "A query parameter is invalid or was sent more than once",
+        "value": {
+          "code": 40010001,
+          "message": "invalid status"
+        }
+      },
+      "rebalancing_invalid_request": {
+        "description": "Retry it. If it keeps happening, contact support.",
+        "summary": "A valid client IP address could not be read from the request",
+        "value": {
+          "code": 40010001,
+          "message": "invalid request"
+        }
+      },
+      "rebalancing_unauthorized": {
+        "description": "Send a valid API key ID and secret, or a Broker Dashboard session, and try again.",
+        "summary": "The request is not authenticated",
+        "value": {
+          "code": 40110000,
+          "message": "request is not authorized"
+        }
+      },
+      "rebalancing_unexpected_error": {
+        "description": "If it keeps happening, contact support.",
+        "summary": "Something went wrong on our side while handling the request",
+        "value": {
+          "error": "Internal Server Error",
+          "message": "An unexpected error occurred"
+        }
+      }
+    },
     "schemas": {
-      "NextPageToken": {
-        "description": "Use this token in your next API call to paginate through the dataset and retrieve the next page of results. A null token indicates there are no more data to fetch.\n",
-        "example": "MTAwMA==",
-        "type": [
-          "string",
-          "null"
-        ]
+      "Error": {
+        "properties": {
+          "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
+            "type": "number"
+          },
+          "message": {
+            "description": "Human-readable reason for the rejection.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "Error",
+        "type": "object"
       },
       "PortfolioSubscription": {
         "properties": {
@@ -48,6 +108,23 @@ Lists subscriptions
           }
         },
         "title": "PortfolioSubscription",
+        "type": "object"
+      },
+      "UnexpectedError": {
+        "description": "Returned when request handling stops unexpectedly. This body has no numeric code.",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ],
+        "title": "UnexpectedError",
         "type": "object"
       }
     },
@@ -93,19 +170,28 @@ Lists subscriptions
             }
           },
           {
-            "description": "Pagination token",
+            "description": "Offset into the result set for pagination. Defaults to 0 when omitted.",
             "in": "query",
             "name": "page_token",
             "schema": {
-              "type": "string"
+              "default": 0,
+              "example": 100,
+              "format": "int32",
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
             }
           },
           {
-            "description": "Max number of subscriptions to return per page",
+            "description": "Maximum number of subscriptions to return. Defaults to 100.",
             "in": "query",
             "name": "limit",
             "schema": {
-              "type": "string"
+              "default": 100,
+              "example": 100,
+              "format": "int32",
+              "minimum": 1,
+              "type": "integer"
             }
           }
         ],
@@ -116,7 +202,13 @@ Lists subscriptions
                 "schema": {
                   "properties": {
                     "next_page_token": {
-                      "$ref": "#/components/schemas/NextPageToken"
+                      "description": "Offset to use as the next page_token, or null when there are no more\nsubscriptions. Set only when the page is full (result count equals the\nrequested limit).\n",
+                      "example": 100,
+                      "format": "int32",
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     },
                     "subscriptions": {
                       "items": {
@@ -134,6 +226,79 @@ Lists subscriptions
               }
             },
             "description": "OK"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "$ref": "#/components/examples/rebalancing_unauthorized"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "The request is not authenticated. Send a valid API key ID and secret, or a Broker Dashboard session, and try again."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "insufficient_permission": {
+                    "$ref": "#/components/examples/rebalancing_insufficient_permission"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "These credentials are not allowed to call this endpoint, or rebalancing is not enabled for the correspondent. Use credentials with the required permission and try again."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_query_parameter": {
+                    "$ref": "#/components/examples/rebalancing_invalid_query_parameter"
+                  },
+                  "invalid_request": {
+                    "$ref": "#/components/examples/rebalancing_invalid_request"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "The request failed validation or cannot be completed in its current state. The message describes the reason."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal_server_error": {
+                    "$ref": "#/components/examples/rebalancing_internal_server_error"
+                  },
+                  "unexpected_error": {
+                    "$ref": "#/components/examples/rebalancing_unexpected_error"
+                  }
+                },
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UnexpectedError"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Something went wrong on our side while handling the request. Retry with backoff. If it keeps happening, contact support."
           }
         },
         "summary": "List All Subscriptions",

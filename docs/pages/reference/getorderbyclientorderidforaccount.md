@@ -54,7 +54,9 @@ Retrieves a single order specified by the client order ID.
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
@@ -74,9 +76,11 @@ Retrieves a single order specified by the client order ID.
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -190,6 +194,15 @@ Retrieves a single order specified by the client order ID.
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -278,6 +291,10 @@ Retrieves a single order specified by the client order ID.
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -364,6 +381,17 @@ Retrieves a single order specified by the client order ID.
           ""
         ],
         "example": "",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -460,6 +488,15 @@ Retrieves a single order specified by the client order ID.
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -550,6 +587,10 @@ Retrieves a single order specified by the client order ID.
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -629,14 +670,7 @@ Retrieves a single order specified by the client order ID.
         "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
         "enum": [
           "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
+          "sell"
         ],
         "example": "buy",
         "type": "string"

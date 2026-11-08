@@ -93,10 +93,10 @@ The historical stock quotes API provides quote data for a stock symbol between t
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }

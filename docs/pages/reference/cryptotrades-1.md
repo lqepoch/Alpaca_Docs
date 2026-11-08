@@ -113,10 +113,10 @@ The crypto trades API provides historical trade data for a list of crypto symbol
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }

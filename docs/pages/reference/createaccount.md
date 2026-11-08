@@ -79,6 +79,9 @@ To create an account for an existing holder, provide `primary_account_holder_id`
             },
             "type": "array"
           },
+          "drip": {
+            "$ref": "#/components/schemas/AccountDRIPResponse"
+          },
           "enabled_assets": {
             "description": "Assets the user has enabled and is able to trade once status and/or crypto_status are ACTIVE",
             "items": {
@@ -132,7 +135,7 @@ To create an account for an existing holder, provide `primary_account_holder_id`
         "type": "object"
       },
       "AccountCashInterestPost": {
-        "description": "The configuration of the account's USD cash interest program when creating an account.\nIf cash_interest is not provided and there is a default APR tier defined, that tier will be used.\nTo enroll the account in a non-default APR tier, provide the cash_interest object with the desired apr_tier_name. The status should not be specified on enrollment.\nThe response will contain a status of PENDING_CHANGE. An event showing the status change to ACTIVE will be generated when the enrollment is complete.\n",
+        "description": "The configuration of the account's USD cash interest program when creating an account.\nIf cash_interest is not provided and the request signs the required Alpaca Customer Agreement revision, the account may be enrolled in a default APR tier automatically. Do not rely on this; provide the cash_interest object with the desired apr_tier_name. The status should not be specified on enrollment.\nThe response will contain a status of PENDING_CHANGE. An event showing the status change to ACTIVE will be generated when the enrollment is complete.\n",
         "properties": {
           "USD": {
             "$ref": "#/components/schemas/AccountCashInterestProgram"
@@ -195,7 +198,7 @@ To create an account for an existing holder, provide `primary_account_holder_id`
           },
           "ptp_no_exception_entry": {
             "description": "If set to true then Alpaca will accept orders for PTP symbols with no exception. Default is false.",
-            "type": "string"
+            "type": "boolean"
           },
           "suspend_trade": {
             "description": "If true, new orders are blocked.",
@@ -222,7 +225,8 @@ To create an account for an existing holder, provide `primary_account_holder_id`
                 "$ref": "#/components/schemas/AccountSubType"
               }
             ],
-            "description": "The account subtype. Required for IRA accounts."
+            "description": "The account subtype. Required for IRA accounts.",
+            "example": "traditional"
           },
           "account_type": {
             "allOf": [
@@ -266,6 +270,9 @@ To create an account for an existing holder, provide `primary_account_holder_id`
               "$ref": "#/components/schemas/OwnerDocumentUploadRequest"
             },
             "type": "array"
+          },
+          "drip": {
+            "$ref": "#/components/schemas/AccountDRIPRequest"
           },
           "enabled_assets": {
             "description": "Will default to `us_equity`. Alpaca has the ability to update the default value upon request.",
@@ -360,6 +367,37 @@ To create an account for an existing holder, provide `primary_account_holder_id`
         "example": "trading",
         "title": "AccountCreationType",
         "type": "string"
+      },
+      "AccountDRIPRequest": {
+        "description": "This feature is available in sandbox for beta partners only.\n\nThe account's dividend reinvestment (DRIP) setting. Omit `drip` to keep the current setting.\n\nTo turn DRIP on, the account must have a signed customer agreement at the revision that Alpaca requires. The agreement can already be on the account, or you can send it in `agreements` in the same request. Otherwise the request fails with HTTP 422, and the error message names the required revision.\n\nDRIP enrollment must be available in the environment. While it is not, a request that turns DRIP on is accepted with HTTP 200 and does not enroll the account. The agreement is not checked, and the response has no `drip` object unless the account was enrolled before.\n\nDRIP is not available for `donor_advised`, `trust`, `omnibus_sub`, and `omnibus_non_disclosed` accounts. A request that turns DRIP on for one of these accounts fails with HTTP 422, even while DRIP enrollment is unavailable. A request that turns DRIP off is accepted.\n",
+        "example": {
+          "equities_dividend_reinvestments": true
+        },
+        "properties": {
+          "equities_dividend_reinvestments": {
+            "description": "If true, Alpaca reinvests eligible cash dividends on US equities in the same security.",
+            "example": true,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "AccountDRIPResponse": {
+        "description": "This feature is available in sandbox for beta partners only.\n\nThe account's dividend reinvestment (DRIP) setting.\nThis field is returned only when DRIP was turned on for the account at least once.\n",
+        "example": {
+          "equities_dividend_reinvestments": true
+        },
+        "properties": {
+          "equities_dividend_reinvestments": {
+            "description": "If true, Alpaca reinvests eligible cash dividends on US equities in the same security.",
+            "example": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "equities_dividend_reinvestments"
+        ],
+        "type": "object"
       },
       "AccountFPSLItem": {
         "properties": {
@@ -495,12 +533,12 @@ To create an account for an existing holder, provide `primary_account_holder_id`
         "type": "string"
       },
       "Beneficiary": {
-        "description": "Beneficiary of an account",
+        "description": "Beneficiary of an IRA account. The same shape is used on account create, account update, and account responses.\n",
         "example": {
           "date_of_birth": "1970-01-01",
           "family_name": "Doe",
           "given_name": "Jane",
-          "middle_name": "P",
+          "middle_name": null,
           "relationship": "spouse",
           "share_pct": "100",
           "tax_id": "xxx-xx-xxxx",
@@ -509,45 +547,73 @@ To create an account for an existing holder, provide `primary_account_holder_id`
         },
         "properties": {
           "date_of_birth": {
+            "description": "Date of birth in YYYY-MM-DD format. It cannot be in the future.",
             "example": "1970-01-01",
+            "format": "date",
             "type": "string"
           },
           "family_name": {
+            "description": "Beneficiary family name.",
             "example": "Doe",
+            "minLength": 1,
             "type": "string"
           },
           "given_name": {
+            "description": "Beneficiary given name.",
             "example": "Jane",
+            "minLength": 1,
             "type": "string"
           },
           "middle_name": {
+            "description": "Beneficiary middle name. Omit this field or send null when the beneficiary has no middle name. An empty string is rejected. Account responses always include the field and use null when it is unset.\n",
             "example": "P",
-            "type": "string"
+            "minLength": 1,
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "relationship": {
+            "description": "Relationship of the beneficiary to the account holder.",
+            "enum": [
+              "spouse",
+              "other"
+            ],
             "example": "spouse",
             "type": "string"
           },
           "share_pct": {
+            "description": "Share of the account allocated to this beneficiary, as a decimal string. The value must be greater than 0 and at most 100, with at most two decimal places.\n",
             "example": "100",
+            "format": "decimal",
             "type": "string"
           },
           "tax_id": {
+            "description": "Beneficiary tax identifier. Create and update requests require a USA SSN. Account responses always return the masked value `xxx-xx-xxxx`.\n",
             "example": "xxx-xx-xxxx",
+            "minLength": 1,
             "type": "string"
           },
           "tax_id_type": {
+            "description": "Tax identifier type.",
+            "enum": [
+              "USA_SSN"
+            ],
             "example": "USA_SSN",
             "type": "string"
           },
           "type": {
+            "description": "Whether this beneficiary is primary or contingent. An account with beneficiaries needs at least one primary beneficiary. The `share_pct` values of all primary beneficiaries must add up to 100, and the `share_pct` values of all contingent beneficiaries, if any, must also add up to 100.\n",
+            "enum": [
+              "primary",
+              "contingent"
+            ],
             "example": "primary",
             "type": "string"
           }
         },
         "required": [
           "given_name",
-          "middle_name",
           "family_name",
           "date_of_birth",
           "tax_id",
@@ -814,9 +880,11 @@ To create an account for an existing holder, provide `primary_account_holder_id`
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },

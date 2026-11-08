@@ -111,16 +111,21 @@ Lists wallets for the account given in the path parameter. If an asset is specif
           }
         },
         {
-          "description": "Deprecated. Use chain instead. Optional network identifier which is used to request wallets for a specific network when asset is a multi-chain crypto asset. When both 'chain' and 'network' are specified, 'chain' will take precedence and 'network' will be ignored. If 'chain' and 'network' are not specified, the default 'network' (ethereum) will be used.",
+          "deprecated": true,
+          "description": "**Deprecation notice:**\nUse `chain` instead.\n\nSince: 2026-11-02\nSunset: 2027-02-02\n\n---\n\nDeprecated. Use chain instead. Optional network identifier which is used to request wallets for a specific network when asset is a multi-chain crypto asset. When both 'chain' and 'network' are specified, 'chain' will take precedence and 'network' will be ignored. If 'chain' and 'network' are not specified, the default 'network' (ethereum) will be used.",
           "in": "query",
           "name": "network",
           "schema": {
-            "deprecated": true,
             "enum": [
               "ethereum",
               "solana"
             ],
             "type": "string"
+          },
+          "x-deprecation": {
+            "reason": "Use `chain` instead.",
+            "since": "2026-11-02",
+            "sunset": "2027-02-02"
           }
         }
       ]

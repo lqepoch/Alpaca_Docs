@@ -11,7 +11,7 @@ The following are the possible account status values. Accounts will have both `s
 
 Most likely, the account status is `ACTIVE` unless there is an issue. The account status may get to `ACCOUNT_UPDATED` when personal information is being updated from the API, in which case the end user may not be allowed trading for a short period of time until the change is approved.
 
-For more on creating an account check out our [API reference section on the Accounts Endpoint](/reference/createaccount).
+For more on creating an account check out our [API reference section on the Accounts Endpoint](https://docs.alpaca.markets/us/reference/createaccount).
 
 | status              | description                                                                                                                                                                                                |
 | :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

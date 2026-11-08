@@ -7,7 +7,7 @@ agentTools:
 
 # Close All Positions for an Account
 
-Closes (liquidates) all of the account's open long and short positions. A response will be provided for each order that is attempted to be cancelled. If an order is no longer cancelable, the server will respond with status 500 and reject the request.
+Closes (liquidates) all of the account's open long and short positions. The 207 response contains one result per position: `body` is the closing Order when `status` is 200, otherwise the error describing why that position was not closed.
 
 # OpenAPI definition
 
@@ -32,10 +32,54 @@ Closes (liquidates) all of the account's open long and short positions. A respon
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
+      },
+      "ClosePositionError": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The per-position error reported inside a close-all-positions 207 response when a position's `status` is not 200. Other rejection-specific string fields may appear.",
+        "properties": {
+          "available": {
+            "description": "Quantity available. On insufficient-quantity rejections, the position quantity available to close.",
+            "type": "string"
+          },
+          "code": {
+            "description": "Alpaca error code, such as `\"40310000\"`. Usually the HTTP status code followed by a five-digit suffix. Several rejections can share the same code, so check `message` and the other fields for the specific reason.",
+            "type": "string"
+          },
+          "existing_qty": {
+            "description": "Absolute quantity of the existing position. Present only on insufficient-quantity rejections.",
+            "type": "string"
+          },
+          "held_for_options": {
+            "description": "Position quantity held for options. Present only on insufficient-quantity rejections, and only when that hold is positive.",
+            "type": "string"
+          },
+          "held_for_orders": {
+            "description": "Position quantity held by open orders. Present only on insufficient-quantity rejections.",
+            "type": "string"
+          },
+          "message": {
+            "description": "Human-readable reason for the rejection.",
+            "type": "string"
+          },
+          "symbol": {
+            "description": "Symbol the rejection applies to. Set on insufficient-quantity rejections and on some other order rejections, such as admin trading restrictions.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "Close Position Error",
+        "type": "object"
       },
       "CommissionType": {
         "default": "notional",
@@ -48,6 +92,24 @@ Closes (liquidates) all of the account's open long and short positions. A respon
         "example": "qty",
         "title": "CommissionType",
         "type": "string"
+      },
+      "Error": {
+        "properties": {
+          "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
+            "type": "number"
+          },
+          "message": {
+            "description": "Human-readable reason for the rejection.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "Error",
+        "type": "object"
       },
       "Order": {
         "properties": {
@@ -152,6 +214,15 @@ Closes (liquidates) all of the account's open long and short positions. A respon
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -240,6 +311,10 @@ Closes (liquidates) all of the account's open long and short positions. A respon
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -326,6 +401,17 @@ Closes (liquidates) all of the account's open long and short positions. A respon
           ""
         ],
         "example": "",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -422,6 +508,15 @@ Closes (liquidates) all of the account's open long and short positions. A respon
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -512,6 +607,10 @@ Closes (liquidates) all of the account's open long and short positions. A respon
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -591,14 +690,7 @@ Closes (liquidates) all of the account's open long and short positions. A respon
         "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
         "enum": [
           "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
+          "sell"
         ],
         "example": "buy",
         "type": "string"
@@ -639,7 +731,7 @@ Closes (liquidates) all of the account's open long and short positions. A respon
         "type": "string"
       },
       "PositionClosedResponse": {
-        "description": "Represents the result of asking the api to close a position.\n\n`body` is the Order used to close out the position.",
+        "description": "Represents the result of asking the api to close a position.\n\nWhen `status` is 200, `body` is the Order used to close out the position. For any other `status`, `body` is the error object describing why the close was rejected.",
         "examples": [
           {
             "body": {
@@ -683,7 +775,15 @@ Closes (liquidates) all of the account's open long and short positions. A respon
         ],
         "properties": {
           "body": {
-            "$ref": "#/components/schemas/Order"
+            "description": "The Order used to close out the position when `status` is 200; otherwise the error object.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Order"
+              },
+              {
+                "$ref": "#/components/schemas/ClosePositionError"
+              }
+            ]
           },
           "status": {
             "description": "Http status code for the attempt to close this position",
@@ -750,7 +850,7 @@ Closes (liquidates) all of the account's open long and short positions. A respon
   "paths": {
     "/v1/trading/accounts/{account_id}/positions": {
       "delete": {
-        "description": "Closes (liquidates) all of the account's open long and short positions. A response will be provided for each order that is attempted to be cancelled. If an order is no longer cancelable, the server will respond with status 500 and reject the request.",
+        "description": "Closes (liquidates) all of the account's open long and short positions. The 207 response contains one result per position: `body` is the closing Order when `status` is 200, otherwise the error describing why that position was not closed.",
         "operationId": "closeAllPositionsForAccount",
         "parameters": [
           {
@@ -767,6 +867,61 @@ Closes (liquidates) all of the account's open long and short positions. A respon
             "content": {
               "application/json": {
                 "examples": {
+                  "Partially Closed": {
+                    "value": [
+                      {
+                        "body": {
+                          "asset_class": "us_equity",
+                          "asset_id": "a4778bc8-fad1-47b7-87fe-d5cde10d43f4",
+                          "canceled_at": null,
+                          "client_order_id": "17dbfab4-cb86-4e0a-8fa6-f0606b0a9a4e",
+                          "created_at": "2022-05-13T16:25:29.336330998Z",
+                          "expired_at": null,
+                          "extended_hours": false,
+                          "failed_at": null,
+                          "filled_at": null,
+                          "filled_avg_price": null,
+                          "filled_qty": "0",
+                          "hwm": null,
+                          "id": "d1143025-89fc-4952-8936-db2409d899f3",
+                          "legs": null,
+                          "limit_price": null,
+                          "notional": null,
+                          "order_class": "",
+                          "order_type": "market",
+                          "qty": "4",
+                          "replaced_at": null,
+                          "replaced_by": null,
+                          "replaces": null,
+                          "side": "sell",
+                          "source": null,
+                          "status": "accepted",
+                          "stop_price": null,
+                          "submitted_at": "2022-05-13T16:25:29.335776073Z",
+                          "symbol": "TSLA",
+                          "time_in_force": "day",
+                          "trail_percent": null,
+                          "trail_price": null,
+                          "type": "market",
+                          "updated_at": "2022-05-13T16:25:29.336330998Z"
+                        },
+                        "status": 200,
+                        "symbol": "TSLA"
+                      },
+                      {
+                        "body": {
+                          "available": "2",
+                          "code": 40310000,
+                          "existing_qty": "2",
+                          "held_for_orders": "0",
+                          "message": "insufficient qty available for order (requested: 10, available: 2)",
+                          "symbol": "NVDA"
+                        },
+                        "status": 403,
+                        "symbol": "NVDA"
+                      }
+                    ]
+                  },
                   "example-1": {
                     "value": [
                       {
@@ -821,8 +976,41 @@ Closes (liquidates) all of the account's open long and short positions. A respon
             },
             "description": "HTTP 207 Multi-Status with body; an array of objects that include the order id and http status code for each status request."
           },
+          "422": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Invalid cancel_orders": {
+                    "value": {
+                      "code": 40010001,
+                      "message": "cancel_orders must be true or false"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Invalid Parameters.\n\nOne or more parameters provided are invalid."
+          },
           "500": {
-            "description": "Failed to liquidate some positions"
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Internal Server Error": {
+                    "value": {
+                      "code": 50010000,
+                      "message": "internal server error occurred"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Request-level failure; no per-position results are returned. Positions that fail to close are reported in the 207 response."
           }
         },
         "summary": "Close All Positions for an Account",

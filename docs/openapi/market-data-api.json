@@ -250,29 +250,6 @@
           "type": "string"
         }
       },
-      "forex_currency_pairs": {
-        "in": "query",
-        "name": "currency_pairs",
-        "required": true,
-        "schema": {
-          "allOf": [
-            {
-              "type": "string"
-            },
-            {
-              "$ref": "#/components/schemas/forex_currency_pairs"
-            }
-          ]
-        }
-      },
-      "forex_timeframe": {
-        "in": "query",
-        "name": "timeframe",
-        "required": false,
-        "schema": {
-          "$ref": "#/components/schemas/forex_timeframe"
-        }
-      },
       "isins": {
         "description": "A comma-separated list of ISINs with a limit of 1000.",
         "example": "US912797KJ59,US912797KS58,US912797LB15",
@@ -365,7 +342,7 @@
           "$ref": "#/components/schemas/option_feed"
         }
       },
-      "option_limit": {
+      "option_snapshot_limit": {
         "description": "Number of maximum snapshots to return in a response.\nThe limit applies to the total number of data points, not the number per symbol!\nUse `next_page_token` to fetch the next set of responses.\n",
         "in": "query",
         "name": "limit",
@@ -421,10 +398,10 @@
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }
@@ -458,13 +435,25 @@
         }
       },
       "stock_adjustment": {
-        "description": "Specifies the adjustments for the bars.\n\n - `raw`: no adjustments\n - `split`: adjust price and volume for forward and reverse stock splits\n - `dividend`: adjust price for cash dividends\n - `spin-off`: adjust price for spin-offs\n - `all`: apply all above adjustments\n\nYou can combine multiple adjustments by separating them with a comma, e.g. `split,spin-off`.\n",
+        "description": "Specifies the adjustments for the bars. Passed as a comma-separated list, e.g. `split,spin-off`.\n\n - `raw`: no adjustments\n - `split`: adjust price and volume for forward and reverse stock splits\n - `dividend`: adjust price for cash dividends\n - `spin-off`: adjust price for spin-offs\n - `all`: apply split, dividend, and spin-off adjustments\n\nDefault: `raw`.\n\nThe following are rejected with a `400`:\n - Unknown values\n - Empty values\n - Repeated keys like `?adjustment=split&adjustment=all`\n",
+        "example": [
+          "split",
+          "spin-off"
+        ],
+        "explode": false,
         "in": "query",
         "name": "adjustment",
         "schema": {
-          "default": "raw",
-          "type": "string"
-        }
+          "default": [
+            "raw"
+          ],
+          "items": {
+            "$ref": "#/components/schemas/stock_adjustment"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "style": "form"
       },
       "stock_asof": {
         "description": "The as-of date of the queried stock symbol(s). Format: YYYY-MM-DD. Default: current day.\n\nThis date is used to identify the underlying entity of the provided symbol(s), so that name changes for this entity can be found. Data for past symbol(s) is returned if the query date range spans the name change.\n\nThe special value of \"-\" means symbol mapping is skipped. Data is returned based on the symbol alone without looking up previous names. The same happens if the queried symbol is not found on the given `asof` date.\n\nExample: FB was renamed to META in 2022-06-09. Querying META with an `asof` date after 2022-06-09 will also yield FB data. The data for the FB ticker will be labeled as META because they are considered the same underlying entity as of 2022-06-09. Querying FB with an `asof` date after 2022-06-09 will only return data with the FB ticker, not with META. But with an `asof` date before 2022-06-09, META will also be returned (as FB).\n",
@@ -2773,7 +2762,7 @@
             "type": "number"
           },
           "as": {
-            "description": "Ask size.",
+            "description": "Ask size in the base asset (left side of the pair), with no lot multiplier.",
             "format": "double",
             "type": "number"
           },
@@ -2783,7 +2772,7 @@
             "type": "number"
           },
           "bs": {
-            "description": "Bid size.",
+            "description": "Bid size in the base asset (left side of the pair), with no lot multiplier.",
             "format": "double",
             "type": "number"
           },
@@ -3151,95 +3140,6 @@
         ],
         "type": "object"
       },
-      "forex_currency_pairs": {
-        "description": "A comma-separated string with currency pairs.",
-        "examples": [
-          "USDJPY",
-          "USDMXN"
-        ],
-        "type": "string"
-      },
-      "forex_latest_rates_resp": {
-        "description": "The response object of the latest forex rates.",
-        "properties": {
-          "rates": {
-            "additionalProperties": {
-              "$ref": "#/components/schemas/forex_rate"
-            },
-            "type": "object"
-          }
-        },
-        "required": [
-          "rates"
-        ],
-        "type": "object"
-      },
-      "forex_rate": {
-        "description": "A foreign exchange rate between two currencies at a given time.",
-        "examples": [
-          {
-            "ap": 127.763,
-            "bp": 127.702,
-            "mp": 127.757,
-            "t": "2022-04-20T18:23:00Z"
-          }
-        ],
-        "properties": {
-          "ap": {
-            "description": "The last ask price value of the currency at the end of the timeframe.",
-            "format": "double",
-            "type": "number"
-          },
-          "bp": {
-            "description": "The last bid price value of the currency at the end of the timeframe.",
-            "format": "double",
-            "type": "number"
-          },
-          "mp": {
-            "description": "The last mid price value of the currency at the end of the timeframe.",
-            "format": "double",
-            "type": "number"
-          },
-          "t": {
-            "description": "Timestamp of the rate.",
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "bp",
-          "mp",
-          "ap",
-          "t"
-        ],
-        "type": "object"
-      },
-      "forex_rates_resp": {
-        "properties": {
-          "next_page_token": {
-            "$ref": "#/components/schemas/next_page_token"
-          },
-          "rates": {
-            "additionalProperties": {
-              "items": {
-                "$ref": "#/components/schemas/forex_rate"
-              },
-              "type": "array"
-            },
-            "type": "object"
-          }
-        },
-        "required": [
-          "rates",
-          "next_page_token"
-        ],
-        "type": "object"
-      },
-      "forex_timeframe": {
-        "default": "1Min",
-        "description": "The sampling interval of the currency rates. For example, 5S returns forex rates sampled every five seconds.\nYou can use the following values:\n - `5Sec` or `5S`\n - `1Min` or `1T`\n - `1Day` or `1D`\n",
-        "type": "string"
-      },
       "forward_split": {
         "description": "Forward split.",
         "examples": [
@@ -3498,13 +3398,11 @@
         "description": "Model representing a news article.",
         "properties": {
           "author": {
-            "description": "Original author of news article.",
-            "minLength": 1,
+            "description": "Original author of news article (may be empty).",
             "type": "string"
           },
           "content": {
-            "description": "Content of the news article (might contain HTML).",
-            "minLength": 1,
+            "description": "Content of the news article (might contain HTML, may be empty).",
             "type": "string"
           },
           "created_at": {
@@ -3531,13 +3429,12 @@
             "uniqueItems": true
           },
           "source": {
-            "description": "Source where the news originated from (e.g. Benzinga).",
+            "description": "Source from which the news originated.",
             "minLength": 1,
             "type": "string"
           },
           "summary": {
-            "description": "Summary text for the article (may be first sentence of content).",
-            "minLength": 1,
+            "description": "Summary text for the article (may be first sentence of content or may be empty).",
             "type": "string"
           },
           "symbols": {
@@ -4433,6 +4330,17 @@
         ],
         "type": "object"
       },
+      "stock_adjustment": {
+        "description": "One adjustment applied to historical stock bars.",
+        "enum": [
+          "raw",
+          "split",
+          "dividend",
+          "spin-off",
+          "all"
+        ],
+        "type": "string"
+      },
       "stock_and_cash_merger": {
         "description": "Stock and cash merger.",
         "examples": [
@@ -5180,6 +5088,9 @@
       "stock_snapshots_resp_single": {
         "allOf": [
           {
+            "$ref": "#/components/schemas/stock_snapshot"
+          },
+          {
             "properties": {
               "currency": {
                 "type": "string"
@@ -5189,9 +5100,6 @@
               }
             },
             "type": "object"
-          },
-          {
-            "$ref": "#/components/schemas/stock_snapshot"
           }
         ]
       },
@@ -6078,10 +5986,6 @@
           {
             "description": "Sandbox",
             "url": "https://stream.data.sandbox.alpaca.markets"
-          },
-          {
-            "description": "Staging",
-            "url": "https://stream.data.staging-v2.tradetalk.us"
           }
         ],
         "summary": "Subscribe to Corporate Actions Events (SSE)",
@@ -6284,191 +6188,6 @@
         ]
       }
     },
-    "/v1beta1/forex/latest/rates": {
-      "get": {
-        "description": "Get the latest forex rates for the given currency pairs.\n",
-        "operationId": "LatestRates",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/forex_currency_pairs"
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "USDJPY": {
-                    "value": {
-                      "rates": {
-                        "USDJPY": {
-                          "ap": 128.112,
-                          "bp": 127.752,
-                          "mp": 127.779,
-                          "t": "2022-05-20T05:38:41.311530885Z"
-                        }
-                      }
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/forex_latest_rates_resp"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "X-RateLimit-Limit": {
-                "$ref": "#/components/headers/ratelimit_limit"
-              },
-              "X-RateLimit-Remaining": {
-                "$ref": "#/components/headers/ratelimit_remaining"
-              },
-              "X-RateLimit-Reset": {
-                "$ref": "#/components/headers/ratelimit_reset"
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        },
-        "security": [
-          {
-            "BasicAuth": []
-          },
-          {
-            "apiKey": [],
-            "apiSecret": []
-          }
-        ],
-        "summary": "Latest rates for currency pairs",
-        "tags": [
-          "Forex"
-        ]
-      }
-    },
-    "/v1beta1/forex/rates": {
-      "get": {
-        "description": "Get historical forex rates for the given currency pairs in the given time interval and at the given timeframe (snapshot frequency).\n",
-        "operationId": "Rates",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/forex_currency_pairs"
-          },
-          {
-            "$ref": "#/components/parameters/forex_timeframe"
-          },
-          {
-            "$ref": "#/components/parameters/start"
-          },
-          {
-            "$ref": "#/components/parameters/end"
-          },
-          {
-            "$ref": "#/components/parameters/limit"
-          },
-          {
-            "$ref": "#/components/parameters/sort"
-          },
-          {
-            "$ref": "#/components/parameters/page_token"
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "USDJPY": {
-                    "value": {
-                      "next_page_token": "VVNESlBZfDIwMjItMDEtMDNUMDA6MDM6MDBa",
-                      "rates": {
-                        "USDJPY": [
-                          {
-                            "ap": 115.18,
-                            "bp": 114.192,
-                            "mp": 115.144,
-                            "t": "2022-01-03T00:01:00Z"
-                          },
-                          {
-                            "ap": 115.185,
-                            "bp": 114.189,
-                            "mp": 115.138,
-                            "t": "2022-01-03T00:02:00Z"
-                          },
-                          {
-                            "ap": 115.148,
-                            "bp": 115.122,
-                            "mp": 115.131,
-                            "t": "2022-01-03T00:03:00Z"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/forex_rates_resp"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "X-RateLimit-Limit": {
-                "$ref": "#/components/headers/ratelimit_limit"
-              },
-              "X-RateLimit-Remaining": {
-                "$ref": "#/components/headers/ratelimit_remaining"
-              },
-              "X-RateLimit-Reset": {
-                "$ref": "#/components/headers/ratelimit_reset"
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "403": {
-            "$ref": "#/components/responses/403"
-          },
-          "429": {
-            "$ref": "#/components/responses/429"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        },
-        "security": [
-          {
-            "BasicAuth": []
-          },
-          {
-            "apiKey": [],
-            "apiSecret": []
-          }
-        ],
-        "summary": "Historical rates for currency pairs",
-        "tags": [
-          "Forex"
-        ]
-      }
-    },
     "/v1beta1/logos/{symbol}": {
       "get": {
         "description": "Get the image of the company logo for the given symbol.",
@@ -6604,22 +6323,51 @@
                     "value": {
                       "news": [
                         {
-                          "author": "Charles Gross",
-                          "content": "<p>This headline-only article is meant to show you why a stock is moving, the most difficult aspect of stock trading....</p>",
-                          "created_at": "2021-12-31T11:08:42Z",
-                          "headline": "Apple Leader in Phone Sales in China for Second Straight Month in November With 23.6% Share, According to Market Research Data",
-                          "id": 24843171,
+                          "author": "",
+                          "content": "Following the release of SpaceX's third-quarter 2026 financial results, several analysts have updated their outlook on the company. UBS maintained a Buy rating while raising its price target to $230 from $210. Additionally, Wells Fargo maintained an Overweight rating and increased its price target to $274 from $214. These adjustments reflect analyst reactions to the company's reported revenue growth and strategic focus on artificial intelligence.",
+                          "created_at": "2026-10-21T15:02:10Z",
+                          "headline": "Analysts Adjust Price Targets for SpaceX Following Q3 Results",
+                          "id": 100536145,
                           "images": [],
-                          "source": "benzinga",
-                          "summary": "This headline-only article is meant to show you why a stock is moving, the most difficult aspect of stock trading",
+                          "source": "fiscal.ai",
+                          "summary": "Financial institutions including UBS and Wells Fargo have updated their price targets for SpaceX following the company's third-quarter earnings report.",
                           "symbols": [
-                            "AAPL"
+                            "SPCX"
                           ],
-                          "updated_at": "2021-12-31T11:08:43Z",
-                          "url": "https://www.benzinga.com/news/21/12/24843171/apple-leader-in-phone-sales-in-china-for-second-straight-month-in-november-with-23-6-share-according"
+                          "updated_at": "2026-10-21T15:02:10Z",
+                          "url": "https://www.moomoo.com/stock/SPCX-US/news?chain_id=Name1K9-3FXPhg.1lcj000&global_content=%7B%22promote_id%22%3A13764,%22sub_promote_id%22%3A64,%22f%22%3A%22www.moomoo.com%2Fcommunity%2Fprofile%2F105275796%2Fpost%2Fall%22%7D"
+                        },
+                        {
+                          "author": "Badar Shaikh",
+                          "content": "<p>It was yet another eventful week for <strong>Tesla Inc</strong> (NASDAQ:TSLA) and CEO <strong>Elon Musk</strong> amid the Roadster's high-flying debut, questions about a possible SpaceX merger and more.</p>",
+                          "created_at": "2026-10-18T12:51:02Z",
+                          "headline": "This Week in TSLA: Roadster's Flying Debut, Cybercab Speeding in School Zones, SpaceX Merger and More",
+                          "id": 62429279,
+                          "images": [
+                            {
+                              "size": "large",
+                              "url": "https://cdn.benzinga.com/files/images/story/2026/10/18/Kaunas--Lithuania-2022---April-14-Tesla-.jpg?width=2048&height=1536"
+                            },
+                            {
+                              "size": "small",
+                              "url": "https://cdn.benzinga.com/files/images/story/2026/10/18/Kaunas--Lithuania-2022---April-14-Tesla-.jpg?width=1024&height=768"
+                            },
+                            {
+                              "size": "thumb",
+                              "url": "https://cdn.benzinga.com/files/images/story/2026/10/18/Kaunas--Lithuania-2022---April-14-Tesla-.jpg?width=250&height=187"
+                            }
+                          ],
+                          "source": "benzinga",
+                          "summary": "This week, Tesla unveiled its flying Roadster, faced Cybercab questions and merger speculation with SpaceX.",
+                          "symbols": [
+                            "SPCX",
+                            "TSLA"
+                          ],
+                          "updated_at": "2026-10-18T12:51:02Z",
+                          "url": "https://www.benzinga.com/markets/tech/26/10/62429279/this-week-in-tsla-roadsters-flying-debut-cybercab-speeding-in-school-zones-spacex-merger-and-more"
                         }
                       ],
-                      "next_page_token": "MTY0MDk0ODkyMzAwMDAwMDAwMHwyNDg0MzE3MQ=="
+                      "next_page_token": "MTc5MjMyNzg2MjAwMDAwMDAwMHw2MjQyOTI3OQ=="
                     }
                   }
                 },
@@ -6999,7 +6747,7 @@
             "$ref": "#/components/parameters/option_updated_since"
           },
           {
-            "$ref": "#/components/parameters/option_limit"
+            "$ref": "#/components/parameters/option_snapshot_limit"
           },
           {
             "$ref": "#/components/parameters/page_token"
@@ -7106,7 +6854,7 @@
             "$ref": "#/components/parameters/option_feed"
           },
           {
-            "$ref": "#/components/parameters/option_limit"
+            "$ref": "#/components/parameters/option_snapshot_limit"
           },
           {
             "$ref": "#/components/parameters/option_updated_since"
@@ -10537,20 +10285,12 @@
       "name": "Option"
     },
     {
-      "description": "Endpoints for indices.",
-      "name": "Index"
-    },
-    {
       "description": "Endpoints for cryptocurrencies.",
       "name": "Crypto"
     },
     {
       "description": "Endpoints for fixed income data.",
       "name": "Fixed income"
-    },
-    {
-      "description": "Endpoints for forex currency rates.",
-      "name": "Forex"
     },
     {
       "description": "Endpoints for getting company logo images.",
@@ -10567,10 +10307,6 @@
     {
       "description": "Corporate actions (splits, dividends, etc.).",
       "name": "Corporate actions"
-    },
-    {
-      "description": "Endpoints for event contract (prediction market) assets metadata.",
-      "name": "Event contracts"
     }
   ]
 }

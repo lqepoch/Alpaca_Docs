@@ -30,9 +30,11 @@ Retrieve a single tokenization request by the `issuer_request_id`. Returns eithe
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -78,16 +80,6 @@ Retrieve a single tokenization request by the `issuer_request_id`. Returns eithe
       },
       "TokenizationRequest": {
         "properties": {
-          "account": {
-            "deprecated": true,
-            "description": "Alpaca account ID associated with this tokenization request. Use `client_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
-          },
           "client_account_id": {
             "description": "Alpaca account UUID of the Authorized Participant associated with this tokenization request",
             "format": "uuid",
@@ -115,16 +107,6 @@ Retrieve a single tokenization request by the `issuer_request_id`. Returns eithe
           "issuer": {
             "$ref": "#/components/schemas/TokenizationIssuer"
           },
-          "issuer_account": {
-            "deprecated": true,
-            "description": "Issuer's account ID associated with this tokenization request. Use `client_external_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_external_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
-          },
           "issuer_request_id": {
             "description": "Unique identifier of the tokenization request set by the issuer",
             "type": [
@@ -149,6 +131,9 @@ Retrieve a single tokenization request by the `issuer_request_id`. Returns eithe
           "tokenization_request_id": {
             "description": "Unique identifier of the tokenization request set by Alpaca",
             "type": "string"
+          },
+          "transfer_status": {
+            "$ref": "#/components/schemas/TokenizationTransferStatus"
           },
           "tx_hash": {
             "description": "Transaction hash of the completed request on the blockchain",
@@ -211,6 +196,17 @@ Retrieve a single tokenization request by the `issuer_request_id`. Returns eithe
         "example": "mint",
         "title": "TokenizationRequestType",
         "type": "string"
+      },
+      "TokenizationTransferStatus": {
+        "description": "Whether Alpaca has moved the underlying shares for this tokenization request. Independent of `status`: `status` can stay `pending` until the issuer completes the on-chain mint or redeem, while `transfer_status` becomes `completed` as soon as the shares move.\n\n- `pending`: the shares have not moved yet.\n- `completed`: the shares have moved. Account activities can lag until after end-of-day posting.\n- `rejected`: the share transfer failed.\n\nReturned by the list and get tokenization request endpoints. Omitted when Alpaca has no share transfer for the request, for example when the request was rejected during validation.",
+        "enum": [
+          "pending",
+          "completed",
+          "rejected"
+        ],
+        "example": "completed",
+        "title": "TokenizationTransferStatus",
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -266,6 +262,7 @@ Retrieve a single tokenization request by the `issuer_request_id`. Returns eithe
                   "status": "completed",
                   "token_symbol": "TSLAx",
                   "tokenization_request_id": "5b1d6a3e-7f0a-4d2c-b8e1-9e6f1c0d2c4a",
+                  "transfer_status": "completed",
                   "tx_hash": "5J7ZxK4QwR3vH2pY1aB6sN8cM9tD0fA2eXyVwUjL3kPqR4mZcF7nB1tA8sH6dG2pE",
                   "type": "mint",
                   "underlying_symbol": "TSLA",

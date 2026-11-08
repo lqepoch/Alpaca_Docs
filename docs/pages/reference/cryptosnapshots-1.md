@@ -194,7 +194,7 @@ The snapshots endpoint returns the latest trade, latest quote, latest minute bar
             "type": "number"
           },
           "as": {
-            "description": "Ask size.",
+            "description": "Ask size in the base asset (left side of the pair), with no lot multiplier.",
             "format": "double",
             "type": "number"
           },
@@ -204,7 +204,7 @@ The snapshots endpoint returns the latest trade, latest quote, latest minute bar
             "type": "number"
           },
           "bs": {
-            "description": "Bid size.",
+            "description": "Bid size in the base asset (left side of the pair), with no lot multiplier.",
             "format": "double",
             "type": "number"
           },

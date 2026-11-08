@@ -50,9 +50,11 @@ without risking duplicate requests. Use a client-generated unique value (e.g. UU
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -106,16 +108,6 @@ without risking duplicate requests. Use a client-generated unique value (e.g. UU
           "client_external_account_id": {
             "description": "Customer's client identifier on the issuer's platform. Exactly one of `client_external_account_id` or `client_account_id` must be provided to identify the Authorized Participant whose account will receive the underlying asset. The deprecated `client_id` field is still accepted as an alias for `client_external_account_id` during the deprecation window.",
             "type": "string"
-          },
-          "client_id": {
-            "deprecated": true,
-            "description": "Customer's client identifier on the issuer's platform. Use `client_external_account_id` instead.",
-            "type": "string",
-            "x-deprecation": {
-              "reason": "Use client_external_account_id instead.",
-              "since": "2026-07-15",
-              "sunset": "2026-10-15"
-            }
           },
           "issuer_request_id": {
             "description": "Unique identifier of the redemption request set by the issuer",

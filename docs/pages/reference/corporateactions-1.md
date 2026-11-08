@@ -152,10 +152,10 @@ By default (`data_quality=complete`), corporate actions that are still incomplet
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }

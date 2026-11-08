@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:23:36.000Z
+updatedAt: 2026-10-28T15:07:12.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -13,9 +13,11 @@ By default all Alpaca accounts are allowed to trade fractional shares in both li
 
 # Supported Order Types
 
-Alpaca currently supports fractional trading for market, limit, stop & stop limit orders with a time in force=Day, accommodating both fractional quantities and notional values. You can pass either a fractional amount (qty), or a notional value (notional) in any POST/v2/orders request. Note that entering a value for either parameters, will automatically nullify the other. If both qty and notional are entered the request will be rejected with an error status 400.
+Alpaca currently supports fractional trading for market, limit, stop & stop limit orders by setting `time_in_force` to `day`, accommodating both fractional quantities and notional values. You can pass either a fractional amount (`qty`), or a notional value (`notional`) in any `POST /v2/orders` request. Note that entering a value for either parameters, will automatically nullify the other. If both `qty` and `notional` are entered the request will be rejected with an error status 400.
 
-Both notional and qty fields can take up to 9 decimal point values.
+The `notional` field supports up to 2 decimal places for USD and USD-quoted crypto, and 9 decimal places for non-USD crypto pairs (or the local currency precision for [Local Currency Trading](https://docs.alpaca.markets/docs/local-currency-trading-lct)). If extra decimal places are provided, the request is rejected.
+
+The `qty` field supports up to 9 decimal places, extra decimal places are truncated, so `1.1234567891` becomes `1.123456789`.
 
 Moreover, we support fractional shares trading not only during standard market hours, but extending into pre-market (4:00 a.m. - 9:30 a.m. ET), post-market (4:00 p.m. - 8:00 p.m. ET) and overnight (8:00 p.m. - 4:00 a.m.) hours, offering global investors the ability to trade during the full extended hours session.
 

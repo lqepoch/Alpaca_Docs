@@ -14,13 +14,73 @@ Get a run by its ID.
 ```json
 {
   "components": {
+    "examples": {
+      "rebalancing_insufficient_permission": {
+        "description": "Use credentials with the required permission and try again.",
+        "summary": "These credentials are not allowed to call this endpoint, or rebalancing is not enabled for the correspondent",
+        "value": {
+          "code": 40310000,
+          "message": "insufficient permission"
+        }
+      },
+      "rebalancing_internal_server_error": {
+        "description": "If it keeps happening, contact support.",
+        "summary": "Something went wrong on our side",
+        "value": {
+          "code": 50010000,
+          "message": "internal server error occurred"
+        }
+      },
+      "rebalancing_invalid_request": {
+        "description": "Retry it. If it keeps happening, contact support.",
+        "summary": "A valid client IP address could not be read from the request",
+        "value": {
+          "code": 40010001,
+          "message": "invalid request"
+        }
+      },
+      "rebalancing_invalid_run_id": {
+        "description": "Check `run_id` and try again.",
+        "summary": "The run ID in the path is not a valid UUID",
+        "value": {
+          "code": 40010001,
+          "message": "invalid run_id"
+        }
+      },
+      "rebalancing_run_not_found": {
+        "description": "Check the run ID and try again.",
+        "summary": "No rebalance run with this ID exists for your correspondent",
+        "value": {
+          "code": 40410000,
+          "message": "rebalance run not found"
+        }
+      },
+      "rebalancing_unauthorized": {
+        "description": "Send a valid API key ID and secret, or a Broker Dashboard session, and try again.",
+        "summary": "The request is not authenticated",
+        "value": {
+          "code": 40110000,
+          "message": "request is not authorized"
+        }
+      },
+      "rebalancing_unexpected_error": {
+        "description": "If it keeps happening, contact support.",
+        "summary": "Something went wrong on our side while handling the request",
+        "value": {
+          "error": "Internal Server Error",
+          "message": "An unexpected error occurred"
+        }
+      }
+    },
     "schemas": {
       "AssetClass": {
         "description": "This represents the category to which the asset belongs to. It serves to identify the nature of the financial instrument, with options including \"us_equity\" for U.S. equities, \"us_option\" for U.S. options, \"crypto\" for cryptocurrencies, and \"ipo\" for IPO indications of interest. This `asset_class: ipo` value is distinct from the assets API `attributes: [\"ipo\"]` flag.",
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
@@ -36,6 +96,24 @@ Get a run by its ID.
         "example": "qty",
         "title": "CommissionType",
         "type": "string"
+      },
+      "Error": {
+        "properties": {
+          "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
+            "type": "number"
+          },
+          "message": {
+            "description": "Human-readable reason for the rejection.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "Error",
+        "type": "object"
       },
       "Order": {
         "properties": {
@@ -140,6 +218,15 @@ Get a run by its ID.
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -228,6 +315,10 @@ Get a run by its ID.
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -314,6 +405,17 @@ Get a run by its ID.
           ""
         ],
         "example": "",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -410,6 +512,15 @@ Get a run by its ID.
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -500,6 +611,10 @@ Get a run by its ID.
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -579,14 +694,7 @@ Get a run by its ID.
         "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
         "enum": [
           "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
+          "sell"
         ],
         "example": "buy",
         "type": "string"
@@ -652,12 +760,7 @@ Get a run by its ID.
             "type": "string"
           },
           "initiated_from": {
-            "description": "system or api",
-            "enum": [
-              "system",
-              "api"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/PortfolioRunInitiator"
           },
           "orders": {
             "description": "Array of executed orders for this run",
@@ -685,12 +788,7 @@ Get a run by its ID.
             "$ref": "#/components/schemas/PortfolioRunStatus"
           },
           "type": {
-            "description": "full_rebalance or invest_cash",
-            "enum": [
-              "full_rebalance",
-              "invest_cash"
-            ],
-            "type": "string"
+            "$ref": "#/components/schemas/PortfolioRunType"
           },
           "updated_at": {
             "description": "RFC3339 format",
@@ -707,8 +805,18 @@ Get a run by its ID.
         "title": "PortfolioRun",
         "type": "object"
       },
+      "PortfolioRunInitiator": {
+        "description": "Who created the run: `system` for runs Alpaca creates (scheduled rebalancing and subscription creation), `api` for runs created with `POST /v1/rebalancing/runs`, or `dashboard` for runs created by a user in the Broker API dashboard.",
+        "enum": [
+          "system",
+          "api",
+          "dashboard"
+        ],
+        "title": "PortfolioRunInitiator",
+        "type": "string"
+      },
       "PortfolioRunStatus": {
-        "description": "|       Status       | Final |                                 Represented State                                |                                                         Notes                                                        |\n|:------------------:|:-----:|:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|\n| QUEUED             | No    | The run has been queued, waiting for our system to process it.                   | Runs only executed when the US market is open and there's at least 15 minutes before the market closes.              |\n| IN_PROGRESS        | No    | Portfolio adjustment is in progress.                                             |                                                                                                                      |\n| CANCELED           | Yes   | Portfolio run canceled, before being picked up by Alpaca's background processing |                                                                                                                      |\n| CANCELED_MID_RUN   | Yes   | Portfolio run canceled while executing.                                          | The portfolio's state is in between the pre-run and post-run state, manual remediation or job re-run is recommended. |\n| ERROR              | Yes   | There was an error while rebalancing the portfolio.                              | The portfolio's state is in between the pre-run and post-run state, manual remediation or job re-run is recommended. |\n| TIMEOUT            | Yes   | A timeout occurred while rebalancing the portfolio.                               | The portfolio's state is in between the pre-run and post-run state, manual remediation or job re-run is recommended. |\n| COMPLETED_ADJUSTED | Yes   | The portfolio has been adjusted                                                  | The adjustments have been prepared, but the run details haven't yet updated with the list of resulting orders        |\n| COMPLETED_SUCCESS  | Yes   | The portfolio has been adjusted, run status updated                              |                                                                                                                      |",
+        "description": "|       Status       | Final |                                 Represented State                                |                                                         Notes                                                        |\n|:------------------:|:-----:|:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------:|\n| QUEUED             | No    | The run has been queued, waiting for our system to process it.                   | Runs only executed when the US market is open and there's at least 15 minutes before the market closes.              |\n| IN_PROGRESS        | No    | Portfolio adjustment is in progress.                                             |                                                                                                                      |\n| CANCELED           | Yes, unless the run was already placing orders | Portfolio run canceled before it started, or while waiting to be retried | If the run was already placing orders, those orders are not canceled and the run's final status can replace CANCELED. |\n| CANCELED_MID_RUN   | Yes   | Portfolio run canceled while executing.                                          | The portfolio's state is in between the pre-run and post-run state, manual remediation or job re-run is recommended. |\n| ERROR              | Yes   | There was an error while rebalancing the portfolio.                              | The portfolio's state is in between the pre-run and post-run state, manual remediation or job re-run is recommended. |\n| TIMEOUT            | Yes   | A timeout occurred while rebalancing the portfolio.                               | The portfolio's state is in between the pre-run and post-run state, manual remediation or job re-run is recommended. |\n| COMPLETED_ADJUSTED | Yes   | The portfolio has been adjusted                                                  | The adjustments have been prepared, but the run details haven't yet updated with the list of resulting orders        |\n| COMPLETED_SUCCESS  | Yes   | The portfolio has been adjusted, run status updated                              |                                                                                                                      |",
         "enum": [
           "QUEUED",
           "IN_PROGRESS",
@@ -720,6 +828,16 @@ Get a run by its ID.
           "COMPLETED_SUCCESS"
         ],
         "title": "PortfolioRunStatus",
+        "type": "string"
+      },
+      "PortfolioRunType": {
+        "description": "full_rebalance, partial_liquidation, or invest_cash. partial_liquidation is emitted when a run has that type. Creating one through the REST API is rejected today.",
+        "enum": [
+          "full_rebalance",
+          "partial_liquidation",
+          "invest_cash"
+        ],
+        "title": "PortfolioRunType",
         "type": "string"
       },
       "PortfolioWeights": {
@@ -813,6 +931,23 @@ Get a run by its ID.
         "example": "gtc",
         "title": "TimeInForce",
         "type": "string"
+      },
+      "UnexpectedError": {
+        "description": "Returned when request handling stops unexpectedly. This body has no numeric code.",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ],
+        "title": "UnexpectedError",
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -849,6 +984,94 @@ Get a run by its ID.
               }
             },
             "description": "The run object"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "$ref": "#/components/examples/rebalancing_unauthorized"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "The request is not authenticated. Send a valid API key ID and secret, or a Broker Dashboard session, and try again."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "insufficient_permission": {
+                    "$ref": "#/components/examples/rebalancing_insufficient_permission"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "These credentials are not allowed to call this endpoint, or rebalancing is not enabled for the correspondent. Use credentials with the required permission and try again."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "run_not_found": {
+                    "$ref": "#/components/examples/rebalancing_run_not_found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "No rebalance run with this ID exists for your correspondent. Check the run ID and try again."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "$ref": "#/components/examples/rebalancing_invalid_request"
+                  },
+                  "invalid_run_id": {
+                    "$ref": "#/components/examples/rebalancing_invalid_run_id"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "The request failed validation or cannot be completed in its current state. The message describes the reason."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal_server_error": {
+                    "$ref": "#/components/examples/rebalancing_internal_server_error"
+                  },
+                  "unexpected_error": {
+                    "$ref": "#/components/examples/rebalancing_unexpected_error"
+                  }
+                },
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UnexpectedError"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Something went wrong on our side while handling the request. Retry with backoff. If it keeps happening, contact support."
           }
         },
         "summary": "Get Run by ID",

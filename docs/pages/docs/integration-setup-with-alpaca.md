@@ -13,7 +13,7 @@ If you are coming to Alpaca for the first time to build something using Broker A
 
 The sandbox behaves the same way as the live environment for the most parts with a few mocked. With this environment, you should be able to build a complete demo app that you can show to your friends, investors and other community members. Going live from here would be a matter of testing and updating the API calls for the mocked endpoints.
 
-To go live, we will onboard you for the business integration. For more details of this step, please refer to [Going Live](/docs/integration-setup-with-alpaca#going-live).
+To go live, we will onboard you for the business integration. For more details of this step, please refer to [Going Live](https://docs.alpaca.markets/us/docs/integration-setup-with-alpaca#going-live).
 
 Once you go live, you can keep using the same dashboard to view customer activity and resolve issues for them for both Sandbox and Live. You will also get support for the broker operations and technology support based on the agreement.
 
@@ -37,7 +37,7 @@ The account approval process slightly differs depending on your use case and you
 
 ## Trading
 
-All trades that happen in the sandbox environment are simulated. The simulator engine is the same as our paper trading engine. All assumptions and mock logic follow the paper trading behavior. Please refer to the [Trading API documentation](/docs/trading-api).
+All trades that happen in the sandbox environment are simulated. The simulator engine is the same as our paper trading engine. All assumptions and mock logic follow the paper trading behavior. Please refer to the [Trading API documentation](https://docs.alpaca.markets/us/docs/trading-api).
 
 ## Funding
 

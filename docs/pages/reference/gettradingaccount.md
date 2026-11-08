@@ -60,7 +60,7 @@ The response is a Trading Account model.
           },
           "ptp_no_exception_entry": {
             "description": "If set to true then Alpaca will accept orders for PTP symbols with no exception. Default is false.",
-            "type": "string"
+            "type": "boolean"
           },
           "suspend_trade": {
             "description": "If true, new orders are blocked.",

@@ -97,10 +97,10 @@ In these situations, if you keep requesting again with the `next_page_token` fro
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }
@@ -134,13 +134,25 @@ In these situations, if you keep requesting again with the `next_page_token` fro
         }
       },
       "stock_adjustment": {
-        "description": "Specifies the adjustments for the bars.\n\n - `raw`: no adjustments\n - `split`: adjust price and volume for forward and reverse stock splits\n - `dividend`: adjust price for cash dividends\n - `spin-off`: adjust price for spin-offs\n - `all`: apply all above adjustments\n\nYou can combine multiple adjustments by separating them with a comma, e.g. `split,spin-off`.\n",
+        "description": "Specifies the adjustments for the bars. Passed as a comma-separated list, e.g. `split,spin-off`.\n\n - `raw`: no adjustments\n - `split`: adjust price and volume for forward and reverse stock splits\n - `dividend`: adjust price for cash dividends\n - `spin-off`: adjust price for spin-offs\n - `all`: apply split, dividend, and spin-off adjustments\n\nDefault: `raw`.\n\nThe following are rejected with a `400`:\n - Unknown values\n - Empty values\n - Repeated keys like `?adjustment=split&adjustment=all`\n",
+        "example": [
+          "split",
+          "spin-off"
+        ],
+        "explode": false,
         "in": "query",
         "name": "adjustment",
         "schema": {
-          "default": "raw",
-          "type": "string"
-        }
+          "default": [
+            "raw"
+          ],
+          "items": {
+            "$ref": "#/components/schemas/stock_adjustment"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "style": "form"
       },
       "stock_asof": {
         "description": "The as-of date of the queried stock symbol(s). Format: YYYY-MM-DD. Default: current day.\n\nThis date is used to identify the underlying entity of the provided symbol(s), so that name changes for this entity can be found. Data for past symbol(s) is returned if the query date range spans the name change.\n\nThe special value of \"-\" means symbol mapping is skipped. Data is returned based on the symbol alone without looking up previous names. The same happens if the queried symbol is not found on the given `asof` date.\n\nExample: FB was renamed to META in 2022-06-09. Querying META with an `asof` date after 2022-06-09 will also yield FB data. The data for the FB ticker will be labeled as META because they are considered the same underlying entity as of 2022-06-09. Querying FB with an `asof` date after 2022-06-09 will only return data with the FB ticker, not with META. But with an `asof` date before 2022-06-09, META will also be returned (as FB).\n",
@@ -240,6 +252,17 @@ In these situations, if you keep requesting again with the `next_page_token` fro
         "enum": [
           "asc",
           "desc"
+        ],
+        "type": "string"
+      },
+      "stock_adjustment": {
+        "description": "One adjustment applied to historical stock bars.",
+        "enum": [
+          "raw",
+          "split",
+          "dividend",
+          "spin-off",
+          "all"
         ],
         "type": "string"
       },

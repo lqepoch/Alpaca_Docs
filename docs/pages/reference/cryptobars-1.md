@@ -113,10 +113,10 @@ The crypto bars API provides historical aggregates for a list of crypto symbols 
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }

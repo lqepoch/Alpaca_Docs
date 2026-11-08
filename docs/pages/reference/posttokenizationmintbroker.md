@@ -50,9 +50,11 @@ without risking duplicate requests. Use a client-generated unique value (e.g. UU
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -78,6 +80,11 @@ without risking duplicate requests. Use a client-generated unique value (e.g. UU
       },
       "TokenizationMintRequest": {
         "properties": {
+          "client_request_id": {
+            "description": "Optional label of your choosing for this mint request. It is returned on the mint response and on the tokenization request, and you can retrieve the request by it with the Get Tokenization Request by `client_request_id` endpoint. If multiple requests within the same account share the same `client_request_id`, the endpoint returns the most recent matching request. To prevent duplicate processing, use the `Idempotency-Key` header.\n\nMust be at most 128 printable ASCII characters with no leading or trailing whitespace.",
+            "maxLength": 128,
+            "type": "string"
+          },
           "issuer": {
             "$ref": "#/components/schemas/TokenizationIssuer"
           },
@@ -109,6 +116,10 @@ without risking duplicate requests. Use a client-generated unique value (e.g. UU
       },
       "TokenizationMintResponse": {
         "properties": {
+          "client_request_id": {
+            "description": "The `client_request_id` supplied on the mint request. Omitted when none was supplied.",
+            "type": "string"
+          },
           "created_at": {
             "format": "date-time",
             "type": "string"
