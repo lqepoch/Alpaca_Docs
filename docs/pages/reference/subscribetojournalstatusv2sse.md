@@ -278,7 +278,8 @@ If you require the streaming capabilities we recommend not using the generated c
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

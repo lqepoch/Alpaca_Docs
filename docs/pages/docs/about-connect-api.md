@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-04-24T17:44:05.000Z
+updatedAt: 2026-10-21T23:54:01.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -7,7 +7,7 @@ agentTools:
 
 # About Connect API
 
-Develop applications on Alpaca’s platform using OAuth2. Let 10M+ users with an Alpaca brokerage account connect to your app.
+Develop applications on Alpaca’s platform using OAuth2. Let 14M+ users with an Alpaca brokerage account connect to your app.
 
 Alpaca’s OAuth allows you to seamlessly integrate financial markets into your application and expand your audience to millions of brokerage accounts on Alpaca’s platform
 

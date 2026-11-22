@@ -46,7 +46,7 @@ You can also set the margin settings for your users' account by passing a PATCH 
           },
           "ptp_no_exception_entry": {
             "description": "If set to true then Alpaca will accept orders for PTP symbols with no exception. Default is false.",
-            "type": "string"
+            "type": "boolean"
           },
           "suspend_trade": {
             "description": "If true, new orders are blocked.",
@@ -149,7 +149,8 @@ You can also set the margin settings for your users' account by passing a PATCH 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

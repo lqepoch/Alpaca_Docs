@@ -140,7 +140,8 @@ Returns the estimated on-chain network (gas) fee for a proposed crypto withdrawa
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

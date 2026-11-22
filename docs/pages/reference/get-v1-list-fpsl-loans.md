@@ -26,19 +26,19 @@ Returns a list of all FPSL loans that match the specified filter criteria, order
         "type": "object"
       },
       "FPSLInterest": {
-        "description": "The interest's details.\nPlease note that the object might not be set if interest has not yet been calculated for the loan.\nAdditionally, interest details may be adjusted retroactively at any time until interests are finalized for the month.\nThe loan's changed `updated_at` field can indicate such an adjustment.\n",
+        "description": "FPSL interest split between the customer and the partner.\nInterest may be adjusted retroactively at any time until interests are finalized for the month.\n",
         "properties": {
           "customer": {
-            "description": "The interest accrued by the customer for this loan.",
-            "example": 1.23,
-            "format": "double",
-            "type": "number"
+            "description": "The interest accrued by the customer.",
+            "example": "1.23",
+            "format": "decimal",
+            "type": "string"
           },
           "partner": {
-            "description": "The interest accrued by the partner for this loan.",
-            "example": 1.65,
-            "format": "double",
-            "type": "number"
+            "description": "The interest accrued by the partner.",
+            "example": "1.65",
+            "format": "decimal",
+            "type": "string"
           }
         },
         "required": [
@@ -62,9 +62,9 @@ Returns a list of all FPSL loans that match the specified filter criteria, order
           },
           "collateral": {
             "description": "The collateral posted for the loan.",
-            "example": 1161.015,
-            "format": "double",
-            "type": "number"
+            "example": "1161.015",
+            "format": "decimal",
+            "type": "string"
           },
           "correspondent": {
             "description": "Account's correspondent",
@@ -72,18 +72,23 @@ Returns a list of all FPSL loans that match the specified filter criteria, order
             "type": "string"
           },
           "date": {
-            "example": "2006-01-02",
+            "example": "2025-03-21",
             "format": "date",
             "type": "string"
           },
           "interest": {
-            "$ref": "#/components/schemas/FPSLInterest"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FPSLInterest"
+              }
+            ],
+            "description": "The loan's interest details.\nPlease note that the object might not be set if interest has not yet been calculated for the loan.\nAdditionally, interest details may be adjusted retroactively at any time until interests are finalized for the month.\nThe loan's changed `updated_at` field can indicate such an adjustment.\n"
           },
           "market_value": {
             "description": "The total market value of the shares on loan.",
-            "example": 1138.25,
-            "format": "double",
-            "type": "number"
+            "example": "1138.25",
+            "format": "decimal",
+            "type": "string"
           },
           "quantity": {
             "description": "The number of shares in the loan. This may be less than the total number of eligible shares held by the account.",
@@ -117,6 +122,26 @@ Returns a list of all FPSL loans that match the specified filter criteria, order
       },
       "ListFPSLLoansResponse": {
         "description": "Response to a successful request for a list of FPSL loans.\n",
+        "example": {
+          "loans": [
+            {
+              "account_id": "06d83e79-5bea-4ce9-a362-a25251a700ec",
+              "account_number": "286873545",
+              "collateral": "1161.015",
+              "correspondent": "LPCA",
+              "date": "2025-03-21",
+              "interest": {
+                "customer": "1.23",
+                "partner": "1.65"
+              },
+              "market_value": "1138.25",
+              "quantity": 5,
+              "symbol": "AAPL",
+              "updated_at": "2025-03-21T15:54:19.857034+01:00"
+            }
+          ],
+          "next_page_token": null
+        },
         "properties": {
           "loans": {
             "description": "All FPSL loans matching the filter criteria",
@@ -298,7 +323,8 @@ Returns a list of all FPSL loans that match the specified filter criteria, order
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

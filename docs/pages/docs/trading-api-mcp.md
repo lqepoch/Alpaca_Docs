@@ -1,13 +1,13 @@
 ---
-updatedAt: 2026-09-09T13:55:59.000Z
+updatedAt: 2026-11-13T19:19:31.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
 ---
 
-# Trading MCP Server
+# Trading API MCP
 
-Turn your words into action with Alpaca’s MCP Server
+Turn your words into action with Trading API's MCP Server
 
 ## What You Can Do
 
@@ -118,8 +118,8 @@ All configuration is via environment variables in your MCP client config.
 
 | Variable             | Required | Default | Description                                |
 | :------------------- | :------- | :------ | :----------------------------------------- |
-| `ALPACA_API_KEY`     | Yes      | —       | Your Alpaca API key ID                     |
-| `ALPACA_SECRET_KEY`  | Yes      | —       | Your Alpaca secret key                     |
+| `ALPACA_API_KEY`     | Yes      | None    | Your Alpaca API key ID                     |
+| `ALPACA_SECRET_KEY`  | Yes      | None    | Your Alpaca secret key                     |
 | `ALPACA_PAPER_TRADE` | No       | `true`  | Set `false` to use live trading            |
 | `ALPACA_TOOLSETS`    | No       | all     | Comma-separated list of toolsets to enable |
 
@@ -140,7 +140,7 @@ Control which tools are available to your AI assistant using `ALPACA_TOOLSETS`. 
 | `news`              | News articles                                                |
 | `fixed-income-data` | Fixed income latest quotes                                   |
 
-**Example — read-only market data:**
+**Example: read-only market data**
 
 ```json
 {
@@ -163,7 +163,7 @@ Control which tools are available to your AI assistant using `ALPACA_TOOLSETS`. 
 
 ## Available Tools
 
-Alpaca's MCP Server exposes 65 tools across the Trading and Market Data APIs.
+The Trading API MCP server exposes 65 tools across Trading API and Market Data API.
 
 ### Account & Portfolio
 
@@ -275,7 +275,7 @@ Alpaca's MCP Server exposes 65 tools across the Trading and Market Data APIs.
 
 | Tool                    | Description                            |
 | :---------------------- | :------------------------------------- |
-| `get_corporate_actions` | Corporate actions from market data API |
+| `get_corporate_actions` | Corporate actions from Market Data API |
 | `get_news`              | News articles for stocks and crypto    |
 
 ## Example Prompts
@@ -319,7 +319,7 @@ Here are some things you can ask once connected:
 * **API key security**: Never paste API keys into chat. Configure them only in your MCP client's `env` block or OS secret store.
 * **Order execution**: Orders execute directly against Alpaca's Trading API. Review AI-suggested orders before confirming.
 * **Paper vs. live**: The server defaults to paper trading. Set `ALPACA_PAPER_TRADE=false` with live keys to trade with real capital.
-* **Rate limits**: Alpaca's API has rate limits per account. High-frequency querying may trigger rate limiting.
+* **Rate limits**: Trading API has rate limits per account. High-frequency querying may trigger rate limiting.
 * **Market data subscriptions**: Some real-time data may require an Algo Trader Plus subscription.
 
 ## Upgrading from V1

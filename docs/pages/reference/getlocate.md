@@ -334,7 +334,8 @@ Returns a locate by ID. This endpoint is not available in paper trading.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

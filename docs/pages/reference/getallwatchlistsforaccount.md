@@ -135,7 +135,8 @@ Fetch a list of all watchlists currently in an account.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

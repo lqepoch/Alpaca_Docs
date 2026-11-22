@@ -40,14 +40,14 @@ The snapshots endpoint provides the latest trade, latest quote and greeks for ea
     },
     "parameters": {
       "option_feed": {
-        "description": "The source feed of the data. `opra` is the official OPRA feed, `indicative` is a free indicative feed where trades are delayed and quotes are modified. Default: `opra` if the user has a subscription, otherwise `indicative`.\n",
+        "description": "The source feed of the data. `opra` is the official OPRA feed, `indicative` is a free indicative feed where trades are delayed and quotes are modified. Default: `opra` if the request uses broker partner API credentials and the partner has an OPRA subscription, or if the account has a real-time subscription and has signed the OPRA agreement; otherwise `indicative`.\n",
         "in": "query",
         "name": "feed",
         "schema": {
           "$ref": "#/components/schemas/option_feed"
         }
       },
-      "option_limit": {
+      "option_snapshot_limit": {
         "description": "Number of maximum snapshots to return in a response.\nThe limit applies to the total number of data points, not the number per symbol!\nUse `next_page_token` to fetch the next set of responses.\n",
         "in": "query",
         "name": "limit",
@@ -106,7 +106,7 @@ The snapshots endpoint provides the latest trade, latest quote and greeks for ea
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -448,7 +448,7 @@ The snapshots endpoint provides the latest trade, latest quote and greeks for ea
             "$ref": "#/components/parameters/option_updated_since"
           },
           {
-            "$ref": "#/components/parameters/option_limit"
+            "$ref": "#/components/parameters/option_snapshot_limit"
           },
           {
             "$ref": "#/components/parameters/page_token"
@@ -559,6 +559,11 @@ The snapshots endpoint provides the latest trade, latest quote and greeks for ea
       "description": "Endpoints for option data.",
       "name": "Option"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

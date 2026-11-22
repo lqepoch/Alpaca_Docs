@@ -14,7 +14,7 @@ Two `transfer_type` values are accepted, and both are available in sandbox and p
 - **`ach`** — supports both `INCOMING` (deposit) and `OUTGOING` (withdrawal) directions. A `relationship_id` from a previously created [ACH Relationship](https://docs.alpaca.markets/reference/createachrelationshipforaccount) is required.
 - **`wire`** — supports the `OUTGOING` (withdrawal) direction only. Incoming wires cannot be initiated through this endpoint; they are pushed in by the sending bank and recorded automatically. A `bank_id` from a previously created [Bank Relationship](https://docs.alpaca.markets/reference/createrecipientbank) is required, and the bank must be in `APPROVED` status before the transfer will progress past `QUEUED`.
 
-In the sandbox environment, ACH deposits and withdrawals settle instantly against virtual funds. Outgoing wire withdrawals are accepted and simulated end-to-end — no funds are transmitted to a bank, but the transfer progresses to `COMPLETE` and the account is debited against virtual funds. Sandbox wire withdrawals are asynchronous (not instant) and auto-complete on weekdays only; transfers submitted on a weekend will not progress until Monday. For more on funding accounts in sandbox, see [this tutorial](https://alpaca.markets/learn/fund-broker-api/).
+In the sandbox environment, ACH deposits and withdrawals settle instantly against virtual funds. Outgoing wire withdrawals are accepted and simulated end-to-end — no funds are transmitted to a bank, but the transfer progresses to `COMPLETE` and the account is debited against virtual funds. Sandbox wire withdrawals are asynchronous (not instant) and auto-complete on weekdays only; transfers submitted on a weekend will not progress until Monday. To fund an account with an incoming wire in sandbox, use [Simulate an Incoming Wire Transfer](https://docs.alpaca.markets/reference/createincomingwire) (`POST /v1/testing/incoming_wires`). For more on funding accounts in sandbox, see [this tutorial](https://alpaca.markets/learn/fund-broker-api/).
 
 # OpenAPI definition
 
@@ -83,9 +83,11 @@ In the sandbox environment, ACH deposits and withdrawals settle instantly agains
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -360,7 +362,7 @@ In the sandbox environment, ACH deposits and withdrawals settle instantly agains
         }
       ],
       "post": {
-        "description": "Create a new transfer to deposit money into or withdraw money from an account.\n\nTwo `transfer_type` values are accepted, and both are available in sandbox and production:\n\n- **`ach`** — supports both `INCOMING` (deposit) and `OUTGOING` (withdrawal) directions. A `relationship_id` from a previously created [ACH Relationship](https://docs.alpaca.markets/reference/createachrelationshipforaccount) is required.\n- **`wire`** — supports the `OUTGOING` (withdrawal) direction only. Incoming wires cannot be initiated through this endpoint; they are pushed in by the sending bank and recorded automatically. A `bank_id` from a previously created [Bank Relationship](https://docs.alpaca.markets/reference/createrecipientbank) is required, and the bank must be in `APPROVED` status before the transfer will progress past `QUEUED`.\n\nIn the sandbox environment, ACH deposits and withdrawals settle instantly against virtual funds. Outgoing wire withdrawals are accepted and simulated end-to-end — no funds are transmitted to a bank, but the transfer progresses to `COMPLETE` and the account is debited against virtual funds. Sandbox wire withdrawals are asynchronous (not instant) and auto-complete on weekdays only; transfers submitted on a weekend will not progress until Monday. For more on funding accounts in sandbox, see [this tutorial](https://alpaca.markets/learn/fund-broker-api/).",
+        "description": "Create a new transfer to deposit money into or withdraw money from an account.\n\nTwo `transfer_type` values are accepted, and both are available in sandbox and production:\n\n- **`ach`** — supports both `INCOMING` (deposit) and `OUTGOING` (withdrawal) directions. A `relationship_id` from a previously created [ACH Relationship](https://docs.alpaca.markets/reference/createachrelationshipforaccount) is required.\n- **`wire`** — supports the `OUTGOING` (withdrawal) direction only. Incoming wires cannot be initiated through this endpoint; they are pushed in by the sending bank and recorded automatically. A `bank_id` from a previously created [Bank Relationship](https://docs.alpaca.markets/reference/createrecipientbank) is required, and the bank must be in `APPROVED` status before the transfer will progress past `QUEUED`.\n\nIn the sandbox environment, ACH deposits and withdrawals settle instantly against virtual funds. Outgoing wire withdrawals are accepted and simulated end-to-end — no funds are transmitted to a bank, but the transfer progresses to `COMPLETE` and the account is debited against virtual funds. Sandbox wire withdrawals are asynchronous (not instant) and auto-complete on weekdays only; transfers submitted on a weekend will not progress until Monday. To fund an account with an incoming wire in sandbox, use [Simulate an Incoming Wire Transfer](https://docs.alpaca.markets/reference/createincomingwire) (`POST /v1/testing/incoming_wires`). For more on funding accounts in sandbox, see [this tutorial](https://alpaca.markets/learn/fund-broker-api/).",
         "operationId": "createTransferForAccount",
         "parameters": [
           {
@@ -467,7 +469,8 @@ In the sandbox environment, ACH deposits and withdrawals settle instantly agains
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-09-04T12:36:00.000Z
+updatedAt: 2026-11-05T11:48:13.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -2096,3 +2096,106 @@ These events provide a more holistic view of the transactions that affect an acc
 * A full integration guide is available [here]() .
 
 Note: this endpoint is intended to replace the [legacy Account Activities API](https://docs.alpaca.markets/docs/account-activities), which is less performant and less expressive.
+
+## Rebalancer Events
+
+You can subscribe to important events from [Alpaca's rebalancer](portfolio-rebalancing) and react to portfolio changes in real-time. Learn more here.
+
+### Portfolio
+
+Portfolio events can notify you when a portfolio's status has changed. For example, you might want to be notified if a portfolio's status changes to `needs_adjustment`.
+
+```json Portfolio Status Changed
+{
+  "at": "2026-04-12T13:29:45.932Z",
+  "event_id": "01HCMKKNRK7S5C1JYP50QGDECQ",
+  "event_type": "portfolio.status_changed",
+  "portfolio": 
+    {
+      "id": "3013f709-4bd1-4e6a-8a4a-5c6b0bcc24c2",
+      "name": "Tech Heavy",
+      "status": "active",
+      "description": "A portfolio with tech heavy hitters.",
+      "weights": [
+        {
+          "type": "asset",
+          "symbol": "AAPL",
+          "percent": "50.0"
+        },
+        {
+          "type": "asset",
+          "symbol": "TSLA",
+          "percent": "50.0"
+        }
+      ],
+      "cooldown_days": 30,
+      "rebalance_conditions": [
+        {
+          "type": "on_portfolio_update"
+        },
+        {
+          "type": "drift_band",
+          "sub_type": "absolute",
+          "percent": "5.0"
+        }
+      ],
+      "created_at": "2025-01-30T05:12:15.746Z",
+      "updated_at": "2026-04-12T13:29:45.932Z"
+    }
+}
+```
+
+### Portfolio Runs
+
+Portfolio run events can notify you when an account is being rebalanced or if a rebalance completed successfully or with errors.
+
+```json Portfolio Run Created
+{
+  "at": "2026-04-12T13:29:45.932Z",
+  "event_id": "01HCMKKNRK7S5C1JYP50QGDECQ",
+  "event_type": "run.created",
+  "run": {
+      "id": "bdc8e56f-cd91-448d-bb46-a4593cde2f95",
+      "account_id": "bdc8e56f-cd91-448d-bb46-a4593cde2f95",
+      "portfolio_id": "de74bc11-a673-4cda-ba0f-e01704eaae31",
+      "type": "full_rebalance",
+      "initiated_from": "system",
+      "status": "QUEUED",
+      "reason": null,
+      "created_at": "2026-04-12T13:29:45.932Z",
+      "updated_at": "2026-04-12T13:29:45.932Z",
+      "completed_at": null,
+      "canceled_at": null
+  }
+}
+```
+```json Portfolio Run Status Changed
+{
+  "at": "2026-04-12T13:52:11.203Z",
+  "event_id": "01HCMKKNRK7S5C1JYP50QGDECQ",
+  "event_type": "run.status_changed",
+  "run": {
+      "id": "bdc8e56f-cd91-448d-bb46-a4593cde2f95",
+      "account_id": "bdc8e56f-cd91-448d-bb46-a4593cde2f95",
+      "portfolio_id": "de74bc11-a673-4cda-ba0f-e01704eaae31",
+      "type": "full_rebalance",
+      "initiated_from": "system",
+      "status": "COMPLETED_SUCCESS",
+      "reason": null,
+      "created_at": "2026-04-12T13:29:45.932Z",
+      "updated_at": "2026-04-12T13:52:11.203Z",
+      "completed_at": "2026-04-12T13:52:11.203Z",
+      "canceled_at": null
+  }
+}
+```
+
+<br />
+
+<br />
+
+<br />
+
+***
+
+*Any symbols or examples shown are for demonstration purposes only and do not constitute investment advice or a recommendation to buy or sell any security.*

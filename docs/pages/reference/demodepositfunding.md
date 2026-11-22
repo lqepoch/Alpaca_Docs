@@ -38,9 +38,11 @@ The transfer can only credit accounts that belong to your firm. Available in non
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -137,7 +139,8 @@ The transfer can only credit accounts that belong to your firm. Available in non
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

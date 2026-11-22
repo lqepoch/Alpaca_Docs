@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:10:03.000Z
+updatedAt: 2026-11-13T19:16:38.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -17,7 +17,7 @@ Dont miss a beat and find the latest updates from Alpaca in our blog. For more c
 
 # Slack Community
 
-We have an active community on Slack with developers and traders from all over the world. For Broker API we have a dedicated channel #broker-api for you to discuss with the rest of the community building new products using Broker API. You will be automatically added to `#announcements`, `#community`, `#feedback`, and `#q-and-a`. To join click [here](https://join.slack.com/t/alpaca-community/shared_invite/zt-1mwc1kpf8-ssNEGH6IyKgAAtFaSC_GMg).
+We have an active community on Slack with developers and traders from all over the world. For Broker API we have a dedicated channel `#broker-api` for you to discuss with the rest of the community building new products using Broker API. You will be automatically added to `#announcements`, `#community`, `#feedback`, and `#q-and-a`. To join click [here](https://join.slack.com/t/alpaca-community/shared_invite/zt-1mwc1kpf8-ssNEGH6IyKgAAtFaSC_GMg).
 
 # Forum
 

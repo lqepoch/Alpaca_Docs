@@ -263,7 +263,8 @@ The `offering_reference` value matches the one delivered on the [IPO Events Stre
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

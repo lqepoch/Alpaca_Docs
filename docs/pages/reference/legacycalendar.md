@@ -262,7 +262,8 @@ The calendar API serves the full list of market days from 1970 to 2029. It can a
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

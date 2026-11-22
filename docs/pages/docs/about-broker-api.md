@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:20:13.000Z
+updatedAt: 2026-11-13T19:38:10.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -18,4 +18,4 @@ There are several different use cases for Broker API integration. Below are some
 
 *We support most use cases internationally.*
 
-Depending on the case, the API methods you want to use could vary. For example, the omnibus broker-dealer case never uses API to open a customer account since the trading accounts are created upfront and you will submit orders to them, and manage your end customer accounting on your end. More details on each use case are described in the following sections.
+Depending on the case, the Broker API methods you want to use could vary. For example, the omnibus broker-dealer case never uses Broker API to open a customer account since the trading accounts are created upfront and you will submit orders to them, and manage your end customer accounting on your end. More details on each use case are described in the following sections.

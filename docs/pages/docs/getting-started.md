@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-01-14T22:10:32.000Z
+updatedAt: 2026-11-13T19:05:31.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,10 +15,10 @@ Alpaca offers simple, modern API-first solutions to enable anyone, either indivi
 
 Whether you are launching an app to access the US equities market or deploy algorithmic trading-strategies with stocks and crypto, Alpaca has an API for you.
 
-* Build trading apps and brokerage services for your end users. Tailored for businesses such as trading apps, challenger banks, etc. - **Start [here](/docs/getting-started-with-broker-api)**
-* Stock trading for individuals and business accounts. Built for retail, algorithmic and proprietary traders. - **Start [here](https://docs.alpaca.markets/docs/getting-started-with-trading-api)**
-* Access real-time market pricing data and up to 6+ years worth of historical data for stocks and crypto. - **Start [here](https://docs.alpaca.markets/docs/getting-started-with-alpaca-market-data)**
-* Develop applications on Alpaca’s platform using OAuth2. Let any user with an Alpaca brokerage account connect to your app. - **Start [here](https://docs.alpaca.markets/docs/about-connect-api)**
+* Build trading apps and brokerage services for your end users. Tailored for businesses such as trading apps, challenger banks, etc. - **Start&#x20;**[here](./getting-started-with-broker-api)
+* Stock trading for individuals and business accounts. Built for retail, algorithmic and proprietary traders. - **Start&#x20;**[here](./getting-started-with-trading-api)
+* Access real-time market pricing data and up to 6+ years worth of historical data for stocks and crypto. - **Start&#x20;**[here](./getting-started-with-alpaca-market-data)
+* Develop applications on Alpaca’s platform using OAuth2. Let any user with an Alpaca brokerage account connect to your app. - **Start&#x20;**[here](./about-connect-api)
 
 If you are not a developer and an API is not for you, we also enable users to trade on our responsive web dashboard.
 

@@ -32,7 +32,9 @@ Retrieves the account's open position for the given symbol or asset_id.
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
@@ -348,7 +350,8 @@ Retrieves the account's open position for the given symbol or asset_id.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

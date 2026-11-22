@@ -68,7 +68,7 @@ Get the image of the company logo for the given symbol.
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -210,6 +210,11 @@ Get the image of the company logo for the given symbol.
       "description": "Endpoints for getting company logo images.",
       "name": "Logos"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

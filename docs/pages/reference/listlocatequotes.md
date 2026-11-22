@@ -319,7 +319,8 @@ Returns locate availability and pricing for one or more symbols. This endpoint i
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

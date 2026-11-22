@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-08-10T22:57:13.000Z
+updatedAt: 2026-10-13T11:13:12.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -156,7 +156,7 @@ In order to submit a stop limit order, you will need to specify both the limit a
 
 ## Opening and Closing Auction Orders
 
-Market on open and limit on open orders are only eligible to execute in the opening auction. Market on close and limit on close orders are only eligible to execute in the closing auction. Please see the [Time in Force](/docs/orders-at-alpaca#time-in-force) section for more details.
+Market on open and limit on open orders are only eligible to execute in the opening auction. Market on close and limit on close orders are only eligible to execute in the closing auction. Please see the [Time in Force](https://docs.alpaca.markets/us/docs/orders-at-alpaca#time-in-force) section for more details.
 
 ## Bracket Orders
 
@@ -1547,7 +1547,7 @@ This section contains  the tables showing time-in-force options for various orde
 
 An order executed through Alpaca can experience several status changes during its lifecycle.
 
-![](https://files.readme.io/d7ec892-Order_status_flow.png)
+![](https://files.readme.io/08b91e0ed4c5de37d5e02056d64d12ccf229282b1fbe7f07bd5d44bf1b10804e-Order_status_flow2x.png)
 
 The most common statuses are described in detail below:
 
@@ -1565,15 +1565,15 @@ The most common statuses are described in detail below:
 
 Less common states are described below. Note that these states only occur on very rare occasions, and most users will likely never see their orders reach these states:
 
-| status                 | description                                                                                                                                                                           |
-| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `accepted`             | The order has been received by Alpaca, but hasn’t yet been routed to the execution venue. This could be seen often out side of trading session hours.                                 |
-| `pending_new`          | The order has been received by Alpaca, and routed to the exchanges, but has not yet been accepted for execution. This state only occurs on rare occasions.                            |
-| `accepted_for_bidding` | The order has been received by exchanges, and is evaluated for pricing. This state only occurs on rare occasions.                                                                     |
-| `stopped`              | The order has been stopped, and a trade is guaranteed for the order, usually at a stated price or better, but has not yet occurred. This state only occurs on rare occasions.         |
-| `rejected`             | The order has been rejected, and no further updates will occur for the order. This state occurs on rare occasions and may occur based on various conditions decided by the exchanges. |
-| `suspended`            | The order has been suspended, and is not eligible for trading. This state only occurs on rare occasions.                                                                              |
-| `calculated`           | The order has been completed for the day (either filled or done for day), but remaining settlement calculations are still pending. This state only occurs on rare occasions.          |
+| status                 | description                                                                                                                                                                                                                  |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accepted`             | The order has been received by Alpaca, but hasn’t yet been routed to the execution venue. This could be seen often out side of trading session hours.                                                                        |
+| `pending_new`          | The order has been received by Alpaca, and routed to the exchanges, but has not yet been accepted for execution by an exchange. The order can get back to this status briefly when moved from other session (e.g. overnight) |
+| `accepted_for_bidding` | The order has been received by exchanges, and is evaluated for pricing. This state only occurs on rare occasions.                                                                                                            |
+| `stopped`              | The order has been stopped, and a trade is guaranteed for the order, usually at a stated price or better, but has not yet occurred. This state only occurs on rare occasions.                                                |
+| `rejected`             | The order has been rejected, and no further updates will occur for the order. This state occurs on rare occasions and may occur based on various conditions decided by the exchanges.                                        |
+| `suspended`            | The order has been suspended, and is not eligible for trading. This state only occurs on rare occasions.                                                                                                                     |
+| `calculated`           | The order has been completed for the day (either filled or done for day), but remaining settlement calculations are still pending. This state only occurs on rare occasions.                                                 |
 
 An order may be canceled through the API up until the point it reaches a state of either `filled`, `canceled`, or `expired`.
 

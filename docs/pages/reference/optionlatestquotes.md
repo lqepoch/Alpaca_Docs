@@ -40,7 +40,7 @@ The latest multi-quotes endpoint provides the latest bid and ask prices for each
     },
     "parameters": {
       "option_feed": {
-        "description": "The source feed of the data. `opra` is the official OPRA feed, `indicative` is a free indicative feed where trades are delayed and quotes are modified. Default: `opra` if the user has a subscription, otherwise `indicative`.\n",
+        "description": "The source feed of the data. `opra` is the official OPRA feed, `indicative` is a free indicative feed where trades are delayed and quotes are modified. Default: `opra` if the request uses broker partner API credentials and the partner has an OPRA subscription, or if the account has a real-time subscription and has signed the OPRA agreement; otherwise `indicative`.\n",
         "in": "query",
         "name": "feed",
         "schema": {
@@ -77,7 +77,7 @@ The latest multi-quotes endpoint provides the latest bid and ask prices for each
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -332,6 +332,11 @@ The latest multi-quotes endpoint provides the latest bid and ask prices for each
       "description": "Endpoints for option data.",
       "name": "Option"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

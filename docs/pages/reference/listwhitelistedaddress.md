@@ -222,7 +222,8 @@ Returns the list of whitelisted withdrawal addresses for your account.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

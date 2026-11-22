@@ -56,7 +56,7 @@ Returns the mapping between the condition codes and names.
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -227,6 +227,11 @@ Returns the mapping between the condition codes and names.
       "description": "Endpoints for stocks.",
       "name": "Stock"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

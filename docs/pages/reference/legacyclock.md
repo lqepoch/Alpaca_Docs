@@ -159,7 +159,7 @@ The clock API serves the current market timestamp, whether or not the market is 
         },
         "summary": "Get US Market Clock",
         "tags": [
-          "Clock"
+          "Calendar"
         ]
       }
     }
@@ -182,12 +182,13 @@ The clock API serves the current market timestamp, whether or not the market is 
   ],
   "tags": [
     {
-      "name": "Clock"
+      "name": "Calendar"
     }
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

@@ -14,7 +14,83 @@ Get a subscription by its ID.
 ```json
 {
   "components": {
+    "examples": {
+      "rebalancing_insufficient_permission": {
+        "description": "Use credentials with the required permission and try again.",
+        "summary": "These credentials are not allowed to call this endpoint, or rebalancing is not enabled for the correspondent",
+        "value": {
+          "code": 40310000,
+          "message": "insufficient permission"
+        }
+      },
+      "rebalancing_internal_server_error": {
+        "description": "If it keeps happening, contact support.",
+        "summary": "Something went wrong on our side",
+        "value": {
+          "code": 50010000,
+          "message": "internal server error occurred"
+        }
+      },
+      "rebalancing_invalid_request": {
+        "description": "Retry it. If it keeps happening, contact support.",
+        "summary": "A valid client IP address could not be read from the request",
+        "value": {
+          "code": 40010001,
+          "message": "invalid request"
+        }
+      },
+      "rebalancing_invalid_subscription_id": {
+        "description": "Check `subscription_id` and try again.",
+        "summary": "The subscription ID in the path is not a valid UUID",
+        "value": {
+          "code": 40010001,
+          "message": "invalid subscription_id"
+        }
+      },
+      "rebalancing_subscription_not_found": {
+        "description": "Check the subscription ID and try again.",
+        "summary": "No subscription with this ID exists for your correspondent",
+        "value": {
+          "code": 40410000,
+          "message": "subscription not found"
+        }
+      },
+      "rebalancing_unauthorized": {
+        "description": "Send a valid API key ID and secret, or a Broker Dashboard session, and try again.",
+        "summary": "The request is not authenticated",
+        "value": {
+          "code": 40110000,
+          "message": "request is not authorized"
+        }
+      },
+      "rebalancing_unexpected_error": {
+        "description": "If it keeps happening, contact support.",
+        "summary": "Something went wrong on our side while handling the request",
+        "value": {
+          "error": "Internal Server Error",
+          "message": "An unexpected error occurred"
+        }
+      }
+    },
     "schemas": {
+      "Error": {
+        "properties": {
+          "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
+            "type": "number"
+          },
+          "message": {
+            "description": "Human-readable reason for the rejection.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "Error",
+        "type": "object"
+      },
       "PortfolioSubscription": {
         "properties": {
           "account_id": {
@@ -37,9 +113,53 @@ Get a subscription by its ID.
           "portfolio_id": {
             "description": "Portfolio ID for subscription",
             "type": "string"
+          },
+          "trade_marker": {
+            "description": "How trades for this subscription are marked. `null` on subscriptions created before trade markers.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TradeMarker"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
+        "required": [
+          "id",
+          "account_id",
+          "portfolio_id",
+          "created_at",
+          "trade_marker"
+        ],
         "title": "PortfolioSubscription",
+        "type": "object"
+      },
+      "TradeMarker": {
+        "description": "How trades for a rebalancing subscription are marked. `discretionary` sends those orders as discretion exercised. `unsolicited` leaves them unmarked.",
+        "enum": [
+          "discretionary",
+          "unsolicited"
+        ],
+        "title": "TradeMarker",
+        "type": "string"
+      },
+      "UnexpectedError": {
+        "description": "Returned when request handling stops unexpectedly. This body has no numeric code.",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ],
+        "title": "UnexpectedError",
         "type": "object"
       }
     },
@@ -77,6 +197,94 @@ Get a subscription by its ID.
               }
             },
             "description": "The portfolio subscription"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "$ref": "#/components/examples/rebalancing_unauthorized"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "The request is not authenticated. Send a valid API key ID and secret, or a Broker Dashboard session, and try again."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "insufficient_permission": {
+                    "$ref": "#/components/examples/rebalancing_insufficient_permission"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "These credentials are not allowed to call this endpoint, or rebalancing is not enabled for the correspondent. Use credentials with the required permission and try again."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "subscription_not_found": {
+                    "$ref": "#/components/examples/rebalancing_subscription_not_found"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "No subscription with this ID exists for your correspondent. Check the subscription ID and try again."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "$ref": "#/components/examples/rebalancing_invalid_request"
+                  },
+                  "invalid_subscription_id": {
+                    "$ref": "#/components/examples/rebalancing_invalid_subscription_id"
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "The request failed validation or cannot be completed in its current state. The message describes the reason."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal_server_error": {
+                    "$ref": "#/components/examples/rebalancing_internal_server_error"
+                  },
+                  "unexpected_error": {
+                    "$ref": "#/components/examples/rebalancing_unexpected_error"
+                  }
+                },
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Error"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UnexpectedError"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Something went wrong on our side while handling the request. Retry with backoff. If it keeps happening, contact support."
           }
         },
         "summary": "Get Subscription by ID",
@@ -118,7 +326,8 @@ Get a subscription by its ID.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

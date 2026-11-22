@@ -98,7 +98,8 @@ Deletes a whitelisted withdrawal address from the specified account by ID. Subse
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

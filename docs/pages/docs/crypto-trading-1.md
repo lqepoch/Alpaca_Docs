@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-04-20T20:41:19.000Z
+updatedAt: 2026-11-17T21:24:06.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -17,7 +17,7 @@ Alpaca supports crypto trading 24 hours a day, every day. Crypto is available fo
 
 To enable crypto trading for an account, the crypto agreements must be signed by the user. All account balances will represent the crypto trading activities.
 
-In the case of new users, the crypto agreement can be submitted via the Accounts API where `crypto_agreement` is part of the agreements attribute.
+In the case of new users, the crypto agreement can be submitted via the Broker API accounts endpoint where `crypto_agreement` is part of the `agreements` attribute.
 
 *Part of the request*
 
@@ -50,7 +50,7 @@ In the case of existing users the account has to be updated with the `crypto_agr
 
 Once the crypto agreement is added to the user account no further edits can be made to the agreements.
 
-To determine whether the account is all set to start trading crypto, use the `crypto_status` attribute from the Account API endpoint response object.
+To determine whether the account is all set to start trading crypto, use the `crypto_status` attribute from the Broker API accounts endpoint response object.
 
 *Sample Response*
 
@@ -63,17 +63,17 @@ To determine whether the account is all set to start trading crypto, use the `cr
 }
 ```
 
-| Attribute          | Description                                    |
-| :----------------- | :--------------------------------------------- |
-| INACTIVE           | Account not enabled to trade crypto live       |
-| ACTIVE             | Crypto account is active and can start trading |
-| SUBMISSION\_FAILED | Account submissions has failed                 |
+| Attribute           | Description                                    |
+| :------------------ | :--------------------------------------------- |
+| `INACTIVE`          | Account not enabled to trade crypto live       |
+| `ACTIVE`            | Crypto account is active and can start trading |
+| `SUBMISSION_FAILED` | Account submissions has failed                 |
 
 # Supported Assets
 
 We have over 20 coins available to trade via our APIs. We constantly evaluate the list and aim to to grow the number of supported currencies.
 
-Tradable cryptocurrencies can be identified through the [Assets API](/reference/getassets) where the asset entity has `class = crypto` and `tradable = true`.
+Tradable cryptocurrencies can be identified through the [Broker API assets endpoint](https://docs.alpaca.markets/us/reference/getassets) where the asset entity has `class = crypto` and `tradable = true`.
 
 ```json
 {
@@ -115,7 +115,7 @@ All cryptocurrency assets are fractionable but the supported decimal points vary
 
 # Supported Orders
 
-When submitting crypto orders through the Orders API, Market, Limit and Stop Limit orders are supported while the supported `time_in_force` values are `gtc`, and `ioc`. We accept fractional orders as well with either `notional` or `qty` provided.
+When submitting crypto orders through the Broker API orders endpoint, Market, Limit and Stop Limit orders are supported while the supported `time_in_force` values are `gtc`, and `ioc`. We accept fractional orders as well with either `notional` or `qty` provided.
 
 ## Required Disclosures
 
@@ -159,7 +159,7 @@ Currently, an order (buy or sell) must not exceed $200k in notional. This is per
 
 # Crypto Order Commissions
 
-Brokers can charge a commission on each crypto order by including a commission parameter when submitting orders. Commission support for crypto now includes both notional and bps (basis points) commission types. The amount is specified either in the quote currency of the trading pair (for notional) or as a percentage in bps.
+Brokers can charge a commission on each crypto order by including a `commission` parameter when submitting orders. Commission support for crypto now includes both notional and bps (basis points) commission types. The amount is specified either in the quote currency of the trading pair (for notional) or as a percentage in bps.
 
 To enable commission support, brokers must first contact Alpaca to configure their commission structure. Once set up, the commission amount can be provided in each order request, and it will also appear in the order entity of the API response.
 
@@ -167,7 +167,7 @@ On all orders (regardless of commission type), the commission charged will be pr
 
 ### Commission types:
 
-* Notional: Charges commission on a per-order basis. When the commission\_type field is omitted from the order request, this is used as the default.
+* Notional: Charges commission on a per-order basis. When the `commission_type` field is omitted from the order request, this is used as the default.
 * Bps: The percent commission to charge the end user on the order (expressed in basis points). Alpaca will convert the order to a notional amount for calculating the commission.
 
 # Market Data

@@ -198,7 +198,8 @@ Returns an array of objects that correspond to each ledger account.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

@@ -313,7 +313,8 @@ This API serves information about multiple markets: the current time, if it's a 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

@@ -117,7 +117,8 @@ These account documents are tax statements, trade confirmations, etc, generated 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

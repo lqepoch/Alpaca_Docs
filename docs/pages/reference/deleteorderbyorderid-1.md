@@ -96,7 +96,8 @@ Attempts to cancel an Open Order. If the order is no longer cancelable, the requ
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

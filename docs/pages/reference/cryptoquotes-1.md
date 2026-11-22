@@ -113,10 +113,10 @@ The oldest date to retrieve historical quotes of us-1 location is 14th October, 
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }
@@ -169,7 +169,7 @@ The oldest date to retrieve historical quotes of us-1 location is 14th October, 
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -219,7 +219,7 @@ The oldest date to retrieve historical quotes of us-1 location is 14th October, 
             "type": "number"
           },
           "as": {
-            "description": "Ask size.",
+            "description": "Ask size in the base asset (left side of the pair), with no lot multiplier.",
             "format": "double",
             "type": "number"
           },
@@ -229,7 +229,7 @@ The oldest date to retrieve historical quotes of us-1 location is 14th October, 
             "type": "number"
           },
           "bs": {
-            "description": "Bid size.",
+            "description": "Bid size in the base asset (left side of the pair), with no lot multiplier.",
             "format": "double",
             "type": "number"
           },
@@ -446,6 +446,11 @@ The oldest date to retrieve historical quotes of us-1 location is 14th October, 
       "description": "Endpoints for cryptocurrencies.",
       "name": "Crypto"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

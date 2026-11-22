@@ -119,7 +119,8 @@ Attempts to cancel all open orders. A response will be provided for each order t
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

@@ -236,6 +236,11 @@ Issue access tokens using various grant types:
       "description": "OAuth2 endpoints",
       "name": "OAuth2"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

@@ -28,14 +28,16 @@ Please note that the estimation is based on the market condition at the time of 
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
       },
       "CommissionType": {
         "default": "notional",
-        "description": "An enum to select how to interpret the value provided in the commission field.\n\n- notional:\nCharge commission on a per order basis. (When the `commission_type` field is omitted from the order request, this is used as the default).\n\n- qty:\nCharge commission on a per qty/contract basis, pro rated.\n\n- bps:\nThe percent commission you want to charge the end user on the order (expressed in bps). Alpaca will convert the order to a notional amount for purposes of calculating commission.\nCommission value in bps can have up to two decimal places.",
+        "description": "An enum to select how to interpret the value provided in the commission field.\n\n- notional:\nCharge commission on a per order basis. (When the `commission_type` field is omitted from the order request, this is used as the default, except for `mleg` orders.)\nNot supported for `mleg` orders.\n\n- qty:\nCharge commission on a per qty/contract basis, pro rated.\nFor `mleg` orders, this is the only supported type and is required whenever `commission` is non-zero. Omitting `commission`, or sending `0`, is accepted as no commission. The rate is charged per option contract in the strategy.\n\n- bps:\nThe percent commission you want to charge the end user on the order (expressed in bps). Alpaca will convert the order to a notional amount for purposes of calculating commission.\nCommission value in bps can have up to two decimal places.\nNot supported for `mleg` orders.",
         "enum": [
           "notional",
           "qty",
@@ -148,6 +150,15 @@ Please note that the estimation is based on the market condition at the time of 
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -236,6 +247,10 @@ Please note that the estimation is based on the market condition at the time of 
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -322,6 +337,17 @@ Please note that the estimation is based on the market condition at the time of 
           ""
         ],
         "example": "",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -418,6 +444,15 @@ Please note that the estimation is based on the market condition at the time of 
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -508,6 +543,10 @@ Please note that the estimation is based on the market condition at the time of 
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -587,14 +626,7 @@ Please note that the estimation is based on the market condition at the time of 
         "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
         "enum": [
           "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
+          "sell"
         ],
         "example": "buy",
         "type": "string"
@@ -777,7 +809,8 @@ Please note that the estimation is based on the market condition at the time of 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

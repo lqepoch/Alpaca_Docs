@@ -132,7 +132,8 @@ This endpoint is deprecated and will be removed in the future. Please use the [G
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

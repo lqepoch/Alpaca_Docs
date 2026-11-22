@@ -162,7 +162,8 @@ The JIT Securities daily trading limit is set at the correspondent level and is 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

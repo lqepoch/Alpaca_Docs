@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:23:05.000Z
+updatedAt: 2026-11-17T20:12:46.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,11 +15,11 @@ We're excited to support Multi-leg options trading! Use this section to read up 
 
 ## What are Multi-leg Orders?
 
-A multi-leg (MLeg) order is a single, combined order that includes multiple option contracts – calls, puts, or even shares—on the same underlying security. By bundling all legs together, the trade is executed as a single unit and each leg is associated with its own strike price, expiration date, or position type (long or short). MLeg orders are often used when traders need to set up complex strategies with several moving parts. A common example is the call spread, where the trader buys a call option at one strike price while simultaneously selling another call option at a higher strike, both for the same underlying asset.
+A multi-leg (MLeg) order is a single, combined order that includes multiple option contracts (calls, puts, or even shares) on the same underlying security. By bundling all legs together, the trade is executed as a single unit and each leg is associated with its own strike price, expiration date, or position type (long or short). MLeg orders are often used when traders need to set up complex strategies with several moving parts. A common example is the call spread, where the trader buys a call option at one strike price while simultaneously selling another call option at a higher strike, both for the same underlying asset.
 
 ## Why are Multi-leg Orders useful?
 
-MLeg orders are particularly useful because they allow traders to execute complex options or stock combinations in one streamlined process, avoiding the delay or slippage risk of placing each transaction separately. By handling multiple legs at once, traders gain better control over their target price, reduce the chance of partial fills that could distort the intended strategy, and simplify trade management. The potential to minimize transaction costs—whether through tighter spreads, combined commissions, or efficient margin usage, also adds to their appeal.
+MLeg orders are particularly useful because they allow traders to execute complex options or stock combinations in one streamlined process, avoiding the delay or slippage risk of placing each transaction separately. By handling multiple legs at once, traders gain better control over their target price, reduce the chance of partial fills that could distort the intended strategy, and simplify trade management. The potential to minimize transaction costs, whether through tighter spreads, combined commissions, or efficient margin usage, also adds to their appeal.
 
 A trader anticipates a stock will remain in a narrow price range.\
 They set up an iron condor, which involves four legs:
@@ -34,7 +34,7 @@ This reduces the risk of partial fills, which could otherwise leave the trader w
 
 ## How to submit a Multi-leg Order?
 
-To submit a multi-leg (MLeg) order, set your “order\_class” to “mleg” and list each component of the strategy in a “legs” array, specifying details like the symbol, side (buy or sell), ratio quantity, and position intent (e.g., buy\_to\_open). Include any additional parameters (limit price, time in force, etc.) as part of the order’s settings. Below is a cURL example showing how to place a POST request to the Alpaca API, passing in the necessary headers and JSON payload:
+To submit a multi-leg (MLeg) order, set your `order_class` to `mleg` and list each component of the strategy in a `legs` array, specifying details like the symbol, side (buy or sell), ratio quantity, and position intent (e.g., `buy_to_open`). Include any additional parameters (limit price, time in force, etc.) as part of the order’s settings. Below is a cURL example showing how to send a `POST /v2/orders` request to Trading API, passing in the necessary headers and JSON payload:
 
 ```curl
 curl --request POST \
@@ -61,7 +61,7 @@ curl --request POST \
 
 ### Long Call Spread
 
-<Image align="center" className="border" border={true} src="https://files.readme.io/444efc02ec4fecfc528035df0c4dabacf34a9082a46b08af4de56859ef498e02-long_call_spread.png" />
+<Image align="center" className="border" border={true} alt="Payoff diagram for a long call spread" src="https://files.readme.io/444efc02ec4fecfc528035df0c4dabacf34a9082a46b08af4de56859ef498e02-long_call_spread.png" />
 
 Buy a lower-strike (190) call and sell a higher-strike (210) call on the same underlying:
 
@@ -98,7 +98,7 @@ curl --request POST \
 
 ### Long Put Spread
 
-<Image align="center" className="border" border={true} src="https://files.readme.io/a807ae88d756237e9fc54b29b2c0bcfa4d24c0013becbfbda70244f2144082f8-long_put_spread.png" />
+<Image align="center" className="border" border={true} alt="Payoff diagram for a long put spread" src="https://files.readme.io/a807ae88d756237e9fc54b29b2c0bcfa4d24c0013becbfbda70244f2144082f8-long_put_spread.png" />
 
 Buy a higher-strike (210) put and sell a lower-strike (190) put on the same underlying:
 
@@ -135,7 +135,7 @@ curl --request POST \
 
 ### Iron Condor
 
-<Image align="center" src="https://files.readme.io/f86f771f0b68ce6af0706ba6e7a6d308af0678bbf3d71c23027722c600d67854-iron_condor.png" />
+<Image align="center" alt="Payoff diagram for an iron condor" src="https://files.readme.io/f86f771f0b68ce6af0706ba6e7a6d308af0678bbf3d71c23027722c600d67854-iron_condor.png" />
 
 Combine two spreads (a put spread and a call spread) to bet on limited movement:
 
@@ -287,15 +287,15 @@ curl --request POST \
 2. **Model Each Option’s Payoff**\
    Each option is represented by a piecewise linear payoff function (PnL) based on the underlying price (p).
 
-   <Image align="center" src="https://files.readme.io/32286a51ed97659a53b176cec7edbe0df282c76a42831ac7f81dc7bf80c4d26d-Screenshot_2025-01-20_at_19.01.45.png" />
+   <Image align="center" alt="Piecewise linear payoff functions for each option type based on the underlying price p" src="https://files.readme.io/32286a51ed97659a53b176cec7edbe0df282c76a42831ac7f81dc7bf80c4d26d-Screenshot_2025-01-20_at_19.01.45.png" />
 3. **Combine Positions**\
    To determine total payoff, sum the piecewise functions for all open positions:
 
-   <Image align="center" width="400px" src="https://files.readme.io/995133508c4fd0176faf1c370ba26aa1444b74719ecbb3e3d6ec4cb2d3b8f77a-Screenshot_2025-01-20_at_19.05.08.png" />
+   <Image align="center" width="400px" alt="Formula for total payoff as the sum of the payoff functions of all open positions" src="https://files.readme.io/995133508c4fd0176faf1c370ba26aa1444b74719ecbb3e3d6ec4cb2d3b8f77a-Screenshot_2025-01-20_at_19.05.08.png" />
 4. **Find Theoretical Maximum Loss**\
    Maintenance margin is based on the worst-case scenario for the portfolio:
 
-   <Image align="center" width="450px" src="https://files.readme.io/66772ec029ae5859d8c97d2e063ea2893faa9c0c794c8593ee2af5f7fe514111-Screenshot_2025-01-20_at_19.04.45.png" />
+   <Image align="center" width="450px" alt="Formula for maintenance margin as the theoretical maximum loss of the portfolio" src="https://files.readme.io/66772ec029ae5859d8c97d2e063ea2893faa9c0c794c8593ee2af5f7fe514111-Screenshot_2025-01-20_at_19.04.45.png" />
 
 In other words, you determine the underlying price p that yields the lowest (most negative) net payoff. The absolute value of this lowest point is the margin requirement.
 
@@ -318,7 +318,7 @@ Spread 1 (Call Credit Spread):
 * Long Call for AAPL with Strike Price = 200
 * Short Call for AAPL with Strike Price = 190
 
-<Image align="center" src="https://files.readme.io/12a13471e5bdfaeb7669cac5d145b9f5ed1c7545b93c82999a38c447bde6f158-call_spread_1.png" />
+<Image align="center" alt="Payoff diagram for Spread 1, a call credit spread with strikes 190 and 200" src="https://files.readme.io/12a13471e5bdfaeb7669cac5d145b9f5ed1c7545b93c82999a38c447bde6f158-call_spread_1.png" />
 
 With maintenance margin = 1000 since the difference between strike prices is 10 and the option’s multiplier is 100 so the `maintenance_margin = strike_price_diff * multiplier`
 
@@ -327,7 +327,7 @@ Spread 2 (Call Debit Spread):
 * Long Call for AAPL with Strike Price = 100
 * Short Call for AAPL with Strike Price = 110
 
-<Image align="center" src="https://files.readme.io/ec7e1a5000f960cb984d595becc471067bafb8b8fa597cc08f15ac986c64aa88-call_spread_2.png" />
+<Image align="center" alt="Payoff diagram for Spread 2, a call debit spread with strikes 100 and 110" src="https://files.readme.io/ec7e1a5000f960cb984d595becc471067bafb8b8fa597cc08f15ac986c64aa88-call_spread_2.png" />
 
 With maintenance margin = 0 since the difference between strike prices is 10 but the long is higher than the short.
 
@@ -339,9 +339,9 @@ When combining all four positions and evaluating the theoretical maximum combine
 
 * **Total Maintenance Margin (Universal Spread) = $0**
 
-<Image align="center" src="https://files.readme.io/e30a3e59350972901aed6ff30df3409cba7f8115e4b88df66a9c33dfa8337bec-2_call_spreads.png" />
+<Image align="center" alt="Combined payoff diagram for both call spreads showing a theoretical maximum loss of zero" src="https://files.readme.io/e30a3e59350972901aed6ff30df3409cba7f8115e4b88df66a9c33dfa8337bec-2_call_spreads.png" />
 
-This “universal spread rule” or piecewise-payoff approach better reflects the true risk when these positions are considered together. By recognizing how the different calls offset one another’s exposures, the required margin is lower—benefiting the customer by aligning margin requirements with the actual worst-case scenario of the entire portfolio rather than assigning sums of individual spreads.
+This “universal spread rule” or piecewise-payoff approach better reflects the true risk when these positions are considered together. By recognizing how the different calls offset one another’s exposures, the required margin is lower. This benefits the customer by aligning margin requirements with the actual worst-case scenario of the entire portfolio rather than assigning sums of individual spreads.
 
 ***
 
@@ -395,7 +395,7 @@ Consider a call credit spread on AAPL:
 So, Total Cost Basis:\
 Cost Basis = (Maintenance Margin) + (Net Price×Option Multiplier) = 1000 + (-5 x 100) = 1000 - 500 = $500
 
-Hence, the cost basis—and the amount charged to the customer—for this multi-leg order is $500.
+Hence, the cost basis (and the amount charged to the customer) for this multi-leg order is $500.
 
 ### Some Edge Scenarios
 

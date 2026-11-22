@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-07-07T14:17:11.000Z
+updatedAt: 2026-11-17T18:24:50.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -63,8 +63,8 @@ All National Market System (NMS) securities are available for trading during the
 
 * **Order Type:** Only `limit` orders are supported during the overnight session.
 * **Time-in-Force (TIF):** The supported TIF options are `day` and `gtc`.
-  * **`day`:** Orders placed during the overnight session will remain active through the regular and after-hours sessions of the upcoming trading day. If unfilled, the order is canceled at 8:00 PM ET.
-  * **`gtc`:** Good-Til-Canceled orders remain active across trading sessions until they are either filled or explicitly canceled. The table below summarizes the supported `gtc` configurations and their default corporate action handling.
+  * `day`**:** Orders placed during the overnight session will remain active through the regular and after-hours sessions of the upcoming trading day. If unfilled, the order is canceled at 8:00 PM ET.
+  * `gtc`**:** Good-Til-Canceled orders remain active across trading sessions until they are either filled or explicitly canceled. The table below summarizes the supported `gtc` configurations and their default corporate action handling.
 
 | Order Type     | `extended_hours` / Overnight | TIF   | Default Corporate Action Handling |
 | -------------- | ---------------------------- | ----- | --------------------------------- |
@@ -75,9 +75,11 @@ All National Market System (NMS) securities are available for trading during the
 
 In order to get GTC support, please reach out to your Customer Success Manager to enable it.
 
-> 📘 **Note**
->
-> Fractional `gtc` orders without `extended_hours` / overnight enabled are not currently supported.
+<Callout icon="📘" theme="info">
+  ### **Note**
+
+  Fractional `gtc` orders without `extended_hours` / overnight enabled are not currently supported.
+</Callout>
 
 ***
 
@@ -142,19 +144,23 @@ We begin syncing our list of tradable assets at 7:05 PM ET and run updates every
 
 ***
 
-<br />
-
 ### Can I access delayed historical overnight requests with an overnight subscription?
 
 Yes, you can access delayed historical overnight requests with an overnight subscription, provided that the end parameter in your request is at least 15 minutes old.
 
-**To access delayed historical overnight data, make sure to include the parameter `feed=boats` in your request, `feed=overnight` will give error.**
+**To access delayed historical overnight data, make sure to include the parameter&#x20;**`feed=boats`**&#x20;in your request,&#x20;**`feed=overnight`**&#x20;will give error.**
 
 Example: If you have an overnight subscription and want to request overnight/BOATS data ending at 10:00 PM EST , you can do so any time after 10:15 PM by specifying`feed=boats` in your request.
 
 ***
 
-####
+### Refer to NMS Exchange 23/5 Overnight (Dec 6, 2026) for additional information&#x20;
+
+Starting December 6, 2026, NMS exchanges join overnight trading alongside existing ATS venues, with industry SIP/TRF/DTCC updates and a daily 8:00–9:00 PM ET maintenance pause. Partner APIs and overnight order workflows are unchanged.
+
+<br />
+
+***
 
 #### Disclosures
 

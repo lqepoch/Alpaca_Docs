@@ -1,13 +1,15 @@
 ---
-updatedAt: 2026-05-27T17:58:03.000Z
+updatedAt: 2026-11-17T12:48:12.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
 ---
 
-# Historical rates for currency pairs
+# Historical quotes
 
-Get historical forex rates for the given currency pairs in the given time interval and at the given timeframe (snapshot frequency).
+The historical quotes API provides quote data for a list of symbols between the specified times.
+
+The quotes of each symbol are sorted by timestamp. The order of symbols is not guaranteed. Continue with `next_page_token`.
 
 
 # OpenAPI definition
@@ -39,69 +41,6 @@ Get historical forex rates for the given currency pairs in the given time interv
       }
     },
     "parameters": {
-      "end": {
-        "description": "The inclusive end of the interval. Format: RFC-3339 or YYYY-MM-DD.\nDefault: the current time if the user has a real-time access for the feed, otherwise 15 minutes before the current time.\n",
-        "examples": {
-          "RFC-3339 nanosecond": {
-            "summary": "RFC-3339 date-time with nanosecond accuracy",
-            "value": "2024-01-04T01:02:03.123456789Z"
-          },
-          "RFC-3339 second": {
-            "summary": "RFC-3339 date-time with second accuracy",
-            "value": "2024-01-04T00:00:00Z"
-          },
-          "RFC-3339 with timezone": {
-            "summary": "RFC-3339 date-time with time zone",
-            "value": "2024-01-04T09:30:00-04:00"
-          },
-          "date": {
-            "summary": "Date",
-            "value": "2024-01-04"
-          }
-        },
-        "in": "query",
-        "name": "end",
-        "required": false,
-        "schema": {
-          "format": "date-time",
-          "type": "string"
-        }
-      },
-      "forex_currency_pairs": {
-        "in": "query",
-        "name": "currency_pairs",
-        "required": true,
-        "schema": {
-          "allOf": [
-            {
-              "type": "string"
-            },
-            {
-              "$ref": "#/components/schemas/forex_currency_pairs"
-            }
-          ]
-        }
-      },
-      "forex_timeframe": {
-        "in": "query",
-        "name": "timeframe",
-        "required": false,
-        "schema": {
-          "$ref": "#/components/schemas/forex_timeframe"
-        }
-      },
-      "limit": {
-        "description": "The maximum number of data points to return in the response page.\nThe API may return less, even if there are more available data points in the requested interval.\nAlways check the `next_page_token` for more pages.\nThe limit applies to the total number of data points, not per symbol!\n",
-        "in": "query",
-        "name": "limit",
-        "required": false,
-        "schema": {
-          "default": 1000,
-          "maximum": 10000,
-          "minimum": 1,
-          "type": "integer"
-        }
-      },
       "page_token": {
         "description": "The pagination token from which to continue. The value to pass here is returned in specific requests when more data is available, usually because of a response result limit.\n",
         "in": "query",
@@ -110,46 +49,122 @@ Get historical forex rates for the given currency pairs in the given time interv
           "type": "string"
         }
       },
-      "sort": {
-        "description": "Sort data in ascending or descending order.",
+      "stock_v3_end": {
+        "description": "The inclusive end of the interval. A data point is returned when `start <= t <= end`. Format: RFC-3339 or YYYY-MM-DD.\nA date means the end of that day in the market's time zone.\nDefaults to the current time if not specified.\n",
+        "examples": {
+          "RFC-3339 nanosecond": {
+            "summary": "RFC-3339 date-time with nanosecond accuracy",
+            "value": "2026-09-24T01:02:03.123456789Z"
+          },
+          "RFC-3339 second": {
+            "summary": "RFC-3339 date-time with second accuracy",
+            "value": "2026-09-24T00:00:00Z"
+          },
+          "RFC-3339 with timezone": {
+            "summary": "RFC-3339 date-time with time zone",
+            "value": "2026-09-24T09:30:00-04:00"
+          },
+          "date": {
+            "summary": "Date",
+            "value": "2026-09-24"
+          }
+        },
+        "in": "query",
+        "name": "end",
+        "required": false,
+        "schema": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "format": "date",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "stock_v3_historical_feed": {
+        "description": "The source feed of the data. All feeds require a subscription.\n - `euroctp`: EuroCTP, the official EU consolidated tape, covering trades from all EU trading venues\n - `xetr`: Xetra, the electronic trading venue of the Frankfurt Stock Exchange (Deutsche Börse)\n - `xhkg`: Hong Kong Stock Exchange (HKEX)\n - `xlon`: London Stock Exchange (LSE)\n - `xsau`: Saudi Exchange (Tadawul)\n",
+        "example": "xetr",
+        "in": "path",
+        "name": "feed",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/stock_v3_historical_feed"
+        }
+      },
+      "stock_v3_page_size": {
+        "description": "The maximum number of data points to return in the response page.\nThe page_size applies to the total number of data points across all symbols, not per symbol.\nThe API may return fewer, even if more data points exist in the requested interval.\nAlways check `next_page_token` for more pages.\n",
+        "in": "query",
+        "name": "page_size",
+        "required": false,
+        "schema": {
+          "default": 1000,
+          "maximum": 10000,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "stock_v3_sort": {
+        "description": "Sort the data points of each symbol by timestamp in ascending or descending order.",
         "in": "query",
         "name": "sort",
         "schema": {
           "allOf": [
             {
-              "type": "string"
+              "$ref": "#/components/schemas/sort"
             },
             {
-              "$ref": "#/components/schemas/sort"
+              "type": "string"
             }
           ]
         }
       },
-      "start": {
-        "description": "The inclusive start of the interval. Format: RFC-3339 or YYYY-MM-DD.\nDefault: the beginning of the current day, but at least 15 minutes ago if the user doesn't have real-time access for the feed.\n",
+      "stock_v3_start": {
+        "description": "The inclusive start of the interval. Format: RFC-3339 or YYYY-MM-DD.\nA date means the start of that day in the market's time zone.\n",
         "examples": {
           "RFC-3339 nanosecond": {
             "summary": "RFC-3339 date-time with nanosecond accuracy",
-            "value": "2024-01-03T01:02:03.123456789Z"
+            "value": "2026-09-23T01:02:03.123456789Z"
           },
           "RFC-3339 second": {
             "summary": "RFC-3339 date-time with second accuracy",
-            "value": "2024-01-03T00:00:00Z"
+            "value": "2026-09-23T00:00:00Z"
           },
           "RFC-3339 with timezone": {
             "summary": "RFC-3339 date-time with time zone",
-            "value": "2024-01-03T09:30:00-04:00"
+            "value": "2026-09-23T09:30:00-04:00"
           },
           "date": {
             "summary": "Date",
-            "value": "2024-01-03"
+            "value": "2026-09-23"
           }
         },
         "in": "query",
         "name": "start",
-        "required": false,
+        "required": true,
         "schema": {
-          "format": "date-time",
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "format": "date",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "stock_v3_symbols": {
+        "description": "A comma-separated list of symbols with a limit of 1000.\nEach symbol must be in `TICKER:MIC` format, where MIC is the ISO 10383 defined code of the symbol's primary market.\nThe market must be one the feed covers, e.g. `XETR` on `xetr`; `euroctp` accepts any market.\n",
+        "example": "BMW:XETR,SAP:XETR",
+        "in": "query",
+        "name": "symbols",
+        "required": true,
+        "schema": {
           "type": "string"
         }
       }
@@ -173,7 +188,10 @@ Get historical forex rates for the given currency pairs in the given time interv
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
+      },
+      "404": {
+        "description": "The requested resource was not found, for example because the requested feed does not exist.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -194,80 +212,6 @@ Get historical forex rates for the given currency pairs in the given time interv
       }
     },
     "schemas": {
-      "forex_currency_pairs": {
-        "description": "A comma-separated string with currency pairs.",
-        "examples": [
-          "USDJPY",
-          "USDMXN"
-        ],
-        "type": "string"
-      },
-      "forex_rate": {
-        "description": "A foreign exchange rate between two currencies at a given time.",
-        "examples": [
-          {
-            "ap": 127.763,
-            "bp": 127.702,
-            "mp": 127.757,
-            "t": "2022-04-20T18:23:00Z"
-          }
-        ],
-        "properties": {
-          "ap": {
-            "description": "The last ask price value of the currency at the end of the timeframe.",
-            "format": "double",
-            "type": "number"
-          },
-          "bp": {
-            "description": "The last bid price value of the currency at the end of the timeframe.",
-            "format": "double",
-            "type": "number"
-          },
-          "mp": {
-            "description": "The last mid price value of the currency at the end of the timeframe.",
-            "format": "double",
-            "type": "number"
-          },
-          "t": {
-            "description": "Timestamp of the rate.",
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "bp",
-          "mp",
-          "ap",
-          "t"
-        ],
-        "type": "object"
-      },
-      "forex_rates_resp": {
-        "properties": {
-          "next_page_token": {
-            "$ref": "#/components/schemas/next_page_token"
-          },
-          "rates": {
-            "additionalProperties": {
-              "items": {
-                "$ref": "#/components/schemas/forex_rate"
-              },
-              "type": "array"
-            },
-            "type": "object"
-          }
-        },
-        "required": [
-          "rates",
-          "next_page_token"
-        ],
-        "type": "object"
-      },
-      "forex_timeframe": {
-        "default": "1Min",
-        "description": "The sampling interval of the currency rates. For example, 5S returns forex rates sampled every five seconds.\nYou can use the following values:\n - `5Sec` or `5S`\n - `1Min` or `1T`\n - `1Day` or `1D`\n",
-        "type": "string"
-      },
       "next_page_token": {
         "description": "Pagination token for the next page.",
         "type": [
@@ -282,6 +226,88 @@ Get historical forex rates for the given currency pairs in the given time interv
           "asc",
           "desc"
         ],
+        "type": "string"
+      },
+      "stock_v3_historical_feed": {
+        "enum": [
+          "euroctp",
+          "xetr",
+          "xhkg",
+          "xlon",
+          "xsau"
+        ],
+        "type": "string"
+      },
+      "stock_v3_quote": {
+        "description": "The best bid and offer (BBO) for the symbol.\n",
+        "examples": [
+          {
+            "ap": "57.84",
+            "as": "260",
+            "bp": "57.82",
+            "bs": "520",
+            "t": "2026-09-24T13:30:00.041325568Z"
+          }
+        ],
+        "properties": {
+          "ap": {
+            "description": "Best ask price, in the native quotation currency.",
+            "format": "decimal",
+            "type": "string"
+          },
+          "as": {
+            "description": "Number of shares available at the best ask price.",
+            "format": "decimal",
+            "type": "string"
+          },
+          "bp": {
+            "description": "Best bid price, in the native quotation currency.",
+            "format": "decimal",
+            "type": "string"
+          },
+          "bs": {
+            "description": "Number of shares available at the best bid price.",
+            "format": "decimal",
+            "type": "string"
+          },
+          "t": {
+            "$ref": "#/components/schemas/timestamp"
+          }
+        },
+        "required": [
+          "t",
+          "bp",
+          "bs",
+          "ap",
+          "as"
+        ],
+        "type": "object"
+      },
+      "stock_v3_quotes_resp": {
+        "properties": {
+          "next_page_token": {
+            "$ref": "#/components/schemas/next_page_token"
+          },
+          "quotes": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/stock_v3_quote"
+              },
+              "type": "array"
+            },
+            "description": "Quotes keyed by symbol (`TICKER:MIC`).",
+            "type": "object"
+          }
+        },
+        "required": [
+          "quotes",
+          "next_page_token"
+        ],
+        "type": "object"
+      },
+      "timestamp": {
+        "description": "Timestamp in RFC-3339 format with nanosecond precision.",
+        "format": "date-time",
         "type": "string"
       }
     },
@@ -319,28 +345,28 @@ Get historical forex rates for the given currency pairs in the given time interv
   },
   "openapi": "3.1.2",
   "paths": {
-    "/v1beta1/forex/rates": {
+    "/v3/stocks/{feed}/quotes": {
       "get": {
-        "description": "Get historical forex rates for the given currency pairs in the given time interval and at the given timeframe (snapshot frequency).\n",
-        "operationId": "Rates",
+        "description": "The historical quotes API provides quote data for a list of symbols between the specified times.\n\nThe quotes of each symbol are sorted by timestamp. The order of symbols is not guaranteed. Continue with `next_page_token`.\n",
+        "operationId": "StockV3Quotes",
         "parameters": [
           {
-            "$ref": "#/components/parameters/forex_currency_pairs"
+            "$ref": "#/components/parameters/stock_v3_historical_feed"
           },
           {
-            "$ref": "#/components/parameters/forex_timeframe"
+            "$ref": "#/components/parameters/stock_v3_symbols"
           },
           {
-            "$ref": "#/components/parameters/start"
+            "$ref": "#/components/parameters/stock_v3_start"
           },
           {
-            "$ref": "#/components/parameters/end"
+            "$ref": "#/components/parameters/stock_v3_end"
           },
           {
-            "$ref": "#/components/parameters/limit"
+            "$ref": "#/components/parameters/stock_v3_sort"
           },
           {
-            "$ref": "#/components/parameters/sort"
+            "$ref": "#/components/parameters/stock_v3_page_size"
           },
           {
             "$ref": "#/components/parameters/page_token"
@@ -351,28 +377,32 @@ Get historical forex rates for the given currency pairs in the given time interv
             "content": {
               "application/json": {
                 "examples": {
-                  "USDJPY": {
+                  "euroctp": {
+                    "summary": "ENI:XMIL best bid and offer on the euroctp feed, three per page",
                     "value": {
-                      "next_page_token": "VVNESlBZfDIwMjItMDEtMDNUMDA6MDM6MDBa",
-                      "rates": {
-                        "USDJPY": [
+                      "next_page_token": "cXVvdGVzfEVOSTpYTUlMfDE3OTQ0OTAyMDMwOTM4NDAwMDB8WFhYWHwyNS42MjV8NTI0fDI1LjYzfDc3Nw==",
+                      "quotes": {
+                        "ENI:XMIL": [
                           {
-                            "ap": 115.18,
-                            "bp": 114.192,
-                            "mp": 115.144,
-                            "t": "2022-01-03T00:01:00Z"
+                            "ap": "25.63",
+                            "as": "777",
+                            "bp": "25.62",
+                            "bs": "2045",
+                            "t": "2026-11-12T13:30:00.52471Z"
                           },
                           {
-                            "ap": 115.185,
-                            "bp": 114.189,
-                            "mp": 115.138,
-                            "t": "2022-01-03T00:02:00Z"
+                            "ap": "25.63",
+                            "as": "777",
+                            "bp": "25.62",
+                            "bs": "2033",
+                            "t": "2026-11-12T13:30:01.79933Z"
                           },
                           {
-                            "ap": 115.148,
-                            "bp": 115.122,
-                            "mp": 115.131,
-                            "t": "2022-01-03T00:03:00Z"
+                            "ap": "25.63",
+                            "as": "777",
+                            "bp": "25.62",
+                            "bs": "4343",
+                            "t": "2026-11-12T13:30:02.87255Z"
                           }
                         ]
                       }
@@ -380,7 +410,7 @@ Get historical forex rates for the given currency pairs in the given time interv
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/forex_rates_resp"
+                  "$ref": "#/components/schemas/stock_v3_quotes_resp"
                 }
               }
             },
@@ -406,6 +436,9 @@ Get historical forex rates for the given currency pairs in the given time interv
           "403": {
             "$ref": "#/components/responses/403"
           },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
           "429": {
             "$ref": "#/components/responses/429"
           },
@@ -415,16 +448,16 @@ Get historical forex rates for the given currency pairs in the given time interv
         },
         "security": [
           {
-            "BasicAuth": []
-          },
-          {
             "apiKey": [],
             "apiSecret": []
+          },
+          {
+            "BasicAuth": []
           }
         ],
-        "summary": "Historical rates for currency pairs",
+        "summary": "Historical quotes",
         "tags": [
-          "Forex"
+          "Stock v3"
         ]
       }
     }
@@ -441,9 +474,14 @@ Get historical forex rates for the given currency pairs in the given time interv
   ],
   "tags": [
     {
-      "description": "Endpoints for forex currency rates.",
-      "name": "Forex"
+      "description": "Endpoints for global stocks.",
+      "name": "Stock v3"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

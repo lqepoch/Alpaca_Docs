@@ -83,7 +83,7 @@ You can query a specific account that you submitted to Alpaca by passing into th
           },
           "ptp_no_exception_entry": {
             "description": "If set to true then Alpaca will accept orders for PTP symbols with no exception. Default is false.",
-            "type": "string"
+            "type": "boolean"
           },
           "suspend_trade": {
             "description": "If true, new orders are blocked.",
@@ -99,6 +99,23 @@ You can query a specific account that you submitted to Alpaca by passing into th
           }
         },
         "title": "AccountConfigurations",
+        "type": "object"
+      },
+      "AccountDRIPResponse": {
+        "description": "This feature is available in sandbox for beta partners only.\n\nThe account's dividend reinvestment (DRIP) setting.\nThis field is returned only when DRIP was turned on for the account at least once.\n",
+        "example": {
+          "equities_dividend_reinvestments": true
+        },
+        "properties": {
+          "equities_dividend_reinvestments": {
+            "description": "If true, Alpaca reinvests eligible cash dividends on US equities in the same security.",
+            "example": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "equities_dividend_reinvestments"
+        ],
         "type": "object"
       },
       "AccountExtended": {
@@ -247,6 +264,9 @@ You can query a specific account that you submitted to Alpaca by passing into th
               "$ref": "#/components/schemas/OwnerDocument"
             },
             "type": "array"
+          },
+          "drip": {
+            "$ref": "#/components/schemas/AccountDRIPResponse"
           },
           "enabled_assets": {
             "items": {
@@ -460,25 +480,44 @@ You can query a specific account that you submitted to Alpaca by passing into th
         "type": "object"
       },
       "AgreementType": {
-        "description": "- margin_agreement: Alpaca Margin Agreement\n- account_agreement: Alpaca Account Agreement\n- customer_agreement: Alpaca Customer Agreement\n- crypto_agreement: Alpaca Crypto agreement\n- options_agreement: Alpaca Option agreement\n- custodial_customer_agreement: Alpaca Custodial Customer agreement\n",
+        "description": "The type of agreement the customer signed.",
         "enum": [
           "margin_agreement",
           "account_agreement",
           "customer_agreement",
           "crypto_agreement",
-          "options_agreement"
+          "options_agreement",
+          "custodian_customer_agreement",
+          "trusted_contact_consent",
+          "master_securities_lending_agreement",
+          "certifications_and_resolutions_statement",
+          "joint_account_agreement",
+          "foreign_markets_addendum"
         ],
         "example": "customer_agreement",
         "title": "AgreementType",
-        "type": "string"
+        "type": "string",
+        "x-enumDescriptions": {
+          "account_agreement": "Alpaca Account Agreement",
+          "certifications_and_resolutions_statement": "Alpaca Certifications and Resolutions Statement",
+          "crypto_agreement": "Alpaca Crypto Agreement",
+          "custodian_customer_agreement": "Alpaca Custodial Customer Agreement (deprecated; use customer_agreement)",
+          "customer_agreement": "Alpaca Customer Agreement",
+          "foreign_markets_addendum": "Alpaca Foreign Markets / Global Equities Addendum",
+          "joint_account_agreement": "Alpaca Joint Account Agreement",
+          "margin_agreement": "Alpaca Margin Agreement",
+          "master_securities_lending_agreement": "Alpaca Master Securities Lending Agreement",
+          "options_agreement": "Alpaca Options Agreement",
+          "trusted_contact_consent": "Alpaca Trusted Contact Consent"
+        }
       },
       "Beneficiary": {
-        "description": "Beneficiary of an account",
+        "description": "Beneficiary of an IRA account. The same shape is used on account create, account update, and account responses.\n",
         "example": {
           "date_of_birth": "1970-01-01",
           "family_name": "Doe",
           "given_name": "Jane",
-          "middle_name": "P",
+          "middle_name": null,
           "relationship": "spouse",
           "share_pct": "100",
           "tax_id": "xxx-xx-xxxx",
@@ -487,45 +526,73 @@ You can query a specific account that you submitted to Alpaca by passing into th
         },
         "properties": {
           "date_of_birth": {
+            "description": "Date of birth in YYYY-MM-DD format. It cannot be in the future.",
             "example": "1970-01-01",
+            "format": "date",
             "type": "string"
           },
           "family_name": {
+            "description": "Beneficiary family name.",
             "example": "Doe",
+            "minLength": 1,
             "type": "string"
           },
           "given_name": {
+            "description": "Beneficiary given name.",
             "example": "Jane",
+            "minLength": 1,
             "type": "string"
           },
           "middle_name": {
+            "description": "Beneficiary middle name. Omit this field or send null when the beneficiary has no middle name. An empty string is rejected. Account responses always include the field and use null when it is unset.\n",
             "example": "P",
-            "type": "string"
+            "minLength": 1,
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "relationship": {
+            "description": "Relationship of the beneficiary to the account holder.",
+            "enum": [
+              "spouse",
+              "other"
+            ],
             "example": "spouse",
             "type": "string"
           },
           "share_pct": {
+            "description": "Share of the account allocated to this beneficiary, as a decimal string. The value must be greater than 0 and at most 100, with at most two decimal places.\n",
             "example": "100",
+            "format": "decimal",
             "type": "string"
           },
           "tax_id": {
+            "description": "Beneficiary tax identifier. Create and update requests require a USA SSN. Account responses always return the masked value `xxx-xx-xxxx`.\n",
             "example": "xxx-xx-xxxx",
+            "minLength": 1,
             "type": "string"
           },
           "tax_id_type": {
+            "description": "Tax identifier type.",
+            "enum": [
+              "USA_SSN"
+            ],
             "example": "USA_SSN",
             "type": "string"
           },
           "type": {
+            "description": "Whether this beneficiary is primary or contingent. An account with beneficiaries needs at least one primary beneficiary. The `share_pct` values of all primary beneficiaries must add up to 100, and the `share_pct` values of all contingent beneficiaries, if any, must also add up to 100.\n",
+            "enum": [
+              "primary",
+              "contingent"
+            ],
             "example": "primary",
             "type": "string"
           }
         },
         "required": [
           "given_name",
-          "middle_name",
           "family_name",
           "date_of_birth",
           "tax_id",
@@ -591,6 +658,7 @@ You can query a specific account that you submitted to Alpaca by passing into th
       },
       "Currency": {
         "description": "\"USD\" // US Dollar\n\"JPY\" // Japanese Yen\n\"EUR\" // Euro\n\"CAD\" // Canadian Dollar\n\"GBP\" // British Pound Sterling\n\"CHF\" // Swiss Franc\n\"TRY\" // Turkish Lira\n\"AUD\" // Australian Dollar\n\"CZK\" // Czech Koruna\n\"SEK\" // Swedish Krona\n\"DKK\" // Danish Krone\n\"SGD\" // Singapore Dollar\n\"HKD\" // Hong Kong Dollar\n\"HUF\" // Hungarian Forint\n\"NZD\" // New Zealand Dollar\n\"NOK\" // Norwegian Krone\n\"PLN\" // Poland Złoty",
+        "example": "USD",
         "title": "Currency",
         "type": "string"
       },
@@ -794,6 +862,51 @@ You can query a specific account that you submitted to Alpaca by passing into th
         ],
         "type": "string"
       },
+      "Identification": {
+        "description": "An identity document or identifier of the account owner. Responses return only `type`.",
+        "example": {
+          "issued_country": "GBR",
+          "number": "5493001KJTIIGC8Y1R12",
+          "type": "LEI"
+        },
+        "properties": {
+          "expiry_date": {
+            "description": "The expiry date in \"YYYY-MM-DD\" format. It must be later than today (UTC) and no earlier than `issued_date`.",
+            "example": "2030-01-01",
+            "format": "date",
+            "type": "string",
+            "writeOnly": true
+          },
+          "issued_country": {
+            "description": "Required on write. [ISO 3166-1 alpha-3](https://www.iso.org/iso-3166-country-codes.html) code of the issuing country.\n",
+            "example": "GBR",
+            "type": "string",
+            "writeOnly": true
+          },
+          "issued_date": {
+            "description": "The issue date in \"YYYY-MM-DD\" format. It can't be later than today (UTC).",
+            "example": "2020-01-01",
+            "format": "date",
+            "type": "string",
+            "writeOnly": true
+          },
+          "number": {
+            "description": "Required on write. The identification number. An `LEI` number is 20 characters long and must pass the ISO 17442 check digits, or the request fails with 422. Lowercase letters are accepted and stored in uppercase.\n",
+            "example": "5493001KJTIIGC8Y1R12",
+            "type": "string",
+            "writeOnly": true
+          },
+          "type": {
+            "description": "The identification type, for example `passport`, `national_id` or `LEI`. `LEI` is uppercase.",
+            "example": "LEI",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "type": "object"
+      },
       "Identity": {
         "description": "Identity is the model to provide account owner's identity information.\n",
         "example": {
@@ -872,6 +985,13 @@ You can query a specific account that you submitted to Alpaca by passing into th
             "description": "The first/given name of the user.",
             "example": "John",
             "type": "string"
+          },
+          "identifications": {
+            "description": "Identity documents and identifiers other than the tax ID, such as a passport or an LEI. On update, the array replaces every stored identification except the tax ID, which only `tax_id` and `tax_id_type` change.\n\nAccount responses include this field only for natural persons, and each entry has only `type`. Responses also list the tax ID as an entry typed with its tax ID type, for example `USA_SSN`, or `NOT_SPECIFIED` when the type is unknown. Omit that entry on update.\n",
+            "items": {
+              "$ref": "#/components/schemas/Identification"
+            },
+            "type": "array"
           },
           "investment_experience_with_options": {
             "description": "The user's level of expertise and familiarity with investing in Options.\n",
@@ -976,7 +1096,7 @@ You can query a specific account that you submitted to Alpaca by passing into th
             "type": "string"
           },
           "tax_id_type": {
-            "description": "Required on write when `tax_id` is set. May be `null` on read when unset or for sparse identity on OmniSub / omnibus-non-disclosed accounts.",
+            "description": "Required on write when `tax_id` is set. May be `null` on read when unset or for sparse identity on OmniSub / omnibus-non-disclosed accounts.\n\nAn LEI is not a tax ID: a request with `tax_id_type` set to `LEI`, in any case, fails with 422. Send the LEI in `identifications` and the national tax ID in `tax_id`.\n",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/TaxIdType"
@@ -1137,46 +1257,237 @@ You can query a specific account that you submitted to Alpaca by passing into th
         "type": "string"
       },
       "TaxIdType": {
-        "description": "An Enum of the various kinds of Tax ID formats Alpaca supports.\n\nPossible Values are:\n\n\n- **USA_SSN**\nUSA Social Security Number\n\n- **USA_ITIN**\nUSA Individual Taxpayer Identification Number\n\n- **ARG_AR_CUIT**\nArgentina CUIT\n\n- **AUS_TFN**\nAustralian Tax File Number\n\n- **AUS_ABN**\nAustralian Business Number\n\n- **BOL_NIT**\nBolivia NIT\n\n- **BRA_CPF**\nBrazil CPF\n\n- **CHL_RUT**\nChile RUT\n\n- **COL_NIT**\nColombia NIT\n\n- **CRI_NITE**\nCosta Rica NITE\n\n- **DEU_TAX_ID**\nGermany Tax ID (Identifikationsnummer)\n\n- **DOM_RNC**\nDominican Republic RNC\n\n- **ECU_RUC**\nEcuador RUC\n\n- **FRA_SPI**\nFrance SPI (Reference Tax Number)\n\n- **GBR_UTR**\nUK UTR (Unique Taxpayer Reference)\n\n- **GBR_NINO**\nUK NINO (National Insurance Number)\n\n- **GTM_NIT**\nGuatemala NIT\n\n- **HND_RTN**\nHonduras RTN\n\n- **HUN_TIN**\nHungary TIN Number\n\n- **IDN_KTP**\nIndonesia KTP\n\n- **IND_PAN**\nIndia PAN Number\n\n- **ISR_TAX_ID**\nIsrael Tax ID (Teudat Zehut)\n\n- **ITA_TAX_ID**\nItaly Tax ID (Codice Fiscale)\n\n- **JPN_TAX_ID**\nJapan Tax ID (Kojin Bango)\n\n- **MEX_RFC**\nMexico RFC\n\n- **NIC_RUC**\nNicaragua RUC\n\n- **NLD_TIN**\nNetherlands TIN Number\n\n- **PAN_RUC**\nPanama RUC\n\n- **PER_RUC**\nPeru RUC\n\n- **PRY_RUC**\nParaguay RUC\n\n- **SGP_NRIC**\nSingapore NRIC\n\n- **SGP_FIN**\nSingapore FIN\n\n- **SGP_ASGD**\nSingapore ASGD\n\n- **SGP_ITR**\nSingapore ITR\n\n- **SLV_NIT**\nEl Salvador NIT\n\n- **SWE_TAX_ID**\nSweden Tax ID (Personnummer)\n\n- **URY_RUT**\nUruguay RUT\n\n- **VEN_RIF**\nVenezuela RIF\n\n- **NATIONAL_ID**\nNational ID number, if a tax ID number is not available\n\n- **PASSPORT**\nPassport number, if a tax ID number is not available\n\n- **PERMANENT_RESIDENT**\nPermanent resident number, if a tax ID number is not available\n\n- **DRIVER_LICENSE**\nDriver's license number, if a tax ID number is not available\n\n- **OTHER_GOV_ID**\nOther government issued identifier, if a tax ID number is not available\n\n- **NOT_SPECIFIED**\nOther Tax IDs",
+        "description": "The type of the tax ID or other government-issued identification number.\n\nEach country-specific type is meant for accounts whose `country_of_tax_residence` is the country it is named after, and some are also meant for that country's associated jurisdictions, such as its territories. For correspondents with strict tax ID validation, the type must match `country_of_tax_residence` and be supported in the account's booking center, so a listed type can still be rejected when the account is validated. The \"for individuals\" and \"for entities\" notes describe who each type is typically issued to, and aren't checked when the account is validated.\n\nPossible values are:\n\n- **USA_SSN**: USA SSN (Social Security Number), for individuals\n- **USA_EIN**: USA EIN (Employer Identification Number), for entities\n- **USA_ITIN**: USA ITIN (Individual Taxpayer Identification Number), for individuals\n- **USA_TIN**: USA TIN (Taxpayer Identification Number), for entities\n- **ABW_PN**: Aruba Persoonsnummer (Aruba TIN), for individuals and entities\n- **AGO_NIF**: Angola NIF (Número de Identificação Fiscal), for individuals and entities\n- **ALB_NIPT**: Albania NIPT (Numri i Identifikimit të Personit të Tatueshëm), for individuals and entities\n- **AND_NRT**: Andorra NRT (Número de Registre Tributari), for individuals and entities\n- **ARE_EID**: UAE Emirates ID, for individuals\n- **ARE_TRN**: UAE TRN (Tax Registration Number), for entities\n- **ARG_AG_CUIT**: Legacy value for an Argentina CUIT. Use `ARG_AR_CUIT` instead.\n- **ARG_AR_CUIT**: Argentina CUIT (Clave Única de Identificación Tributaria), for individuals and entities\n- **ARM_SSN**: Armenia SSN (Social Security Number), for individuals\n- **ARM_TIN**: Armenia TIN (Tax Identification Number), for entities\n- **AUS_ABN**: Australia ABN (Australian business number), for entities\n- **AUS_TFN**: Australia TFN (Tax File Number), for individuals and entities\n- **AUT_UID**: Austria UID-Nummer (VAT Identification Number), for entities\n- **AUT_VNR**: Austria Versicherungsnummer (Social Insurance Number), for individuals\n- **AZE_FIN**: Azerbaijan FIN (Fərdi İdentifikasiya Nömrəsi), for individuals\n- **AZE_VOEN**: Azerbaijan VÖEN (Tax Identification Number), for entities\n- **BEL_BCE**: Belgium BCE/KBO (Enterprise Number), for entities\n- **BEL_NN**: Belgium NN (Numéro National / Rijksregisternummer), for individuals\n- **BEN_IFU**: Benin IFU (Identifiant Fiscal Unique), for individuals and entities\n- **BFA_IFU**: Burkina Faso IFU (Identifiant Financier Unique), for individuals and entities\n- **BGD_TIN**: Bangladesh TIN (Tax Identification Number), for individuals and entities\n- **BGR_EGN**: Bulgaria EGN (Edinen Grazhdanski Nomer), for individuals\n- **BGR_EIK**: Bulgaria EIK/BULSTAT (Entity Identification Code), for entities\n- **BHR_CPR**: Bahrain CPR (Central Population Registry), for individuals\n- **BIH_JMBG**: Bosnia and Herzegovina JMBG (Jedinstveni Matični Broj Građana), for individuals\n- **BLR_ID**: Belarus Personal Identification Number, for individuals\n- **BLR_UNP**: Belarus UNP (Uchyotny Nomer Platelshchika), for entities\n- **BLZ_TIN**: Belize TIN (Tax Identification Number), for individuals and entities\n- **BOL_NIT**: Bolivia NIT (Número de Identificación Tributaria), for individuals and entities\n- **BRA_CNPJ**: Brazil CNPJ (Cadastro Nacional da Pessoa Jurídica), for entities\n- **BRA_CPF**: Brazil CPF (Cadastro de Pessoas Físicas), for individuals\n- **BRB_TIN**: Barbados TIN (Tax Identification Number), for individuals and entities\n- **BTN_TPN**: Bhutan TPN (Taxpayer Number), for individuals and entities\n- **BWA_TIN**: Botswana TIN (Tax Identification Number), for individuals and entities\n- **CAN_BN**: Canada BN (Business Number), for entities\n- **CAN_SIN**: Canada SIN (Social Insurance Number), for individuals\n- **CHE_AHV**: Switzerland AHV/AVS (Social Insurance Number), for individuals\n- **CHE_UID**: Switzerland UID (Unternehmens-Identifikationsnummer), for entities\n- **CHL_RUT**: Chile RUT (Rol Único Tributario), for individuals and entities\n- **CHN_RID**: China Resident Identity Card Number (居民身份证号码), for individuals\n- **CHN_USCC**: China USCC (Unified Social Credit Code / 统一社会信用代码), for entities\n- **CIV_NCC**: Côte d'Ivoire NCC (Numéro de Compte Contribuable), for individuals and entities\n- **CMR_NIU**: Cameroon NIU (Numéro d'Identifiant Unique), for individuals and entities\n- **COK_RMD**: Cook Islands RMD Number (Revenue Management Division), for individuals and entities\n- **COL_CC**: Colombia CC (Cédula de Ciudadanía), for individuals\n- **COL_CE**: Colombia CE (Cédula de Extranjería), for individuals\n- **COL_NIT**: Colombia NIT (Número de Identificación Tributaria), for individuals and entities\n- **COL_NUIP**: Colombia NUIP (Número Único de Identificación Personal), for individuals\n- **COL_PPT**: Colombia PPT (Permiso por Protección Temporal), for individuals\n- **CPV_NIF**: Cabo Verde NIF (Número de Identificação Fiscal), for individuals and entities\n- **CRI_CJ**: Costa Rica Cédula Jurídica (Legal Entity ID), for entities\n- **CRI_DIMEX**: Costa Rica DIMEX (Documento de Identificación Migratorio para Extranjeros), for individuals\n- **CRI_NITE**: Costa Rica NITE (Número de Identificación Tributaria Especial), for individuals and entities\n- **CRI_PIN**: Costa Rica Personal Identification Number (PIN), for individuals\n- **CUW_CRIB**: Curaçao CRIB (Centraal Registratie Informatie Belastingplichtige), for individuals and entities\n- **CYP_TIC**: Cyprus TIC (Tax Identification Code), for individuals and entities\n- **CZE_TIN**: Czech Republic TIN (Tax Identification Number), for individuals and entities\n- **DEU_TAX_ID**: Germany Tax ID (Identifikationsnummer), for individuals\n- **DEU_UST_ID**: Germany USt-IdNr (Umsatzsteuer-Identifikationsnummer), for entities\n- **DNK_CPR**: Denmark CPR-nummer (Det Centrale Personregister), for individuals\n- **DNK_CVR**: Denmark CVR-nummer (Det Centrale Virksomhedsregister), for entities\n- **DOM_CED**: Dominican Republic Cédula de Identidad y Electoral, for individuals\n- **DOM_RNC**: Dominican Republic RNC (Registro Nacional del Contribuyente), for entities\n- **DZA_NIF**: Algeria NIF (Numéro d'Identification Fiscale), for individuals and entities\n- **ECU_RUC**: Ecuador RUC (Registro Unico de Contribuyentes), for individuals and entities\n- **EGY_NID**: Egypt National ID Number, for individuals\n- **EGY_TRN**: Egypt Tax Registration Number, for entities\n- **ESP_DNI**: Spain DNI (Documento Nacional de Identidad), for individuals\n- **ESP_NIE**: Spain NIE (Número de Identidad de Extranjero), for individuals\n- **ESP_NIF**: Spain NIF (Número de Identificación Fiscal), for individuals and entities\n- **EST_IK**: Estonia Isikukood (Personal Identification Code), for individuals\n- **EST_RC**: Estonia Registrikood (Registry Code), for entities\n- **ETH_TIN**: Ethiopia TIN (Tax Identification Number), for individuals and entities\n- **FIN_HETU**: Finland HETU (Henkilötunnus), for individuals\n- **FIN_YTU**: Finland Y-tunnus (Business ID), for entities\n- **FJI_TIN**: Fiji TIN (Tax Identification Number), for individuals and entities\n- **FRA_SIREN**: France SIREN (Business tax ID), for entities\n- **FRA_SPI**: France SPI (Reference tax number), for individuals\n- **GAB_NIF**: Gabon NIF (Numéro d'Identification Fiscale), for individuals and entities\n- **GBR_CRN**: UK CRN (Companies House Registration Number), for entities\n- **GBR_NINO**: UK NINO (National Insurance Number), for individuals\n- **GBR_UTR**: UK UTR (Unique Taxpayer Reference), for individuals and entities\n- **GEO_PID**: Georgia Personal Identification Number, for individuals\n- **GEO_TIN**: Georgia TIN (Tax Identification Number), for entities\n- **GHA_TIN**: Ghana TIN (Tax Identification Number), for individuals and entities\n- **GRC_AFM**: Greece AFM (Arithmos Forologikou Mitroou), for individuals and entities\n- **GTM_NIT**: Guatemala NIT (Número de Identificación Tributaria), for individuals and entities\n- **HKG_BRN**: Hong Kong BRN (Business Registration Number), for entities\n- **HKG_HKID**: Hong Kong HKID (Hong Kong Identity Card), for individuals\n- **HND_RTN**: Honduras RTN (Registro Tributario Nacional), for individuals and entities\n- **HRV_OIB**: Croatia OIB (Osobni Identifikacijski Broj), for individuals\n- **HTI_NIF**: Haiti NIF (Numéro d'Identification Fiscale), for individuals and entities\n- **HUN_ENT**: Hungary Adószám (Entity Tax Number), for entities\n- **HUN_TIN**: Hungary TIN (Tax Identification Number), for individuals\n- **IDN_KTP**: Indonesia KTP (Indonesian Identity Card), for individuals\n- **IDN_NWPW**: Indonesia NPWP (Nomor Pokok Wajib Pajak), for individuals and entities. The code is spelled `IDN_NWPW`, not `IDN_NPWP`.\n- **IND_GSTIN**: India GSTIN (Goods and Services Tax Identification Number), for entities\n- **IND_PAN**: India PAN (Permanent Account Number), for individuals\n- **IRL_CRO**: Ireland CRO (Companies Registration Office Number), for entities\n- **IRL_PPS**: Ireland PPS (Personal Public Service Number), for individuals\n- **IRN_NID**: Iran National ID (Kode Melli), for individuals\n- **ISL_KT**: Iceland Kennitala (National Identification Number), for individuals\n- **ISR_CORP**: Israel Company Number (Mispar Chevra), for entities\n- **ISR_TAX_ID**: Israel Tax ID (Teudat Zehut), for individuals\n- **ITA_PIVA**: Italy Partita IVA (VAT Number), for entities\n- **ITA_TAX_ID**: Italy Tax ID (Codice fiscale), for individuals\n- **JAM_TRN**: Jamaica TRN (Taxpayer Registration Number), for individuals and entities\n- **JOR_NID**: Jordan National ID Number, for individuals\n- **JPN_CORP**: Japan Corporate Number (法人番号), for entities\n- **JPN_TAX_ID**: Japan Tax ID (kojin bango), for individuals\n- **KAZ_BIN**: Kazakhstan BIN (Business Identification Number), for entities\n- **KAZ_IIN**: Kazakhstan IIN (Individual Identification Number), for individuals\n- **KEN_KRA_PIN**: Kenya KRA PIN (Kenya Revenue Authority PIN), for individuals and entities\n- **KGZ_INN**: Kyrgyzstan INN (Individual Tax Number), for individuals\n- **KHM_NID**: Cambodia National ID Number, for individuals\n- **KOR_BRN**: South Korea BRN (Business Registration Number), for entities\n- **KOR_RRN**: South Korea RRN (Resident Registration Number), for individuals\n- **KWT_CID**: Kuwait Civil ID Number, for individuals\n- **LBN_TIN**: Lebanon TIN (Tax Identification Number), for individuals and entities\n- **LKA_NIC**: Sri Lanka NIC (National Identity Card), for individuals\n- **LKA_TIN**: Sri Lanka TIN (Tax Identification Number), for entities\n- **LTU_AK**: Lithuania Asmens Kodas (Personal Code), for individuals\n- **LTU_JAK**: Lithuania Juridinio Asmens Kodas (Legal Entity Code), for entities\n- **LUX_NIN**: Luxembourg Matricule (National Identification Number), for individuals\n- **LUX_TVA**: Luxembourg Numéro TVA (VAT Number), for entities\n- **LVA_PK**: Latvia Personas Kods (Personal Code), for individuals\n- **LVA_REG**: Latvia Reģistrācijas Numurs (Registration Number), for entities\n- **MAC_TIN**: Macao Taxpayer Number, for individuals and entities\n- **MAR_CIN**: Morocco CIN (Carte d'Identité Nationale), for individuals\n- **MAR_ICE**: Morocco ICE (Identifiant Commun de l'Entreprise), for entities\n- **MDA_IDNO**: Moldova IDNO (State Identification Number of Entity), for entities\n- **MDA_IDNP**: Moldova IDNP (Personal Identification Number), for individuals\n- **MEX_CURP**: Mexico CURP (Clave Única de Registro de Población), for individuals\n- **MEX_RFC**: Mexico RFC (Registro Federal de Contribuyentes), for individuals and entities\n- **MKD_EDB**: North Macedonia EDB (Unique Tax Number), for entities\n- **MKD_EMBG**: North Macedonia EMBG (Unique Master Citizen Number), for individuals\n- **MLI_NIF**: Mali NIF (Numéro d'Identification Fiscale), for individuals and entities\n- **MLT_ID**: Malta Identity Card Number, for individuals\n- **MLT_VAT**: Malta VAT Number, for entities\n- **MNE_JMBG**: Montenegro Unique Master Citizen Number, for individuals\n- **MNE_PIB**: Montenegro PIB (Tax Identification Number), for entities\n- **MNG_RD**: Mongolia Register Number, for individuals\n- **MOZ_NUIT**: Mozambique NUIT (Tax Identification Number), for individuals and entities\n- **MUS_NID**: Mauritius National Identity Card Number, for individuals\n- **MUS_TAN_ENT**: Mauritius TAN (Entity Tax Account Number), for entities\n- **MUS_TAN_IND**: Mauritius TAN (Individual Tax Account Number), for individuals\n- **MWI_TPIN**: Malawi TPIN (Taxpayer Identification Number), for individuals and entities\n- **MYS_MYKAD**: Malaysia MyKad (National Registration Identity Card), for individuals\n- **MYS_ROC**: Malaysia ROC (Companies Commission Registration Number), for entities\n- **NAM_TIN**: Namibia TIN (Tax Identification Number), for individuals and entities\n- **NGA_NIN**: Nigeria NIN (National Identification Number), for individuals\n- **NGA_TIN**: Nigeria TIN (Tax Identification Number), for entities\n- **NIC_RUC**: Nicaragua RUC (Registro Unico de Contribuyentes), for individuals and entities\n- **NLD_BTW**: Netherlands Btw-identificatienummer (btw-id), for entities\n- **NLD_KVK**: Netherlands KVK (Kamer van Koophandel), for entities\n- **NLD_OBN**: Netherlands Omzetbelastingnummer (ob-nummer), for entities\n- **NLD_TIN**: Netherlands BSN (Burgerservicenummer), for individuals\n- **NOR_FNR**: Norway Fødselsnummer (National Identity Number), for individuals\n- **NOR_ORG**: Norway Organisasjonsnummer (Organisation Number), for entities\n- **NPL_PAN**: Nepal PAN (Permanent Account Number), for individuals and entities\n- **NZL_IRD**: New Zealand IRD Number (Inland Revenue Department), for individuals and entities\n- **NZL_NZBN**: New Zealand NZBN (New Zealand Business Number), for entities\n- **OMN_CID**: Oman Civil ID Number, for individuals\n- **PAK_NIC**: Pakistan NIC (National Identity Card), for individuals\n- **PAK_NTN**: Pakistan NTN (National Tax Number), for individuals and entities\n- **PAN_RUC**: Panama RUC (Registro Unico de Contribuyentes), for individuals and entities\n- **PER_RUC**: Peru RUC (Registro Unico de Contribuyentes), for individuals and entities\n- **PHL_TIN**: Philippines TIN (Tax Identification Number), for individuals and entities\n- **POL_NIP**: Poland NIP (Numer Identyfikacji Podatkowej), for entities\n- **POL_PESEL**: Poland PESEL (Polish National Identification Number), for individuals\n- **PRT_NIF**: Portugal NIF (Número de Identificação Fiscal), for individuals and entities\n- **PRY_RUC**: Paraguay RUC (Registro Unico de Contribuyentes), for individuals and entities\n- **QAT_QID**: Qatar QID (Qatar Identity Number), for individuals\n- **ROU_CNP**: Romania CNP (Cod Numeric Personal), for individuals\n- **ROU_CUI**: Romania CUI (Cod Unic de Înregistrare), for entities\n- **RUS_INN_ENT**: Russia INN (Entity Tax Number), for entities\n- **RUS_INN_IND**: Russia INN (Individual Tax Number), for individuals\n- **RWA_TIN**: Rwanda TIN (Tax Identification Number), for individuals and entities\n- **SAU_TIN**: Saudi Arabia TIN (Tax Identification Number), for individuals and entities\n- **SAU_VAT**: Saudi Arabia VAT Registration Number, for entities\n- **SEN_NINEA**: Senegal NINEA (Numéro d'Identification Nationale des Entreprises), for entities\n- **SGP_ASGD**: Singapore ASGD, for individuals\n- **SGP_FIN**: Singapore FIN, for individuals\n- **SGP_ITR**: Singapore ITR, for individuals and entities\n- **SGP_NRIC**: Singapore NRIC, for individuals\n- **SGP_UEN**: Singapore UEN (Unique Entity Number), for entities\n- **SLV_NIT**: El Salvador NIT (Número de Identificación Tributaria), for individuals and entities\n- **SRB_JMBG**: Serbia JMBG (Unique Master Citizen Number), for individuals\n- **SRB_PIB**: Serbia PIB (Tax Identification Number), for entities\n- **SVK_ICO**: Slovakia IČO (Identification Number of Organisation), for entities\n- **SVK_TIN**: Slovakia TIN (Tax Identification Number), for individuals\n- **SVN_DAS**: Slovenia Davčna Številka (Tax Number), for individuals and entities\n- **SVN_MS**: Slovenia Matična Številka (Registration Number), for entities\n- **SWE_ORG**: Sweden Organisationsnummer (Organisation Number), for entities\n- **SWE_TAX_ID**: Sweden Tax ID (Personnummer), for individuals\n- **SWZ_TIN**: Eswatini TIN (Tax Identification Number), for individuals and entities\n- **SXM_CRIB**: Sint Maarten CRIB (Centraal Registratie Informatie Belastingplichtige), for individuals and entities\n- **SYR_TIN**: Syria TIN (Tax Identification Number), for individuals and entities\n- **THA_NID**: Thailand National ID Card Number (เลขประจำตัวประชาชน), for individuals\n- **THA_TIN**: Thailand Tax ID (เลขประจำตัวผู้เสียภาษี), for entities\n- **TJK_TIN**: Tajikistan TIN (Tax Identification Number), for individuals and entities\n- **TTO_BIR**: Trinidad and Tobago BIR (Board of Inland Revenue File Number), for individuals and entities\n- **TUN_CIN**: Tunisia CIN (Carte d'Identité Nationale), for individuals\n- **TUN_MF**: Tunisia Matricule Fiscal (Tax Identification Number), for entities\n- **TUR_TIN**: Turkey TIN (Tax Identification Number), for individuals and entities\n- **TWN_GUI**: Taiwan GUI (Unified Business Number / 統一編號), for entities\n- **TWN_NID**: Taiwan National ID Number (身分證字號), for individuals\n- **TZA_TIN**: Tanzania TIN (Tax Identification Number), for individuals and entities\n- **UGA_TIN**: Uganda TIN (Tax Identification Number), for individuals and entities\n- **UKR_EDRPOU**: Ukraine EDRPOU (Entity Identification Code), for entities\n- **UKR_RNTRC**: Ukraine RNTRC (Individual Tax Number), for individuals\n- **URY_CI**: Uruguay CI (Cédula de Identidad), for individuals\n- **URY_RUT**: Uruguay RUT (Rol Único Tributario), for entities\n- **UZB_INN**: Uzbekistan INN (Entity Tax Number), for entities\n- **UZB_PINFL**: Uzbekistan PINFL (Personal Identification Number), for individuals\n- **VEN_RIF**: Venezuela RIF (Registro de Información Fiscal), for individuals and entities\n- **VNM_MST_BRN**: Vietnam MST Branch (Mã số thuế đơn vị phụ thuộc), for entities\n- **VNM_MST_CORP**: Vietnam MST Enterprise (Mã số thuế doanh nghiệp), for individuals and entities\n- **VNM_MST_PIN**: Vietnam PIN (Personal identification number / Số định danh cá nhân), for individuals\n- **WSM_TIN**: Samoa TIN (Tax Identification Number), for individuals and entities\n- **XXK_PID**: Kosovo Personal Identification Number, for individuals\n- **ZAF_CRN**: South Africa Company Registration Number, for entities\n- **ZAF_ID**: South African ID Number, for individuals\n- **ZMB_TPIN**: Zambia TPIN (Taxpayer Identification Number), for individuals and entities\n- **ZWE_TIN**: Zimbabwe TIN (Tax Identification Number), for individuals and entities\n- **NATIONAL_ID**: National ID number, if a tax ID number is not available\n- **PASSPORT**: Passport number, if a tax ID number is not available\n- **PERMANENT_RESIDENT**: Permanent resident number, if a tax ID number is not available\n- **DRIVER_LICENSE**: Driver's license number, if a tax ID number is not available\n- **OTHER_GOV_ID**: Other government issued identifier, if a tax ID number is not available\n- **NOT_SPECIFIED**: Other Tax IDs",
         "enum": [
           "USA_SSN",
+          "USA_EIN",
           "USA_ITIN",
+          "USA_TIN",
+          "ABW_PN",
+          "AGO_NIF",
+          "ALB_NIPT",
+          "AND_NRT",
+          "ARE_EID",
+          "ARE_TRN",
           "ARG_AG_CUIT",
-          "AUS_TFN",
+          "ARG_AR_CUIT",
+          "ARM_SSN",
+          "ARM_TIN",
           "AUS_ABN",
+          "AUS_TFN",
+          "AUT_UID",
+          "AUT_VNR",
+          "AZE_FIN",
+          "AZE_VOEN",
+          "BEL_BCE",
+          "BEL_NN",
+          "BEN_IFU",
+          "BFA_IFU",
+          "BGD_TIN",
+          "BGR_EGN",
+          "BGR_EIK",
+          "BHR_CPR",
+          "BIH_JMBG",
+          "BLR_ID",
+          "BLR_UNP",
+          "BLZ_TIN",
           "BOL_NIT",
+          "BRA_CNPJ",
           "BRA_CPF",
+          "BRB_TIN",
+          "BTN_TPN",
+          "BWA_TIN",
+          "CAN_BN",
+          "CAN_SIN",
+          "CHE_AHV",
+          "CHE_UID",
           "CHL_RUT",
+          "CHN_RID",
+          "CHN_USCC",
+          "CIV_NCC",
+          "CMR_NIU",
+          "COK_RMD",
+          "COL_CC",
+          "COL_CE",
           "COL_NIT",
+          "COL_NUIP",
+          "COL_PPT",
+          "CPV_NIF",
+          "CRI_CJ",
+          "CRI_DIMEX",
           "CRI_NITE",
+          "CRI_PIN",
+          "CUW_CRIB",
+          "CYP_TIC",
+          "CZE_TIN",
           "DEU_TAX_ID",
+          "DEU_UST_ID",
+          "DNK_CPR",
+          "DNK_CVR",
+          "DOM_CED",
           "DOM_RNC",
+          "DZA_NIF",
           "ECU_RUC",
+          "EGY_NID",
+          "EGY_TRN",
+          "ESP_DNI",
+          "ESP_NIE",
+          "ESP_NIF",
+          "EST_IK",
+          "EST_RC",
+          "ETH_TIN",
+          "FIN_HETU",
+          "FIN_YTU",
+          "FJI_TIN",
+          "FRA_SIREN",
           "FRA_SPI",
-          "GBR_UTR",
+          "GAB_NIF",
+          "GBR_CRN",
           "GBR_NINO",
+          "GBR_UTR",
+          "GEO_PID",
+          "GEO_TIN",
+          "GHA_TIN",
+          "GRC_AFM",
           "GTM_NIT",
+          "HKG_BRN",
+          "HKG_HKID",
           "HND_RTN",
+          "HRV_OIB",
+          "HTI_NIF",
+          "HUN_ENT",
           "HUN_TIN",
           "IDN_KTP",
+          "IDN_NWPW",
+          "IND_GSTIN",
           "IND_PAN",
+          "IRL_CRO",
+          "IRL_PPS",
+          "IRN_NID",
+          "ISL_KT",
+          "ISR_CORP",
           "ISR_TAX_ID",
+          "ITA_PIVA",
           "ITA_TAX_ID",
+          "JAM_TRN",
+          "JOR_NID",
+          "JPN_CORP",
           "JPN_TAX_ID",
+          "KAZ_BIN",
+          "KAZ_IIN",
+          "KEN_KRA_PIN",
+          "KGZ_INN",
+          "KHM_NID",
+          "KOR_BRN",
+          "KOR_RRN",
+          "KWT_CID",
+          "LBN_TIN",
+          "LKA_NIC",
+          "LKA_TIN",
+          "LTU_AK",
+          "LTU_JAK",
+          "LUX_NIN",
+          "LUX_TVA",
+          "LVA_PK",
+          "LVA_REG",
+          "MAC_TIN",
+          "MAR_CIN",
+          "MAR_ICE",
+          "MDA_IDNO",
+          "MDA_IDNP",
+          "MEX_CURP",
           "MEX_RFC",
+          "MKD_EDB",
+          "MKD_EMBG",
+          "MLI_NIF",
+          "MLT_ID",
+          "MLT_VAT",
+          "MNE_JMBG",
+          "MNE_PIB",
+          "MNG_RD",
+          "MOZ_NUIT",
+          "MUS_NID",
+          "MUS_TAN_ENT",
+          "MUS_TAN_IND",
+          "MWI_TPIN",
+          "MYS_MYKAD",
+          "MYS_ROC",
+          "NAM_TIN",
+          "NGA_NIN",
+          "NGA_TIN",
           "NIC_RUC",
+          "NLD_BTW",
+          "NLD_KVK",
+          "NLD_OBN",
           "NLD_TIN",
+          "NOR_FNR",
+          "NOR_ORG",
+          "NPL_PAN",
+          "NZL_IRD",
+          "NZL_NZBN",
+          "OMN_CID",
+          "PAK_NIC",
+          "PAK_NTN",
           "PAN_RUC",
           "PER_RUC",
+          "PHL_TIN",
+          "POL_NIP",
+          "POL_PESEL",
+          "PRT_NIF",
           "PRY_RUC",
-          "SGP_NRIC",
-          "SGP_FIN",
+          "QAT_QID",
+          "ROU_CNP",
+          "ROU_CUI",
+          "RUS_INN_ENT",
+          "RUS_INN_IND",
+          "RWA_TIN",
+          "SAU_TIN",
+          "SAU_VAT",
+          "SEN_NINEA",
           "SGP_ASGD",
+          "SGP_FIN",
           "SGP_ITR",
+          "SGP_NRIC",
+          "SGP_UEN",
           "SLV_NIT",
+          "SRB_JMBG",
+          "SRB_PIB",
+          "SVK_ICO",
+          "SVK_TIN",
+          "SVN_DAS",
+          "SVN_MS",
+          "SWE_ORG",
           "SWE_TAX_ID",
+          "SWZ_TIN",
+          "SXM_CRIB",
+          "SYR_TIN",
+          "THA_NID",
+          "THA_TIN",
+          "TJK_TIN",
+          "TTO_BIR",
+          "TUN_CIN",
+          "TUN_MF",
+          "TUR_TIN",
+          "TWN_GUI",
+          "TWN_NID",
+          "TZA_TIN",
+          "UGA_TIN",
+          "UKR_EDRPOU",
+          "UKR_RNTRC",
+          "URY_CI",
           "URY_RUT",
+          "UZB_INN",
+          "UZB_PINFL",
           "VEN_RIF",
+          "VNM_MST_BRN",
+          "VNM_MST_CORP",
+          "VNM_MST_PIN",
+          "WSM_TIN",
+          "XXK_PID",
+          "ZAF_CRN",
+          "ZAF_ID",
+          "ZMB_TPIN",
+          "ZWE_TIN",
           "NATIONAL_ID",
           "PASSPORT",
           "PERMANENT_RESIDENT",
@@ -1340,7 +1651,8 @@ You can query a specific account that you submitted to Alpaca by passing into th
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ````

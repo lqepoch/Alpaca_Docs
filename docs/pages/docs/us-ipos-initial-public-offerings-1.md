@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-06-05T15:24:34.000Z
+updatedAt: 2026-11-17T21:39:29.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -13,7 +13,7 @@ This guide provides a comprehensive reference for integrating U.S. IPOs into you
 
 Alpaca offers access to a broad range of US IPO offerings, allowing partners to buy shares at the IPO listing, before the stock becomes available on the secondary market.
 
-The IPO API provides:
+The IPO endpoints in Broker API provide:
 
 * **Read-only discovery** of IPO offerings
 * **Order placement and management** via the existing Broker API
@@ -21,7 +21,7 @@ The IPO API provides:
 
 #### Order Management
 
-US IPOs only accept notional (dollar amount) GTC orders. End-users are able to place one conditional order to buy (COBs) per IPO offering, once it becomes available in the API. This order can be modified/canceled until the 60 minute window ends.
+US IPOs only accept notional (dollar amount) GTC orders. Customers are able to place one conditional order to buy (COBs) per IPO offering, once it becomes available in Broker API. This order can be modified/canceled until the 60 minute window ends.
 
 Fractional shares are not supported for IPOs.
 
@@ -34,7 +34,7 @@ Below is an example of an IPO timeline. Please note that not all IPOs follow thi
 | 1    | Order Entry Window Opens            | Investors begin submitting Conditional Offers to Buy (COBs).                         | Monday, June 9 at 9:00 AM     |
 | 2    | 60-Minute Notice Sent               | Final withdrawal/modification window before pricing. COBs become binding after this. | Wednesday, June 11 at 3:00 PM |
 | 3    | Allocation Engine Runs              | Allocation algorithm executed based on demand and allocation.                        | Thursday, June 12 at 7:01 AM  |
-| 4    | Alpaca sends allocations to partner | Allocation info sent to partner via API                                              | Thursday, June 12 at 7:30 AM  |
+| 4    | Alpaca sends allocations to partner | Allocation info sent to partner via Broker API                                       | Thursday, June 12 at 7:30 AM  |
 | 5    | IPO Date                            | Stock starts trading on listing exchange                                             | Thursday, June 12 at 11:00 AM |
 | 6    | Allocations Settled                 | Shares delivered via DTC to partner clearing accounts (T+1)                          | Friday, June 13               |
 
@@ -59,27 +59,27 @@ For more information, see [Authentication](https://alpaca.markets/docs/api-refer
 
 ## Attributes
 
-| **Attribute**                   | **Type**         | **Notes**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name                            | string           | The official name of the offering.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| description                     | string           | A longer human-readable description of the offering, when available.                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ticker\_symbol                  | string           | The ticker symbol that will be used once the security begins trading on the secondary market.                                                                                                                                                                                                                                                                                                                                                                                             |
-| ipo\_reference                  | string           | The unique offering identifier used across the IPO Events Stream and `/v1/ipos/{ipo_reference}`. Also the path parameter on the get-one endpoint. **Treat as opaque** — format varies (e.g. `FDXF`, `333290518`, `BBWRLH2QEC`); do not parse.                                                                                                                                                                                                                                             |
-| cusip\_id                       | string           | CUSIP identifier of the offering. Standard CUSIPs are 9 alphanumeric characters; sandbox may use synthetic test values.                                                                                                                                                                                                                                                                                                                                                                   |
-| prospectus\_url                 | string           | URL to the prospectus document. Mirrors the `prospectus_url` payload of the corresponding `Prospectus` event on the IPO Events Stream.                                                                                                                                                                                                                                                                                                                                                    |
-| offering\_type                  | string           | The type of offering. Currently always `IPO`.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| availability                    | string enum      | Whether the offering is currently accepting orders. One of `available` (open for orders), `not_available` (not yet open), or `closed` (terminal — no further orders accepted).                                                                                                                                                                                                                                                                                                            |
-| anticipated\_shares             | integer          | Anticipated total share count for the offering, when known.                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| max\_price                      | string (decimal) | Upper bound of the indicated price range. Decimal string with no fixed precision (e.g. `"25"` or `"25.50"`).                                                                                                                                                                                                                                                                                                                                                                              |
-| min\_price                      | string (decimal) | Lower bound of the indicated price range. Decimal string with no fixed precision (e.g. `"20"` or `"20.50"`).                                                                                                                                                                                                                                                                                                                                                                              |
-| trade\_date                     | string (date)    | Anticipated first trading date on the secondary market, in `YYYY-MM-DD` format.                                                                                                                                                                                                                                                                                                                                                                                                           |
-| settlement\_date                | string (date)    | Anticipated settlement date, in `YYYY-MM-DD` format.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| no\_new\_orders                 | boolean          | When `true`, the offering is in its 60-minute withdrawal window and is not accepting new orders. This mirrors the `SixtyMinMail` event on the IPO Events Stream.                                                                                                                                                                                                                                                                                                                          |
-| sixty\_minute\_expiration\_time | string (RFC3339) | **Optional.** When the 60-minute withdrawal window has started for this offering, this is the RFC3339 timestamp at which the window expires (e.g. `"2026-05-19T20:00:01Z"`). Absent on offerings whose 60-minute window has not started. **Note:** this field is only the *expiration* of the window — to know *when* the window opens, subscribe to the `SixtyMinMail` event on the IPO Events Stream. The field is intended to drive UI countdowns once you have been notified via SSE. |
-| underwriters                    | array of strings | List of underwriter names participating in the offering.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| unit\_step\_size                | string (decimal) | **Optional.** The minimum increment in which order amounts (notional) can be specified. Only present on offerings that enforce a step-size constraint; absent when there is no step-size constraint.                                                                                                                                                                                                                                                                                      |
-| min\_ticket\_size               | string (decimal) | Minimum allowed order amount. Decimal string with no fixed precision.                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| max\_ticket\_size               | string (decimal) | Maximum allowed order amount. Decimal string with no fixed precision.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Attribute**                  | **Type**         | **Notes**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                         | string           | The official name of the offering.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `description`                  | string           | A longer human-readable description of the offering, when available.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `ticker_symbol`                | string           | The ticker symbol that will be used once the security begins trading on the secondary market.                                                                                                                                                                                                                                                                                                                                                                                            |
+| `ipo_reference`                | string           | The unique offering identifier used across the IPO Events Stream and `/v1/ipos/{ipo_reference}`. Also the path parameter on the get-one endpoint. **Treat as opaque.** The format varies (e.g. `FDXF`, `333290518`, `BBWRLH2QEC`); do not parse.                                                                                                                                                                                                                                         |
+| `cusip_id`                     | string           | CUSIP identifier of the offering. Standard CUSIPs are 9 alphanumeric characters; sandbox may use synthetic test values.                                                                                                                                                                                                                                                                                                                                                                  |
+| `prospectus_url`               | string           | URL to the prospectus document. Mirrors the `prospectus_url` payload of the corresponding `Prospectus` event on the IPO Events Stream.                                                                                                                                                                                                                                                                                                                                                   |
+| `offering_type`                | string           | The type of offering. Currently always `IPO`.                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `availability`                 | string enum      | Whether the offering is currently accepting orders. One of `available` (open for orders), `not_available` (not yet open), or `closed` (terminal; no further orders accepted).                                                                                                                                                                                                                                                                                                            |
+| `anticipated_shares`           | integer          | Anticipated total share count for the offering, when known.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `max_price`                    | string (decimal) | Upper bound of the indicated price range. Decimal string with no fixed precision (e.g. `"25"` or `"25.50"`).                                                                                                                                                                                                                                                                                                                                                                             |
+| `min_price`                    | string (decimal) | Lower bound of the indicated price range. Decimal string with no fixed precision (e.g. `"20"` or `"20.50"`).                                                                                                                                                                                                                                                                                                                                                                             |
+| `trade_date`                   | string (date)    | Anticipated first trading date on the secondary market, in `YYYY-MM-DD` format.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `settlement_date`              | string (date)    | Anticipated settlement date, in `YYYY-MM-DD` format.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `no_new_orders`                | boolean          | When `true`, the offering is in its 60-minute withdrawal window and is not accepting new orders. This mirrors the `SixtyMinMail` event on the IPO Events Stream.                                                                                                                                                                                                                                                                                                                         |
+| `sixty_minute_expiration_time` | string (RFC3339) | **Optional.** When the 60-minute withdrawal window has started for this offering, this is the RFC3339 timestamp at which the window expires (e.g. `"2026-05-19T20:00:01Z"`). Absent on offerings whose 60-minute window has not started. **Note:** this field is only the *expiration* of the window. To know *when* the window opens, subscribe to the `SixtyMinMail` event on the IPO Events Stream. The field is intended to drive UI countdowns once you have been notified via SSE. |
+| `underwriters`                 | array of strings | List of underwriter names participating in the offering.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `unit_step_size`               | string (decimal) | **Optional.** The minimum increment in which order amounts (notional) can be specified. Only present on offerings that enforce a step-size constraint; absent when there is no step-size constraint.                                                                                                                                                                                                                                                                                     |
+| `min_ticket_size`              | string (decimal) | Minimum allowed order amount. Decimal string with no fixed precision.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `max_ticket_size`              | string (decimal) | Maximum allowed order amount. Decimal string with no fixed precision.                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ## Endpoints
 
@@ -142,7 +142,7 @@ curl -s -H "Authorization: Bearer $TOKEN" \
 >
 > * `unit_step_size` is omitted because this offering does not enforce a step-size constraint.
 > * `sixty_minute_expiration_time` is absent because the 60-minute withdrawal window has not started yet.
-> * Numeric fields (`min_price`, `max_price`, `min_ticket_size`, etc.) are decimal strings with no fixed precision — do not assume two-decimal formatting.
+> * Numeric fields (`min_price`, `max_price`, `min_ticket_size`, etc.) are decimal strings with no fixed precision. Do not assume two-decimal formatting.
 > * `ipo_reference` is opaque; do not parse or assume a specific shape.
 
 ***
@@ -188,13 +188,13 @@ curl -s -H "Authorization: Bearer $TOKEN" \
 }
 ```
 
-> This example is for an offering inside its 60-minute withdrawal window — note `no_new_orders: true` and the populated `sixty_minute_expiration_time`.
+> This example is for an offering inside its 60-minute withdrawal window. Note `no_new_orders: true` and the populated `sixty_minute_expiration_time`.
 
 ***
 
 ## Placing IPO Orders
 
-IPO orders are placed using the standard Broker API order endpoints. Order requests and responses use the **standard Order schema** — see the [Create Order for Account](https://docs.alpaca.markets/us/reference/createorderforaccount) reference for the complete request and response field set. The fields below are the IPO-specific points of attention.
+IPO orders are placed using the standard Broker API order endpoints. Order requests and responses use the **standard Order schema**. See the [Create Order for Account](https://docs.alpaca.markets/us/reference/createorderforaccount) reference for the complete request and response field set. The fields below are the IPO-specific points of attention.
 
 <Callout icon="📘" theme="info">
   Omnibus & Omnisub partners will have to place multiple orders for the same offering. A new order will have to be placed for every end-user order on an IPO offering. No bulk orders/aggregation of orders will be supported.
@@ -206,7 +206,7 @@ IPO orders are placed using the standard Broker API order endpoints. Order reque
 * IPO orders are **notional-only**: provide `notional`; omit `qty`. On responses, `qty` will always be `null` for IPO orders.
 * Only `side=buy` is accepted for IPOs.
 * `type` must be `market`.
-* `time_in_force` must be `gtc` — effective only during the offering period and the 60-minute withdrawal window.
+* `time_in_force` must be `gtc`. It is effective only during the offering period and the 60-minute withdrawal window.
 * Orders are validated against offering constraints (`min_ticket_size`, `max_ticket_size`, and `unit_step_size` when present).
 * `asset_class` on responses is `"ipo"`.
 
@@ -214,7 +214,7 @@ IPO orders are placed using the standard Broker API order endpoints. Order reque
 
 `POST /v1/trading/accounts/{account_id}/orders`
 
-New orders can only be placed while the offering is `availability=available` and **before** the 60-minute withdrawal window starts (`no_new_orders=false`). Orders submitted after the 60-minute window has started may be accepted synchronously and rejected later via the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) — see [Error Handling](#error-handling) for details.
+New orders can only be placed while the offering is `availability=available` and **before** the 60-minute withdrawal window starts (`no_new_orders=false`). Orders submitted after the 60-minute window has started may be accepted synchronously and rejected later via the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse). See [Error Handling](#error-handling) for details.
 
 #### Example Request
 
@@ -260,7 +260,7 @@ The full response also includes the standard Order fields (`updated_at`, `filled
 
 `PATCH /v1/trading/accounts/{account_id}/orders/{order_id}`
 
-See the [Replace Order for Account](https://docs.alpaca.markets/us/reference/replaceorderforaccount) reference for the full schema. For IPO orders, only `notional` and `client_order_id` are meaningful in the request body. Modifications are accepted throughout the offering period and the 60-minute withdrawal window — once the withdrawal window ends, the COB becomes binding and modifications are no longer permitted.
+See the [Replace Order for Account](https://docs.alpaca.markets/us/reference/replaceorderforaccount) reference for the full schema. For IPO orders, only `notional` and `client_order_id` are meaningful in the request body. Modifications are accepted throughout the offering period and the 60-minute withdrawal window. Once the withdrawal window ends, the COB becomes binding and modifications are no longer permitted.
 
 #### Example Request
 
@@ -276,13 +276,13 @@ curl -s -X PATCH \
 
 #### Rejection after the modification window closes
 
-Replace requests submitted after the modification window has closed are currently **accepted synchronously** (`HTTP 200`) and rejected later via the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) — see [Asynchronous rejections](#asynchronous-rejections). The trade event arrives as a `rejected` event whose inner `order.reason` references the closed modification window. Subscribe to the trade events stream to surface this terminal status to end-users.
+Replace requests submitted after the modification window has closed are currently **accepted synchronously** (`HTTP 200`) and rejected later via the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse). See [Asynchronous rejections](#asynchronous-rejections). The trade event arrives as a `rejected` event whose inner `order.reason` references the closed modification window. Subscribe to the trade events stream to surface this terminal status to customers.
 
 ### Cancel an IPO Order
 
 `DELETE /v1/trading/accounts/{account_id}/orders/{order_id}`
 
-See the [Delete Order for Account](https://docs.alpaca.markets/us/reference/deleteorderforaccount) reference. Cancellation is accepted throughout the offering period and the 60-minute withdrawal window — once the withdrawal window ends, the COB becomes binding and cancellation is no longer permitted.
+See the [Delete Order for Account](https://docs.alpaca.markets/us/reference/deleteorderforaccount) reference. Cancellation is accepted throughout the offering period and the 60-minute withdrawal window. Once the withdrawal window ends, the COB becomes binding and cancellation is no longer permitted.
 
 #### Example Request
 
@@ -296,7 +296,7 @@ curl -s -X DELETE \
 
 `GET /v1/trading/accounts/{account_id}/orders/{order_id}`
 
-Retrieve the current status of an IPO order. Returns the standard Order schema — see [Get Order for Account](https://docs.alpaca.markets/us/reference/getorderforaccount).
+Retrieve the current status of an IPO order. Returns the standard Order schema. See [Get Order for Account](https://docs.alpaca.markets/us/reference/getorderforaccount).
 
 #### Example Request
 
@@ -377,8 +377,8 @@ IPO orders follow a specific lifecycle:
 
 Some rejection conditions are **not** evaluated synchronously at submission time and are instead delivered later as a `rejected` event on the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) (`GET /v2/events/trades`). The most common cases are:
 
-* Submitting a new order against an offering that has entered its 60-minute withdrawal window (`no_new_orders=true`) — the order is accepted as `pending_new` and rejected asynchronously.
-* Replacing or cancelling an order after the modification window has closed — the request is accepted synchronously and rejected asynchronously.
+* Submitting a new order against an offering that has entered its 60-minute withdrawal window (`no_new_orders=true`). The order is accepted as `pending_new` and rejected asynchronously.
+* Replacing or cancelling an order after the modification window has closed. The request is accepted synchronously and rejected asynchronously.
 * Account-level eligibility checks that fail post-acceptance.
 * Allocation-time rejections (e.g. duplicate orders, allocation engine constraints).
 
@@ -388,14 +388,14 @@ Always subscribe to the trade events stream alongside the IPO events stream to s
 
 ## IPO Positions
 
-Once an IPO is allocated to an end-user, it appears as a position on the standard positions endpoints with `asset_class: "us_equity"`. See the [Positions API reference](https://docs.alpaca.markets/us/reference/getallopenpositions) for the full schema.
+Once an IPO is allocated to an end-user, it appears as a position on the standard positions endpoints with `asset_class: "us_equity"`. See the [Broker API positions reference](https://docs.alpaca.markets/us/reference/getallopenpositions) for the full schema.
 
 ### Lifecycle
 
 There are three lifecycle states relevant to position visibility:
 
 1. **Before allocation.** While the order is still in `new` / `pending_new`, no position row exists — there is no fill yet.
-2. **Post-allocation, pre-secondary-listing.** Once the allocation is delivered, a position row appears with `qty`, `qty_available`, `avg_entry_price`, and `cost_basis` populated from the allocation. Market-data-derived fields are unavailable in this window because the security has not started trading on the secondary market yet — see [below](#market-data-fields-during-the-pre-listing-window).
+2. **Post-allocation, pre-secondary-listing.** Once the allocation is delivered, a position row appears with `qty`, `qty_available`, `avg_entry_price`, and `cost_basis` populated from the allocation. Market-data-derived fields are unavailable in this window because the security has not started trading on the secondary market yet. See [Market-data fields during the pre-listing window](#market-data-fields-during-the-pre-listing-window).
 3. **Once secondary trading starts.** The pricer feed for the security activates; market-data fields populate normally on subsequent reads.
 
 ### Market-data fields during the pre-listing window
@@ -418,7 +418,7 @@ The fields populated in this window are:
 
 **Recommendation:** when rendering an allocated-but-not-yet-listed IPO position, fall back to `avg_entry_price` for any UI cell that would normally show a current price, and treat unrealized P\&L as zero until secondary trading begins.
 
-#### Example Response (200) — pre-listing IPO position
+#### Example Response (200): pre-listing IPO position
 
 ```json
 {
@@ -493,10 +493,10 @@ All events follow a common envelope structure:
 
 | Field                | Type             | Description                                                                                      |
 | -------------------- | ---------------- | ------------------------------------------------------------------------------------------------ |
-| `verb`               | string           | Event type identifier (PascalCase — see Event Types above).                                      |
+| `verb`               | string           | Event type identifier in PascalCase. See Event Types above.                                      |
 | `offering_reference` | string           | Unique IPO offering ID. Treat as opaque.                                                         |
 | `event_id`           | string (ULID)    | ULID identifying this event uniquely. Useful for de-duplication when reconnecting with `since=`. |
-| `payload`            | object \| absent | Event-specific data. **Optional** — `OfferingCancellation` events do not include a `payload`.    |
+| `payload`            | object \| absent | Event-specific data. **Optional.** `OfferingCancellation` events do not include a `payload`.     |
 | `at`                 | string (RFC3339) | Source timestamp from the upstream IPO system.                                                   |
 | `received_at`        | string (RFC3339) | Timestamp when Alpaca received and broadcast the event. Typically very close to `at`.            |
 
@@ -552,7 +552,7 @@ curl -N \
 data: {"verb":"Offering","offering_reference":"EXMP260615","event_id":"01JBPXJ4Z8XWQK3QY2Q5N9R8KT","payload":{"name":"Example Corp","ticker_symbol":"EXMP","offering_type_name":"IPO","available_to_order":"Available","min_price":"18","max_price":"22","source":"sync-offerings"},"at":"2026-06-09T10:30:00.000Z","received_at":"2026-06-09T10:30:00.000Z"}
 ```
 
-> **`payload.available_to_order`** is emitted as a PascalCase enum string — one of `"Available"`, `"NotAvailable"`, or `"Closed"`. Note this is **not** the same value space as the offering object's `availability` field, which is lowercase (`available` / `not_available` / `closed`). When mapping between the two, normalize on the client side. **`payload.source`** identifies the upstream sync source (e.g. `"sync-offerings"`). Treat as informational.
+> **`payload.available_to_order`** is emitted as a PascalCase enum string: one of `"Available"`, `"NotAvailable"`, or `"Closed"`. Note this is **not** the same value space as the offering object's `availability` field, which is lowercase (`available` / `not_available` / `closed`). When mapping between the two, normalize on the client side. **`payload.source`** identifies the upstream sync source (e.g. `"sync-offerings"`). Treat as informational.
 
 **Sixty-Minute Mail:**
 
@@ -560,7 +560,7 @@ data: {"verb":"Offering","offering_reference":"EXMP260615","event_id":"01JBPXJ4Z
 data: {"verb":"SixtyMinMail","offering_reference":"EXMP260615","event_id":"01JBPXJ4Z8XWQK3QY2Q5N9R8KT","payload":{"subject":"60-minute withdrawal window: Example Corp","sixty_minute_expiration_time":"2026-06-15 13:00:02 UTC"},"at":"2026-06-15T12:00:02.000Z","received_at":"2026-06-15T12:00:02.000Z"}
 ```
 
-> **`payload.sixty_minute_expiration_time`** is a free-form string in the form `YYYY-MM-DD HH:MM:SS UTC` — **not** RFC3339, and **not** the same format as the `sixty_minute_expiration_time` attribute on the offering object (which is RFC3339). Parse against the explicit `YYYY-MM-DD HH:MM:SS UTC` layout when reading from the SSE payload.
+> **`payload.sixty_minute_expiration_time`** is a free-form string in the form `YYYY-MM-DD HH:MM:SS UTC`. It is **not** RFC3339, and **not** the same format as the `sixty_minute_expiration_time` attribute on the offering object (which is RFC3339). Parse against the explicit `YYYY-MM-DD HH:MM:SS UTC` layout when reading from the SSE payload.
 
 **Offering cancellation:**
 
@@ -578,7 +578,7 @@ data: {"verb":"Allocation","offering_reference":"EXMP260615","event_id":"01JBPXJ
 
 ### IPO Lifecycle
 
-<Image align="center" src="https://files.readme.io/bf3f00e785ffb86c9cbde66eca8e8fe5130eb791045280654f541a78073127e7-IPO_Lifecycle_-_External_Facing.png" />
+<Image align="center" src="https://files.readme.io/bf3f00e785ffb86c9cbde66eca8e8fe5130eb791045280654f541a78073127e7-IPO_Lifecycle_-_External_Facing.png" alt="IPO lifecycle diagram" />
 
 ### Response Headers
 
@@ -603,7 +603,7 @@ This event signals the start of the 60-minute COB (Conditional Order to Buy) wit
 * After the window ends, the COB becomes binding.
 * Consider sending an additional email notification to the end-user for auditability.
 
-> **Driving a UI countdown:** the offering object exposes `sixty_minute_expiration_time` (RFC3339) once the window has started — use the `SixtyMinMail` SSE event as the *trigger* to enter the countdown UI, then read the offering's `sixty_minute_expiration_time` (or the SSE payload's `sixty_minute_expiration_time`) for the deadline. The expiration field on the offering object alone cannot be used as a start signal because by the time it appears, the window has already begun.
+> **Driving a UI countdown:** the offering object exposes `sixty_minute_expiration_time` (RFC3339) once the window has started. Use the `SixtyMinMail` SSE event as the *trigger* to enter the countdown UI, then read the offering's `sixty_minute_expiration_time` (or the SSE payload's `sixty_minute_expiration_time`) for the deadline. The expiration field on the offering object alone cannot be used as a start signal because by the time it appears, the window has already begun.
 
 ***
 
@@ -619,12 +619,12 @@ This event signals the start of the 60-minute COB (Conditional Order to Buy) wit
 
 ### Where errors come from
 
-1. **API response (synchronous)** — The server returns an HTTP error status and a JSON body with `code` and `message`.
-2. **Trade events (SSE, asynchronous)** — After an order is accepted, it may later be rejected. That rejection is delivered on the account's [trade events stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) (`GET /v2/events/trades`) — see [Asynchronous rejections](#asynchronous-rejections) above.
+1. **API response (synchronous):** The server returns an HTTP error status and a JSON body with `code` and `message`.
+2. **Trade events (SSE, asynchronous):** After an order is accepted, it may later be rejected. That rejection is delivered on the account's [trade events stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) (`GET /v2/events/trades`). See [Asynchronous rejections](#asynchronous-rejections) above.
 
 ### REST API
 
-On error the API returns:
+On error, Broker API returns:
 
 * **HTTP status:** 400, 401, 403, 404, 422, 429, 500, 501, 503, 504
 * **JSON body:** `code` (number), `message` (string)
@@ -637,7 +637,7 @@ Example:
 
 ### General error codes (all APIs, including IPO)
 
-The same error codes and HTTP statuses that apply to all Alpaca API endpoints also apply to IPO endpoints. See the main API documentation for the full list.
+The same error codes and HTTP statuses that apply to all Broker API endpoints also apply to IPO endpoints. See the Broker API documentation for the full list.
 
 ### IPO-specific error codes
 
@@ -680,12 +680,12 @@ IPO order create and replace can return the following. HTTP status varies (400, 
 
 * **Submitting against a closed offering** returns `422 / 40010001 / "asset <symbol> is not active"`. (`availability=closed` rejections are surfaced through the standard inactive-asset code, not through `42210000`.)
 * **Submitting with a non-numeric or malformed `notional`** returns `400 / 40010000 / "request body format is invalid"` at the request-validation layer, before IPO-specific checks run.
-* **Submitting against an offering inside its 60-minute withdrawal window** (`no_new_orders=true`) is **accepted synchronously** as `pending_new` and rejected later via the trade events SSE stream — see [Asynchronous rejections](#asynchronous-rejections).
+* **Submitting against an offering inside its 60-minute withdrawal window** (`no_new_orders=true`) is **accepted synchronously** as `pending_new` and rejected later via the trade events SSE stream. See [Asynchronous rejections](#asynchronous-rejections).
 * **Replacing or cancelling an order after the modification window has closed** is also **accepted synchronously** and rejected later via the trade events SSE stream. There is no synchronous `40320060` / "modification window closed" error today.
 
 ### Trade events (SSE)
 
-Rejections after order acceptance are delivered on the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) (`GET /v2/events/trades`). Each rejection arrives as a `rejected` event whose inner `order` object carries the standard order fields plus a `reason` string when one is available. Common IPO rejection reasons include offering closed, account eligibility, duplicate orders, and allocation engine outcomes — these reasons are free-text and may vary.
+Rejections after order acceptance are delivered on the [trade events SSE stream](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) (`GET /v2/events/trades`). Each rejection arrives as a `rejected` event whose inner `order` object carries the standard order fields plus a `reason` string when one is available. Common IPO rejection reasons include offering closed, account eligibility, duplicate orders, and allocation engine outcomes. These reasons are free-text and may vary.
 
 For the full event envelope, schema, and reconnection semantics, see the [Subscribe to Trade Events (SSE)](https://docs.alpaca.markets/us/reference/subscribetotradev2sse) reference. The same `since` / `since_id` replay parameters documented there apply.
 

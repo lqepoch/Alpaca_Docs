@@ -197,7 +197,8 @@ The operation issues an OAuth code which can be used in the OAuth code flow.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

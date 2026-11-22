@@ -181,7 +181,8 @@ The Country Info API serves country information for every supported countries in
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

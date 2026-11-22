@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:20:14.000Z
+updatedAt: 2026-11-16T15:29:44.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,19 +15,19 @@ You can either follow the steps below to test specific calls within the broker d
 
 # Postman Collection
 
-To get started with the Broker API Postman Collection you can either access the [Alpaca Workspace on Postman](https://www.postman.com/alpacamarkets/workspace/alpaca-public-workspace/overview) to fork the collection or import the file below directly to your own workspace.
+To get started with the Broker API Postman Collection you can either access the [Alpaca Workspace on Postman](https://www.postman.com/alpacamarkets/workspace/alpaca-us/overview) to fork the collection or import the file below directly to your own workspace.
 
 ## Fork Broker API Collection on Postman
 
-Refer to this [tutorial](https://alpaca.markets/learn/try-our-postman-workspace-for-alpaca-apis/) to learn how to fork the collection and sample environment and get started with making calls right away. We recommend following this method so your collection stays up to date with the changes we make to the API.
+Refer to this [tutorial](https://alpaca.markets/learn/try-our-postman-workspace-for-alpaca-apis/) to learn how to fork the collection and sample environment and get started with making calls right away. We recommend following this method so your collection stays up to date with the changes we make to Broker API.
 
 ## Import Broker API Collection
 
-1. Download the [Broker API API Collection](https://www.postman.com/alpacamarkets/workspace/alpaca-public-workspace/collection/19455863-d72a0729-972d-486f-8aa9-2b5aede8d615?ctx=documentation)
+1. Download the [Broker API Collection](https://www.postman.com/alpacamarkets/workspace/alpaca-us/collection/19455863-d72a0729-972d-486f-8aa9-2b5aede8d615?ctx=documentation)
 2. Import the file into Postman (File -> Import..)
 3. Create a Postman environment with the following variables. Be sure to select the environment in the upper right hand corner like pictured below.
 
-![](https://files.readme.io/a8d4aae-image.png)
+![Postman environment selector in the upper right corner with the Broker API environment selected](https://files.readme.io/a8d4aae-image.png)
 
 4. Send one of the defined HTTP requests while the created environment is selected.
 
@@ -71,7 +71,7 @@ The response would contain an array of assets, with the first one being Agilent 
 
 ## 1. Create an Account
 
-One of the first things you would need to do using Broker API is to create an account for your end user. Depending on the type of setup you have with Alpaca ([Fully-Disclosed](/docs/use-cases#fully-disclosed), [Omnibus](docs/use-cases#omnibus) or [RIA](/docs/use-cases#registered-investment-advisor-ria)) the requirements might differ.
+One of the first things you would need to do using Broker API is to create an account for your end user. Depending on the type of setup you have with Alpaca ([Fully-Disclosed](./use-cases#fully-disclosed), [Omnibus](./use-cases#omnibus) or [RIA](./use-cases#registered-investment-advisor-ria)) the requirements might differ.
 
 Below is a sample request to create an account for a Fully-Disclosed setup:
 
@@ -205,13 +205,13 @@ If successful you will receive an `ach_relationship` object like this:
 }
 ```
 
-Initially you will receive a `status = QUEUED`.
+Initially you will receive a `status` of `QUEUED`.
 
-However, if you make a `GET/v1/accounts/{account_id}/ach_relationships`, after \~1 minute you should see `status = APPROVED`.
+However, if you make a `GET /v1/accounts/{account_id}/ach_relationships` request, after \~1 minute you should see a `status` of `APPROVED`.
 
 ### Making a Virtual ACH Transfer
 
-Now that you have an existing ACH relationship between the account and their bank, you can fund the account via ACH using the following endpoint `POST/v1/accounts/{account_id}/transfers` using the `relationship_id` we got in the response of the previous section.
+Now that you have an existing ACH relationship between the account and their bank, you can fund the account via ACH using the following endpoint `POST /v1/accounts/{account_id}/transfers` using the `relationship_id` we got in the response of the previous section.
 
 ```json
 {
@@ -239,7 +239,7 @@ The response you should get would look like this.
 }
 ```
 
-After around 10-30 minutes (to simulate ACH delay) the transfer should reflect on the user’s balance via a cash deposit activity (CSD) viewed via this endpoint `GET v1/accounts/activities/CSD\?account_id\={account_id}`
+After around 10-30 minutes (to simulate ACH delay) the transfer should reflect on the user’s balance via a cash deposit activity (`CSD`) viewed via this endpoint `GET /v1/accounts/activities/CSD?account_id={account_id}`
 
 ## 3. Journaling Between Accounts
 
@@ -266,7 +266,7 @@ To illustrate our example, the Sweep account for this sandbox account looks like
 
 In the case of a signup reward, or simply attempting to simulate instant funding, journaling funds between your firm balance with Alpaca and the end user’s brokerage account is the best way.
 
-You can simply pass in a request with `entry_type =JNLC` and choose the amount you want to journal to the user.
+You can simply pass in a request with `entry_type` set to `JNLC` and choose the amount you want to journal to the user.
 
 ## 4. Passing an Order
 
@@ -282,7 +282,7 @@ The most common use case of Alpaca Broker API is to allow your end users to trad
 }
 ```
 
-Whatever the response from Alpaca would be (denoted by the status) you should receive an Order model in the response looking like this
+Whatever the response from Alpaca would be (denoted by the `status` field) you should receive an Order model in the response looking like this
 
 ```json
 {
@@ -326,7 +326,7 @@ Whatever the response from Alpaca would be (denoted by the status) you should re
 
 You can always listen to any event changes to accounts, journals or orders via our Events SSE.
 
-An example for a journal update via this endpoint GET/v1/events/journal/updates where it shows all the different stages the journal id = 2f144d2a-91e6-46ff-8e37-959a701cc58d is going through.
+The following example shows events from `GET /v1/events/journal/updates` for the journal with the `journal_id` of `2f144d2a-91e6-46ff-8e37-959a701cc58d`, tracing each status it moves through.
 
 ```
 data: {"at":"2021-05-07T10:28:23.163857Z","entry_type":"JNLC","event_id":1406,"journal_id":"2f144d2a-91e6-46ff-8e37-959a701cc58d","status_from":"","status_to":"queued"}

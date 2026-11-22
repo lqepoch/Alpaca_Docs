@@ -228,7 +228,8 @@ The endpoint returns the details of OAuth client to display in the authorization
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

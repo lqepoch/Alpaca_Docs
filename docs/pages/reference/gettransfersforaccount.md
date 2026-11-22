@@ -394,7 +394,8 @@ Returns a list of transfer entities ordered by created_at
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

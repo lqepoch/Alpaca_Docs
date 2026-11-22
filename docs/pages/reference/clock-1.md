@@ -294,7 +294,7 @@ This API serves information about multiple markets: the current time, if it's a 
         },
         "summary": "Get Market Clock",
         "tags": [
-          "Clock"
+          "Calendar"
         ]
       }
     }
@@ -317,12 +317,13 @@ This API serves information about multiple markets: the current time, if it's a 
   ],
   "tags": [
     {
-      "name": "Clock"
+      "name": "Calendar"
     }
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

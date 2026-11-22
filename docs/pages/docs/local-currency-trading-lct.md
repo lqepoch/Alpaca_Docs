@@ -350,7 +350,7 @@ Calling the above mentioned API yields the following response,
 
 # Estimate Stock Order
 
-Customers using LCT for the first time may not be sure how much their local currency can buy of a US stock. To address this pain point we created the [Order Estimation Endpoint](/reference/get-v1-trading-accounts-account_id-orders-estimation). The customer can enter:
+Customers using LCT for the first time may not be sure how much their local currency can buy of a US stock. To address this pain point we created the [Order Estimation Endpoint](https://docs.alpaca.markets/us/reference/get-v1-trading-accounts-account_id-orders-estimation). The customer can enter:
 
 * the security
 * the notional value
@@ -430,7 +430,7 @@ Moreover, we support fractional shares trading not only during standard market h
 
 ## Submit a Stock Market Order
 
-Once having estimated a given order, we can actually commit to and execute the order using the usual [Orders API](/reference/createorderforaccount).
+Once having estimated a given order, we can actually commit to and execute the order using the usual [Orders API](https://docs.alpaca.markets/us/reference/createorderforaccount).
 
 We note here a few key LCT specific order attributes:
 

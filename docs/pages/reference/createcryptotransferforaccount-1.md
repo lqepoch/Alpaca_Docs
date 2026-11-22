@@ -449,7 +449,8 @@ Creates a withdrawal request. Note that outgoing withdrawals must be sent to a w
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

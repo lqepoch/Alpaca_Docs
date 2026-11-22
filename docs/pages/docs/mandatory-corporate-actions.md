@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-07-08T14:43:33.000Z
+updatedAt: 2026-11-17T21:39:12.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -34,7 +34,7 @@ Frequently Asked Mandatory Corporate Action Questions
   * **Symbol & CUSIP change** - This is when both the symbol & CUSIP of the underlying asset change as part of the name change event.\
     Note: There might also be no change in either CUSIP or symbol, in which case the update to the asset will occur without triggering an NC event.
 
-**Examples** of each type of Mandatory Event above are available in the docs [here](https://docs.alpaca.markets/docs/draft-sse-events#non-trade-activities-events).
+**Examples** of each type of Mandatory Event above are available in the [non-trade activities events documentation](https://docs.alpaca.markets/us/docs/sse-events#non-trade-activities-events).
 
 ***
 
@@ -157,13 +157,13 @@ Yes, the amount sent in the `DIV` event is without the tax `DIVNRA`, so you need
 
 ### Are symbol changes notified via the SSE Events?
 
-No, as of now the symbol changes need to be seen via the <Anchor label="Assets API" title="https://docs.alpaca.markets/reference/getassets" href="https://docs.alpaca.markets/reference/getassets">Assets API</Anchor>. Syncing at regular intervals is what is recommended to make sure you are up-to-date with the symbol changes.
+No, as of now the symbol changes need to be seen via the [Assets endpoint](https://docs.alpaca.markets/us/reference/getassets). Syncing at regular intervals is what is recommended to make sure you are up-to-date with the symbol changes.
 
 ***
 
 ### Do we have a new asset object, if there is a symbol change?
 
-The answer is a YES and a NO. The reason for that is, if there is simply a symbol change without the CUSIP being updated, in that case, we just update the existing asset by updating the Symbol. If there is a CUSIP change, the current asset becomes INACTIVE and a new Asset Object is added the the response of the <Anchor label="Assets API" title="https://docs.alpaca.markets/reference/getassets" href="https://docs.alpaca.markets/reference/getassets">Assets API</Anchor>.
+The answer is a YES and a NO. The reason for that is, if there is only a symbol change without the CUSIP being updated, in that case, we update the existing asset by updating the `symbol`. If there is a CUSIP change, the current asset becomes INACTIVE and a new Asset Object is added the the response of the [Assets endpoint](https://docs.alpaca.markets/us/reference/getassets).
 
 ***
 

@@ -572,7 +572,8 @@ Serves the list of US corporates available at Alpaca. The response is sorted by 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

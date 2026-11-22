@@ -1,20 +1,20 @@
 ---
-updatedAt: 2026-07-16T09:00:40.000Z
+updatedAt: 2026-11-13T19:31:43.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
 ---
 
-# Broker MCP Server
+# Broker API MCP
 
-Operate, inspect, and reason over the Alpaca Broker API with AI agents — no local setup, no repo cloning, no partner-run infrastructure.
+Operate, inspect, and reason over the Alpaca Broker API with AI agents; no local setup, no repo cloning, no partner-run infrastructure.
 
 <br />
 
 <Callout icon="🚧" theme="warn">
   ### Beta
 
-  The Broker API MCP Server is in **beta** and is rolling out to select broker partners. Behavior, available operations, and the consent experience may change as we incorporate partner feedback. During beta, **only Broker Dashboard super users can authorize and use the connection** — see [Who can use it (super users)](#who-can-use-it-super-users).
+  The Broker API MCP Server is in **beta** and is rolling out to select broker partners. Behavior, available operations, and the consent experience may change as we incorporate partner feedback. During beta, **only Broker Dashboard super users can authorize and use the connection**. See [Who can use it (super users)](#who-can-use-it-super-users).
 </Callout>
 
 ## What You Can Do
@@ -33,7 +33,7 @@ Before inviting a teammate to test, confirm whether they can actually authorize 
 
 ## Environments
 
-There are two hosted endpoints. Each maps to a distinct correspondent and uses its own OAuth client — sandbox and live credentials are **not** interchangeable. Use **sandbox** to test writes, account creation, orders, and funding.
+There are two hosted endpoints. Each maps to a distinct correspondent and uses its own OAuth client, so sandbox and live credentials are **not** interchangeable. Use **sandbox** to test writes, account creation, orders, and funding.
 
 | Environment | MCP endpoint                                    |
 | ----------- | ----------------------------------------------- |
@@ -111,9 +111,9 @@ If you get an API-backed summary, the server is connected.
 
 Rather than loading thousands of endpoint tools into the model's context, the server uses a **CodeMode** discovery flow. The assistant:
 
-1. `search` — finds the relevant Broker API operation(s) from intent.
-2. `get_schema` — inspects required parameters, types, and response shape.
-3. `execute` — calls the endpoint with structured inputs (subject to the environment's read/write policy).
+1. `search`: finds the relevant Broker API operation(s) from intent.
+2. `get_schema`: inspects required parameters, types, and response shape.
+3. `execute`: calls the endpoint with structured inputs (subject to the environment's read/write policy).
 
 This keeps tool selection accurate and reduces context bloat.
 
@@ -137,7 +137,7 @@ Control-plane (operate on accounts):
 * "Create a sandbox account that lands in an action-required KYC state for a demo."
 * "In sandbox, create a test account and then retrieve its status."
 
-Data-plane (understand the API):
+Data-plane (understand Broker API):
 
 * "Which endpoint should I use to create an ACH relationship, and what fields are required?"
 * "Show me the endpoint and required fields to create a Broker API account."
@@ -147,7 +147,7 @@ Data-plane (understand the API):
 ## Safety & Environment Policy
 
 * **Revoking access.** Authorizations can be reviewed and revoked from the Broker Dashboard (Team Management). Removing a user's role also revokes their access on the next token refresh.
-* **API key security.** The connection uses OAuth — never paste API keys or secrets into chat.
+* **API key security.** The connection uses OAuth. Never paste API keys or secrets into chat.
 * **Review AI-suggested actions.** Where writes are enabled in either environment, confirm any mutating operation before it runs.
 
 ## Known Limitations (Beta)
@@ -158,8 +158,8 @@ Data-plane (understand the API):
 
 ## Resources
 
-* [Broker API documentation](https://docs.alpaca.markets/docs/about-broker-api)
-* [Broker API reference](https://docs.alpaca.markets/reference)
+* [Broker API documentation](./about-broker-api)
+* [Broker API reference](../reference)
 * [Alpaca Broker Skills for partner workflows](https://github.com/alpacahq/alpaca-skills)
 * [Alpaca Support](https://alpaca.markets/support)
 

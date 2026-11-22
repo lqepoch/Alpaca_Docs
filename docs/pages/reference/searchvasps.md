@@ -46,6 +46,9 @@ travel rule information for your whitelisted wallets. Use the `q` parameter to s
             "type": "array"
           }
         },
+        "required": [
+          "vasps"
+        ],
         "type": "object"
       },
       "VASP": {
@@ -218,7 +221,7 @@ travel rule information for your whitelisted wallets. Use the `q` parameter to s
                 }
               }
             },
-            "description": "Successful request. Returns an array of VASPs or an empty list if no matches found."
+            "description": "Successful request. `vasps` lists each match and is an empty array when nothing matches."
           }
         },
         "summary": "Search for VASPs",
@@ -250,7 +253,8 @@ travel rule information for your whitelisted wallets. Use the `q` parameter to s
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

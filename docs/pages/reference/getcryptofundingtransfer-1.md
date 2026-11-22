@@ -181,7 +181,8 @@ Returns a specific wallet transfer by passing into the query the transfer_id.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

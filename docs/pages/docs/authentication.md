@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-12-01T07:39:55.000Z
+updatedAt: 2026-11-16T15:24:37.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -7,7 +7,7 @@ agentTools:
 
 # Authentication
 
-# How to call our API
+# How to call Alpaca's APIs
 
 Alpaca's APIs are available under different domain names, and you first need to make sure that you are calling the right one. This page describes the machine-to-machine authentication types available in the following scenarios:
 
@@ -26,7 +26,7 @@ Alpaca's APIs are available under different domain names, and you first need to 
   * Market Data API endpoints on `data.sandbox.alpaca.markets`
   * Authentication endpoints on `authx.sandbox.alpaca.markets`
 
-If you have more than one account (or in case of broker partners, more than one correspondent), each of those have separate credentials. As an example, you cannot use your live account's credentials with the paper API, or vice versa.
+If you have more than one account (or in case of broker partners, more than one correspondent), each of those have separate credentials. As an example, you cannot use your live account's credentials for paper trading, or vice versa.
 
 # Authentication flows
 
@@ -36,7 +36,7 @@ If you have more than one account (or in case of broker partners, more than one 
   The Client Credentials authentication flow is not yet available for Trading API.
 </Callout>
 
-When using this flow, you first need to exchange your credentials for a short-lived access token, then use that token to authenticate with our API. Do not request a new access token for each API call. Access tokens issued by our token endpoint are valid for 15 minutes.
+When using this flow, you first need to exchange your credentials for a short-lived access token, then use that token to authenticate your requests. Do not request a new access token for each API call. Access tokens issued by our token endpoint are valid for 15 minutes.
 
 We offer two types of credentials you can use with this flow:
 
@@ -77,7 +77,7 @@ Our older authentication flow lets you authenticate with your key ID and secret 
 * Use HTTP Basic Authentication, send your key ID as the username, and your secret key as the password.
 * Use the `APCA-API-KEY-ID` and `APCA-API-SECRET-KEY` headers to send your key ID and secret key.
 
-As an example, here is how a Trading API user would authenticate with our API using the second method:
+As an example, here is how a Trading API user would authenticate with Trading API using the second method:
 
 ```curl
 curl -X GET "https://api.alpaca.markets/v2/account" \

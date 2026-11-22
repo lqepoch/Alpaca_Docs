@@ -12,6 +12,7 @@ Creating an order for your end customer. Each trading request must pass in the a
 - Note that when submitting crypto orders, `market`, `limit` and `stop_limit` orders are supported while the supported `time_in_force` values are `gtc`, and `ioc`.
 - For equities and crypto we accept fractional orders as well with either `notional` or `qty` provided.
 - Note that submitting an options order is only available for partners who have been enabled for Options BETA.
+- For multi-leg options orders (`order_class: mleg`), `commission` is a per-contract rate charged on the option contracts in the strategy, and `commission_type: qty` is required whenever `commission` is non-zero. Omitting `commission`, or sending `0`, is accepted as no commission.
 - In case of Fixed Income, only `market` and `limit` order types with `day` `time_in_force` are supported, and order replacement is not supported.
 Note that submitting Fixed Income orders is only available for partners who have been enabled for Fixed Income.
 - Note that submitting DMA orders (using `advanced_instructions` with `algorithm: DMA`) is only available for partners/correspondents who have been enabled for DMA.
@@ -23,6 +24,127 @@ Note that submitting Fixed Income orders is only available for partners who have
 {
   "components": {
     "examples": {
+      "BracketOrderResponse": {
+        "description": "A `bracket` order returned with its legs. The entry order and both legs share one `group_id`, and `group_role` identifies each order.",
+        "value": {
+          "asset_class": "us_equity",
+          "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+          "canceled_at": null,
+          "client_order_id": "5c2e8f1a-9d4b-4a7e-8c3f-6b1d0e9a2f47",
+          "created_at": "2026-09-28T14:30:12.418372Z",
+          "expired_at": null,
+          "extended_hours": false,
+          "failed_at": null,
+          "filled_at": null,
+          "filled_avg_price": null,
+          "filled_qty": "0",
+          "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+          "group_role": "entry",
+          "hwm": null,
+          "id": "b7d0e2c1-6a4f-4d3b-9e8a-2c5f1a7b9d30",
+          "legs": [
+            {
+              "asset_class": "us_equity",
+              "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+              "canceled_at": null,
+              "client_order_id": "2d7e9b41-5f3a-4c8e-a1b6-9e0d3c7f2a58",
+              "created_at": "2026-09-28T14:30:12.418372Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+              "group_role": "take_profit",
+              "hwm": null,
+              "id": "c4a9f3e8-1b2d-4e6f-8a7c-5d3e2f1b0a96",
+              "legs": null,
+              "limit_price": "170",
+              "notional": null,
+              "order_class": "bracket",
+              "order_type": "limit",
+              "position_intent": "sell_to_close",
+              "qty": "10",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "sell",
+              "source": null,
+              "status": "held",
+              "stop_price": null,
+              "submitted_at": "2026-09-28T14:30:12.402119Z",
+              "subtag": null,
+              "symbol": "AAPL",
+              "time_in_force": "gtc",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "limit",
+              "updated_at": "2026-09-28T14:30:12.418372Z"
+            },
+            {
+              "asset_class": "us_equity",
+              "asset_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+              "canceled_at": null,
+              "client_order_id": "8a4c1f6e-3b9d-4e2a-b7c5-1f0e9d8a6b34",
+              "created_at": "2026-09-28T14:30:12.418372Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "group_id": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+              "group_role": "stop_loss",
+              "hwm": null,
+              "id": "e2f8b1a6-7c3d-4a5e-9b8f-0d1c6a4e3b72",
+              "legs": null,
+              "limit_price": null,
+              "notional": null,
+              "order_class": "bracket",
+              "order_type": "stop",
+              "position_intent": "sell_to_close",
+              "qty": "10",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "sell",
+              "source": null,
+              "status": "held",
+              "stop_price": "140",
+              "submitted_at": "2026-09-28T14:30:12.402119Z",
+              "subtag": null,
+              "symbol": "AAPL",
+              "time_in_force": "gtc",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "stop",
+              "updated_at": "2026-09-28T14:30:12.418372Z"
+            }
+          ],
+          "limit_price": "150",
+          "notional": null,
+          "order_class": "bracket",
+          "order_type": "limit",
+          "position_intent": "buy_to_open",
+          "qty": "10",
+          "replaced_at": null,
+          "replaced_by": null,
+          "replaces": null,
+          "side": "buy",
+          "source": null,
+          "status": "accepted",
+          "stop_price": null,
+          "submitted_at": "2026-09-28T14:30:12.402119Z",
+          "subtag": null,
+          "symbol": "AAPL",
+          "time_in_force": "gtc",
+          "trail_percent": null,
+          "trail_price": null,
+          "type": "limit",
+          "updated_at": "2026-09-28T14:30:12.418372Z"
+        }
+      },
       "CryptoOrderResponse": {
         "value": {
           "asset_class": "crypto",
@@ -254,6 +376,124 @@ Note that submitting Fixed Income orders is only available for partners who have
           "updated_at": "2024-12-10T16:15:53.725139688Z"
         }
       },
+      "MultilegOptionsWithCommissionOrderResponse": {
+        "summary": "Multi-leg order with a per-contract commission",
+        "value": {
+          "asset_class": "",
+          "asset_id": "",
+          "canceled_at": null,
+          "client_order_id": "9e4a7c21-3b5d-4f8a-a6e2-1d0c9b8f7e65",
+          "commission": "1.5",
+          "commission_type": "qty",
+          "created_at": "2026-11-12T15:02:11.204518Z",
+          "expired_at": null,
+          "extended_hours": false,
+          "failed_at": null,
+          "filled_at": null,
+          "filled_avg_price": null,
+          "filled_qty": "0",
+          "hwm": null,
+          "id": "1b6f2c8e-4d3a-4f7e-9a51-6c2e8d0b7f34",
+          "legs": [
+            {
+              "asset_class": "us_option",
+              "asset_id": "f0ea14b2-8a49-4e9b-89d1-894c6e518a76",
+              "canceled_at": null,
+              "client_order_id": "c3f8a1d6-7e2b-4a9c-8d5f-2b1e0c6a9d47",
+              "created_at": "2026-11-12T15:02:11.204518Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "hwm": null,
+              "id": "5a2d9e7c-8f1b-4c6a-b3e4-0d7f2a9c1e58",
+              "legs": null,
+              "limit_price": null,
+              "notional": null,
+              "order_class": "mleg",
+              "order_type": "",
+              "position_intent": "buy_to_open",
+              "qty": "1",
+              "ratio_qty": "1",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "buy",
+              "source": null,
+              "status": "accepted",
+              "stop_price": null,
+              "submitted_at": "2026-11-12T15:02:11.193402Z",
+              "subtag": null,
+              "symbol": "AAPL250620C00100000",
+              "time_in_force": "day",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "",
+              "updated_at": "2026-11-12T15:02:11.204518Z"
+            },
+            {
+              "asset_class": "us_option",
+              "asset_id": "f89940db-eeb1-46e6-8f9b-bb1f27a0b395",
+              "canceled_at": null,
+              "client_order_id": "6d2b9f4e-1a8c-4d7b-9e3f-5c0a8b7d2e16",
+              "created_at": "2026-11-12T15:02:11.204518Z",
+              "expired_at": null,
+              "extended_hours": false,
+              "failed_at": null,
+              "filled_at": null,
+              "filled_avg_price": null,
+              "filled_qty": "0",
+              "hwm": null,
+              "id": "8e1c4b7a-2d9f-4e3c-a5b8-7f6d0e2c1a93",
+              "legs": null,
+              "limit_price": null,
+              "notional": null,
+              "order_class": "mleg",
+              "order_type": "",
+              "position_intent": "sell_to_open",
+              "qty": "1",
+              "ratio_qty": "1",
+              "replaced_at": null,
+              "replaced_by": null,
+              "replaces": null,
+              "side": "sell",
+              "source": null,
+              "status": "accepted",
+              "stop_price": null,
+              "submitted_at": "2026-11-12T15:02:11.193402Z",
+              "subtag": null,
+              "symbol": "AAPL250620C00105000",
+              "time_in_force": "day",
+              "trail_percent": null,
+              "trail_price": null,
+              "type": "",
+              "updated_at": "2026-11-12T15:02:11.204518Z"
+            }
+          ],
+          "limit_price": "2.5",
+          "notional": null,
+          "order_class": "mleg",
+          "order_type": "limit",
+          "qty": "1",
+          "replaced_at": null,
+          "replaced_by": null,
+          "replaces": null,
+          "side": "",
+          "source": null,
+          "status": "accepted",
+          "stop_price": null,
+          "submitted_at": "2026-11-12T15:02:11.193402Z",
+          "subtag": null,
+          "symbol": "",
+          "time_in_force": "day",
+          "trail_percent": null,
+          "trail_price": null,
+          "type": "limit",
+          "updated_at": "2026-11-12T15:02:11.204518Z"
+        }
+      },
       "OptionOrderResponse": {
         "value": {
           "asset_class": "us_option",
@@ -380,14 +620,16 @@ Note that submitting Fixed Income orders is only available for partners who have
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
       },
       "CommissionType": {
         "default": "notional",
-        "description": "An enum to select how to interpret the value provided in the commission field.\n\n- notional:\nCharge commission on a per order basis. (When the `commission_type` field is omitted from the order request, this is used as the default).\n\n- qty:\nCharge commission on a per qty/contract basis, pro rated.\n\n- bps:\nThe percent commission you want to charge the end user on the order (expressed in bps). Alpaca will convert the order to a notional amount for purposes of calculating commission.\nCommission value in bps can have up to two decimal places.",
+        "description": "An enum to select how to interpret the value provided in the commission field.\n\n- notional:\nCharge commission on a per order basis. (When the `commission_type` field is omitted from the order request, this is used as the default, except for `mleg` orders.)\nNot supported for `mleg` orders.\n\n- qty:\nCharge commission on a per qty/contract basis, pro rated.\nFor `mleg` orders, this is the only supported type and is required whenever `commission` is non-zero. Omitting `commission`, or sending `0`, is accepted as no commission. The rate is charged per option contract in the strategy.\n\n- bps:\nThe percent commission you want to charge the end user on the order (expressed in bps). Alpaca will convert the order to a notional amount for purposes of calculating commission.\nCommission value in bps can have up to two decimal places.\nNot supported for `mleg` orders.",
         "enum": [
           "notional",
           "qty",
@@ -416,7 +658,7 @@ Note that submitting Fixed Income orders is only available for partners who have
           },
           "commission_bps": {
             "deprecated": true,
-            "description": "**deprecated**: Please use the commission_type = bps instead and set the desired bps value in the `commission` field.\nThe percent commission you want to charge the end user on the order (expressed in bps). Alpaca will convert the order to a notional amount for purposes of calculating commission.\n",
+            "description": "**deprecated**: Please use the commission_type = bps instead and set the desired bps value in the `commission` field.\nThe percent commission you want to charge the end user on the order (expressed in bps). Alpaca will convert the order to a notional amount for purposes of calculating commission.\nNot supported for `mleg` orders.\n",
             "example": "10",
             "format": "decimal",
             "type": "string"
@@ -543,9 +785,11 @@ Note that submitting Fixed Income orders is only available for partners who have
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -557,7 +801,7 @@ Note that submitting Fixed Income orders is only available for partners who have
         "type": "object"
       },
       "MLegOrderLeg": {
-        "description": "Represents an individual leg of a multileg options order.",
+        "description": "Represents an individual leg of a multileg options order.\n\n`commission`, `commission_type`, and `commission_bps` are ignored on a leg and have no effect. Set `commission` and `commission_type` on the parent order.",
         "properties": {
           "position_intent": {
             "$ref": "#/components/schemas/PositionIntent"
@@ -685,6 +929,15 @@ Note that submitting Fixed Income orders is only available for partners who have
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -773,6 +1026,10 @@ Note that submitting Fixed Income orders is only available for partners who have
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -859,6 +1116,17 @@ Note that submitting Fixed Income orders is only available for partners who have
           ""
         ],
         "example": "",
+        "type": "string"
+      },
+      "OrderGroupRole": {
+        "description": "The role of this order within its `bracket`, `oto`, or `oco` order, identified by `group_id`.\n- `entry`: The entry order of a `bracket` or `oto` order.\n- `take_profit`: The take-profit limit order. For an `oco` order, this is the top-level order.\n- `stop_loss`: The stop-loss stop or stop-limit order.\n\nOmitted whenever `group_id` is omitted.",
+        "enum": [
+          "entry",
+          "take_profit",
+          "stop_loss"
+        ],
+        "example": "take_profit",
+        "title": "OrderGroupRole",
         "type": "string"
       },
       "OrderLeg": {
@@ -955,6 +1223,15 @@ Note that submitting Fixed Income orders is only available for partners who have
             "format": "decimal",
             "type": "string"
           },
+          "group_id": {
+            "description": "Opaque identifier shared by every order in the same `bracket`, `oto`, or `oco` order, including its legs and any replacement orders. Use it to associate related orders received from the `trade_updates` stream, where `legs` is not populated. Omitted for other orders.",
+            "example": "3f1c2b7e-8d4a-4c6e-9f2a-5b7d1e0c9a84",
+            "format": "uuid",
+            "type": "string"
+          },
+          "group_role": {
+            "$ref": "#/components/schemas/OrderGroupRole"
+          },
           "hwm": {
             "description": "The highest (lowest) market price seen since the trailing stop order was submitted.",
             "example": "3.14",
@@ -1045,6 +1322,10 @@ Note that submitting Fixed Income orders is only available for partners who have
               "null"
             ]
           },
+          "settlement_currency": {
+            "description": "Settlement currency of the order. Omitted when the order has none.",
+            "type": "string"
+          },
           "side": {
             "$ref": "#/components/schemas/OrderSide"
           },
@@ -1124,14 +1405,7 @@ Note that submitting Fixed Income orders is only available for partners who have
         "description": "Represents what side of the transaction an order was on. Required for all order classes except for `mleg`.",
         "enum": [
           "buy",
-          "sell",
-          "buy_minus",
-          "sell_plus",
-          "sell_short",
-          "sell_short_exempt",
-          "undisclosed",
-          "cross",
-          "cross_short"
+          "sell"
         ],
         "example": "buy",
         "type": "string"
@@ -1225,7 +1499,7 @@ Note that submitting Fixed Income orders is only available for partners who have
         }
       ],
       "post": {
-        "description": "Creating an order for your end customer. Each trading request must pass in the account_id in the URL.\n\n- Note that when submitting crypto orders, `market`, `limit` and `stop_limit` orders are supported while the supported `time_in_force` values are `gtc`, and `ioc`.\n- For equities and crypto we accept fractional orders as well with either `notional` or `qty` provided.\n- Note that submitting an options order is only available for partners who have been enabled for Options BETA.\n- In case of Fixed Income, only `market` and `limit` order types with `day` `time_in_force` are supported, and order replacement is not supported.\nNote that submitting Fixed Income orders is only available for partners who have been enabled for Fixed Income.\n- Note that submitting DMA orders (using `advanced_instructions` with `algorithm: DMA`) is only available for partners/correspondents who have been enabled for DMA.\n- For IPO indications of interest (`asset_class: \"ipo\"`), the `symbol` is the offering reference returned by [`GET /v1/ipos`](#operation/listIPOOfferings) (e.g. `FI111225`). IPO orders are notional-only (`notional` required, `qty` must be omitted), buy-side, `market` type, and `gtc` time_in_force. Indications of interest can be replaced or canceled while the offering is open via [`PATCH /v1/trading/accounts/{account_id}/orders/{order_id}`](#operation/replaceOrderForAccount) and [`DELETE /v1/trading/accounts/{account_id}/orders/{order_id}`](#operation/deleteOrderForAccount).",
+        "description": "Creating an order for your end customer. Each trading request must pass in the account_id in the URL.\n\n- Note that when submitting crypto orders, `market`, `limit` and `stop_limit` orders are supported while the supported `time_in_force` values are `gtc`, and `ioc`.\n- For equities and crypto we accept fractional orders as well with either `notional` or `qty` provided.\n- Note that submitting an options order is only available for partners who have been enabled for Options BETA.\n- For multi-leg options orders (`order_class: mleg`), `commission` is a per-contract rate charged on the option contracts in the strategy, and `commission_type: qty` is required whenever `commission` is non-zero. Omitting `commission`, or sending `0`, is accepted as no commission.\n- In case of Fixed Income, only `market` and `limit` order types with `day` `time_in_force` are supported, and order replacement is not supported.\nNote that submitting Fixed Income orders is only available for partners who have been enabled for Fixed Income.\n- Note that submitting DMA orders (using `advanced_instructions` with `algorithm: DMA`) is only available for partners/correspondents who have been enabled for DMA.\n- For IPO indications of interest (`asset_class: \"ipo\"`), the `symbol` is the offering reference returned by [`GET /v1/ipos`](#operation/listIPOOfferings) (e.g. `FI111225`). IPO orders are notional-only (`notional` required, `qty` must be omitted), buy-side, `market` type, and `gtc` time_in_force. Indications of interest can be replaced or canceled while the offering is open via [`PATCH /v1/trading/accounts/{account_id}/orders/{order_id}`](#operation/replaceOrderForAccount) and [`DELETE /v1/trading/accounts/{account_id}/orders/{order_id}`](#operation/deleteOrderForAccount).",
         "operationId": "createOrderForAccount",
         "requestBody": {
           "content": {
@@ -1274,6 +1548,33 @@ Note that submitting Fixed Income orders is only available for partners who have
                     "type": "market"
                   }
                 },
+                "MultilegOptionsWithCommission": {
+                  "description": "Charges 1.50 per option contract, so 1.50 × 1 × (1 + 1) = 3.00 on a full fill.",
+                  "summary": "Buy a call vertical spread with a per-contract commission",
+                  "value": {
+                    "commission": "1.50",
+                    "commission_type": "qty",
+                    "legs": [
+                      {
+                        "position_intent": "buy_to_open",
+                        "ratio_qty": "1",
+                        "side": "buy",
+                        "symbol": "AAPL250620C00100000"
+                      },
+                      {
+                        "position_intent": "sell_to_open",
+                        "ratio_qty": "1",
+                        "side": "sell",
+                        "symbol": "AAPL250620C00105000"
+                      }
+                    ],
+                    "limit_price": "2.50",
+                    "order_class": "mleg",
+                    "qty": "1",
+                    "time_in_force": "day",
+                    "type": "limit"
+                  }
+                },
                 "Options": {
                   "summary": "Buy an option contract (BETA)",
                   "value": {
@@ -1298,6 +1599,9 @@ Note that submitting Fixed Income orders is only available for partners who have
             "content": {
               "application/json": {
                 "examples": {
+                  "Bracket": {
+                    "$ref": "#/components/examples/BracketOrderResponse"
+                  },
                   "Crypto": {
                     "$ref": "#/components/examples/CryptoOrderResponse"
                   },
@@ -1309,6 +1613,9 @@ Note that submitting Fixed Income orders is only available for partners who have
                   },
                   "MultilegOptions": {
                     "$ref": "#/components/examples/MultilegOptionsOrderResponse"
+                  },
+                  "MultilegOptionsWithCommission": {
+                    "$ref": "#/components/examples/MultilegOptionsWithCommissionOrderResponse"
                   },
                   "Options": {
                     "$ref": "#/components/examples/OptionOrderResponse"
@@ -1363,7 +1670,8 @@ Note that submitting Fixed Income orders is only available for partners who have
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

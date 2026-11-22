@@ -81,7 +81,9 @@ This API endpoint provides reporting data to partners for aggregate common stock
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
@@ -183,7 +185,8 @@ This API endpoint provides reporting data to partners for aggregate common stock
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

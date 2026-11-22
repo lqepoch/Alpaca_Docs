@@ -17,15 +17,18 @@ Returns a single funding wallet transfer for the specified account by `transfer_
     "schemas": {
       "Currency": {
         "description": "\"USD\" // US Dollar\n\"JPY\" // Japanese Yen\n\"EUR\" // Euro\n\"CAD\" // Canadian Dollar\n\"GBP\" // British Pound Sterling\n\"CHF\" // Swiss Franc\n\"TRY\" // Turkish Lira\n\"AUD\" // Australian Dollar\n\"CZK\" // Czech Koruna\n\"SEK\" // Swedish Krona\n\"DKK\" // Danish Krone\n\"SGD\" // Singapore Dollar\n\"HKD\" // Hong Kong Dollar\n\"HUF\" // Hungarian Forint\n\"NZD\" // New Zealand Dollar\n\"NOK\" // Norwegian Krone\n\"PLN\" // Poland Złoty",
+        "example": "USD",
         "title": "Currency",
         "type": "string"
       },
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -89,11 +92,11 @@ Returns a single funding wallet transfer for the specified account by `transfer_
           },
           "original_amount": {
             "deprecated": true,
-            "description": "Deprecated. Prefer `total_amount` for the actual amount debited from the account. The amount you should expect to receive, calculated as requested amount - fees.",
+            "description": "**Deprecation notice:**\nUse `total_amount` for the actual amount debited from the account.\n\nSince: 2026-09-22\nSunset: 2026-12-21\n\n---\n\nThe amount you should expect to receive, calculated as requested amount - fees.",
             "format": "decimal",
             "type": "string",
             "x-deprecation": {
-              "reason": "Use total_amount for the actual amount debited from the account.",
+              "reason": "Use `total_amount` for the actual amount debited from the account.",
               "since": "2026-09-22",
               "sunset": "2026-12-21"
             }
@@ -282,7 +285,8 @@ Returns a single funding wallet transfer for the specified account by `transfer_
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

@@ -306,7 +306,8 @@ Use this endpoint to power IPO discovery surfaces (e.g. an "Upcoming IPOs" list)
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

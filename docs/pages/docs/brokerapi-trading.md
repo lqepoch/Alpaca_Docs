@@ -15,7 +15,7 @@ Under the correspondent authentication, Trading API is extended for fractional s
 
 ## Asset API
 
-Asset entity has an extra field named fractionable with type boolean, it is set to true if the asset is marked for fractional trading. Check out more about our Assets API [here](/reference/getassets).
+Asset entity has an extra field named fractionable with type boolean, it is set to true if the asset is marked for fractional trading. Check out more about our Assets API [here](https://docs.alpaca.markets/us/reference/getassets).
 
 ## Order API
 

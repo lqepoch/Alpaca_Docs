@@ -32,7 +32,16 @@ The `{account_id}` path parameter accepts a account UUID (aggregation for that a
             "type": "integer"
           },
           "interest": {
-            "$ref": "#/components/schemas/FPSLInterest"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FPSLInterest"
+              }
+            ],
+            "description": "The accumulated interest totals for all loans in the date range.\nTotals may be adjusted retroactively at any time until interests are finalized for the month.\n",
+            "example": {
+              "customer": "8.61",
+              "partner": "11.55"
+            }
           },
           "total_lending_activities": {
             "description": "The total number of FPSL lending activities for the account within the specified date range.",
@@ -43,6 +52,7 @@ The `{account_id}` path parameter accepts a account UUID (aggregation for that a
         },
         "required": [
           "account_number",
+          "interest",
           "total_lending_activities",
           "in_progress_lending_activities"
         ],
@@ -59,19 +69,19 @@ The `{account_id}` path parameter accepts a account UUID (aggregation for that a
         "type": "object"
       },
       "FPSLInterest": {
-        "description": "The interest's details.\nPlease note that the object might not be set if interest has not yet been calculated for the loan.\nAdditionally, interest details may be adjusted retroactively at any time until interests are finalized for the month.\nThe loan's changed `updated_at` field can indicate such an adjustment.\n",
+        "description": "FPSL interest split between the customer and the partner.\nInterest may be adjusted retroactively at any time until interests are finalized for the month.\n",
         "properties": {
           "customer": {
-            "description": "The interest accrued by the customer for this loan.",
-            "example": 1.23,
-            "format": "double",
-            "type": "number"
+            "description": "The interest accrued by the customer.",
+            "example": "1.23",
+            "format": "decimal",
+            "type": "string"
           },
           "partner": {
-            "description": "The interest accrued by the partner for this loan.",
-            "example": 1.65,
-            "format": "double",
-            "type": "number"
+            "description": "The interest accrued by the partner.",
+            "example": "1.65",
+            "format": "decimal",
+            "type": "string"
           }
         },
         "required": [
@@ -218,7 +228,8 @@ The `{account_id}` path parameter accepts a account UUID (aggregation for that a
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

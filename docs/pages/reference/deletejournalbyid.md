@@ -5,9 +5,9 @@ agentTools:
   projectIndex: https://docs.alpaca.markets/us/llms.txt
 ---
 
-# Cancel a Pending Journal
+# Cancel a Journal
 
-You can only delete a journal if the journal is still in a pending state, if a journal is executed you will not be able to delete. The alternative is to create a mirror journal entry to reverse the flow of funds.
+You can delete a journal only while it is `pending` or `queued`. A journal that has moved past those statuses, including one that has been executed, cannot be deleted. To reverse an executed journal, create a mirror journal entry.
 
 # OpenAPI definition
 
@@ -36,7 +36,7 @@ You can only delete a journal if the journal is still in a pending state, if a j
   "paths": {
     "/v1/journals/{journal_id}": {
       "delete": {
-        "description": "You can only delete a journal if the journal is still in a pending state, if a journal is executed you will not be able to delete. The alternative is to create a mirror journal entry to reverse the flow of funds.",
+        "description": "You can delete a journal only while it is `pending` or `queued`. A journal that has moved past those statuses, including one that has been executed, cannot be deleted. To reverse an executed journal, create a mirror journal entry.",
         "operationId": "deleteJournalById",
         "responses": {
           "204": {
@@ -46,10 +46,10 @@ You can only delete a journal if the journal is still in a pending state, if a j
             "description": "The journal is not found.\n"
           },
           "422": {
-            "description": "The journal is not in the pending status.\n"
+            "description": "The journal is not pending or queued.\n"
           }
         },
-        "summary": "Cancel a Pending Journal",
+        "summary": "Cancel a Journal",
         "tags": [
           "Journals"
         ]
@@ -89,7 +89,8 @@ You can only delete a journal if the journal is still in a pending state, if a j
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

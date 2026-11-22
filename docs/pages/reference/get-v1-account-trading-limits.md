@@ -157,7 +157,8 @@ If the limit in use reaches the `daily_net_limit` or `available` is zero, furthe
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

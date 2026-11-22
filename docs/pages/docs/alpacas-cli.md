@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-06-08T14:37:01.000Z
+updatedAt: 2026-11-13T19:40:54.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -7,9 +7,9 @@ agentTools:
 
 # Trading CLI
 
-Alpaca's CLI is a command-line interface that provides direct access to Alpaca's Trading and Market Data APIs from the terminal. Trade stocks, options, and crypto, query market data, manage your account, and automate workflows; all without writing HTTP requests.
+Alpaca's CLI is a command-line interface that provides direct access to Trading API and Market Data API from the terminal. Trade stocks, options, and crypto, query market data, manage your account, and automate workflows; all without writing HTTP requests.
 
-> **Alpha Preview** — This CLI is under active development. Commands, flags, and output formats may change without notice between releases.
+> **Alpha Preview:** This CLI is under active development. Commands, flags, and output formats may change without notice between releases.
 
 **GitHub:** [alpacahq/cli](https://github.com/alpacahq/cli) | **License:** Apache 2.0
 
@@ -97,7 +97,7 @@ alpaca account get
 | `ALPACA_OUTPUT`     | Default format (`json` or `csv`)           |
 | `ALPACA_CONFIG_DIR` | Config directory override                  |
 
-Credentials are stored in `~/.config/alpaca/profiles/` with 0600 permissions.
+Credentials are stored in `~/.config/alpaca/profiles/` with `0600` permissions.
 
 ## Output Formats
 
@@ -163,7 +163,7 @@ alpaca option exercise --symbol-or-id <contract>
 alpaca option do-not-exercise --symbol-or-id <contract>
 ```
 
-### Market Data — Stocks
+### Market Data: Stocks
 
 ```bash
 alpaca data bars --symbol AAPL --start 2025-01-01 --timeframe 1Day
@@ -177,7 +177,7 @@ alpaca data screener most-actives
 alpaca data screener movers
 ```
 
-### Market Data — Crypto
+### Market Data: Crypto
 
 ```bash
 alpaca data crypto bars --symbol BTC/USD --start 2025-01-01 --timeframe 1Day
@@ -186,7 +186,7 @@ alpaca data crypto snapshots --symbol BTC/USD
 alpaca data crypto-orderbook --symbol BTC/USD
 ```
 
-### Market Data — Options
+### Market Data: Options
 
 ```bash
 alpaca data option chain --underlying-symbol AAPL
@@ -194,7 +194,7 @@ alpaca data option snapshot --symbol AAPL250620C00200000
 alpaca data option latest-quotes --symbol AAPL250620C00200000
 ```
 
-### Market Data — Other
+### Market Data: Other
 
 ```bash
 alpaca data news --symbol AAPL
@@ -246,8 +246,8 @@ alpaca order list --schema # Response schema without calling the API
 The CLI is designed for AI agent integration. Key features for agents:
 
 * **No confirmation prompts**: Commands execute immediately. No interactive "are you sure?" dialogs.
-* **Structured JSON errors** on stderr with exit codes (`0` success, `1` error, `2` auth failure)
-* **Automatic retry** on 429/5xx (max 3 retries, respects `Retry-After`)
+* **Structured JSON errors** on `stderr` with exit codes (`0` success, `1` error, `2` auth failure)
+* **Automatic retry** on `429`/`5xx` (max 3 retries, respects `Retry-After`)
 * **`--dry-run`** for order preview without execution
 * **`--schema`** to inspect response shapes without making API calls
 * **`--quiet`** to suppress non-essential output
@@ -256,9 +256,9 @@ The CLI is designed for AI agent integration. Key features for agents:
 
 The optional `--client-order-id` flag lets you assign a unique identifier to an order (up to 128 characters). If omitted, Alpaca generates one automatically.
 
-When provided, the API rejects duplicate submissions with the same `client_order_id`, preventing accidental double-orders in retry logic.
+When provided, Trading API rejects duplicate submissions with the same `client_order_id`, preventing accidental double-orders in retry logic.
 
-```bash
+```shell
 # Generate a client-assigned UUID that you'll use for this order
 CLIENT_ORDER_ID="$(uuidgen)"
 
@@ -276,7 +276,7 @@ When using the CLI from an AI agent in Cursor or Claude, you can whitelist CLI c
 
 ## How the CLI Differs from the MCP Server
 
-Both tools access the same Alpaca APIs, but they serve different use cases:
+Both tools access Trading API and Market Data API, but they serve different use cases:
 
 | Aspect         | CLI                                      | MCP Server                                       |
 | :------------- | :--------------------------------------- | :----------------------------------------------- |
@@ -307,17 +307,17 @@ Follow the output instructions to install completions for your shell.
 
 ## Important Considerations
 
-* **Paper trading is the default**: Live trading requires explicit opt-in via `--live` flag or `ALPACA_LIVE_TRADE=true`. Scripts that forget to opt in will hit paper, not live.
+* **Paper trading is the default**: Live trading requires explicit opt-in with the `--live` flag or the `ALPACA_LIVE_TRADE` environment variable set to `true`. Scripts that forget to opt in will hit paper, not live.
 * **No confirmation prompts**: Commands like `alpaca order cancel-all` and `alpaca position close-all` execute immediately without asking for confirmation.
 * **API key security**: Keep your API keys secure and never share them. Treat them like passwords.
 * **Order execution risk**: Orders execute directly against Alpaca's Trading API. Review orders before submitting, as unintended orders can result in real financial loss.
-* **Rate limits**: Alpaca's API has rate limits per account. High-frequency querying may trigger rate limiting.
+* **Rate limits**: Trading API has rate limits per account. High-frequency querying may trigger rate limiting.
 
 ## Resources
 
 * [GitHub Repository](https://github.com/alpacahq/cli)
 * [CLI Launch Blog Post](https://alpaca.markets/blog/alpaca-introduces-cli-for-trading-api/)
-* [Alpaca MCP Server](/us/docs/alpaca-mcp-server)
+* [Trading API MCP](./trading-api-mcp)
 * [Alpaca Support](mailto:support@alpaca.markets)
 
 ## Disclosure

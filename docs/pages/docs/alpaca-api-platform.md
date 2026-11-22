@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-10-17T10:40:07.000Z
+updatedAt: 2026-11-16T15:22:58.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -9,13 +9,13 @@ agentTools:
 
 # Why API?
 
-Alpaca’s features to access financial markets are provided primarily via API. We believe API is the means to interact with services such as ours and innovate your business. Our API is designed to fit your needs and we continue to build what you need.
+Alpaca’s features to access financial markets are provided primarily via APIs. We believe APIs are the means to interact with services such as ours and innovate your business. Alpaca's APIs are designed to fit your needs and we continue to build what you need.
 
 # REST, SSE and Websockets
 
-Our API is primarily built in the REST style. It is a simple and powerful way to integrate with our services.
+Alpaca's APIs are primarily built in the REST style. It is a simple and powerful way to integrate with our services.
 
-In addition to the REST API which replies via synchronous communication, our API includes an asynchronous event API which is based on WebSocket and SSE, or [Server-Sent Events](https://html.spec.whatwg.org/multipage/server-sent-events.html). As many types of events occur in the financial markets (orders fill based on the market movement, cash settles after some time, etc), this event-based API helps you get updates instantly and provide the best user experiences to your customers.
+In addition to REST endpoints, which reply via synchronous communication, Alpaca's APIs include asynchronous event streams based on WebSocket and SSE, or [Server-Sent Events](https://html.spec.whatwg.org/multipage/server-sent-events.html). As many types of events occur in the financial markets (orders fill based on the market movement, cash settles after some time, etc), these event streams help you get updates instantly and provide the best user experiences to your customers.
 
 # Architecture
 
@@ -29,16 +29,16 @@ Alpaca Crypto executes customer trades on our internal central limit order book,
 
 # API Updates & Upgrades
 
-In an effort to continuously provide value to our developers, Alpaca frequently performs updates and upgrades to our API.
+In an effort to continuously provide value to our developers, Alpaca frequently performs updates and upgrades to its APIs.
 
 We’ve added the following sections to our docs in order to help make sure that as a developer you know what to expect, when to expect, and how to properly handle certain scenarios .
 
 ## Backwards Compatible Changes
 
-You should expect any of the following kind of changes that we make to our API to be considered a backwards compatible change:
+You should expect any of the following kind of changes that we make to our APIs to be considered a backwards compatible change:
 
 * Adding new or similarly named APIs
-* Adding new fields to already defined models and objects such as API return objects, nested objects, etc. (Example: adding a new code field to error payloads)
+* Adding new fields to already defined models and objects such as API return objects, nested objects, etc. (Example: adding a new `code` field to error payloads)
 * Adding new items to defined sets or enumerations such as statuses, supported assets, etc. (Example: adding new account status to a set of all )
 * Enhancing ordering on how certain lists get returned
 * Supporting new HTTP versions (HTTP2, QUIC)
@@ -56,4 +56,4 @@ Generally, as a rule of thumb, any append or addition operation is considered a 
 When and if Alpaca decides to perform breaking changes to our APIs the following should be expected:
 
 * Upfront communication with sufficient time to allow developers to be able to react to new upcoming changes
-* Our APIs are versioned, if breaking changes are intended we will generally bump the API version. For example, a route might go from being `/v1/accounts/{account_id}` to `/v2/accounts/{account_id}` if we had to make a breaking change to either the parameters it can take or its return structure
+* Our APIs are versioned, if breaking changes are intended we will generally bump the version number in the route. For example, a route might go from being `/v1/accounts/{account_id}` to `/v2/accounts/{account_id}` if we had to make a breaking change to either the parameters it can take or its return structure

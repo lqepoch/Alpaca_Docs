@@ -178,7 +178,8 @@ The clock API serves the current market timestamp, whether or not the market is 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

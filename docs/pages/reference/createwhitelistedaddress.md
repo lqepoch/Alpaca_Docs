@@ -505,7 +505,8 @@ Note that whitelisted addresses must wait at least 24 hours before they can be u
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

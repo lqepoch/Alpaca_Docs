@@ -33,7 +33,9 @@ This API currently only supports retrieving EOD positions for the last trading d
         "enum": [
           "us_equity",
           "us_option",
+          "us_index",
           "crypto",
+          "crypto_perp",
           "ipo"
         ],
         "type": "string"
@@ -402,7 +404,8 @@ This API currently only supports retrieving EOD positions for the last trading d
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

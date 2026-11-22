@@ -122,7 +122,8 @@ Get an SDK token to activate the Onfido SDK flow within your app. You will have 
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

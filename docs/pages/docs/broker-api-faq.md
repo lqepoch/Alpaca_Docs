@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-07-11T15:56:35.000Z
+updatedAt: 2026-11-13T20:09:50.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -13,9 +13,9 @@ Frequently Asked Questions
 
 ### What is the Difference Between Trading API and Broker API?
 
-The Broker API is meant to support different use cases for Broker-Dealers, RIAs, and Trading/Investing applications, [see more here](https://docs.alpaca.markets/docs/use-cases).
+The Broker API is meant to support different use cases for Broker-Dealers, RIAs, and Trading/Investing applications, [see more here](./use-cases).
 
-Instead, the Trading API is meant for Retail users and algotraders to communicate with Alpaca’s brokerage service, [see more here](https://alpaca.markets/docs/api-references/trading-api/).
+Instead, the Trading API is meant for Retail users and algotraders to communicate with Alpaca’s brokerage service. See [About Trading API](./trading-api).
 
 ### Is the Authentication Different Between Trading API and Broker API?
 
@@ -25,27 +25,27 @@ With the Broker API, you’ll need to encode the keys and pass an authentication
 
 `Authorization: Basic <base64 encoded keys>`
 
-[see more here](https://alpaca.markets/docs/api-references/broker-api/#authentication-and-rate-limit).
+See [Authentication](./authentication).
 
-The same Broker API credentials with HTTP basic authentication can be used to access Market Data API, as described [here](https://docs.alpaca.markets/docs/about-market-data-api#broker-api).
+The same Broker API credentials with HTTP basic authentication can be used to access Market Data API, as described [here](./about-market-data-api#broker-api).
 
 # Accounts
 
 ### When Do the Values on the Accounts Trading Get Updated?
 
-All the values that **do not** have the prefix - “last\_“ are updated Real-Time post trade executions and Corp Action activities. Might update outside market hours as well, post-trade settlements and FEE calculations like REG/TAF fee.
+All the values that **do not** have the prefix `last_` are updated Real-Time post trade executions and Corp Action activities. Might update outside market hours as well, post-trade settlements and FEE calculations like REG/TAF fee.
 
 # Assets
 
 ### What is the difference between Tradable and Status Boolean in the Assets API?
 
-### [Assets](https://alpaca.markets/docs/api-references/broker-api/assets/#asset-states)
+### [Assets](../reference/assets)
 
 There are some scenarios to consider here:
 
 #### `tradable=true` and `status=active`
 
-This is the scenario for most of the stocks listed. For example Apple Inc. This means it's tradable - both BUY and SELL are possible on this stock.
+This is the scenario for most of the stocks listed. For example Apple Inc. This means it's tradable - both `BUY` and `SELL` are possible on this stock.
 
 #### `tradable=false` and `status=active`
 
@@ -57,7 +57,7 @@ This is a scenario which can be achieved during the delisting of a company. If a
 
 ### Can OTC tickers be traded?
 
-Yes, you can always close any open positions.
+Yes, you can submit orders to close any open positions. Execution depends on market conditions and is not guaranteed.
 
 ### Are OTC symbols available in the Market Data?
 
@@ -85,17 +85,17 @@ There is no such time. Alpaca would never stop responding, hence we also send �
 
 Server-sent events can be useful when you want updates on the status of a certain transaction, without making multiple HTTP requests. Events endpoints will return multiple responses when you open a connection, and can also be used in a restful way to make sure you didn’t miss any event.
 
-1. Account Status Updates - [Subscribe to Account Status Events (SSE)](https://docs.alpaca.markets/reference/suscribetoaccountstatussse)
-2. Trade Updates - [Subscribe to Trade Events (SSE)](https://docs.alpaca.markets/reference/subscribetotradesse)
-3. Journal Updates - [Subscribe to Journal Events (SSE)](https://docs.alpaca.markets/reference/subscribetojournalstatussse)
-4. Any Transfer Event - [Subscribe to Transfer Events (SSE)](https://docs.alpaca.markets/reference/subscribetotransferstatussse)
-5. Any relevant Non-Trading Activity - [Subscribe to Non-Trading Activities Events (SSE)](https://docs.alpaca.markets/reference/get-v1-events-nta)
+1. Account Status Updates - [Subscribe to Account Status Events (SSE)](../reference/subscribetoaccountstatussse)
+2. Trade Updates - [Subscribe to Trade Events (SSE)](../reference/subscribetotradev2sse)
+3. Journal Updates - [Subscribe to Journal Events (SSE)](../reference/subscribetojournalstatussse)
+4. Any Transfer Event - [Subscribe to Transfer Events (SSE)](../reference/subscribetotransferstatussse)
+5. Any relevant Non-Trading Activity - [Subscribe to Non-Trading Activities Events (SSE)](../reference/get-v1-events-nta)
 
 # Rate Limits
 
 ### Are Broker API rate limits published as fixed numbers?
 
-No. Broker API limits are applied at the correspondent level and set based on demonstrated usage, so Alpaca doesn't publish fixed figures. See [Rate Limits](https://docs.alpaca.markets/us/docs/broker-api-rate-limits).
+No. Broker API limits are applied at the correspondent level and set based on demonstrated usage, so Alpaca doesn't publish fixed figures. See [Rate Limits](./broker-api-rate-limits).
 
 ### How do I know how much of my rate limit is left?
 
@@ -121,7 +121,7 @@ Reach out to Alpaca and be specific about why: the use case, expected peak reque
 
 ### Does the Market Data API support corporate actions adjustments?
 
-Yes, price adjustments are visible on the Market Data, you'll just need to make sure the adjustment parameter is set to all. The available query parameters for bars are available here - [Historical bars](https://docs.alpaca.markets/reference/stockbars#:~:text=adjustment,for%20the%20stocks.)
+Yes, price adjustments are visible on the Market Data, you'll just need to make sure the `adjustment` parameter is set to `all`. The available query parameters for bars are available here - [Historical bars](../reference/stockbars)
 
 ### Does the Market Data API support local currencies?
 
@@ -132,7 +132,7 @@ Yes. You can retrieve historical market data in the supported local currencies.
 ### How are trade confirmations and account statements handled by Alpaca and its partners?
 
 1. Both of them need to be mailed to users with <auto-archive-bd@mailer.alpaca.markets> in BCC.
-2. The email should contain the truncated alpaca account number and language as mentioned in the Statement and Confirms Document.
+2. The email should contain the truncated Alpaca account number and language as mentioned in the Statement and Confirms Document.
 3. If sharing a customized statement or confirmation, in that case, the partner must allow users to have access to the original statements and confirms generated by Alpaca.
 
 ### When are these documents available?
@@ -143,7 +143,7 @@ Monthly statements are available after the 1st weekend of the next month.
 
 ### How can I retrieve these documents?
 
-[Documents | Alpaca Docs](https://alpaca.markets/docs/api-references/broker-api/documents/#retrieving-documents-for-one-account)
+[Retrieve a List of Account Documents](../reference/getdocsforaccount)
 
 Query the above-mentioned endpoint with `type` as `account_statement` or `trade_confirmation`.
 
@@ -151,9 +151,9 @@ Query the above-mentioned endpoint with `type` as `account_statement` or `trade_
 
 Can be found [here](https://github.com/alpacahq/bkdocs/files/7756721/W-8Ben_Example_Broker_Docs.pdf).
 
-### I’m getting a 400 error (request body format is invalid: JSON: cannot unmarshal object into Go value of type entities.BrokerAccountDocumentUploads) when uploading a W8-Ben. Is this expected?
+### I’m getting a 400 error (request body format is invalid: JSON: cannot unmarshal object into Go value of type `entities.BrokerAccountDocumentUploads`) when uploading a W8-Ben. Is this expected?
 
-Yes, the body of the request is an array of documents, make sure you’re using square brackets like in the sample response [Documents | Alpaca Docs](https://alpaca.markets/docs/api-references/broker-api/documents/#sample-request).
+Yes, the body of the request is an array of documents, make sure you’re using square brackets like in the sample request in [Upload Owner Documents for an Existing Account](../reference/uploaddoctoaccount).
 
 # Journals
 
@@ -173,7 +173,7 @@ There is also a JNLC Daily Limit, which is the summation of all the JNLC done in
 
 ### Can I subscribe to a journal status streaming without having to check it again and again?
 
-Absolutely yes. You can listen to the journal server-sent events. - [Events | Alpaca Docs](https://alpaca.markets/docs/api-references/broker-api/events/#journal-status)
+Absolutely yes. You can listen to the journal server-sent events. - [Subscribe to Journal Events (SSE)](../reference/subscribetojournalstatusv2sse)
 
 ## What are the use cases for the JNLS?
 
@@ -201,45 +201,45 @@ All buy orders must have a minimum market value of 1$ or the request will be rej
 
 ### What is the precision for notional and qty in the order request body?
 
-A maximum of **2 decimal places** for *notional* and **9 decimal places** for *qty* should be used to send orders.
+A maximum of **2 decimal places** for `notional` and **9 decimal places** for `qty` should be used to send orders.
 
 ### Only limit is allowed as the order type for OCO. Does this rule apply to OTO?
 
-No. OCO implements an order cancellation and hence it might be very difficult to cancel a market order. Whereas in the case of OTO, that isn't an issue and hence *market* and *limit* both orders are allowed!
+No. OCO implements an order cancellation and hence it might be very difficult to cancel a market order. Whereas in the case of OTO, that isn't an issue and hence `market` and `limit` both orders are allowed!
 
-### Order replacement is supported for OCO to update limit\_price and stop\_price.
+### Order replacement is supported for OCO to update `limit_price` and `stop_price`.
 
 Can we update the quantity as well? And can we use a notional amount instead of quantity?
 
-Yes, you can update the quantity while patching the order using this API - [Orders | Alpaca Docs](https://alpaca.markets/docs/api-references/broker-api/trading/orders/#patching-an-order) .
+Yes, you can update the quantity while patching the order using the Broker API orders endpoint - [Replace an Order](../reference/replaceorderforaccount).
 
-No, you can't use the notional amount. The reason for this is, that Alpaca at this point of time **doesn't** support *LIMIT* orders for *notional* orders and since OCO orders can only be a *LIMIT* order, it makes it compulsory to use the **quantity**.
+No, you can't use the notional amount. The reason for this is, that Alpaca at this point of time **doesn't** support `limit` orders for `notional` orders and since OCO orders can only be a `limit` order, it makes it compulsory to use the **quantity**.
 
 ### What orders can be cancelled?
 
-We check that the order is in an "open" status before attempting to cancel it. The [statuses](https://alpaca.markets/docs/trading/orders/#order-lifecycle "https://alpaca.markets/docs/trading/orders/#order-lifecycle") that we consider open are:
+We check that the order is in an `open` status before attempting to cancel it. The [order statuses](./orders-at-alpaca) that we consider open are:
 
-* Accepted
-* New
-* Partially Filled
-* Calculated
-* Pending New
-* Pending Cancel
-* Accepted for Bidding
+* `accepted`
+* `new`
+* `partially_filled`
+* `calculated`
+* `pending_new`
+* `pending_cancel`
+* `accepted_for_bidding`
 
 If the order is in one of these statuses you should receive a 204 (unless there was a server error) while if it isn't you're going to receive a 422, as mentioned in the docs. To check if the order was actually canceled, I suggest you check its status on the trades SSE or through the REST endpoints.
 
 ## Trade Settlement
 
-### Why is there no cash\_withdrawable and cash\_transferable increase after selling a stock?
+### Why is there no `cash_withdrawable` and `cash_transferable` increase after selling a stock?
 
-Settlement occurs one business day after the day the order executes, or T+1 (trade date plus one business day). For example, if you were to execute an order on Monday, it would typically settle on Tuesday. The `cash` is updated post the SELL trade is filled, but the `cash_withdrawable` and `cash_transferable` are updated post T+1.
+Settlement occurs one business day after the day the order executes, or T+1 (trade date plus one business day). For example, if you were to execute an order on Monday, it would typically settle on Tuesday. The `cash` is updated post the `SELL` trade is filled, but the `cash_withdrawable` and `cash_transferable` are updated post T+1.
 
 ### What are some fees, that can be expected while trading stocks?
 
 #### REG and TAF Fees
 
-This is charged(REG and TAF individually) to a User Account, every time a SELL Order is executed. This is charged by Alpaca but, is a pass thru fee from the FINRA and SEC itself that is levied to Alpaca on sell orders. The REG and TAF fees change rates periodically. More about this can be read in the blog from our co-founder - [REG/TAF Fee Updates with Alpaca](https://alpaca.markets/blog/reg-taf-fees/)
+This is charged(REG and TAF individually) to a User Account, every time a `SELL` Order is executed. This is charged by Alpaca but, is a pass thru fee from the FINRA and SEC itself that is levied to Alpaca on sell orders. The REG and TAF fees change rates periodically. More about this can be read in the blog from our co-founder - [REG/TAF Fee Updates with Alpaca](https://alpaca.markets/blog/reg-taf-fees/)
 
 #### ADR Fees
 
@@ -255,17 +255,17 @@ We will not charge the ADR fee if the calculated fee is less than a penny. Howev
 
 ### Can I enter manual trades while using the Rebalancing API?
 
-If the account is subscribed to a portfolio, it cannot execute manual trades or [manual rebalance runs](https://alpaca.markets/docs/api-references/broker-api/rebalancing/#create-run-manual-rebalancing-event "https://alpaca.markets/docs/api-references/broker-api/rebalancing/#create-run-manual-rebalancing-event"). Still, you can [delete the subscription](https://alpaca.markets/docs/api-references/broker-api/rebalancing/#unsubscribe-account-delete-subscription "https://alpaca.markets/docs/api-references/broker-api/rebalancing/#unsubscribe-account-delete-subscription") to execute manual trades or rebalance runs.
+If the account is subscribed to a portfolio, it cannot execute manual trades or [manual rebalance runs](../reference/post-v1-rebalancing-runs). Still, you can [delete the subscription](../reference/delete-v1-rebalancing-subscriptions-subscription_id) to execute manual trades or rebalance runs.
 
 ### How can I see the orders triggered by a rebalancing event?
 
-You can easily retrieve [all the runs with this endpoint](https://alpaca.markets/docs/api-references/broker-api/rebalancing/#list-all-runs "https://alpaca.markets/docs/api-references/broker-api/rebalancing/#list-all-runs") or [a particular run by its ID](https://alpaca.markets/docs/api-references/broker-api/rebalancing/#get-run-by-id "https://alpaca.markets/docs/api-references/broker-api/rebalancing/#get-run-by-id"), where each run will have an array with all the orders that were executed and the ones that failed or were skipped.
+You can easily retrieve [all the runs with the List All Runs endpoint](../reference/get-v1-rebalancing-runs) or [a particular run by its ID](../reference/get-v1-rebalancing-runs-run_id), where each run will have an array with all the orders that were executed and the ones that failed or were skipped.
 
 # Important Links and Reads
 
-1. Alpaca Daily Processes and Reconciliations - [Daily Processes and Reconcilations](https://docs.alpaca.markets/docs/daily-processes-and-reconcilations)
-2. Margins - [Margin and Short Selling](https://docs.alpaca.markets/docs/margin-and-short-selling)
-3. Understanding Orders and Time in Force - [Orders at Alpaca](https://docs.alpaca.markets/docs/orders-at-alpaca)
+1. Alpaca Daily Processes and Reconciliations - [Daily Processes and Reconcilations](./daily-processes-and-reconcilations)
+2. Margins - [Margin and Short Selling](./margin-and-short-selling)
+3. Understanding Orders and Time in Force - [Orders at Alpaca](./orders-at-alpaca)
 
 ***
 

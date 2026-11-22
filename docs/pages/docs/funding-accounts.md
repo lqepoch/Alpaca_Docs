@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-09-24T23:30:01.000Z
+updatedAt: 2026-09-30T18:11:18.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -15,7 +15,9 @@ In the sandbox environment, Transfer API simulates deposits and withdrawals to/f
 
 # ACH (US Domestic)
 
-For US ACH, you will need to use Plaid to obtain the user’s bank account information. You then pass the information to Alpaca using [ACH API](/reference/createrecipientbank) to create a Bank Link object. Once a Bank Link between a user and their bank account is established, then you can initiate both deposit and withdrawal transactions using the [Transfers API](/reference/createtransferforaccount).
+For US ACH, you will need to use Plaid to obtain the user’s bank account information. You then pass the information to Alpaca using [ACH API](../reference/createrecipientbank) to create a Bank Link object. Once a Bank Link between a user and their bank account is established, then you can initiate both deposit and withdrawal transactions using the [Transfers API](../reference/createtransferforaccount).
+
+When creating an ACH relationship with a Plaid processor token, Alpaca compares the bank account owner name from Plaid with the name on the Alpaca account. If the names do not match, the relationship is rejected and transfers cannot be initiated on that link. Entity accounts are not supported. See [ACH Funding](https://docs.alpaca.markets/us/docs/ach-funding) for integration details.
 
 # Wire
 
@@ -26,7 +28,7 @@ Beginning June 1, 2022, we will begin charging for outgoing wires, both domestic
 
 ## Wire (US Domestic)
 
-You can initiate a withdrawal transaction with wire transfer using the [Transfers API](/reference/createtransferforaccount). You need to create a bank object before that. For US domestic wire transactions, we will need ABA/routing number and the account number. You can supply additional text in each transaction.
+You can initiate a withdrawal transaction with wire transfer using the [Transfers API](../reference/createtransferforaccount). You need to create a bank object before that. For US domestic wire transactions, we will need ABA/routing number and the account number. You can supply additional text in each transaction.
 
 **In order for us to receive the deposits and book automatically, we need an “FFC” instruction in each incoming wire transaction.** Please contact us for more details.
 
@@ -38,7 +40,7 @@ The FFC instructions above work for international wires too.
 
 # Cash Pooling
 
-If you wish and are eligible, you can send customer deposits in a bulk to your firm account first and reconcile later using the [Journals API](/reference/createjournal).
+If you wish and are eligible, you can send customer deposits in a bulk to your firm account first and reconcile later using the [Journals API](../reference/createjournal).
 
 We need to review the entire flow first to allow you to do so, and also you may need a local license to implement this process. Please check your counsel for the local requirements.
 
@@ -51,105 +53,20 @@ Under this rule, financial institutions that transmit the funds are required to 
 When using the following APIs, you will need to ensure compliance with the Travel Rule by including breakdowns and transmitter information where applicable.
 
 * Journals API
-  * [Create a Journal](https://docs.alpaca.markets/reference/createjournal)
+  * [Create a Journal](../reference/createjournal)
 * Instant Funding API - There are two APIs under instant funding that accept transmitter information, the recommendation is to pass the information at the time of settlement creation.
-  * [Create an intant funding request](https://docs.alpaca.markets/reference/post-v1-instant-funding)
-  * [Create a new settlement](https://docs.alpaca.markets/reference/post-v1-instant-funding-settlements)
+  * [Create an intant funding request](../reference/post-v1-instant-funding)
+  * [Create a new settlement](../reference/post-v1-instant-funding-settlements)
 
 The table given below gives an overview of the relevant fields for both the APIs along with the field descriptions.
 
-<Table align={["left","left","left"]}>
-  <thead>
-    <tr>
-      <th>
-        Journals
-      </th>
-
-      <th>
-        Instant Funding
-      </th>
-
-      <th>
-        Field description
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        `transmitter_name`
-      </td>
-
-      <td>
-        `originator_full_name`
-      </td>
-
-      <td>
-        The full name of the customer who is initiating the transaction. 
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        `transmitter_account_number`
-      </td>
-
-      <td>
-        `originator_bank_account_number`
-      </td>
-
-      <td>
-        The bank account number of the customer or the  account number on broker partner's system that can be used to uniquely identify the customer. 
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        `transmitter_address`
-      </td>
-
-      <td>
-        `originator_street_address`\
-        `originator_state`\
-        `originator_city`\
-        `originator_country`  
-      </td>
-
-      <td>
-        The street, city, state and country of the financial institution responsible for transmitting the funds.
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        `transmitter_financial_institution`
-      </td>
-
-      <td>
-        `originator_bank_name`
-      </td>
-
-      <td>
-        The name of the transmitter's financial institution 
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-
-      </td>
-
-      <td>
-        `other_identifying_information`
-      </td>
-
-      <td>
-        Recommended to be the originating bank's reference number for the transfer
-      </td>
-    </tr>
-  </tbody>
-</Table>
+| Journals                            | Instant Funding                                                                                      | Field description                                                                                                                             |
+| :---------------------------------- | :--------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| `transmitter_name`                  | `originator_full_name`                                                                               | The full name of the customer who is initiating the transaction.                                                                              |
+| `transmitter_account_number`        | `originator_bank_account_number`                                                                     | The bank account number of the customer or the  account number on broker partner's system that can be used to uniquely identify the customer. |
+| `transmitter_address`               | `originator_street_address`<br />`originator_state`<br />`originator_city`<br />`originator_country` | The street, city, state and country of the financial institution responsible for transmitting the funds.                                      |
+| `transmitter_financial_institution` | `originator_bank_name`                                                                               | The name of the transmitter's financial institution                                                                                           |
+|                                     | `other_identifying_information`                                                                      | Recommended to be the originating bank's reference number for the transfer                                                                    |
 
 **Please note that the purpose of this requirement is for the investigators to track the flow of funds in case they need to. Failure to do so could cause a civil enforcement.**
 

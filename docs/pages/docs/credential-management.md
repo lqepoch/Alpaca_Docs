@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-12-02T14:14:13.000Z
+updatedAt: 2026-11-13T19:44:31.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -9,10 +9,10 @@ agentTools:
 
 Authentication into the Broker API can be done through 2 different flows:
 
-* [Client credentials](https://docs.alpaca.markets/docs/authentication#client-credentials-1) (recommended)
+* [Client credentials](./authentication#client-credentials-1) (recommended)
   * Client Secret
   * Private Key JWT
-* [Legacy flow](https://docs.alpaca.markets/docs/authentication#legacy)
+* [Legacy flow](./authentication#legacy)
 
 Both these flows offer access to expiration dates & fine-grained access control through BrokerDash.
 
@@ -24,7 +24,7 @@ All user roles can view the credentials management page and see the list of exis
 
 To help enhance the security of your account and integration, all generated credentials can be assigned a specific expiration timeframe. This feature is a critical security control that automatically deactivates a key after a set period, limiting the risk associated with a key being compromised or forgotten.
 
-<Image align="center" border={false} src="https://files.readme.io/592650df55e6260de2b598524c2ac843eae8a4fe98841db15501f174834958f1-Filled.png" />
+<Image align="center" border={false} alt="Credential creation form with the expiration timeframe options" src="https://files.readme.io/592650df55e6260de2b598524c2ac843eae8a4fe98841db15501f174834958f1-Filled.png" />
 
 The following options are available:
 
@@ -60,7 +60,7 @@ For each API scope you can assign one of the following access levels:
 
 **No Access**: Completely blocks all endpoints within that scope for this key.
 
-<Image align="center" border={false} src="https://files.readme.io/efe862a7f26305e37a6ce31cfa6a5e504e3e1f236b9c414f8a1bc0d2f3bd523a-Filled_Custom_Access_Controls.png" />
+<Image align="center" border={false} alt="Custom access controls with an access level selector for each API scope" src="https://files.readme.io/efe862a7f26305e37a6ce31cfa6a5e504e3e1f236b9c414f8a1bc0d2f3bd523a-Filled_Custom_Access_Controls.png" />
 
 You can choose one of the three custom access level for the following scopes:
 

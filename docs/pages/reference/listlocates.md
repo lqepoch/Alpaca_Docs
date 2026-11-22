@@ -419,7 +419,8 @@ Returns locates filtered by status, symbol, or date range. Results are sorted by
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

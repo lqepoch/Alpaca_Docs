@@ -198,7 +198,8 @@ This endpoint is deprecated, please use [the new corporate actions endpoint](htt
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

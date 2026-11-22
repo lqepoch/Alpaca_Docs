@@ -442,7 +442,8 @@ locate response. Reusing the same key with a different request returns HTTP 422.
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

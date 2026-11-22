@@ -1,5 +1,5 @@
 ---
-updatedAt: 2025-11-14T05:48:34.000Z
+updatedAt: 2026-11-03T05:21:49.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -44,24 +44,21 @@ The location us-1 represents the states listed below:
 3. AR (Arkansas)
 4. CO (Colorado)
 5. DC (District of Columbia)
-6. DE (Delaware)
-7. FL (Florida)
-8. HI (Hawaii)
-9. LA (Louisiana)
-10. MN (Minnesota)
-11. NV (Nevada)
-12. NH (New Hampshire)
-13. NJ (New Jersey)
-14. NM (New Mexico)
-15. OK (Oklahoma)
-16. OR (Oregon)
-17. PA (Pennsylvania)
-18. PR (Puerto Rico)
-19. TN (Tennessee)
-20. TX (Texas)
-21. VA (Virginia)
-22. WI (Wisconsin)
-23. WY (Wyoming)
+6. HI (Hawaii)
+7. LA (Louisiana)
+8. MN (Minnesota)
+9. NV (Nevada)
+10. NH (New Hampshire)
+11. NJ (New Jersey)
+12. OK (Oklahoma)
+13. OR (Oregon)
+14. PA (Pennsylvania)
+15. PR (Puerto Rico)
+16. TN (Tennessee)
+17. TX (Texas)
+18. VA (Virginia)
+19. WI (Wisconsin)
+20. WY (Wyoming)
 
 Please note that, at the moment `us-1` and `eu-1` stream Kraken market data (which is another crypto exchange), but the providers may change over time.
 
@@ -106,9 +103,9 @@ Multiple data points may arrive in each message received from the server. These 
 | `T`       | string | message type, always “q”                                                                                |
 | `S`       | string | symbol                                                                                                  |
 | `bp`      | number | bid price                                                                                               |
-| `bs`      | number | bid size                                                                                                |
+| `bs`      | number | bid size of the base asset (left side of the pair), with no lot multiplier                              |
 | `ap`      | number | ask price                                                                                               |
-| `as`      | number | ask size                                                                                                |
+| `as`      | number | ask size of the base asset (left side of the pair), with no lot multiplier                              |
 | `t`       | string | [RFC-3339](https://datatracker.ietf.org/doc/html/rfc3339) formatted timestamp with nanosecond precision |
 
 ### Example

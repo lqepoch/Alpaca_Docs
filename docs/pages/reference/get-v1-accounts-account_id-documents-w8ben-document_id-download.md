@@ -101,7 +101,8 @@ Note: The dates collected on the form are in a slightly different format than ho
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

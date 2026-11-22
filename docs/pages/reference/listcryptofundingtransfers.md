@@ -163,7 +163,8 @@ Returns an array of all transfers associated with the given account across all w
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

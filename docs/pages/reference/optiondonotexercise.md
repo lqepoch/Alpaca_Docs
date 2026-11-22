@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-04-20T20:39:16.000Z
+updatedAt: 2026-11-09T21:14:23.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -20,9 +20,11 @@ To override this behavior and submit an exercise instruction, please contact our
       "Error": {
         "properties": {
           "code": {
+            "description": "Alpaca error code, such as `40310000`. Usually the HTTP status code followed by a five-digit suffix. Several errors can share the same code, so check `message` for the specific reason.",
             "type": "number"
           },
           "message": {
+            "description": "Human-readable reason for the rejection.",
             "type": "string"
           }
         },
@@ -155,7 +157,8 @@ To override this behavior and submit an exercise instruction, please contact our
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

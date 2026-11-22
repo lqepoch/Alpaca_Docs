@@ -139,7 +139,7 @@ Each event carries an `event_type` discriminator that selects the shape of the `
         "description": "Authentication headers are missing or invalid. Make sure you authenticate your request with a valid API key.\n"
       },
       "403": {
-        "description": "The requested resource is forbidden.\n"
+        "description": "The requested resource is forbidden, for example because the subscription does not cover the requested data.\n"
       },
       "429": {
         "description": "Too many requests. You hit the rate limit. Use the X-RateLimit-... response headers to make sure you're under the rate limit.\n",
@@ -2334,10 +2334,6 @@ Each event carries an `event_type` discriminator that selects the shape of the `
           {
             "description": "Sandbox",
             "url": "https://stream.data.sandbox.alpaca.markets"
-          },
-          {
-            "description": "Staging",
-            "url": "https://stream.data.staging-v2.tradetalk.us"
           }
         ],
         "summary": "Subscribe to Corporate Actions Events (SSE)",
@@ -2362,6 +2358,11 @@ Each event carries an `event_type` discriminator that selects the shape of the `
       "description": "Corporate actions (splits, dividends, etc.).",
       "name": "Corporate actions"
     }
-  ]
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": false,
+    "apply-tag-changes": true
+  }
 }
 ```

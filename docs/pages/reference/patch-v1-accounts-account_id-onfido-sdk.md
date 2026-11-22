@@ -130,7 +130,8 @@ This request allows you to send Alpaca the result of the Onfido SDK flow in your
   ],
   "x-readme": {
     "explorer-enabled": true,
-    "proxy-enabled": false
+    "proxy-enabled": false,
+    "apply-tag-changes": true
   }
 }
 ```

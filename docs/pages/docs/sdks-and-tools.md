@@ -1,5 +1,5 @@
 ---
-updatedAt: 2026-08-06T14:38:11.000Z
+updatedAt: 2026-11-16T15:26:33.000Z
 agentTools:
   siteIndex: https://docs.alpaca.markets/llms.txt
   projectIndex: https://docs.alpaca.markets/us/llms.txt
@@ -9,7 +9,7 @@ agentTools:
 
 # Official Client SDKs
 
-Alpaca provides and supports the following open-source SDKs in a number of languages. You can leverage these libraries to easily access our API in your own application code or your trading scripts.
+Alpaca provides and supports the following open-source SDKs in a number of languages. You can leverage these libraries to easily access Alpaca's APIs in your own application code or your trading scripts.
 
 * **Python**: [alpaca-py](https://alpaca.markets/sdks/python/) / [PyPI](https://pypi.org/project/alpaca-py/)
 * **.NET/C#**: [alpaca-trade-api-csharp](https://github.com/alpacahq/alpaca-trade-api-csharp/) / [NuGet](https://www.nuget.org/packages/Alpaca.Markets/)
@@ -35,13 +35,13 @@ Download Alpaca's OpenAPI specifications to inspect API schemas or generate clie
 
 # Alpaca-Java (Java SDK)
 
-[**Alpaca-Java**](https://alpacahq.github.io/alpaca-java/) provides Java clients for Alpaca's Trading, Market Data, Broker, WebSocket, and Broker Events SSE APIs. Use it when you want to build trading applications, read historical or live market data, or build broker-backed investing experiences from a Java application.
+[**Alpaca-Java**](https://alpacahq.github.io/alpaca-java/) provides Java clients for Alpaca's APIs, covering REST, WebSocket, and SSE endpoints. Use it when you want to build trading applications, read historical or live market data, or build broker-backed investing experiences from a Java application.
 
-The SDK includes a top-level AlpacaClient facade for common workflows, factory methods for pre-configured generated REST clients, and handwritten streaming clients for live data.
+The SDK includes a top-level `AlpacaClient` facade for common workflows, factory methods for pre-configured generated REST clients, and handwritten streaming clients for live data.
 
 # Community-Made SDKs
 
-In addition to the SDKs directly supported by Alpaca, individual members of our community have created and contributed their own wrappers for these other languages. We are providing these links as a courtesy to the community and to our users who are looking for the API wrapper in other languages or variants. Please be sure to carefully review any code you use to access our financial trading API and/or trust your account credentials to.
+In addition to the SDKs directly supported by Alpaca, individual members of our community have created and contributed their own wrappers for these other languages. We are providing these links as a courtesy to the community and to our users who are looking for wrappers for Alpaca's APIs in other languages or variants. Please be sure to carefully review any code you use to access Alpaca's APIs and/or trust your account credentials to.
 
 Made your own wrapper for a language not listed? Join our community Slack and let us know about it!
 
